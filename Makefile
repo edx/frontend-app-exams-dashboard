@@ -54,9 +54,7 @@ pull_translations:
 	mkdir src/i18n/messages
 	cd src/i18n/messages \
 	   && atlas pull --filter=$(transifex_langs) \
-	            translations/frontend-component-footer/src/i18n/messages:frontend-component-footer \
-	            translations/frontend-component-header/src/i18n/messages:frontend-component-header \
 	            translations/frontend-app-exams-dashboard/src/i18n/messages:frontend-app-exams-dashboard
 
-	$(intl_imports) frontend-component-header frontend-component-footer frontend-app-exams-dashboard
+	$(intl_imports) frontend-app-exams-dashboard
 endif
