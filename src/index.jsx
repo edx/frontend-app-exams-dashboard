@@ -6,16 +6,32 @@ import {
 } from '@edx/frontend-platform';
 import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
 import ReactDOM from 'react-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import messages from './i18n';
-import ExamplePage from './example/ExamplePage';
+
+import store from 'data/store';
 
 import './index.scss';
+import Dashboard from './Dashboard';
+import ExamsPage from './ExamsPage';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
-    <AppProvider>
-      <ExamplePage />
+    <AppProvider store={store}>
+    <Switch>
+      <Route
+        path="/exams/course/:courseId"
+        render={({ match }) => {
+          const { params: { courseId } } = match;
+          return (
+            <Dashboard>
+              <ExamsPage courseId={courseId} />
+            </Dashboard>
+          );
+        }}
+      />
+    </Switch>
     </AppProvider>,
     document.getElementById('root'),
   );
@@ -27,4 +43,5 @@ subscribe(APP_INIT_ERROR, (error) => {
 
 initialize({
   messages,
+  requireAuthenticatedUser: true,
 });
