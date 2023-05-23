@@ -4,6 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 
 import { useCourseExamsList, useFetchCourseExams } from './hooks';
+import ExamList from './ExamList';
 
 const ExamsPage = ({ courseId }) => {
   const fetchExams = useFetchCourseExams();
@@ -11,13 +12,11 @@ const ExamsPage = ({ courseId }) => {
 
   useEffect(() => {
     fetchExams(courseId);
-  }, [fetchExams, courseId]);
+  }, [courseId]);
 
   return (
     <div>
-      <ul>
-        {examsList.map((exam) => (<li>{exam.exam_name}</li>))}
-      </ul>
+      <ExamList exams={examsList} />
     </div>
   );
 };

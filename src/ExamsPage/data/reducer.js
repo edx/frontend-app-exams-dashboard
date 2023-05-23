@@ -14,7 +14,10 @@ const slice = createSlice({
     loadExams: (state, { payload }) => ({
       ...state,
       currentExam: examId(payload[0]),
-      examsList: payload,
+      examsList: payload.map((exam) => ({
+        id: exam.id,
+        name: exam.exam_name,
+      })),
     }),
   },
 });

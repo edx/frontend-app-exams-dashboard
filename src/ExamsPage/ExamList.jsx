@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export const ExamList = ({ exams }) => (
   <div>
     <ul>
-      {exams.map((exam) => (<li>{exam.name}</li>))}g
+      {exams.map((exam) => (<li>{exam.name}</li>))}
     </ul>
   </div>
 );
