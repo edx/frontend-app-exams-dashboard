@@ -4,7 +4,7 @@ import SiteFooter from '@edx/frontend-component-footer';
 
 import { useLocation } from 'react-router-dom';
 
-export default function ExamsDashboardPage({ children }) {
+const ExamsDashboardPage = ({ children }) => {
   const { pathname } = useLocation();
   // show or hide header/footer depending on if this app is embedded in instructor dashboard or
   // standalone. If no need for a standalone version, this feature can be removed.
@@ -15,7 +15,7 @@ export default function ExamsDashboardPage({ children }) {
       {!pathname.includes('/embed') && <SiteFooter />}
     </div>
   );
-}
+};
 
 ExamsDashboardPage.propTypes = {
   children: PropTypes.node,
@@ -24,3 +24,5 @@ ExamsDashboardPage.propTypes = {
 ExamsDashboardPage.defaultProps = {
   children: null,
 };
+
+export default ExamsDashboardPage;

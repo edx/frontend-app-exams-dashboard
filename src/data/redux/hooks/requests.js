@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import * as redux from 'data/redux';
-import * as module from './requests';
+import * as module from './requests'; // eslint-disable-line import/no-self-import
 
 const selectors = redux.selectors.requests;
 const actions = redux.actions.requests;

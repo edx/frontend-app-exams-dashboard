@@ -1,4 +1,15 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { createConfig } = require('@edx/frontend-build');
 
-module.exports = createConfig('eslint');
+const config = createConfig('eslint');
+
+config.settings = {
+  'import/resolver': {
+    node: {
+      paths: ['src', 'node_modules'],
+      extensions: ['.js', '.jsx'],
+    },
+  },
+};
+
+module.exports = config;

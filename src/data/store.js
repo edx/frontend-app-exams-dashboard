@@ -1,15 +1,13 @@
 import * as redux from 'redux';
-import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 import { createLogger } from 'redux-logger';
-
 
 import reducer, { actions, selectors } from './redux';
 
 export const createStore = () => {
   const loggerMiddleware = createLogger();
 
-  const middleware = [thunkMiddleware, loggerMiddleware];
+  const middleware = [loggerMiddleware];
 
   const store = redux.createStore(
     reducer,

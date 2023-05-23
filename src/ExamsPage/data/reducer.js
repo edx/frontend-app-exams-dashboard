@@ -14,7 +14,7 @@ const slice = createSlice({
     loadExams: (state, { payload }) => ({
       ...state,
       currentExam: examId(payload[0]),
-      examsList: payload
+      examsList: payload,
     }),
   },
 });

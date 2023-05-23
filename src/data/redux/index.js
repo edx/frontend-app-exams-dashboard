@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import * as requests from './requests';
 import * as exams from 'ExamsPage/data/reducer';
+import * as requests from './requests';
 
 const modules = {
   requests,

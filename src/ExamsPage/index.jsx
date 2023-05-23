@@ -1,18 +1,17 @@
 import React, {
-  useEffect
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 
 import { useCourseExamsList, useFetchCourseExams } from './hooks';
 
-
-function ExamsPage({ courseId }) {
+const ExamsPage = ({ courseId }) => {
   const fetchExams = useFetchCourseExams();
   const examsList = useCourseExamsList();
 
   useEffect(() => {
     fetchExams(courseId);
-  }, [courseId]);
+  }, [fetchExams, courseId]);
 
   return (
     <div>
@@ -21,7 +20,7 @@ function ExamsPage({ courseId }) {
       </ul>
     </div>
   );
-}
+};
 
 ExamsPage.propTypes = {
   courseId: PropTypes.string.isRequired,
