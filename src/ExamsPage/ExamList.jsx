@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const ExamList = ({ exams }) => (
+const ExamList = ({ exams }) => (
   <div>
     <ul>
       {exams.map((exam) => (<li>{exam.name}</li>))}

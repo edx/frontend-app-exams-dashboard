@@ -1,3 +1,4 @@
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { RequestKeys } from 'data/constants';
@@ -6,10 +7,6 @@ import * as reduxHooks from 'data/redux/hooks';
 
 import * as api from './data/api';
 import { loadExams } from './data/reducer';
-
-export const useExamsLoading = () => (
-  reduxHooks.useRequestIsPending(RequestKeys.fetchCourseExams)
-);
 
 export const useFetchCourseExams = () => {
   const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
@@ -22,6 +19,15 @@ export const useFetchCourseExams = () => {
     })
   );
 };
+
+export const useInitializeExamsPage = (courseId) => {
+  const fetchCourseExams = useFetchCourseExams();
+  React.useEffect(() => { fetchCourseExams(courseId); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+};
+
+export const useExamsLoading = () => (
+  reduxHooks.useRequestIsPending(RequestKeys.fetchCourseExams)
+);
 
 export const useCourseExamsList = () => (
   useSelector(state => state.exams.examsList)

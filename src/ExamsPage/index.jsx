@@ -1,21 +1,18 @@
-import React, {
-  useEffect,
-} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useCourseExamsList, useFetchCourseExams } from './hooks';
+import { useCourseExamsList, useInitializeExamsPage, useExamsLoading } from './hooks';
 import ExamList from './ExamList';
 
 const ExamsPage = ({ courseId }) => {
-  const fetchExams = useFetchCourseExams();
-  const examsList = useCourseExamsList();
+  useInitializeExamsPage(courseId);
 
-  useEffect(() => {
-    fetchExams(courseId);
-  }, [courseId]);
+  const examsList = useCourseExamsList();
+  const isLoading = useExamsLoading();
 
   return (
     <div>
+      { isLoading && <div>Loading...</div>}
       <ExamList exams={examsList} />
     </div>
   );
