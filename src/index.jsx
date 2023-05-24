@@ -13,7 +13,6 @@ import messages from './i18n';
 
 import './index.scss';
 import Dashboard from './Dashboard';
-import ExamsPage from './ExamsPage';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
@@ -24,9 +23,7 @@ subscribe(APP_READY, () => {
           render={({ match }) => {
             const { params: { courseId } } = match;
             return (
-              <Dashboard>
-                <ExamsPage courseId={courseId} />
-              </Dashboard>
+              <Dashboard courseId={courseId} />
             );
           }}
         />
