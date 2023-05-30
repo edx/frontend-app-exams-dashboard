@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useCourseExamsList, useInitializeExamsPage, useExamsLoading } from './hooks';
+import { useExamsData, useInitializeExamsData } from './hooks';
 import ExamList from './ExamList';
 
 const ExamsPage = ({ courseId }) => {
-  useInitializeExamsPage(courseId);
-
-  const examsList = useCourseExamsList();
-  const isLoading = useExamsLoading();
+  useInitializeExamsData(courseId);
+  const {
+    examsList,
+    isLoading,
+  } = useExamsData();
 
   return (
     <div>
