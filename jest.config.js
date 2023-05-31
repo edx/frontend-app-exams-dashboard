@@ -6,6 +6,7 @@ module.exports = createConfig('jest', {
   setupFilesAfterEnv: [
     '<rootDir>/src/setupTest.js',
   ],
+  modulePaths: ['<rootDir>/src/'],
   coveragePathIgnorePatterns: [
     'src/setupTest.js',
     'src/i18n',

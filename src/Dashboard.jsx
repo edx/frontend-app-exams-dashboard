@@ -4,7 +4,7 @@ import SiteFooter from '@edx/frontend-component-footer';
 
 import { useLocation } from 'react-router-dom';
 
-import ExamsPage from './ExamsPage';
+import ExamsPage from './pages/ExamsPage';
 
 const ExamsDashboardPage = ({ courseId }) => {
   const { pathname } = useLocation();

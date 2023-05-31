@@ -9,12 +9,12 @@ import * as api from './data/api';
 import * as selectors from './data/selectors';
 import * as reducer from './data/reducer';
 
-import * as module from './hooks';
+import * as module from './hooks'; // eslint-disable-line import/no-self-import
 
 export const state = {
   // example of component state that does not need to be in redux
-  exampleValue: (val) => React.useState(val),
-}
+  exampleValue: (val) => React.useState(val), // eslint-disable-line
+};
 
 export const useFetchCourseExams = () => {
   const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
@@ -34,7 +34,7 @@ export const useInitializeExamsData = (courseId) => {
 };
 
 export const useExamsData = () => {
-  const [exampleValue, setExampleValue] = state.exampleValue(null);
+  const [exampleValue, setExampleValue] = state.exampleValue(0);
   const examsList = useSelector(selectors.courseExamsList);
   const currentExam = useSelector(selectors.currentExam);
   const isLoading = reduxHooks.useRequestIsPending(RequestKeys.fetchCourseExams);
@@ -44,5 +44,6 @@ export const useExamsData = () => {
     examsList,
     isLoading,
     exampleValue,
+    setExampleValue,
   };
 };

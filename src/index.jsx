@@ -19,7 +19,7 @@ subscribe(APP_READY, () => {
     <AppProvider store={store}>
       <Switch>
         <Route
-          path="/exams/course/:courseId"
+          path="/course/:courseId/exams"
           render={({ match }) => {
             const { params: { courseId } } = match;
             return (
