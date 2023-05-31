@@ -6,6 +6,10 @@ module.exports = createConfig('jest', {
   setupFilesAfterEnv: [
     '<rootDir>/src/setupTest.js',
   ],
+  // see https://github.com/axios/axios/issues/5026
+  moduleNameMapper: {
+    "^axios$": "axios/dist/axios.js"
+  },
   modulePaths: ['<rootDir>/src/'],
   coveragePathIgnorePatterns: [
     'src/setupTest.js',

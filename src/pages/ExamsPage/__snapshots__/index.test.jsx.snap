@@ -9,6 +9,9 @@ Object {
         <examlist
           exams="stub-exams-list"
         />
+        <button
+          type="button"
+        />
       </div>
     </div>
   </body>,
@@ -16,6 +19,9 @@ Object {
     <div>
       <examlist
         exams="stub-exams-list"
+      />
+      <button
+        type="button"
       />
     </div>
   </div>,
@@ -85,6 +91,9 @@ Object {
         <examlist
           exams="stub-exams-list"
         />
+        <button
+          type="button"
+        />
       </div>
     </div>
   </body>,
@@ -95,6 +104,9 @@ Object {
       </div>
       <examlist
         exams="stub-exams-list"
+      />
+      <button
+        type="button"
       />
     </div>
   </div>,
