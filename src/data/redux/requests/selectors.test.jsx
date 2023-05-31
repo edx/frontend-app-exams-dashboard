@@ -1,6 +1,6 @@
 import { RequestStates } from 'data/constants';
 
-import * as selectors from './selectors';
+import { default as selectors } from './selectors'; // eslint-disable-line import/no-named-default
 
 const requestKey = 'my-test-request-key';
 const requestData = { some: 'request-data' };
