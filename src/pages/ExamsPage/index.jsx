@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useExamsData, useInitializeExamsData } from './hooks';
+import { useExamsData, useInitializeExamsPage } from './hooks';
 import ExamList from './components/ExamList';
 
 const ExamsPage = ({ courseId }) => {
-  useInitializeExamsData(courseId);
+  useInitializeExamsPage(courseId);
   const {
     examsList,
     isLoading,

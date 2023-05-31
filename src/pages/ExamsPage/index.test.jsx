@@ -4,7 +4,7 @@ import ExamsPage from '.';
 import * as hooks from './hooks';
 
 jest.mock('./hooks', () => ({
-  useInitializeExamsData: jest.fn(),
+  useInitializeExamsPage: jest.fn(),
   useExamsData: jest.fn(),
 }));
 

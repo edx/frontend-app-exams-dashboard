@@ -28,7 +28,7 @@ export const useFetchCourseExams = () => {
   );
 };
 
-export const useInitializeExamsData = (courseId) => {
+export const useInitializeExamsPage = (courseId) => {
   const fetchCourseExams = module.useFetchCourseExams();
   React.useEffect(() => { fetchCourseExams(courseId); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 };

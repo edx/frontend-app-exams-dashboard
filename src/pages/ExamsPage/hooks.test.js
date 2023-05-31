@@ -25,7 +25,7 @@ describe('ExamsPage hooks', () => {
     it('calls useFetchCourseExams on component load', () => {
       const mockFetchCourseExams = jest.fn();
       jest.spyOn(hooks, 'useFetchCourseExams').mockImplementation(() => mockFetchCourseExams);
-      hooks.useInitializeExamsData('course-1');
+      hooks.useInitializeExamsPage('course-1');
       const [cb, prereqs] = React.useEffect.mock.calls[0];
       expect(prereqs).toEqual([]);
       expect(mockFetchCourseExams).not.toHaveBeenCalled();
