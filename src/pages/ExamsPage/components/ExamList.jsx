@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const ExamList = ({ exams }) => (
   <div>
     <ul>
-      {exams.map((exam) => (<li>{exam.name}</li>))}
+      {exams.map((exam) => (<li key={exam.id}>{exam.name}</li>))}
     </ul>
   </div>
 );
