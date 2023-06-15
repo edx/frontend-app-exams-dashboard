@@ -31,7 +31,8 @@ export const useFetchCourseExams = () => {
 export const useFetchExamAttempts = () => {
   const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
   const dispatch = useDispatch();
-  console.log("Fetching exam attempts...")
+  // console.log("Fetching exam attempts...")
+  // debugger;
   return (examId) => (
     makeNetworkRequest({
       requestKey: RequestKeys.fetchExamAttempts,
@@ -45,6 +46,13 @@ export const useInitializeExamsPage = (courseId) => {
   const fetchCourseExams = module.useFetchCourseExams();
   React.useEffect(() => { fetchCourseExams(courseId); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 };
+
+export const useInitializeAttemptsList = (examId) => {
+  const fetchExamAttempts = module.useFetchExamAttempts();
+  React.useEffect(() => { fetchExamAttempts(examId); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+};
+
+
 
 export const useExamsData = () => {
   const [exampleValue, setExampleValue] = state.exampleValue(0);
@@ -63,5 +71,6 @@ export const useExamsData = () => {
 
 export const useExamAttemptsData = () => {
   const attemptsList = useSelector(selectors.courseExamAttemptsList);
+  console.log("LIST:", attemptsList);
   return attemptsList;
 }

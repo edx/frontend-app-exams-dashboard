@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { DataTable } from '@edx/paragon';
 
-import { useExamAttemptsData, useFetchExamAttempts } from '../hooks';
+import { useExamAttemptsData, useInitializeAttemptsList } from '../hooks';
 
 const ExamAttemptDataTable = ({ exams }) => {
     // TODO: Evaluate feasability of 10,000+ entries for that one discovery...
@@ -33,33 +33,22 @@ const ExamAttemptDataTable = ({ exams }) => {
         tableData.push(tableRow);
     }
 
-    const getExamAttempts = async (examId) => {
-        return await useFetchExamAttempts(exam.id);
-    };
-    // I'm realizing we don't have an endpoint to get all the exam attempts within a course, so we'll have to make a separate
-    // call to edx-exams for each exam unless we decide to add such an endpoint later on.
+    // const fetchExamAttempts = async (examId) => {
+    //     await ;
+    // };
 
-    // IDEA 1: call attempt endpoint using each exam in exam list, pass the returned list of attempts to ExamAttemptDataTable
-    // IDEA 2: pass exam list into ExamAttemptDataTable, call endpoint there
-
-    // i WAS going with IDEA 1 for now in order to keep the API calls in the same place.
-    // But it doesn't work so I'm going with IDEA 2.
-
-    // let attemptsList = [];
-    // when the examsList is loaded, get the id of each exam, and get the attemptsList
-    let attemptsList;
-    useEffect(() => {
-        console.log("examsList", exams);
-        Object.values(exams).forEach(exam => {
-            console.log(exam);
-            console.log(exam.id);
-            getExamAttempts(exam.id);
+    const getAttemptsForAllExams = async () => {
+        await Object.values(exams).forEach((exam) => {
+            // console.log(exam);
+            console.log("Fetching attempts for exam with id:", exam.id);
+            useInitializeAttemptsList(exam.id);
         });
-        attemptsList = useExamAttemptsData();
-    }, []);
-    useEffect(() => {
-        console.log("ATTEMPTS:", attemptsList);
-    }, [attemptsList]);
+    }
+
+    // console.log("examsList", exams);
+    getAttemptsForAllExams();
+    // const attemptsList = useExamAttemptsData();
+    // console.log("ATTEMPTS:", attemptsList);
 
     return (
         <div>

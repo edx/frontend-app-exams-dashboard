@@ -17,7 +17,9 @@ export async function getCourseExams(courseId) {
 
 /* eslint-disable import/prefer-default-export */
 export async function getExamAttempts(examId) {
-  const url = `${getExamsBaseUrl()}api/v1/instructor_view/attempts?exam_id=${examId}`;
+  debugger;
+  const url = `${getExamsBaseUrl()}/api/v1/instructor_view/attempts?exam_id=${examId}`;
   const response = await getAuthenticatedHttpClient().get(url);
+  console.log("test");
   return response.data;
 }
