@@ -46,11 +46,6 @@ export const useInitializeExamsPage = (courseId) => {
   React.useEffect(() => { fetchCourseExams(courseId); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
-export const useInitializeAttemptsList = (examId) => {
-  const fetchExamAttempts = module.useFetchExamAttempts();
-  React.useEffect(() => { fetchExamAttempts(examId); }, []); // eslint-disable-line react-hooks/exhaustive-deps
-};
-
 export const useExamsData = () => {
   const [exampleValue, setExampleValue] = state.exampleValue(0);
   const examsList = useSelector(selectors.courseExamsList);

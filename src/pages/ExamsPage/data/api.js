@@ -19,6 +19,5 @@ export async function getCourseExams(courseId) {
 export async function getExamAttempts(examId) {
   const url = `${getExamsBaseUrl()}api/v1/instructor_view/attempts?exam_id=${examId}`;
   const response = await getAuthenticatedHttpClient().get(url);
-  console.log("\n\n\nResponse Data:",response.data);
   return response.data;
 }

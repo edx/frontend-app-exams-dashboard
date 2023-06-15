@@ -5,7 +5,7 @@ import { Tabs, Tab, Container } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
 import messages from './messages';
-import { useExamsData, useExamAttemptsData, useInitializeExamsPage, useInitializeAttemptsList } from './hooks';
+import { useExamsData, useExamAttemptsData, useInitializeExamsPage, useInitializeAttemptsList, useFetchExamAttempts } from './hooks';
 import AttemptList from './components/AttemptList';
 import ExamAttemptDataTable from './components/ExamAttemptDataTable';
 import ExamList from './components/ExamList';
@@ -29,9 +29,15 @@ const ExamsPage = ({ courseId }) => {
 
   // let attemptsList = [];
   // when the examsList is loaded, get the id of each exam, and get the attemptsList
-  for (let exam in examsList) {
-    useInitializeAttemptsList(exam.id);
-  }
+  console.log("examsList",examsList)
+  Object.values(examsList).forEach(exam => {
+    console.log(exam);
+    console.log(exam.id);
+    useFetchExamAttempts(exam.id);
+  });
+  // for (let exam in examsList) {
+    // useInitializeAttemptsList(exam.id);
+  // }
   let attemptsList = useExamAttemptsData();
   console.log("ATTEMPTS:", attemptsList);
 
