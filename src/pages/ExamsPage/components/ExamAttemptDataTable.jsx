@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { DataTable } from '@edx/paragon';
 
@@ -58,7 +58,7 @@ const ExamAttemptDataTable = ({ exams }) => (
             data={tableData}
             columns={[
                 {
-                    Header: 'Name',
+                    Header: 'Isaac',
                     accessor: 'name',
 
                 },

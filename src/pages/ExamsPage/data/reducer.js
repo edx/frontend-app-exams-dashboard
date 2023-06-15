@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const initialState = {
   currentExamIndex: 0,
   examsList: [],
+  attemptsList: [],
 };
 
 const slice = createSlice({
