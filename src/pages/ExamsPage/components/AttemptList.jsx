@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AttemptList = () => (
-  <div>
+  <div data-testid="attempt_list">
     Placeholder for attempt list
   </div>
 );

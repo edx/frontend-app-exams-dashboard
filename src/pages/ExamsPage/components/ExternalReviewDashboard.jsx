@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ExternalReviewDashboard = () => (
-  <div>
+  <div data-testid="review_dash">
     Placeholder for external review app
   </div>
 );

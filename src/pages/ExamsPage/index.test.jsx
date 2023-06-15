@@ -19,7 +19,7 @@ describe('ExamsPage', () => {
     isLoading: false,
   };
   describe('snapshots', () => {
-    test.only('loaded', () => {
+    test('loaded', () => {
       hooks.useExamsData.mockReturnValue(defaultExamsData);
       expect(render(<ExamsPage courseId="test_course" />)).toMatchSnapshot();
     });
@@ -40,11 +40,11 @@ describe('ExamsPage', () => {
       render(<ExamsPage courseId="test_course" />);
     });
     it('should render attempt list by default', () => {
-      expect(screen.getByText('Placeholder for attempt list')).toBeInTheDocument();
+      expect(screen.getByTestId('attempt_list')).toBeInTheDocument();
     });
     test('swtich tabs to review dashboard', () => {
       screen.getByText('Review Dashboard').click();
-      expect(screen.getByText('Placeholder for external review app')).toBeInTheDocument();
+      expect(screen.getByTestId('review_dash')).toBeInTheDocument();
     });
   });
 });

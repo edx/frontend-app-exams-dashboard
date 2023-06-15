@@ -68,7 +68,9 @@ Object {
               class="fade tab-pane active show"
               role="tabpanel"
             >
-              <div>
+              <div
+                data-testid="attempt_list"
+              >
                 Placeholder for attempt list
               </div>
             </div>
@@ -77,7 +79,9 @@ Object {
               class="fade tab-pane"
               role="tabpanel"
             >
-              <div>
+              <div
+                data-testid="review_dash"
+              >
                 Placeholder for external review app
               </div>
             </div>
@@ -155,7 +159,9 @@ Object {
             class="fade tab-pane active show"
             role="tabpanel"
           >
-            <div>
+            <div
+              data-testid="attempt_list"
+            >
               Placeholder for attempt list
             </div>
           </div>
@@ -164,7 +170,9 @@ Object {
             class="fade tab-pane"
             role="tabpanel"
           >
-            <div>
+            <div
+              data-testid="review_dash"
+            >
               Placeholder for external review app
             </div>
           </div>
