@@ -4,10 +4,6 @@ import { DataTable } from '@edx/paragon';
 
 import { useExamAttemptsData, useInitializeAttemptsList } from '../hooks';
 
-// TODO: Evaluate feasability of 10,000+ entries for that one discovery...
-// Test pagination and search with 10,000+ entries.
-// Start local, maybe on Stage b/c different.
-// If it works local, it works stage.
 const ExamAttemptDataTable = ({ exams }) => {
     useInitializeAttemptsList(exams);
     const { attemptsList } = useExamAttemptsData();
