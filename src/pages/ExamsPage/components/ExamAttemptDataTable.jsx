@@ -4,54 +4,31 @@ import { DataTable } from '@edx/paragon';
 
 import { useExamAttemptsData, useInitializeAttemptsList } from '../hooks';
 
+// TODO: Evaluate feasability of 10,000+ entries for that one discovery...
+// Test pagination and search with 10,000+ entries.
+// Start local, maybe on Stage b/c different.
+// If it works local, it works stage.
 const ExamAttemptDataTable = ({ exams }) => {
-    // TODO: Evaluate feasability of 10,000+ entries for that one discovery...
-    // Test pagination and search with 10,000+ entries.
-    // Start local, maybe on Stage b/c different.
-    // If it works local, it works stage.
     const tableData = [];
+    useInitializeAttemptsList(exams);
+    // debugger;
+    const { attemptsList } = useExamAttemptsData();
+    // const getAttemptsForAllExams = async () => {
+    //     await 
+    // }
 
-    const makeid = (length) => {
-        let result = '';
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        const charactersLength = characters.length;
-        let counter = 0;
-        while (counter < length) {
-            result += characters.charAt(Math.floor(Math.random() * charactersLength));
-            counter += 1;
-        }
-        return result;
-    };
 
-    let tableRow = {};
-    for (let i = 0; i <= 15000; i++) {
-        tableRow = {
-            name: makeid(5),
-            color: makeid(10),
-            famous_for: makeid(20),
-        }
-        tableData.push(tableRow);
-    }
-
-    // const fetchExamAttempts = async (examId) => {
-    //     await ;
-    // };
-
-    const getAttemptsForAllExams = async () => {
-        await Object.values(exams).forEach((exam) => {
-            // console.log(exam);
-            console.log("Fetching attempts for exam with id:", exam.id);
-            useInitializeAttemptsList(exam.id);
-        });
-    }
 
     // console.log("examsList", exams);
-    getAttemptsForAllExams();
-    // const attemptsList = useExamAttemptsData();
-    // console.log("ATTEMPTS:", attemptsList);
+    // getAttemptsForAllExams();
+    console.log("ATTEMPTS:", attemptsList);
 
     return (
         <div>
+            <p>attempts</p>
+            <ul>
+                {attemptsList.map((attempt) => (<li key={attempt.started_at}>{attempt.started_at}</li>))}
+            </ul>
             <p>Data Table</p>
             <DataTable
                 isPaginated
