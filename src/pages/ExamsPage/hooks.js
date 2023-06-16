@@ -31,8 +31,6 @@ export const useFetchCourseExams = () => {
 export const useFetchExamAttempts = () => {
   const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
   const dispatch = useDispatch();
-  // console.log("Fetching exam attempts...")
-  // debugger;
   return (examId) => (
     makeNetworkRequest({
       requestKey: RequestKeys.fetchExamAttempts,
@@ -50,22 +48,11 @@ export const useInitializeExamsPage = (courseId) => {
 // Return exam attempts for each exam in the course
 export const useInitializeAttemptsList = (exams) => {
   const fetchExamAttempts = module.useFetchExamAttempts();
-  console.log("\n\n\n\nEXAMS:",exams);
-  // debugger;
   if (exams.length > 0) {
     Object.values(exams).forEach((exam) => {
-      console.log("Fetching attempts for exam with id:", exam.id);
-      // fetchExamAttempts(exam.id);
       React.useEffect(() => { fetchExamAttempts(exam.id); }, []); // eslint-disable-line react-hooks/exhaustive-deps
     });
   }
-  // {
-  //   typeof exams !== 'undefined' &&
-  //   (exams).forEach((exam) => {
-  //     console.log("Fetching attempts for exam with id:", exam.id);
-  //     React.useEffect(() => { fetchExamAttempts(exam.id); }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  //   })
-  // }
 };
 
 
@@ -87,6 +74,5 @@ export const useExamsData = () => {
 
 export const useExamAttemptsData = () => {
   const attemptsList = useSelector(selectors.courseExamAttemptsList);
-  // console.log("LIST:", attemptsList);
   return { attemptsList };
 }
