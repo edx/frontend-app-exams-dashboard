@@ -30,10 +30,10 @@ const slice = createSlice({
             started_at: attempt.start_time,
             completed_at: attempt.end_time,
             status: attempt.attempt_status,
-            action: <a href="https://www.edx.org" target="_blank">Action</a>
-          }
+            action: 'Action',
+          };
           state.attemptsList.push(dataToAdd);
-        })
+        });
       }
     },
   },

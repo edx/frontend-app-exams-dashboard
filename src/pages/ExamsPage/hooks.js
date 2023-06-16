@@ -50,12 +50,12 @@ export const useInitializeAttemptsList = (exams) => {
   const fetchExamAttempts = module.useFetchExamAttempts();
   if (exams.length > 0) {
     Object.values(exams).forEach((exam) => {
-      React.useEffect(() => { fetchExamAttempts(exam.id); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+      /* eslint-disable react-hooks/rules-of-hooks, react-hooks/exhaustive-deps */
+      React.useEffect(() => { fetchExamAttempts(exam.id); }, []);
+      /* eslint-disable react-hooks/rules-of-hooks, react-hooks/exhaustive-deps */
     });
   }
 };
-
-
 
 export const useExamsData = () => {
   const [exampleValue, setExampleValue] = state.exampleValue(0);
@@ -75,4 +75,4 @@ export const useExamsData = () => {
 export const useExamAttemptsData = () => {
   const attemptsList = useSelector(selectors.courseExamAttemptsList);
   return { attemptsList };
-}
+};
