@@ -23,12 +23,14 @@ const slice = createSlice({
         payload.results.forEach((attempt) => {
           const dataToAdd = {
             // “Username”, “Time Limit”, “Type”, “Started At”, “Completed At”, “Status”, and “Action”.
-            // username: attempt.user.username,
+            exam_name: attempt.exam_display_name,
+            username: attempt.username,
             time_limit: attempt.allowed_time_limit_mins,
-            // type: attempt.exam.exam_type,
+            exam_type: attempt.exam_type,
             started_at: attempt.start_time,
             completed_at: attempt.end_time,
-            status: attempt.status,
+            status: attempt.attempt_status,
+            action: <a href="https://www.edx.org" target="_blank">Action</a>
           }
           state.attemptsList.push(dataToAdd);
         })
