@@ -4,17 +4,16 @@ import { DataTable } from '@edx/paragon';
 
 import { useExamAttemptsData, useInitializeAttemptsList } from '../hooks';
 
+// TODO: Evaluate feasability of 10,000+ entries for that one discovery...
+// Test pagination and search with 10,000+ entries.
+// Start local, maybe on Stage b/c different.
+// If it works local, it works stage.
 const ExamAttemptDataTable = ({ exams }) => {
-    const tableData = [];
     useInitializeAttemptsList(exams);
     const { attemptsList } = useExamAttemptsData();
 
     return (
         <div>
-            <p>Attempts List</p>
-            <ul>
-                {attemptsList.map((attempt) => (<li key={attempt.started_at}>{attempt.started_at}</li>))}
-            </ul>
             <p>Data Table</p>
             <DataTable
                 isPaginated
@@ -25,43 +24,42 @@ const ExamAttemptDataTable = ({ exams }) => {
                 // isFilterable
                 isSortable
                 // defaultColumnValues={{ Filter: TextFilter }}
-                itemCount={tableData.length}
-                data={tableData}
+                itemCount={attemptsList.length}
+                data={attemptsList}
                 columns={[
                     {
-                        Header: 'Isaac',
-                        accessor: 'name',
+                        Header: 'Exam Name',
+                        accessor: 'exam_name',
+                    },
+                    {
+                        Header: 'Username',
+                        accessor: 'username',
+                    },
+                    {
+                        Header: 'Time Limit',
+                        accessor: 'time_limit',
+                    },
+                    {
+                        Header: 'Exam Type',
+                        accessor: 'exam_type',
+                    },
+                    {
+                        Header: 'Started At',
+                        accessor: 'started_at',
 
                     },
                     {
-                        Header: 'Famous For',
-                        accessor: 'famous_for',
+                        Header: 'Completed At',
+                        accessor: 'completed_at',
                     },
                     {
-                        Header: 'Coat Color',
-                        accessor: 'color',
-                        // Filter: CheckboxFilter,
-                        // filter: 'includesValue',
-                        // filterChoices: [{
-                        //     name: 'russian white',
-                        //     number: 1,
-                        //     value: 'russian white',
-                        // },
-                        // {
-                        //     name: 'orange tabby',
-                        //     number: 2,
-                        //     value: 'orange tabby',
-                        // },
-                        // {
-                        //     name: 'brown tabby',
-                        //     number: 3,
-                        //     value: 'brown tabby',
-                        // },
-                        // {
-                        //     name: 'siamese',
-                        //     number: 1,
-                        //     value: 'siamese',
-                        // }]
+                        Header: 'Status',
+                        accessor: 'status',
+                    },
+                    {
+                        Header: 'Action',
+                        accessor: 'action',
+
                     },
                 ]}
             >
