@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const initialState = {
-  currentExamIndex: 5,
+  currentExamIndex: 0,
   examsList: [],
   attemptsList: [],
 };
