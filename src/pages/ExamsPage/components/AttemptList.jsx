@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DataTable } from '@edx/paragon';
+import { Button, DataTable } from '@edx/paragon';
+const ResetAction = (props) => (
+  <Button onClick={() => console.log('Reset', props)}>
+    Reset
+  </Button>
+);
 
 const AttemptList = ({ attempts }) => (
   <div>
@@ -11,11 +16,23 @@ const AttemptList = ({ attempts }) => (
       initialState={{
         pageSize: 20,
       }}
-        // isFilterable
       isSortable
-        // defaultColumnValues={{ Filter: TextFilter }}
       itemCount={attempts.length}
+      bulkActions={[
+        <ResetAction />,
+      ]}
+      additionalColumns={[
+        {
+          id: 'action',
+          Header: 'Action',
+          // TODO: For MST-1945, make this button actually "reset" (i.e. delete)
+          // the exam attempt for the cell's respective row after confirmation.
+          Cell: ({ row }) => <Button variant="link" size="sm" onClick={() => console.log(`Resetting ${row.values.name}`)}>Reset</Button>,
+        }
+      ]}
       data={attempts}
+              // TODO after laundry: use i18n package's "formatMessage", "formattedDate" and all that
+
       columns={[
         {
           Header: 'Exam Name',
@@ -44,10 +61,6 @@ const AttemptList = ({ attempts }) => (
         {
           Header: 'Status',
           accessor: 'status',
-        },
-        {
-          Header: 'Action',
-          accessor: 'action',
         },
       ]}
     >
