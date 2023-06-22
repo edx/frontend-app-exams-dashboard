@@ -18,20 +18,18 @@ const slice = createSlice({
       })),
     }),
     loadExamAttempts: (state, { payload }) => {
-      if (payload.results.length > 0) {
-        payload.results.forEach((attempt) => {
-          const dataToAdd = {
-            exam_name: attempt.exam_display_name,
-            username: attempt.username,
-            time_limit: attempt.allowed_time_limit_mins,
-            exam_type: attempt.exam_type,
-            started_at: attempt.start_time,
-            completed_at: attempt.end_time,
-            status: attempt.attempt_status,
-          };
-          state.attemptsList.push(dataToAdd);
-        });
-      }
+      payload?.results.forEach((attempt) => {
+        const dataToAdd = {
+          exam_name: attempt.exam_display_name,
+          username: attempt.username,
+          time_limit: attempt.allowed_time_limit_mins,
+          exam_type: attempt.exam_type,
+          started_at: attempt.start_time,
+          completed_at: attempt.end_time,
+          status: attempt.attempt_status,
+        };
+        state.attemptsList.push(dataToAdd);
+      });
     },
   },
 });

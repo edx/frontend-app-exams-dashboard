@@ -34,14 +34,13 @@ const AttemptList = ({ attempts }) => {
             Header: formatMessage({
               id: 'AttemptsList.action',
               defaultMessage: 'Action',
-              description: 'Action to reset the exam attempt',
+              description: 'Table header for the table column listing action to reset the exam attempt',
             }),
             // TODO: For MST-1945, make this button actually "reset" (i.e. delete)
             // the exam attempt for the cell's respective row after confirmation.
-
-            // NOTE: This line throws lots of errors. Docs for this are from:
-            // https://paragon-openedx.netlify.app/components/datatable/#custom-cell-content
+            /* eslint-disable react/prop-types, react/no-unstable-nested-components */
             Cell: ({ row }) => <Button variant="link" size="sm" onClick={() => console.log(`Resetting ${row.values.name}`)}>Reset</Button>,
+            /* eslint-disable react/prop-types, react/no-unstable-nested-components */
           },
         ]}
         data={attempts}
@@ -50,7 +49,7 @@ const AttemptList = ({ attempts }) => {
             Header: formatMessage({
               id: 'AttemptsList.exam_name',
               defaultMessage: 'Exam Name',
-              description: 'The name of the exam attempted',
+              description: 'Table header for the table column listing the exam name',
             }),
             accessor: 'exam_name',
           },
@@ -58,7 +57,7 @@ const AttemptList = ({ attempts }) => {
             Header: formatMessage({
               id: 'AttemptsList.username',
               defaultMessage: 'Username',
-              description: 'The user that attempted the exam',
+              description: 'Table header for the table column listing the username',
             }),
             accessor: 'username',
           },
@@ -66,19 +65,19 @@ const AttemptList = ({ attempts }) => {
             Header: formatMessage({
               id: 'AttemptsList.time_limit',
               defaultMessage: 'Time Limit',
-              description: 'Time limit to complete the exam',
+              description: 'Table header for the table column listing the time limit to complete the exam',
             }),
             Cell: ({ row }) => formatMessage({
               id: 'AttemptsList.time_limit',
               defaultMessage: `${row.original.time_limit} minutes`,
-              description: 'Time limit to complete the exam',
+              description: 'Data cell for the time limit to complete the exam',
             }),
           },
           {
             Header: formatMessage({
               id: 'AttemptsList.exam_type',
               defaultMessage: 'Exam Type',
-              description: 'Type of the exam',
+              description: 'Table header for the type of the exam',
             }),
             Cell: ({ row }) => (capitalizeFirstLetter(row.original.exam_type)),
           },
@@ -86,7 +85,7 @@ const AttemptList = ({ attempts }) => {
             Header: formatMessage({
               id: 'AttemptsList.started_at',
               defaultMessage: 'Started At',
-              description: 'Time the exam attempt was started',
+              description: 'Table header for the time the exam attempt was started',
             }),
             Cell: ({ row }) => (formatDate(row.original.started_at, {
               year: 'numeric',
@@ -94,14 +93,13 @@ const AttemptList = ({ attempts }) => {
               day: 'numeric',
               hour: 'numeric',
               minute: 'numeric',
-              second: 'numeric',
             })),
           },
           {
             Header: formatMessage({
               id: 'AttemptsList.completed_at',
               defaultMessage: 'Completed At',
-              description: 'Time the exam attempt was started',
+              description: 'Table header for the time the exam attempt was completed',
             }),
             Cell: ({ row }) => (formatDate(row.original.completed_at, {
               year: 'numeric',
@@ -109,14 +107,13 @@ const AttemptList = ({ attempts }) => {
               day: 'numeric',
               hour: 'numeric',
               minute: 'numeric',
-              second: 'numeric',
             })),
           },
           {
             Header: formatMessage({
               id: 'AttemptsList.status',
               defaultMessage: 'Status',
-              description: 'Current status of the exam attempt',
+              description: 'Table header for the current status of the exam attempt',
             }),
             Cell: ({ row }) => (capitalizeFirstLetter(row.original.status)),
           },
@@ -132,7 +129,7 @@ const AttemptList = ({ attempts }) => {
 };
 
 AttemptList.propTypes = {
-  attempts: PropTypes.arrayOf(PropTypes.object).isRequired, // eslint-disable-line react/forbid-prop-types
+  attempts: PropTypes.arrayOf(PropTypes.shapes).isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 export default AttemptList;
