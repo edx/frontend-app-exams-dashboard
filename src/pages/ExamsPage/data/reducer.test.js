@@ -65,8 +65,8 @@ describe('ExamsPage reducer', () => {
                 end_time: '2023-04-05T19:37:17.000000Z',
                 attempt_status: 'completed',
               },
-            ]
-          }
+            ],
+          },
         };
         expect(reducer(initialState, action)).toEqual({
           currentExamIndex: 0,

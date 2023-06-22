@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
 import ExamsPage from '.';
-import { IntlProvider } from '@edx/frontend-platform/i18n';
 import * as hooks from './hooks';
 
 // nomally mocked for unit tests but required for rendering/snapshots
@@ -30,10 +29,10 @@ describe('ExamsPage', () => {
       started_at: '2023-04-05T19:27:16.000000Z',
       completed_at: '2023-04-05T19:27:17.000000Z',
       status: 'completed',
-    }]
+    }],
   };
   describe('loading tests', () => {
-    beforeEach = (() => {
+    beforeEach = (() => { // eslint-disable-line no-global-assign
       hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
     });
     describe('snapshots', () => {
@@ -52,9 +51,9 @@ describe('ExamsPage', () => {
         expect(screen.getByText('Loading...')).toBeInTheDocument();
       });
     });
-  })
+  });
   describe('tab navigation', () => {
-    beforeEach(() => {
+    beforeEach(() => { // eslint-disable-line no-global-assign
       hooks.useExamsData.mockReturnValue(defaultExamsData);
     });
     it('should render attempt list by default', () => {

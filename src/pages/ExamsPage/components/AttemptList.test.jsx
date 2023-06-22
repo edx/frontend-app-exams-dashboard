@@ -29,10 +29,6 @@ describe('AttemptList', () => {
   it('snapshot', () => {
     expect(render(<AttemptList attempts={defaultAttemptsData} />)).toMatchSnapshot();
   });
-  // table test
-    // for each item in defaultAttemptsData
-      // make sure there exists a row where all the data fields exist in separate td's, possibly in sequence if we can do that via testing lib
-      // This method from: https://github.com/testing-library/dom-testing-library/issues/583#issuecomment-992999990
   it('data table', () => {
     render(<AttemptList attempts={defaultAttemptsData} />);
     defaultAttemptsData.forEach((attempt, index) => {
@@ -46,6 +42,6 @@ describe('AttemptList', () => {
         completed_at: attempt.completed_at,
         status: attempt.status,
       })[index]).toBeInTheDocument();
-    })
+    });
   });
 });

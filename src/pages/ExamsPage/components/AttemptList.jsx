@@ -81,7 +81,7 @@ const AttemptList = ({ attempts }) => {
             }),
             Cell: ({ row }) => (capitalizeFirstLetter(row.original.exam_type)),
           },
-          { 
+          {
             Header: formatMessage({
               id: 'AttemptsList.started_at',
               defaultMessage: 'Started At',
