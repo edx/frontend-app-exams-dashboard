@@ -8,7 +8,9 @@ jest.unmock('react');
 
 jest.mock('./hooks', () => ({
   useInitializeExamsPage: jest.fn(),
+  useExamAttemptsData: jest.fn(),
   useExamsData: jest.fn(),
+  useFetchExamAttempts: jest.fn(),
 }));
 
 describe('ExamsPage', () => {
@@ -18,6 +20,22 @@ describe('ExamsPage', () => {
     ],
     isLoading: false,
   };
+  const defaultAttemptsData = {
+    attemptsList: [{
+      exam_name: 'Exam 1',
+      username: 'username',
+      time_limit: 60,
+      exam_type: 'Timed',
+      started_at: '2023-04-05T19:27:16.000000Z',
+      completed_at: '2023-04-05T19:27:17.000000Z',
+      status: 'completed',
+    }]
+  };
+  // TODO: Test this: hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
+  beforeEach = (() => {
+    hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
+  });
+
   describe('snapshots', () => {
     test('loaded', () => {
       hooks.useExamsData.mockReturnValue(defaultExamsData);

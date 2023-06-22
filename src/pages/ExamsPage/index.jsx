@@ -34,20 +34,16 @@ const ExamsPage = ({ courseId }) => {
 
   return (
     <Container>
-      {isLoading ? <div>Loading...</div>
-        : (
-          <div>
-            <ExamList exams={examsList} />
-            <Tabs variant="tabs" defaultActiveKey="attempts">
-              <Tab eventKey="attempts" title={formatMessage(messages.attemptsViewTabTitle)}>
-                <AttemptList attempts={attemptsList} />
-              </Tab>
-              <Tab eventKey="review" title={formatMessage(messages.reviewDashboardTabTitle)}>
-                <ExternalReviewDashboard />
-              </Tab>
-            </Tabs>
-          </div>
-        )}
+      {isLoading && <div>Loading...</div>}
+      <ExamList exams={examsList} />
+      <Tabs variant="tabs" defaultActiveKey="attempts">
+        <Tab eventKey="attempts" title={formatMessage(messages.attemptsViewTabTitle)}>
+          <AttemptList attempts={attemptsList} />
+        </Tab>
+        <Tab eventKey="review" title={formatMessage(messages.reviewDashboardTabTitle)}>
+          <ExternalReviewDashboard />
+        </Tab>
+      </Tabs>
     </Container>
   );
 };
