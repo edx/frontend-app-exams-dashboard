@@ -71,7 +71,395 @@ Object {
               <div
                 data-testid="attempt_list"
               >
-                Placeholder for attempt list
+                <p>
+                  Data Table
+                </p>
+                <div
+                  class="pgn__data-table-layout-wrapper"
+                >
+                  <div
+                    class="pgn__data-table-layout-main"
+                  >
+                    <div
+                      class="pgn__data-table-wrapper"
+                    >
+                      <div
+                        class="pgn__data-table-status-bar"
+                      >
+                        <div
+                          class="pgn__data-table-status"
+                        >
+                          <div
+                            class="pgn__data-table-status-left"
+                          >
+                            <div
+                              class="pgn__smart-status"
+                            >
+                              FormattedMessage
+                            </div>
+                          </div>
+                          <div
+                            class="pgn__data-table-actions-right"
+                          >
+                            <div
+                              class="pgn__data-table-toggle"
+                            />
+                            <div />
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="pgn__data-table-container"
+                      >
+                        <table
+                          class="pgn__data-table is-striped"
+                          role="table"
+                        >
+                          <thead>
+                            <tr
+                              role="row"
+                            >
+                              <th
+                                colspan="1"
+                                role="columnheader"
+                              >
+                                <span
+                                  class="d-flex align-items-center"
+                                >
+                                  <span>
+                                    <div
+                                      class="pgn__data-table__controlled-select"
+                                    >
+                                      <input
+                                        class="pgn__form-checkbox-input"
+                                        data-testid="datatable-select-column-checkbox-header"
+                                        style="cursor: pointer;"
+                                        title="Toggle All Current Page Rows Selected"
+                                        type="checkbox"
+                                      />
+                                    </div>
+                                  </span>
+                                </span>
+                              </th>
+                              <th
+                                colspan="1"
+                                role="columnheader"
+                                style="cursor: pointer;"
+                                title="Toggle SortBy"
+                              >
+                                <span
+                                  class="d-flex align-items-center"
+                                >
+                                  <span>
+                                    Exam Name
+                                  </span>
+                                  <span
+                                    class="pgn__icon"
+                                    style="opacity: 0.5;"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      fill="none"
+                                      focusable="false"
+                                      height="24"
+                                      role="img"
+                                      viewBox="0 0 24 24"
+                                      width="24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
+                                        fill="currentColor"
+                                      />
+                                    </svg>
+                                  </span>
+                                </span>
+                              </th>
+                              <th
+                                colspan="1"
+                                role="columnheader"
+                                style="cursor: pointer;"
+                                title="Toggle SortBy"
+                              >
+                                <span
+                                  class="d-flex align-items-center"
+                                >
+                                  <span>
+                                    Username
+                                  </span>
+                                  <span
+                                    class="pgn__icon"
+                                    style="opacity: 0.5;"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      fill="none"
+                                      focusable="false"
+                                      height="24"
+                                      role="img"
+                                      viewBox="0 0 24 24"
+                                      width="24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
+                                        fill="currentColor"
+                                      />
+                                    </svg>
+                                  </span>
+                                </span>
+                              </th>
+                              <th
+                                colspan="1"
+                                role="columnheader"
+                              >
+                                <span
+                                  class="d-flex align-items-center"
+                                >
+                                  <span>
+                                    Time Limit
+                                  </span>
+                                </span>
+                              </th>
+                              <th
+                                colspan="1"
+                                role="columnheader"
+                              >
+                                <span
+                                  class="d-flex align-items-center"
+                                >
+                                  <span>
+                                    Exam Type
+                                  </span>
+                                </span>
+                              </th>
+                              <th
+                                colspan="1"
+                                role="columnheader"
+                              >
+                                <span
+                                  class="d-flex align-items-center"
+                                >
+                                  <span>
+                                    Started At
+                                  </span>
+                                </span>
+                              </th>
+                              <th
+                                colspan="1"
+                                role="columnheader"
+                              >
+                                <span
+                                  class="d-flex align-items-center"
+                                >
+                                  <span>
+                                    Completed At
+                                  </span>
+                                </span>
+                              </th>
+                              <th
+                                colspan="1"
+                                role="columnheader"
+                              >
+                                <span
+                                  class="d-flex align-items-center"
+                                >
+                                  <span>
+                                    Status
+                                  </span>
+                                </span>
+                              </th>
+                              <th
+                                colspan="1"
+                                role="columnheader"
+                              >
+                                <span
+                                  class="d-flex align-items-center"
+                                >
+                                  <span>
+                                    Action
+                                  </span>
+                                </span>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody
+                            role="rowgroup"
+                          >
+                            <tr
+                              class="pgn__data-table-row"
+                              role="row"
+                            >
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                <div
+                                  class="pgn__data-table__controlled-select"
+                                >
+                                  <input
+                                    class="pgn__form-checkbox-input"
+                                    data-testid="datatable-select-column-checkbox-cell"
+                                    style="cursor: pointer;"
+                                    title="Toggle Row Selected"
+                                    type="checkbox"
+                                  />
+                                </div>
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                Exam 1
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                username
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                60 minutes
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                Timed
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                4/5/2023
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                4/5/2023
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                Completed
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                <button
+                                  class="btn btn-link btn-sm"
+                                  type="button"
+                                >
+                                  Reset
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div
+                        class="pgn__data-table-footer"
+                      >
+                        <div>
+                          FormattedMessage
+                        </div>
+                        <nav
+                          aria-label="table pagination"
+                          class="pagination-minimal"
+                        >
+                          <div
+                            aria-atomic="true"
+                            aria-live="polite"
+                            aria-relevant="text"
+                            class="sr-only"
+                          >
+                            Page 1, Current Page, of 1
+                          </div>
+                          <ul
+                            class="pagination"
+                          >
+                            <li
+                              class="page-item disabled"
+                            >
+                              <button
+                                aria-label="Previous"
+                                class="btn-icon btn-icon-primary btn-icon-md previous page-link"
+                                disabled=""
+                                tabindex="-1"
+                                type="button"
+                              >
+                                <span
+                                  class="btn-icon__icon-container"
+                                >
+                                  <span
+                                    class="pgn__icon btn-icon__icon"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      fill="none"
+                                      focusable="false"
+                                      height="24"
+                                      role="img"
+                                      viewBox="0 0 24 24"
+                                      width="24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z"
+                                        fill="currentColor"
+                                      />
+                                    </svg>
+                                  </span>
+                                </span>
+                              </button>
+                            </li>
+                            <li
+                              class="page-item disabled"
+                            >
+                              <button
+                                aria-label="Next"
+                                class="btn-icon btn-icon-primary btn-icon-md next page-link"
+                                disabled=""
+                                tabindex="-1"
+                                type="button"
+                              >
+                                <span
+                                  class="btn-icon__icon-container"
+                                >
+                                  <span
+                                    class="pgn__icon btn-icon__icon"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      fill="none"
+                                      focusable="false"
+                                      height="24"
+                                      role="img"
+                                      viewBox="0 0 24 24"
+                                      width="24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M6.49 20.13l1.77 1.77 9.9-9.9-9.9-9.9-1.77 1.77L14.62 12l-8.13 8.13z"
+                                        fill="currentColor"
+                                      />
+                                    </svg>
+                                  </span>
+                                </span>
+                              </button>
+                            </li>
+                          </ul>
+                        </nav>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div
@@ -162,7 +550,395 @@ Object {
             <div
               data-testid="attempt_list"
             >
-              Placeholder for attempt list
+              <p>
+                Data Table
+              </p>
+              <div
+                class="pgn__data-table-layout-wrapper"
+              >
+                <div
+                  class="pgn__data-table-layout-main"
+                >
+                  <div
+                    class="pgn__data-table-wrapper"
+                  >
+                    <div
+                      class="pgn__data-table-status-bar"
+                    >
+                      <div
+                        class="pgn__data-table-status"
+                      >
+                        <div
+                          class="pgn__data-table-status-left"
+                        >
+                          <div
+                            class="pgn__smart-status"
+                          >
+                            FormattedMessage
+                          </div>
+                        </div>
+                        <div
+                          class="pgn__data-table-actions-right"
+                        >
+                          <div
+                            class="pgn__data-table-toggle"
+                          />
+                          <div />
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="pgn__data-table-container"
+                    >
+                      <table
+                        class="pgn__data-table is-striped"
+                        role="table"
+                      >
+                        <thead>
+                          <tr
+                            role="row"
+                          >
+                            <th
+                              colspan="1"
+                              role="columnheader"
+                            >
+                              <span
+                                class="d-flex align-items-center"
+                              >
+                                <span>
+                                  <div
+                                    class="pgn__data-table__controlled-select"
+                                  >
+                                    <input
+                                      class="pgn__form-checkbox-input"
+                                      data-testid="datatable-select-column-checkbox-header"
+                                      style="cursor: pointer;"
+                                      title="Toggle All Current Page Rows Selected"
+                                      type="checkbox"
+                                    />
+                                  </div>
+                                </span>
+                              </span>
+                            </th>
+                            <th
+                              colspan="1"
+                              role="columnheader"
+                              style="cursor: pointer;"
+                              title="Toggle SortBy"
+                            >
+                              <span
+                                class="d-flex align-items-center"
+                              >
+                                <span>
+                                  Exam Name
+                                </span>
+                                <span
+                                  class="pgn__icon"
+                                  style="opacity: 0.5;"
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    fill="none"
+                                    focusable="false"
+                                    height="24"
+                                    role="img"
+                                    viewBox="0 0 24 24"
+                                    width="24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
+                                      fill="currentColor"
+                                    />
+                                  </svg>
+                                </span>
+                              </span>
+                            </th>
+                            <th
+                              colspan="1"
+                              role="columnheader"
+                              style="cursor: pointer;"
+                              title="Toggle SortBy"
+                            >
+                              <span
+                                class="d-flex align-items-center"
+                              >
+                                <span>
+                                  Username
+                                </span>
+                                <span
+                                  class="pgn__icon"
+                                  style="opacity: 0.5;"
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    fill="none"
+                                    focusable="false"
+                                    height="24"
+                                    role="img"
+                                    viewBox="0 0 24 24"
+                                    width="24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
+                                      fill="currentColor"
+                                    />
+                                  </svg>
+                                </span>
+                              </span>
+                            </th>
+                            <th
+                              colspan="1"
+                              role="columnheader"
+                            >
+                              <span
+                                class="d-flex align-items-center"
+                              >
+                                <span>
+                                  Time Limit
+                                </span>
+                              </span>
+                            </th>
+                            <th
+                              colspan="1"
+                              role="columnheader"
+                            >
+                              <span
+                                class="d-flex align-items-center"
+                              >
+                                <span>
+                                  Exam Type
+                                </span>
+                              </span>
+                            </th>
+                            <th
+                              colspan="1"
+                              role="columnheader"
+                            >
+                              <span
+                                class="d-flex align-items-center"
+                              >
+                                <span>
+                                  Started At
+                                </span>
+                              </span>
+                            </th>
+                            <th
+                              colspan="1"
+                              role="columnheader"
+                            >
+                              <span
+                                class="d-flex align-items-center"
+                              >
+                                <span>
+                                  Completed At
+                                </span>
+                              </span>
+                            </th>
+                            <th
+                              colspan="1"
+                              role="columnheader"
+                            >
+                              <span
+                                class="d-flex align-items-center"
+                              >
+                                <span>
+                                  Status
+                                </span>
+                              </span>
+                            </th>
+                            <th
+                              colspan="1"
+                              role="columnheader"
+                            >
+                              <span
+                                class="d-flex align-items-center"
+                              >
+                                <span>
+                                  Action
+                                </span>
+                              </span>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody
+                          role="rowgroup"
+                        >
+                          <tr
+                            class="pgn__data-table-row"
+                            role="row"
+                          >
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              <div
+                                class="pgn__data-table__controlled-select"
+                              >
+                                <input
+                                  class="pgn__form-checkbox-input"
+                                  data-testid="datatable-select-column-checkbox-cell"
+                                  style="cursor: pointer;"
+                                  title="Toggle Row Selected"
+                                  type="checkbox"
+                                />
+                              </div>
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              Exam 1
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              username
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              60 minutes
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              Timed
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              4/5/2023
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              4/5/2023
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              Completed
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              <button
+                                class="btn btn-link btn-sm"
+                                type="button"
+                              >
+                                Reset
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div
+                      class="pgn__data-table-footer"
+                    >
+                      <div>
+                        FormattedMessage
+                      </div>
+                      <nav
+                        aria-label="table pagination"
+                        class="pagination-minimal"
+                      >
+                        <div
+                          aria-atomic="true"
+                          aria-live="polite"
+                          aria-relevant="text"
+                          class="sr-only"
+                        >
+                          Page 1, Current Page, of 1
+                        </div>
+                        <ul
+                          class="pagination"
+                        >
+                          <li
+                            class="page-item disabled"
+                          >
+                            <button
+                              aria-label="Previous"
+                              class="btn-icon btn-icon-primary btn-icon-md previous page-link"
+                              disabled=""
+                              tabindex="-1"
+                              type="button"
+                            >
+                              <span
+                                class="btn-icon__icon-container"
+                              >
+                                <span
+                                  class="pgn__icon btn-icon__icon"
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    fill="none"
+                                    focusable="false"
+                                    height="24"
+                                    role="img"
+                                    viewBox="0 0 24 24"
+                                    width="24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z"
+                                      fill="currentColor"
+                                    />
+                                  </svg>
+                                </span>
+                              </span>
+                            </button>
+                          </li>
+                          <li
+                            class="page-item disabled"
+                          >
+                            <button
+                              aria-label="Next"
+                              class="btn-icon btn-icon-primary btn-icon-md next page-link"
+                              disabled=""
+                              tabindex="-1"
+                              type="button"
+                            >
+                              <span
+                                class="btn-icon__icon-container"
+                              >
+                                <span
+                                  class="pgn__icon btn-icon__icon"
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    fill="none"
+                                    focusable="false"
+                                    height="24"
+                                    role="img"
+                                    viewBox="0 0 24 24"
+                                    width="24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M6.49 20.13l1.77 1.77 9.9-9.9-9.9-9.9-1.77 1.77L14.62 12l-8.13 8.13z"
+                                      fill="currentColor"
+                                    />
+                                  </svg>
+                                </span>
+                              </span>
+                            </button>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div

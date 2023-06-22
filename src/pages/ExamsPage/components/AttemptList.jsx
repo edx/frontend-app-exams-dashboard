@@ -15,7 +15,7 @@ const AttemptList = ({ attempts }) => {
   const { formatMessage, formatDate } = useIntl();
 
   return (
-    <div>
+    <div data-testid="attempt_list">
       <p>Data Table</p>
       <DataTable
         isPaginated
@@ -129,7 +129,15 @@ const AttemptList = ({ attempts }) => {
 };
 
 AttemptList.propTypes = {
-  attempts: PropTypes.arrayOf(PropTypes.shapes).isRequired, // eslint-disable-line react/forbid-prop-types
+  attempts: PropTypes.arrayOf(PropTypes.shape({
+    exam_name: PropTypes.string,
+    username: PropTypes.string,
+    time_limit: PropTypes.number,
+    exam_type: PropTypes.string,
+    started_at: PropTypes.string,
+    completed_at: PropTypes.string,
+    status: PropTypes.string,
+  })).isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 export default AttemptList;

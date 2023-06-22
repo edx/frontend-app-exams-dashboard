@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import ExamsPage from '.';
+import { IntlProvider } from '@edx/frontend-platform/i18n';
 import * as hooks from './hooks';
 
 // nomally mocked for unit tests but required for rendering/snapshots
@@ -31,11 +32,9 @@ describe('ExamsPage', () => {
       status: 'completed',
     }]
   };
-  // TODO: Test this: hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
   beforeEach = (() => {
     hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
   });
-
   describe('snapshots', () => {
     test('loaded', () => {
       hooks.useExamsData.mockReturnValue(defaultExamsData);
@@ -58,6 +57,7 @@ describe('ExamsPage', () => {
       render(<ExamsPage courseId="test_course" />);
     });
     it('should render attempt list by default', () => {
+      console.log(screen)
       expect(screen.getByTestId('attempt_list')).toBeInTheDocument();
     });
     test('swtich tabs to review dashboard', () => {
