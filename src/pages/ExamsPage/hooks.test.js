@@ -58,4 +58,29 @@ describe('ExamsPage hooks', () => {
       });
     });
   });
+  describe('useFetchExamAttempts', () => {
+    const mockMakeNetworkRequest = jest.fn();
+    beforeEach(() => {
+      reduxHooks.useMakeNetworkRequest.mockReturnValue(mockMakeNetworkRequest);
+      api.getExamAttempts.mockReturnValue(Promise.resolve({ data: 'data' }));
+    });
+
+    it('calls makeNetworkRequest to fetch exam attempts', () => {
+      hooks.useFetchExamAttempts(0)();
+      expect(mockMakeNetworkRequest).toHaveBeenCalledWith({
+        requestKey: 'fetchExamAttempts',
+        promise: expect.any(Promise),
+        onSuccess: expect.any(Function),
+      });
+    });
+    it('dispatches loadExamAttempts on success', async () => {
+      await hooks.useFetchExamAttempts(0)();
+      const { onSuccess } = mockMakeNetworkRequest.mock.calls[0][0];
+      onSuccess('response');
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: 'response',
+        type: 'exams/loadExamAttempts',
+      });
+    });
+  });
 });
