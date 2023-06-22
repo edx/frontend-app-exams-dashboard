@@ -15,9 +15,7 @@ describe('AttemptList', () => {
     completed_at: '2023-04-05T19:27:17.000000Z',
     status: 'completed',
   }];
-  describe('snapshots', () => {
-    test('loaded', () => {
-      expect(render(<AttemptList attempts={defaultAttemptsData} />)).toMatchSnapshot();
-    });
+  it('snapshot', () => {
+    expect(render(<AttemptList attempts={defaultAttemptsData} />)).toMatchSnapshot();
   });
 });
