@@ -32,35 +32,37 @@ describe('ExamsPage', () => {
       status: 'completed',
     }]
   };
-  beforeEach = (() => {
-    hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
-  });
-  describe('snapshots', () => {
-    test('loaded', () => {
-      hooks.useExamsData.mockReturnValue(defaultExamsData);
-      expect(render(<ExamsPage courseId="test_course" />)).toMatchSnapshot();
+  describe('loading tests', () => {
+    beforeEach = (() => {
+      hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
     });
-  });
-  describe('loading message', () => {
-    it('should render while fetching data', () => {
-      hooks.useExamsData.mockReturnValue({
-        ...defaultExamsData,
-        isLoading: true,
+    describe('snapshots', () => {
+      test('loaded', () => {
+        hooks.useExamsData.mockReturnValue(defaultExamsData);
+        expect(render(<ExamsPage courseId="test_course" />)).toMatchSnapshot();
       });
-      render(<ExamsPage courseId="test_course" />);
-      expect(screen.getByText('Loading...')).toBeInTheDocument();
     });
-  });
+    describe('loading message', () => {
+      it('should render while fetching data', () => {
+        hooks.useExamsData.mockReturnValue({
+          ...defaultExamsData,
+          isLoading: true,
+        });
+        render(<ExamsPage courseId="test_course" />);
+        expect(screen.getByText('Loading...')).toBeInTheDocument();
+      });
+    });
+  })
   describe('tab navigation', () => {
     beforeEach(() => {
       hooks.useExamsData.mockReturnValue(defaultExamsData);
-      render(<ExamsPage courseId="test_course" />);
     });
     it('should render attempt list by default', () => {
-      console.log(screen)
+      render(<ExamsPage courseId="test_course" />);
       expect(screen.getByTestId('attempt_list')).toBeInTheDocument();
     });
     test('swtich tabs to review dashboard', () => {
+      render(<ExamsPage courseId="test_course" />);
       screen.getByText('Review Dashboard').click();
       expect(screen.getByTestId('review_dash')).toBeInTheDocument();
     });
