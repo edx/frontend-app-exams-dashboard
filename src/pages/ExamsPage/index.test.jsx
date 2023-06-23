@@ -14,6 +14,9 @@ jest.mock('./hooks', () => ({
 }));
 
 describe('ExamsPage', () => {
+  beforeAll(() => {
+    hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
+  });
   const defaultExamsData = {
     examsList: [
       { id: 1, name: 'exam1' },
@@ -34,7 +37,6 @@ describe('ExamsPage', () => {
   describe('snapshots', () => {
     test('loaded', () => {
       hooks.useExamsData.mockReturnValue(defaultExamsData);
-      hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
       expect(render(<ExamsPage courseId="test_course" />)).toMatchSnapshot();
     });
   });
@@ -44,14 +46,12 @@ describe('ExamsPage', () => {
         ...defaultExamsData,
         isLoading: true,
       });
-      hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
       render(<ExamsPage courseId="test_course" />);
       expect(screen.getByText('Loading...')).toBeInTheDocument();
     });
   });
   describe('tab navigation', () => {
     beforeEach(() => {
-      hooks.useExamsData.mockReturnValue(defaultExamsData);
       render(<ExamsPage courseId="test_course" />);
     });
     it('should render attempt list by default', () => {
