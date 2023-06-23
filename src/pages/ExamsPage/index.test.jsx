@@ -14,9 +14,6 @@ jest.mock('./hooks', () => ({
 }));
 
 describe('ExamsPage', () => {
-  beforeAll(() => {
-    hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
-  });
   const defaultExamsData = {
     examsList: [
       { id: 1, name: 'exam1' },
@@ -34,6 +31,9 @@ describe('ExamsPage', () => {
       status: 'completed',
     }],
   };
+  beforeAll(() => {
+    hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
+  });
   describe('snapshots', () => {
     test('loaded', () => {
       hooks.useExamsData.mockReturnValue(defaultExamsData);

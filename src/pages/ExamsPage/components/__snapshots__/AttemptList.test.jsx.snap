@@ -59,28 +59,6 @@ Object {
                       <th
                         colspan="1"
                         role="columnheader"
-                      >
-                        <span
-                          class="d-flex align-items-center"
-                        >
-                          <span>
-                            <div
-                              class="pgn__data-table__controlled-select"
-                            >
-                              <input
-                                class="pgn__form-checkbox-input"
-                                data-testid="datatable-select-column-checkbox-header"
-                                style="cursor: pointer;"
-                                title="Toggle All Current Page Rows Selected"
-                                type="checkbox"
-                              />
-                            </div>
-                          </span>
-                        </span>
-                      </th>
-                      <th
-                        colspan="1"
-                        role="columnheader"
                         style="cursor: pointer;"
                         title="Toggle SortBy"
                       >
@@ -231,22 +209,6 @@ Object {
                         class="pgn__data-table-cell-wrap"
                         role="cell"
                       >
-                        <div
-                          class="pgn__data-table__controlled-select"
-                        >
-                          <input
-                            class="pgn__form-checkbox-input"
-                            data-testid="datatable-select-column-checkbox-cell"
-                            style="cursor: pointer;"
-                            title="Toggle Row Selected"
-                            type="checkbox"
-                          />
-                        </div>
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
                         Exam 1
                       </td>
                       <td
@@ -301,22 +263,6 @@ Object {
                       class="pgn__data-table-row"
                       role="row"
                     >
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        <div
-                          class="pgn__data-table__controlled-select"
-                        >
-                          <input
-                            class="pgn__form-checkbox-input"
-                            data-testid="datatable-select-column-checkbox-cell"
-                            style="cursor: pointer;"
-                            title="Toggle Row Selected"
-                            type="checkbox"
-                          />
-                        </div>
-                      </td>
                       <td
                         class="pgn__data-table-cell-wrap"
                         role="cell"
@@ -529,28 +475,6 @@ Object {
                     <th
                       colspan="1"
                       role="columnheader"
-                    >
-                      <span
-                        class="d-flex align-items-center"
-                      >
-                        <span>
-                          <div
-                            class="pgn__data-table__controlled-select"
-                          >
-                            <input
-                              class="pgn__form-checkbox-input"
-                              data-testid="datatable-select-column-checkbox-header"
-                              style="cursor: pointer;"
-                              title="Toggle All Current Page Rows Selected"
-                              type="checkbox"
-                            />
-                          </div>
-                        </span>
-                      </span>
-                    </th>
-                    <th
-                      colspan="1"
-                      role="columnheader"
                       style="cursor: pointer;"
                       title="Toggle SortBy"
                     >
@@ -701,22 +625,6 @@ Object {
                       class="pgn__data-table-cell-wrap"
                       role="cell"
                     >
-                      <div
-                        class="pgn__data-table__controlled-select"
-                      >
-                        <input
-                          class="pgn__form-checkbox-input"
-                          data-testid="datatable-select-column-checkbox-cell"
-                          style="cursor: pointer;"
-                          title="Toggle Row Selected"
-                          type="checkbox"
-                        />
-                      </div>
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
                       Exam 1
                     </td>
                     <td
@@ -771,22 +679,6 @@ Object {
                     class="pgn__data-table-row"
                     role="row"
                   >
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      <div
-                        class="pgn__data-table__controlled-select"
-                      >
-                        <input
-                          class="pgn__form-checkbox-input"
-                          data-testid="datatable-select-column-checkbox-cell"
-                          style="cursor: pointer;"
-                          title="Toggle Row Selected"
-                          type="checkbox"
-                        />
-                      </div>
-                    </td>
                     <td
                       class="pgn__data-table-cell-wrap"
                       role="cell"
