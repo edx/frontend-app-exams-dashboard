@@ -26,10 +26,10 @@ describe('AttemptList', () => {
       status: 'completed',
     },
   ];
-  it('snapshot', () => {
+  it('Test that the AttemptList matches snapshot', () => {
     expect(render(<AttemptList attempts={defaultAttemptsData} />)).toMatchSnapshot();
   });
-  it('data table', () => {
+  it('Data appears in data table as expected', () => {
     render(<AttemptList attempts={defaultAttemptsData} />);
     defaultAttemptsData.forEach((attempt, index) => {
       // Expect a row to be in the table for each attempt in the data

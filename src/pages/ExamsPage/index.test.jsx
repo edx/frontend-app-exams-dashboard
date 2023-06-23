@@ -31,37 +31,33 @@ describe('ExamsPage', () => {
       status: 'completed',
     }],
   };
-  describe('loading tests', () => {
-    beforeEach = (() => { // eslint-disable-line no-global-assign
+  describe('snapshots', () => {
+    test('loaded', () => {
+      hooks.useExamsData.mockReturnValue(defaultExamsData);
       hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
+      expect(render(<ExamsPage courseId="test_course" />)).toMatchSnapshot();
     });
-    describe('snapshots', () => {
-      test('loaded', () => {
-        hooks.useExamsData.mockReturnValue(defaultExamsData);
-        expect(render(<ExamsPage courseId="test_course" />)).toMatchSnapshot();
+  });
+  describe('loading message', () => {
+    it('should render while fetching data', () => {
+      hooks.useExamsData.mockReturnValue({
+        ...defaultExamsData,
+        isLoading: true,
       });
-    });
-    describe('loading message', () => {
-      it('should render while fetching data', () => {
-        hooks.useExamsData.mockReturnValue({
-          ...defaultExamsData,
-          isLoading: true,
-        });
-        render(<ExamsPage courseId="test_course" />);
-        expect(screen.getByText('Loading...')).toBeInTheDocument();
-      });
+      hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
+      render(<ExamsPage courseId="test_course" />);
+      expect(screen.getByText('Loading...')).toBeInTheDocument();
     });
   });
   describe('tab navigation', () => {
-    beforeEach(() => { // eslint-disable-line no-global-assign
+    beforeEach(() => {
       hooks.useExamsData.mockReturnValue(defaultExamsData);
+      render(<ExamsPage courseId="test_course" />);
     });
     it('should render attempt list by default', () => {
-      render(<ExamsPage courseId="test_course" />);
       expect(screen.getByTestId('attempt_list')).toBeInTheDocument();
     });
     test('swtich tabs to review dashboard', () => {
-      render(<ExamsPage courseId="test_course" />);
       screen.getByText('Review Dashboard').click();
       expect(screen.getByTestId('review_dash')).toBeInTheDocument();
     });

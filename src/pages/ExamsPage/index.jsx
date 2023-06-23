@@ -25,6 +25,8 @@ const ExamsPage = ({ courseId }) => {
   } = useExamAttemptsData();
   /*   eslint-disable react-hooks/exhaustive-deps */
   const fetchExamAttempts = useFetchExamAttempts();
+  // NOTE: This useEffect hook is temporary until the currentExam is
+  // Passed in via the exam selection component
   useEffect(() => {
     if (currentExam) {
       fetchExamAttempts(currentExam.id);

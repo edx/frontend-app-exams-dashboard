@@ -17,9 +17,10 @@ const slice = createSlice({
         name: exam.exam_name,
       })),
     }),
-    loadExamAttempts: (state, { payload }) => {
-      payload?.results.forEach((attempt) => {
-        const dataToAdd = {
+    loadExamAttempts: (state, { payload }) => ({
+      ...state,
+      attemptsList: payload?.results.map((attempt) => (
+        {
           exam_name: attempt.exam_display_name,
           username: attempt.username,
           time_limit: attempt.allowed_time_limit_mins,
@@ -27,10 +28,9 @@ const slice = createSlice({
           started_at: attempt.start_time,
           completed_at: attempt.end_time,
           status: attempt.attempt_status,
-        };
-        state.attemptsList.push(dataToAdd);
-      });
-    },
+        }
+      )),
+    }),
   },
 });
 

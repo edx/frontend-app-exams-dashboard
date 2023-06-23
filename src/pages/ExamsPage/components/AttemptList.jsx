@@ -5,8 +5,14 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 
 const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
-const ResetAction = (props) => (
+const BulkResetAction = (props) => (
   <Button onClick={() => console.log('Reset', props)}>
+    Reset
+  </Button>
+);
+
+const ResetButton = (row) => (
+  <Button variant="link" size="sm" onClick={() => console.log(`Resetting ${row.values.name}`)}>
     Reset
   </Button>
 );
@@ -26,7 +32,8 @@ const AttemptList = ({ attempts }) => {
         isSortable
         itemCount={attempts.length}
         bulkActions={[
-          <ResetAction />,
+          // This action allows you to select multiple attempts to reset at once
+          <BulkResetAction />,
         ]}
         additionalColumns={[
           {
@@ -38,8 +45,8 @@ const AttemptList = ({ attempts }) => {
             }),
             // TODO: For MST-1945, make this button actually "reset" (i.e. delete)
             // the exam attempt for the cell's respective row after confirmation.
+            Cell: ({ row }) => ResetButton(row),
             /* eslint-disable react/prop-types, react/no-unstable-nested-components */
-            Cell: ({ row }) => <Button variant="link" size="sm" onClick={() => console.log(`Resetting ${row.values.name}`)}>Reset</Button>,
             /* eslint-disable react/prop-types, react/no-unstable-nested-components */
           },
         ]}
@@ -121,7 +128,12 @@ const AttemptList = ({ attempts }) => {
       >
         <DataTable.TableControlBar />
         <DataTable.Table />
-        <DataTable.EmptyTable content="No results found" />
+        <DataTable.EmptyTable content={formatMessage({
+          id: 'AttemptsList.DataTable.EmptyTable',
+          defaultMessage: 'No results found.',
+          description: 'Message that appears in the table if no data is found',
+        })}
+        />
         <DataTable.TableFooter />
       </DataTable>
     </div>
@@ -137,7 +149,7 @@ AttemptList.propTypes = {
     started_at: PropTypes.string,
     completed_at: PropTypes.string,
     status: PropTypes.string,
-  })).isRequired, // eslint-disable-line react/forbid-prop-types
+  })).isRequired,
 };
 
 export default AttemptList;
