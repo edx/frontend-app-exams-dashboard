@@ -5,12 +5,6 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 
 const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
-const BulkResetAction = (props) => (
-  <Button onClick={() => console.log('Reset', props)}>
-    Reset
-  </Button>
-);
-
 const ResetButton = (row) => (
   <Button variant="link" size="sm" onClick={() => console.log(`Resetting ${row.values.name}`)}>
     Reset
@@ -25,16 +19,11 @@ const AttemptList = ({ attempts }) => {
       <p>Data Table</p>
       <DataTable
         isPaginated
-        isSelectable
         initialState={{
           pageSize: 20,
         }}
         isSortable
         itemCount={attempts.length}
-        bulkActions={[
-          // This action allows you to select multiple attempts to reset at once
-          <BulkResetAction />,
-        ]}
         additionalColumns={[
           {
             id: 'action',
