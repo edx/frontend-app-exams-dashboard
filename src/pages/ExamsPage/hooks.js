@@ -28,6 +28,18 @@ export const useFetchCourseExams = () => {
   );
 };
 
+export const useFetchExamAttempts = () => {
+  const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
+  const dispatch = useDispatch();
+  return (examId) => (
+    makeNetworkRequest({
+      requestKey: RequestKeys.fetchExamAttempts,
+      promise: api.getExamAttempts(examId),
+      onSuccess: (response) => dispatch(reducer.loadExamAttempts(response)),
+    })
+  );
+};
+
 export const useInitializeExamsPage = (courseId) => {
   const fetchCourseExams = module.useFetchCourseExams();
   React.useEffect(() => { fetchCourseExams(courseId); }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -46,4 +58,9 @@ export const useExamsData = () => {
     exampleValue,
     setExampleValue,
   };
+};
+
+export const useExamAttemptsData = () => {
+  const attemptsList = useSelector(selectors.courseExamAttemptsList);
+  return { attemptsList };
 };

@@ -7,6 +7,7 @@ export const RequestStates = {
 
 export const RequestKeys = {
   fetchCourseExams: 'fetchCourseExams',
+  fetchExamAttempts: 'fetchExamAttempts',
 };
 
 export const ErrorStatuses = {

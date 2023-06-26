@@ -30,3 +30,8 @@ jest.mock('@edx/frontend-platform/i18n', () => {
     FormattedMessage: () => 'FormattedMessage',
   };
 });
+
+jest.mock('react-intl', () => ({
+  ...jest.requireActual('react-intl'),
+  FormattedMessage: () => 'FormattedMessage',
+}));

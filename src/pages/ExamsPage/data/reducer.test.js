@@ -37,6 +37,60 @@ describe('ExamsPage reducer', () => {
               name: 'Exam 2',
             },
           ],
+          attemptsList: [],
+        });
+      });
+    });
+    describe('loadExamAttempts', () => {
+      it('sets the attemptsList', () => {
+        const action = {
+          type: 'exams/loadExamAttempts',
+          payload: {
+            results: [
+              {
+                exam_display_name: 'Exam 1',
+                username: 'username',
+                allowed_time_limit_mins: 60,
+                exam_type: 'Timed',
+                start_time: '2023-04-05T19:27:16.000000Z',
+                end_time: '2023-04-05T19:27:17.000000Z',
+                attempt_status: 'completed',
+              },
+              {
+                exam_display_name: 'Exam 2',
+                username: 'username',
+                allowed_time_limit_mins: 60,
+                exam_type: 'Proctored',
+                start_time: '2023-04-05T19:37:16.000000Z',
+                end_time: '2023-04-05T19:37:17.000000Z',
+                attempt_status: 'completed',
+              },
+            ],
+          },
+        };
+        expect(reducer(initialState, action)).toEqual({
+          currentExamIndex: 0,
+          examsList: [],
+          attemptsList: [
+            {
+              exam_name: 'Exam 1',
+              username: 'username',
+              time_limit: 60,
+              exam_type: 'Timed',
+              started_at: '2023-04-05T19:27:16.000000Z',
+              completed_at: '2023-04-05T19:27:17.000000Z',
+              status: 'completed',
+            },
+            {
+              exam_name: 'Exam 2',
+              username: 'username',
+              time_limit: 60,
+              exam_type: 'Proctored',
+              started_at: '2023-04-05T19:37:16.000000Z',
+              completed_at: '2023-04-05T19:37:17.000000Z',
+              status: 'completed',
+            },
+          ],
         });
       });
     });
