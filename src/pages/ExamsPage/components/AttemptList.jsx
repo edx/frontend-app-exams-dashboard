@@ -35,8 +35,6 @@ const AttemptList = ({ attempts }) => {
             // TODO: For MST-1945, make this button actually "reset" (i.e. delete)
             // the exam attempt for the cell's respective row after confirmation.
             Cell: ({ row }) => ResetButton(row),
-            /* eslint-disable react/prop-types, react/no-unstable-nested-components */
-            /* eslint-disable react/prop-types, react/no-unstable-nested-components */
           },
         ]}
         data={attempts}
