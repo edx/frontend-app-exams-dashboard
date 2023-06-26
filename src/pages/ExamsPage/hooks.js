@@ -57,6 +57,11 @@ export const useInitializeExamsPage = (courseId) => {
   React.useEffect(() => { fetchCourseExams(courseId); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
+export const useUpdateCurrentExamIndex = () => {
+  const dispatch = useDispatch();
+  return (examId) => () => dispatch(reducer.setCurrentExamIndex(examId));
+};
+
 export const useExamsData = () => {
   const [exampleValue, setExampleValue] = state.exampleValue(0);
   const examsList = useSelector(selectors.courseExamsList);
