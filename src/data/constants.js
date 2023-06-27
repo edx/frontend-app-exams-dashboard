@@ -8,6 +8,7 @@ export const RequestStates = {
 export const RequestKeys = {
   fetchCourseExams: 'fetchCourseExams',
   fetchExamAttempts: 'fetchExamAttempts',
+  deleteExamAttempt: 'deleteExamAttempt',
 };
 
 export const ErrorStatuses = {

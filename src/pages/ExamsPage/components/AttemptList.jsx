@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, DataTable } from '@edx/paragon';
+import { DataTable } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
+import ResetExamAttemptButton from './ResetExamAttemptButton';
 
 const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
+// This component has to be compartmentalized here
+// Otherwise we will break React rules.
 const ResetButton = (row) => (
-  <Button variant="link" size="sm" onClick={() => console.log(`Resetting ${row.values.name}`)}>
-    Reset
-  </Button>
+  <ResetExamAttemptButton row={row} />
 );
 
 const AttemptList = ({ attempts }) => {
@@ -32,8 +33,6 @@ const AttemptList = ({ attempts }) => {
               defaultMessage: 'Action',
               description: 'Table header for the table column listing action to reset the exam attempt',
             }),
-            // TODO: For MST-1945, make this button actually "reset" (i.e. delete)
-            // the exam attempt for the cell's respective row after confirmation.
             Cell: ({ row }) => ResetButton(row),
           },
         ]}
