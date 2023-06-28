@@ -11,12 +11,9 @@ jest.mock('../hooks', () => ({
   useDeleteExamAttempt: jest.fn(),
 }));
 
-const mockMakeNetworkRequest = jest.fn();
-
 describe('AttemptList', () => {
   beforeEach(() => {
-    jest.restoreAllMocks();
-    hooks.useDeleteExamAttempt.mockReturnValue(mockMakeNetworkRequest);
+    hooks.useDeleteExamAttempt.mockReturnValue(jest.fn());
   });
   const defaultAttemptsData = [
     {

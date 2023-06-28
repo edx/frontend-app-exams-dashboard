@@ -43,14 +43,6 @@ const AttemptList = ({ attempts }) => {
         columns={[
           {
             Header: formatMessage({
-              id: 'AttemptsList.attempt_id',
-              defaultMessage: 'ID',
-              description: 'Table header for the id of each exam attempt',
-            }),
-            accessor: 'attempt_id',
-          },
-          {
-            Header: formatMessage({
               id: 'AttemptsList.exam_name',
               defaultMessage: 'Exam Name',
               description: 'Table header for the table column listing the exam name',

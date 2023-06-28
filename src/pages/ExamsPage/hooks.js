@@ -47,7 +47,7 @@ export const useDeleteExamAttempt = () => {
     makeNetworkRequest({
       requestKey: RequestKeys.deleteExamAttempt,
       promise: api.deleteExamAttempt(attemptId),
-      onSuccess: dispatch(reducer.deleteExamAttempt(attemptId)),
+      onSuccess: () => dispatch(reducer.deleteExamAttempt(attemptId)),
     })
   );
 };

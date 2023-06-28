@@ -36,12 +36,13 @@ describe('ExamsPage hooks', () => {
   describe('useFetchCourseExams', () => {
     const mockMakeNetworkRequest = jest.fn();
     beforeEach(() => {
+      mockMakeNetworkRequest.mockClear();
       reduxHooks.useMakeNetworkRequest.mockReturnValue(mockMakeNetworkRequest);
       api.getCourseExams.mockReturnValue(Promise.resolve({ data: 'data' }));
     });
 
     it('calls makeNetworkRequest to fetch exams', () => {
-      hooks.useFetchCourseExams('course-1')();
+      hooks.useFetchCourseExams()('course-1');
       expect(mockMakeNetworkRequest).toHaveBeenCalledWith({
         requestKey: 'fetchCourseExams',
         promise: expect.any(Promise),
@@ -49,7 +50,7 @@ describe('ExamsPage hooks', () => {
       });
     });
     it('dispatches loadExams on success', async () => {
-      await hooks.useFetchCourseExams('course-1')();
+      await hooks.useFetchCourseExams()('course-1');
       const { onSuccess } = mockMakeNetworkRequest.mock.calls[0][0];
       onSuccess('response');
       expect(mockDispatch).toHaveBeenCalledWith({
@@ -61,12 +62,13 @@ describe('ExamsPage hooks', () => {
   describe('useFetchExamAttempts', () => {
     const mockMakeNetworkRequest = jest.fn();
     beforeEach(() => {
+      mockMakeNetworkRequest.mockClear();
       reduxHooks.useMakeNetworkRequest.mockReturnValue(mockMakeNetworkRequest);
       api.getExamAttempts.mockReturnValue(Promise.resolve({ data: 'data' }));
     });
 
     it('calls makeNetworkRequest to fetch exam attempts', () => {
-      hooks.useFetchExamAttempts(0)();
+      hooks.useFetchExamAttempts()(0);
       expect(mockMakeNetworkRequest).toHaveBeenCalledWith({
         requestKey: 'fetchExamAttempts',
         promise: expect.any(Promise),
@@ -74,7 +76,7 @@ describe('ExamsPage hooks', () => {
       });
     });
     it('dispatches loadExamAttempts on success', async () => {
-      await hooks.useFetchExamAttempts(0)();
+      await hooks.useFetchExamAttempts()(0);
       const { onSuccess } = mockMakeNetworkRequest.mock.calls[0][0];
       onSuccess('response');
       expect(mockDispatch).toHaveBeenCalledWith({
@@ -86,31 +88,28 @@ describe('ExamsPage hooks', () => {
   describe('useDeleteExamAttempt', () => {
     const mockMakeNetworkRequest = jest.fn();
     beforeEach(() => {
+      mockMakeNetworkRequest.mockClear();
       reduxHooks.useMakeNetworkRequest.mockReturnValue(mockMakeNetworkRequest);
       // return status 204
       api.deleteExamAttempt.mockReturnValue(Promise.resolve({ data: 'data' }));
     });
 
     it('calls makeNetworkRequest to delete an attempt', () => {
-      hooks.useDeleteExamAttempt(0)();
+      hooks.useDeleteExamAttempt()(0);
       expect(mockMakeNetworkRequest).toHaveBeenCalledWith({
         requestKey: 'deleteExamAttempt',
         promise: expect.any(Promise),
-        onSuccess: undefined,
+        onSuccess: expect.any(Function),
       });
     });
-    // Having issues testing this due to the weird way makeNetworkRequest works
-    // I can't call the function like in the other tests because
-    // making onSuccess return a function causes things to
-    // suddenly not work
-    // it('dispatches deleteExamAttempt on success', async () => {
-    //   await hooks.useDeleteExamAttempt(0)();
-    //   const { onSuccess } = mockMakeNetworkRequest.mock.calls[0][0];
-    //   onSuccess(0);
-    //   expect(mockDispatch).toHaveBeenCalledWith({
-    //     payload: 0,
-    //     type: 'exams/deleteExamAttempt',
-    //   });
-    // });
+    it('dispatches deleteExamAttempt on success', async () => {
+      await hooks.useDeleteExamAttempt()(0);
+      const { onSuccess } = mockMakeNetworkRequest.mock.calls[0][0];
+      onSuccess();
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: 0,
+        type: 'exams/deleteExamAttempt',
+      });
+    });
   });
 });
