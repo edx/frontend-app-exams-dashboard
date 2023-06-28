@@ -21,6 +21,7 @@ const slice = createSlice({
       ...state,
       attemptsList: payload?.results.map((attempt) => (
         {
+          attempt_id: attempt.attempt_id,
           exam_name: attempt.exam_display_name,
           username: attempt.username,
           time_limit: attempt.allowed_time_limit_mins,
@@ -31,12 +32,18 @@ const slice = createSlice({
         }
       )),
     }),
+    deleteExamAttempt: (state, attemptId) => ({
+      ...state,
+      attemptsList: state.attemptsList.filter(attempt => attempt.attempt_id !== attemptId.payload),
+    })
+    ,
   },
 });
 
 export const {
   loadExams,
   loadExamAttempts,
+  deleteExamAttempt,
 } = slice.actions;
 
 export const {

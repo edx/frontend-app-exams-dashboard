@@ -40,6 +40,18 @@ export const useFetchExamAttempts = () => {
   );
 };
 
+export const useDeleteExamAttempt = () => {
+  const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
+  const dispatch = useDispatch();
+  return (attemptId) => (
+    makeNetworkRequest({
+      requestKey: RequestKeys.deleteExamAttempt,
+      promise: api.deleteExamAttempt(attemptId),
+      onSuccess: () => dispatch(reducer.deleteExamAttempt(attemptId)),
+    })
+  );
+};
+
 export const useInitializeExamsPage = (courseId) => {
   const fetchCourseExams = module.useFetchCourseExams();
   React.useEffect(() => { fetchCourseExams(courseId); }, []); // eslint-disable-line react-hooks/exhaustive-deps

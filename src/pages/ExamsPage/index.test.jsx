@@ -11,6 +11,7 @@ jest.mock('./hooks', () => ({
   useExamAttemptsData: jest.fn(),
   useExamsData: jest.fn(),
   useFetchExamAttempts: jest.fn(),
+  useDeleteExamAttempt: jest.fn(),
 }));
 
 describe('ExamsPage', () => {
@@ -29,6 +30,7 @@ describe('ExamsPage', () => {
       started_at: '2023-04-05T19:27:16.000000Z',
       completed_at: '2023-04-05T19:27:17.000000Z',
       status: 'completed',
+      attempt_id: 0,
     }],
   };
   beforeAll(() => {

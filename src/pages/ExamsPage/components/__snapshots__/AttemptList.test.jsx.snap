@@ -251,12 +251,16 @@ Object {
                         class="pgn__data-table-cell-wrap"
                         role="cell"
                       >
-                        <button
-                          class="btn btn-link btn-sm"
-                          type="button"
+                        <div
+                          class="d-flex"
                         >
-                          Reset
-                        </button>
+                          <button
+                            class="btn btn-link btn-sm"
+                            type="button"
+                          >
+                            Reset
+                          </button>
+                        </div>
                       </td>
                     </tr>
                     <tr
@@ -309,12 +313,16 @@ Object {
                         class="pgn__data-table-cell-wrap"
                         role="cell"
                       >
-                        <button
-                          class="btn btn-link btn-sm"
-                          type="button"
+                        <div
+                          class="d-flex"
                         >
-                          Reset
-                        </button>
+                          <button
+                            class="btn btn-link btn-sm"
+                            type="button"
+                          >
+                            Reset
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   </tbody>
@@ -667,12 +675,16 @@ Object {
                       class="pgn__data-table-cell-wrap"
                       role="cell"
                     >
-                      <button
-                        class="btn btn-link btn-sm"
-                        type="button"
+                      <div
+                        class="d-flex"
                       >
-                        Reset
-                      </button>
+                        <button
+                          class="btn btn-link btn-sm"
+                          type="button"
+                        >
+                          Reset
+                        </button>
+                      </div>
                     </td>
                   </tr>
                   <tr
@@ -725,12 +737,16 @@ Object {
                       class="pgn__data-table-cell-wrap"
                       role="cell"
                     >
-                      <button
-                        class="btn btn-link btn-sm"
-                        type="button"
+                      <div
+                        class="d-flex"
                       >
-                        Reset
-                      </button>
+                        <button
+                          class="btn btn-link btn-sm"
+                          type="button"
+                        >
+                          Reset
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
