@@ -35,7 +35,8 @@ const slice = createSlice({
     deleteExamAttempt: (state, attemptId) => ({
       ...state,
       attemptsList: state.attemptsList.filter(attempt => attempt.attempt_id !== attemptId.payload),
-    }),
+    })
+    ,
   },
 });
 

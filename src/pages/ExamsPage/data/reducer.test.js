@@ -55,6 +55,7 @@ describe('ExamsPage reducer', () => {
                 start_time: '2023-04-05T19:27:16.000000Z',
                 end_time: '2023-04-05T19:27:17.000000Z',
                 attempt_status: 'completed',
+                attempt_id: 0,
               },
               {
                 exam_display_name: 'Exam 2',
@@ -64,6 +65,7 @@ describe('ExamsPage reducer', () => {
                 start_time: '2023-04-05T19:37:16.000000Z',
                 end_time: '2023-04-05T19:37:17.000000Z',
                 attempt_status: 'completed',
+                attempt_id: 1,
               },
             ],
           },
@@ -80,6 +82,7 @@ describe('ExamsPage reducer', () => {
               started_at: '2023-04-05T19:27:16.000000Z',
               completed_at: '2023-04-05T19:27:17.000000Z',
               status: 'completed',
+              attempt_id: 0,
             },
             {
               exam_name: 'Exam 2',
@@ -89,9 +92,58 @@ describe('ExamsPage reducer', () => {
               started_at: '2023-04-05T19:37:16.000000Z',
               completed_at: '2023-04-05T19:37:17.000000Z',
               status: 'completed',
+              attempt_id: 1,
             },
           ],
         });
+      });
+    });
+    describe('deleteExamAttempt', () => {
+      const state = {
+        currentExamIndex: 0,
+        examsList: [],
+        attemptsList: [
+          {
+            exam_name: 'Exam 1',
+            username: 'username',
+            time_limit: 60,
+            exam_type: 'Timed',
+            started_at: '2023-04-05T19:27:16.000000Z',
+            completed_at: '2023-04-05T19:27:17.000000Z',
+            status: 'completed',
+            attempt_id: 0,
+          },
+          {
+            exam_name: 'Exam 2',
+            username: 'username',
+            time_limit: 60,
+            exam_type: 'Proctored',
+            started_at: '2023-04-05T19:37:16.000000Z',
+            completed_at: '2023-04-05T19:37:17.000000Z',
+            status: 'completed',
+            attempt_id: 1,
+          },
+        ],
+      };
+      const action = {
+        type: 'exams/deleteExamAttempt',
+        payload: 0,
+      };
+      expect(reducer(state, action)).toEqual({
+        currentExamIndex: 0,
+        examsList: [],
+        attemptsList: [
+          {
+            exam_name: 'Exam 2',
+            username: 'username',
+            time_limit: 60,
+            exam_type: 'Proctored',
+            started_at: '2023-04-05T19:37:16.000000Z',
+            completed_at: '2023-04-05T19:37:17.000000Z',
+            status: 'completed',
+            attempt_id: 1,
+          },
+        ],
       });
     });
   });

@@ -9,7 +9,11 @@ const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + strin
 // This component has to be compartmentalized here
 // Otherwise we will break React rules.
 const ResetButton = (row) => (
-  <ResetExamAttemptButton row={row} />
+  <ResetExamAttemptButton
+    username={row.original.username}
+    examName={row.original.exam_name}
+    attemptId={row.original.attempt_id}
+  />
 );
 
 const AttemptList = ({ attempts }) => {
@@ -38,6 +42,14 @@ const AttemptList = ({ attempts }) => {
         ]}
         data={attempts}
         columns={[
+          {
+            Header: formatMessage({
+              id: 'AttemptsList.attempt_id',
+              defaultMessage: 'ID',
+              description: 'Table header for the id of each exam attempt',
+            }),
+            accessor: 'attempt_id',
+          },
           {
             Header: formatMessage({
               id: 'AttemptsList.exam_name',

@@ -27,11 +27,18 @@ describe('ExamsPage data api', () => {
     });
   });
   describe('getExamAttempts', () => {
-    it('calls get on exam attempts url with exam id', async () => {
+    it('calls get on instructor view url with exam id', async () => {
       axiosMock.onGet().reply(200, []);
       const data = await api.getExamAttempts(examId);
       expect(axiosMock.history.get[1].url).toBe('test-exams-url/api/v1/instructor_view/attempts?exam_id=0');
       expect(data).toEqual([]);
+    });
+  });
+  describe('deleteExamAttempt', () => {
+    it('calls delete on exam attempts url with attempt id', async () => {
+      axiosMock.onDelete().reply(204);
+      await api.deleteExamAttempt(examId);
+      expect(axiosMock.history.delete[0].url).toBe('test-exams-url/api/v1/exams/attempt/0');
     });
   });
 });

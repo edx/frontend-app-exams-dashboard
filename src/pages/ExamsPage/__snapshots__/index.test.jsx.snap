@@ -129,6 +129,40 @@ Object {
                                   class="d-flex align-items-center"
                                 >
                                   <span>
+                                    ID
+                                  </span>
+                                  <span
+                                    class="pgn__icon"
+                                    style="opacity: 0.5;"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      fill="none"
+                                      focusable="false"
+                                      height="24"
+                                      role="img"
+                                      viewBox="0 0 24 24"
+                                      width="24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
+                                        fill="currentColor"
+                                      />
+                                    </svg>
+                                  </span>
+                                </span>
+                              </th>
+                              <th
+                                colspan="1"
+                                role="columnheader"
+                                style="cursor: pointer;"
+                                title="Toggle SortBy"
+                              >
+                                <span
+                                  class="d-flex align-items-center"
+                                >
+                                  <span>
                                     Exam Name
                                   </span>
                                   <span
@@ -272,6 +306,12 @@ Object {
                                 class="pgn__data-table-cell-wrap"
                                 role="cell"
                               >
+                                0
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
                                 Exam 1
                               </td>
                               <td
@@ -314,12 +354,16 @@ Object {
                                 class="pgn__data-table-cell-wrap"
                                 role="cell"
                               >
-                                <button
-                                  class="btn btn-link btn-sm"
-                                  type="button"
+                                <div
+                                  class="d-flex"
                                 >
-                                  Reset
-                                </button>
+                                  <button
+                                    class="btn btn-link btn-sm"
+                                    type="button"
+                                  >
+                                    Reset
+                                  </button>
+                                </div>
                               </td>
                             </tr>
                           </tbody>
@@ -570,6 +614,40 @@ Object {
                                 class="d-flex align-items-center"
                               >
                                 <span>
+                                  ID
+                                </span>
+                                <span
+                                  class="pgn__icon"
+                                  style="opacity: 0.5;"
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    fill="none"
+                                    focusable="false"
+                                    height="24"
+                                    role="img"
+                                    viewBox="0 0 24 24"
+                                    width="24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
+                                      fill="currentColor"
+                                    />
+                                  </svg>
+                                </span>
+                              </span>
+                            </th>
+                            <th
+                              colspan="1"
+                              role="columnheader"
+                              style="cursor: pointer;"
+                              title="Toggle SortBy"
+                            >
+                              <span
+                                class="d-flex align-items-center"
+                              >
+                                <span>
                                   Exam Name
                                 </span>
                                 <span
@@ -713,6 +791,12 @@ Object {
                               class="pgn__data-table-cell-wrap"
                               role="cell"
                             >
+                              0
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
                               Exam 1
                             </td>
                             <td
@@ -755,12 +839,16 @@ Object {
                               class="pgn__data-table-cell-wrap"
                               role="cell"
                             >
-                              <button
-                                class="btn btn-link btn-sm"
-                                type="button"
+                              <div
+                                class="d-flex"
                               >
-                                Reset
-                              </button>
+                                <button
+                                  class="btn btn-link btn-sm"
+                                  type="button"
+                                >
+                                  Reset
+                                </button>
+                              </div>
                             </td>
                           </tr>
                         </tbody>
