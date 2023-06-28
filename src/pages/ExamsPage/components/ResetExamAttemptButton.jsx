@@ -7,11 +7,10 @@ import {
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { useDeleteExamAttempt } from '../hooks';
 
-// TODO: Just pass in values from the row into this component instead of passing in the whole thing
 const ResetExamAttemptButton = ({ username, examName, attemptId }) => {
   const [isOpen, open, close] = useToggle(false);
-  const [modalSize, setModalSize] = useState('md'); // eslint-disable-line no-unused-vars
-  const [modalVariant, setModalVariant] = useState('default'); // eslint-disable-line no-unused-vars
+  const modalSize = useState('md');
+  const modalVariant = useState('default');
   const resetExamAttempt = useDeleteExamAttempt();
   const { formatMessage } = useIntl();
 

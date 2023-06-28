@@ -6,8 +6,7 @@ import ResetExamAttemptButton from './ResetExamAttemptButton';
 
 const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
-// This component has to be compartmentalized here
-// Otherwise we will break React rules.
+// This component has to be compartmentalized here otherwise npm lint throws an unstable-nested-component error.
 const ResetButton = (row) => (
   <ResetExamAttemptButton
     username={row.original.username}
