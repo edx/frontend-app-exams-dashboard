@@ -24,4 +24,3 @@ describe('ExternalReviewDashboard', () => {
     expect(screen.getByTitle('lti_tool')).toHaveAttribute('src', 'http://test.org/lti/exam/3/instructor_tool');
   });
 });
-

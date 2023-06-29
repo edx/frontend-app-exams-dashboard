@@ -38,7 +38,7 @@ const ExamsPage = ({ courseId }) => {
     <Container>
       {isLoading && <div>Loading...</div>}
       <ExamList exams={examsList} />
-      <Tabs variant="tabs" defaultActiveKey="attempts">
+      <Tabs variant="tabs" mountOnEnter defaultActiveKey="attempts">
         <Tab eventKey="attempts" title={formatMessage(messages.attemptsViewTabTitle)}>
           <AttemptList attempts={attemptsList} />
         </Tab>

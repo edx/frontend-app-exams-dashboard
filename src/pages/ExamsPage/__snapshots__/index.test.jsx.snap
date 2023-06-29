@@ -425,27 +425,6 @@ Object {
                 </div>
               </div>
             </div>
-            <div
-              aria-hidden="true"
-              class="fade tab-pane"
-              role="tabpanel"
-            >
-              <div
-                data-testid="review_dash"
-              >
-                <iframe
-                  height="1100"
-                  src="undefined/lti/exam/1/instructor_tool"
-                  title="lti_tool"
-                  width="100%"
-                />
-              </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="fade tab-pane"
-              role="tabpanel"
-            />
           </div>
         </div>
       </div>
@@ -872,27 +851,6 @@ Object {
               </div>
             </div>
           </div>
-          <div
-            aria-hidden="true"
-            class="fade tab-pane"
-            role="tabpanel"
-          >
-            <div
-              data-testid="review_dash"
-            >
-              <iframe
-                height="1100"
-                src="undefined/lti/exam/1/instructor_tool"
-                title="lti_tool"
-                width="100%"
-              />
-            </div>
-          </div>
-          <div
-            aria-hidden="true"
-            class="fade tab-pane"
-            role="tabpanel"
-          />
         </div>
       </div>
     </div>

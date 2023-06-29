@@ -63,7 +63,10 @@ describe('ExamsPage', () => {
     it('should render attempt list by default', () => {
       expect(screen.getByTestId('attempt_list')).toBeInTheDocument();
     });
-    test('swtich tabs to review dashboard', () => {
+    it('should not render review dashboard by default', () => {
+      expect(screen.queryByTestId('review_dash')).not.toBeInTheDocument();
+    });
+    test('switch tabs to review dashboard', () => {
       screen.getByText('Review Dashboard').click();
       expect(screen.getByTestId('review_dash')).toBeInTheDocument();
     });
