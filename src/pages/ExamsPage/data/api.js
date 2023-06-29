@@ -1,7 +1,7 @@
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 
-function getExamsBaseUrl() {
+export function getExamsBaseUrl() {
   ensureConfig([
     'EXAMS_BASE_URL',
   ]);

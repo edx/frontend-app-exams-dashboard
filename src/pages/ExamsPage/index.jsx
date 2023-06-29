@@ -43,7 +43,7 @@ const ExamsPage = ({ courseId }) => {
           <AttemptList attempts={attemptsList} />
         </Tab>
         <Tab eventKey="review" title={formatMessage(messages.reviewDashboardTabTitle)}>
-          <ExternalReviewDashboard />
+          <ExternalReviewDashboard exam={currentExam} />
         </Tab>
       </Tabs>
     </Container>

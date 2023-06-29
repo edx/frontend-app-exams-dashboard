@@ -9,8 +9,6 @@ import { useDeleteExamAttempt } from '../hooks';
 
 const ResetExamAttemptButton = ({ username, examName, attemptId }) => {
   const [isOpen, open, close] = useToggle(false);
-  const modalSize = useState('md');
-  const modalVariant = useState('default');
   const resetExamAttempt = useDeleteExamAttempt();
   const { formatMessage } = useIntl();
 
@@ -29,8 +27,8 @@ const ResetExamAttemptButton = ({ username, examName, attemptId }) => {
         title="my dialog"
         isOpen={isOpen}
         onClose={close}
-        size={modalSize}
-        variant={modalVariant}
+        size="md"
+        variant="default"
         hasCloseButton
         isFullscreenOnMobile
       >
