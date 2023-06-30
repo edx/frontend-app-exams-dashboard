@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { DataTable } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';

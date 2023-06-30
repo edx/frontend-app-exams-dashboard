@@ -15,7 +15,7 @@ export async function getCourseExams(courseId) {
 }
 
 export async function getExamAttempts(examId) {
-  const url = `${getExamsBaseUrl()}/api/v1/instructor_view/attempts?exam_id=${examId}`;
+  const url = `${getExamsBaseUrl()}/api/v1/instructor_view/attempts?exam_id=${examId}&limit=1000000`;
   const response = await getAuthenticatedHttpClient().get(url);
   return response.data;
 }
