@@ -1,6 +1,6 @@
-import React from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { DataTable } from '@edx/paragon';
+import { DataTable, TextFilter } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import ResetExamAttemptButton from './ResetExamAttemptButton';
 
@@ -15,7 +15,17 @@ const ResetButton = (row) => (
   />
 );
 
+const times = [];
+
 const AttemptList = ({ attempts }) => {
+  useEffect(() => {
+    times.push(new Date().getTime());
+    if (times.length === 2) {
+      const diff = times[1] - times[0];
+      console.log("Time to pull data in to table:", diff/1000, "seconds")
+      console.log("Memory:", window.performance.memory);
+    }
+  }, [attempts])
   const { formatMessage, formatDate } = useIntl();
 
   return (
@@ -26,7 +36,11 @@ const AttemptList = ({ attempts }) => {
         initialState={{
           pageSize: 20,
         }}
+        isFilterable
+        // Filters to add:
+        // username text filter
         isSortable
+        defaultColumnValues={{ Filter: TextFilter }}
         itemCount={attempts.length}
         additionalColumns={[
           {
