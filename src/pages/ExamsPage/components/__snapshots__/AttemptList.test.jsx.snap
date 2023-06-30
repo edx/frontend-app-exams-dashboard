@@ -8,9 +8,6 @@ Object {
       <div
         data-testid="attempt_list"
       >
-        <p>
-          Data Table
-        </p>
         <div
           class="pgn__data-table-layout-wrapper"
         >
@@ -432,9 +429,6 @@ Object {
     <div
       data-testid="attempt_list"
     >
-      <p>
-        Data Table
-      </p>
       <div
         class="pgn__data-table-layout-wrapper"
       >

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ExamsPage snapshots loaded 1`] = `
+exports[`ExamsPage snapshots exams and attempts loaded 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -71,9 +71,6 @@ Object {
               <div
                 data-testid="attempt_list"
               >
-                <p>
-                  Data Table
-                </p>
                 <div
                   class="pgn__data-table-layout-wrapper"
                 >
@@ -428,22 +425,6 @@ Object {
                 </div>
               </div>
             </div>
-            <div
-              aria-hidden="true"
-              class="fade tab-pane"
-              role="tabpanel"
-            >
-              <div
-                data-testid="review_dash"
-              >
-                Placeholder for external review app
-              </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="fade tab-pane"
-              role="tabpanel"
-            />
           </div>
         </div>
       </div>
@@ -516,9 +497,6 @@ Object {
             <div
               data-testid="attempt_list"
             >
-              <p>
-                Data Table
-              </p>
               <div
                 class="pgn__data-table-layout-wrapper"
               >
@@ -873,22 +851,6 @@ Object {
               </div>
             </div>
           </div>
-          <div
-            aria-hidden="true"
-            class="fade tab-pane"
-            role="tabpanel"
-          >
-            <div
-              data-testid="review_dash"
-            >
-              Placeholder for external review app
-            </div>
-          </div>
-          <div
-            aria-hidden="true"
-            class="fade tab-pane"
-            role="tabpanel"
-          />
         </div>
       </div>
     </div>

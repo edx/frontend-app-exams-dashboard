@@ -19,6 +19,7 @@ describe('ExamsPage', () => {
     examsList: [
       { id: 1, name: 'exam1' },
     ],
+    currentExam: { id: 1, name: 'exam1' },
     isLoading: false,
   };
   const defaultAttemptsData = {
@@ -37,7 +38,10 @@ describe('ExamsPage', () => {
     hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
   });
   describe('snapshots', () => {
-    test('loaded', () => {
+    test('exams and attempts loaded', () => {
+      // temporary, this won't fire on useEffect once we have an exam selection handler
+      hooks.useFetchExamAttempts.mockReturnValue(jest.fn());
+
       hooks.useExamsData.mockReturnValue(defaultExamsData);
       expect(render(<ExamsPage courseId="test_course" />)).toMatchSnapshot();
     });
@@ -59,7 +63,10 @@ describe('ExamsPage', () => {
     it('should render attempt list by default', () => {
       expect(screen.getByTestId('attempt_list')).toBeInTheDocument();
     });
-    test('swtich tabs to review dashboard', () => {
+    it('should not render review dashboard by default', () => {
+      expect(screen.queryByTestId('review_dash')).not.toBeInTheDocument();
+    });
+    test('switch tabs to review dashboard', () => {
       screen.getByText('Review Dashboard').click();
       expect(screen.getByTestId('review_dash')).toBeInTheDocument();
     });

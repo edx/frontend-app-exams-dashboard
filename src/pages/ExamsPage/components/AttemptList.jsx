@@ -20,7 +20,6 @@ const AttemptList = ({ attempts }) => {
 
   return (
     <div data-testid="attempt_list">
-      <p>Data Table</p>
       <DataTable
         isPaginated
         initialState={{
