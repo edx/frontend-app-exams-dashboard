@@ -35,8 +35,11 @@ const slice = createSlice({
     deleteExamAttempt: (state, attemptId) => ({
       ...state,
       attemptsList: state.attemptsList.filter(attempt => attempt.attempt_id !== attemptId.payload),
-    })
-    ,
+    }),
+    setCurrentExamIndex: (state, examId) => ({
+      ...state,
+      currentExamIndex: state.examsList.findIndex(exam => exam.id === examId.payload),
+    }),
   },
 });
 
@@ -44,6 +47,7 @@ export const {
   loadExams,
   loadExamAttempts,
   deleteExamAttempt,
+  setCurrentExamIndex,
 } = slice.actions;
 
 export const {
