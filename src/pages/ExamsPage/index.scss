@@ -1,0 +1,14 @@
+@import "~@edx/paragon/scss/core/core";
+
+#exam-selector {
+  margin: 0.5em auto;
+}
+
+.pgn__searchfield .form-control {
+  border: 1px solid $search-border-color !important;
+}
+
+.pgn__searchfield.has-focus:not(.pgn__searchfield--external)::after {
+  border: none;
+  width: 0px;
+}

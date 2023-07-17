@@ -9,9 +9,10 @@ import {
   useExamsData, useInitializeExamsPage, useFetchExamAttempts, useExamAttemptsData,
 } from './hooks';
 import AttemptList from './components/AttemptList';
-import ExamList from './components/ExamList';
 import ExternalReviewDashboard from './components/ExternalReviewDashboard';
 import ExamSelection from './components/ExamSelection';
+
+import './index.scss'
 
 const ExamsPage = ({ courseId }) => {
   useInitializeExamsPage(courseId);
@@ -19,29 +20,19 @@ const ExamsPage = ({ courseId }) => {
   const {
     currentExam,
     examsList,
-    isLoading,
+    setCurrentExam,
   } = useExamsData();
   const {
     attemptsList,
   } = useExamAttemptsData();
-  /*   eslint-disable react-hooks/exhaustive-deps */
-  const fetchExamAttempts = useFetchExamAttempts();
-  // NOTE: This useEffect hook is temporary until the currentExam is
-  // Passed in via the exam selection component
-  useEffect(() => {
-    if (currentExam) {
-      fetchExamAttempts(currentExam.id);
-    }
-  }, [currentExam]);
-  /*   eslint-disable react-hooks/exhaustive-deps */
 
   return (
     <Container>
-      {isLoading && <div>Loading...</div>}
-      <ExamList exams={examsList} />
+      <Container id="exam-selector">
+        <ExamSelection exams={examsList} handleSelectExam={setCurrentExam} />
+      </Container>
       <Tabs variant="tabs" mountOnEnter defaultActiveKey="attempts">
         <Tab eventKey="attempts" title={formatMessage(messages.attemptsViewTabTitle)}>
-          <ExamSelection exams={examsList} />
           <AttemptList attempts={attemptsList} />
         </Tab>
         <Tab eventKey="review" title={formatMessage(messages.reviewDashboardTabTitle)}>
