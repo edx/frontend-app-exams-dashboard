@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExamSelection component matches snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        data-testid="exam_selection"
+      >
+        <div
+          class="pgn__menu-select"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="btn btn-outline-primary"
+            type="button"
+          >
+            Select an exam
+            <span
+              class="pgn__icon btn-icon-after"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </button>
+          <div
+            class="pgn__menu-select-popup"
+          >
+            <div
+              style="position: absolute; left: 0px; top: 0px; z-index: 2000;"
+            >
+              <div
+                data-focus-guard="true"
+                style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+                tabindex="-1"
+              />
+              <div
+                data-focus-lock-disabled="disabled"
+              />
+              <div
+                data-focus-guard="true"
+                style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+                tabindex="-1"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      data-testid="exam_selection"
+    >
+      <div
+        class="pgn__menu-select"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          class="btn btn-outline-primary"
+          type="button"
+        >
+          Select an exam
+          <span
+            class="pgn__icon btn-icon-after"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"
+                fill="currentColor"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="pgn__menu-select-popup"
+        >
+          <div
+            style="position: absolute; left: 0px; top: 0px; z-index: 2000;"
+          >
+            <div
+              data-focus-guard="true"
+              style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+              tabindex="-1"
+            />
+            <div
+              data-focus-lock-disabled="disabled"
+            />
+            <div
+              data-focus-guard="true"
+              style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+              tabindex="-1"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

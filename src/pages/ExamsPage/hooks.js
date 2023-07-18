@@ -57,10 +57,20 @@ export const useInitializeExamsPage = (courseId) => {
   React.useEffect(() => { fetchCourseExams(courseId); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
+export const useSetCurrentExam = () => {
+  const dispatch = useDispatch();
+  const fetchExamAttempts = module.useFetchExamAttempts();
+  return (examId) => {
+    dispatch(reducer.setCurrentExam(examId));
+    fetchExamAttempts(examId);
+  };
+};
+
 export const useExamsData = () => {
   const [exampleValue, setExampleValue] = state.exampleValue(0);
   const examsList = useSelector(selectors.courseExamsList);
   const currentExam = useSelector(selectors.currentExam);
+  const setCurrentExam = module.useSetCurrentExam();
   const isLoading = reduxHooks.useRequestIsPending(RequestKeys.fetchCourseExams);
 
   return {
@@ -68,6 +78,7 @@ export const useExamsData = () => {
     examsList,
     isLoading,
     exampleValue,
+    setCurrentExam,
     setExampleValue,
   };
 };

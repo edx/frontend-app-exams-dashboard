@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Tabs, Tab, Container } from '@edx/paragon';
@@ -6,11 +6,13 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 
 import messages from './messages';
 import {
-  useExamsData, useInitializeExamsPage, useFetchExamAttempts, useExamAttemptsData,
+  useExamsData, useInitializeExamsPage, useExamAttemptsData,
 } from './hooks';
 import AttemptList from './components/AttemptList';
-import ExamList from './components/ExamList';
 import ExternalReviewDashboard from './components/ExternalReviewDashboard';
+import ExamSelection from './components/ExamSelection';
+
+import './index.scss';
 
 const ExamsPage = ({ courseId }) => {
   useInitializeExamsPage(courseId);
@@ -18,26 +20,17 @@ const ExamsPage = ({ courseId }) => {
   const {
     currentExam,
     examsList,
-    isLoading,
+    setCurrentExam,
   } = useExamsData();
   const {
     attemptsList,
   } = useExamAttemptsData();
-  /*   eslint-disable react-hooks/exhaustive-deps */
-  const fetchExamAttempts = useFetchExamAttempts();
-  // NOTE: This useEffect hook is temporary until the currentExam is
-  // Passed in via the exam selection component
-  useEffect(() => {
-    if (currentExam) {
-      fetchExamAttempts(currentExam.id);
-    }
-  }, [currentExam]);
-  /*   eslint-disable react-hooks/exhaustive-deps */
 
   return (
     <Container>
-      {isLoading && <div>Loading...</div>}
-      <ExamList exams={examsList} />
+      <Container id="exam-selector">
+        <ExamSelection exams={examsList} onSelect={setCurrentExam} />
+      </Container>
       <Tabs variant="tabs" mountOnEnter defaultActiveKey="attempts">
         <Tab eventKey="attempts" title={formatMessage(messages.attemptsViewTabTitle)}>
           <AttemptList attempts={attemptsList} />

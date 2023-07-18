@@ -148,5 +148,47 @@ describe('ExamsPage reducer', () => {
         });
       });
     });
+    describe('setCurrentExam', () => {
+      const state = {
+        currentExamIndex: 2,
+        examsList: [
+          {
+            id: 55,
+            name: 'Exam 1',
+          },
+          {
+            id: 98,
+            name: 'Exam 2',
+          },
+          {
+            id: 107,
+            name: 'Exam 3',
+          },
+        ],
+        attemptsList: [],
+      };
+      it('sets currentExamIndex based on exam id', () => {
+        const action = {
+          type: 'exams/setCurrentExam',
+          payload: 98,
+        };
+        expect(reducer(state, action)).toEqual({
+          currentExamIndex: 1,
+          examsList: state.examsList,
+          attemptsList: state.attemptsList,
+        });
+      });
+      it('sets currentExamIndex to 0 if exam id is not found', () => {
+        const action = {
+          type: 'exams/setCurrentExam',
+          payload: 1,
+        };
+        expect(reducer(state, action)).toEqual({
+          currentExamIndex: 0,
+          examsList: state.examsList,
+          attemptsList: state.attemptsList,
+        });
+      });
+    });
   });
 });

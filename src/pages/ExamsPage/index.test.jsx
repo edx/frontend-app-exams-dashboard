@@ -20,7 +20,7 @@ describe('ExamsPage', () => {
       { id: 1, name: 'exam1' },
     ],
     currentExam: { id: 1, name: 'exam1' },
-    isLoading: false,
+    setCurrentExam: jest.fn(),
   };
   const defaultAttemptsData = {
     attemptsList: [{
@@ -44,16 +44,6 @@ describe('ExamsPage', () => {
 
       hooks.useExamsData.mockReturnValue(defaultExamsData);
       expect(render(<ExamsPage courseId="test_course" />)).toMatchSnapshot();
-    });
-  });
-  describe('loading message', () => {
-    it('should render while fetching data', () => {
-      hooks.useExamsData.mockReturnValue({
-        ...defaultExamsData,
-        isLoading: true,
-      });
-      render(<ExamsPage courseId="test_course" />);
-      expect(screen.getByText('Loading...')).toBeInTheDocument();
     });
   });
   describe('tab navigation', () => {
