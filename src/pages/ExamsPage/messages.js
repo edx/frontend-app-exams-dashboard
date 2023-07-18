@@ -11,6 +11,16 @@ const messages = defineMessages({
     defaultMessage: 'Review Dashboard',
     description: 'Title for the review dashboard tab',
   },
+  examSelectPlaceholder: {
+    id: 'ExamSelection.select_exam_placeholder',
+    defaultMessage: 'Search for an exam...',
+    description: 'Placeholder message for the exam selection dropdown',
+  },
+  examSelectDropdownLabel: {
+    id: 'ExamSelection.select_exam',
+    defaultMessage: 'Select an exam',
+    description: 'Default message for the exam selection dropdown',
+  },
 });
 
 export default messages;

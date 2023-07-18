@@ -6,15 +6,11 @@ import {
 } from '@edx/paragon';
 import PropTypes from 'prop-types';
 
+import messages from '../messages';
+
 const ExamSelection = ({ exams, onSelect }) => {
   const { formatMessage } = useIntl();
   const [searchText, setSearchText] = useState('');
-
-  const placeholderMessage = formatMessage({
-    id: 'ExamSelection.select_exam_placeholder',
-    defaultMessage: 'Search for an exam...',
-    description: 'Placeholder message for the exam selection dropdown',
-  });
 
   const getMenuItems = () => {
     const menuItems = [
@@ -22,7 +18,7 @@ const ExamSelection = ({ exams, onSelect }) => {
         key={0}
         as={SearchField}
         onChange={setSearchText}
-        placeholder={placeholderMessage}
+        placeholder={formatMessage(messages.examSelectPlaceholder)}
         onSubmit={() => {}}
       />,
     ];
@@ -36,11 +32,7 @@ const ExamSelection = ({ exams, onSelect }) => {
   return (
     <div data-testid="exam_selection">
       <SelectMenu
-        defaultMessage={formatMessage({
-          id: 'ExamSelection.select_exam',
-          defaultMessage: 'Select an exam',
-          description: 'Default message for the exam selection dropdown',
-        })}
+        defaultMessage={formatMessage(messages.examSelectDropdownLabel)}
       >
         { getMenuItems() }
       </SelectMenu>
