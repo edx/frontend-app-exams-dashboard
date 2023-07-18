@@ -6,8 +6,8 @@ import {
 } from '@edx/paragon';
 import PropTypes from 'prop-types';
 
-const ExamSelection = ({ exams, handleSelectExam }) => {
-  const { formatMessage, formatDate } = useIntl();
+const ExamSelection = ({ exams, onSelect }) => {
+  const { formatMessage } = useIntl();
   const [searchText, setSearchText] = useState('');
 
   const placeholderMessage = formatMessage({
@@ -18,14 +18,20 @@ const ExamSelection = ({ exams, handleSelectExam }) => {
 
   const getMenuItems = () => {
     const menuItems = [
-      <MenuItem as={SearchField} onChange={setSearchText} placeholder={placeholderMessage} />,
-    ]
+      <MenuItem
+        key={0}
+        as={SearchField}
+        onChange={setSearchText}
+        placeholder={placeholderMessage}
+        onSubmit={() => {}}
+      />,
+    ];
     return menuItems.concat(exams.filter(exam => (
-      exam.name.toLowerCase().includes(searchText.toLowerCase()))
-    ).map(exam => {
-      return <MenuItem onClick={() => handleSelectExam(exam.id)}>{exam.name}</MenuItem>
-    }));
-  }
+      exam.name.toLowerCase().includes(searchText.toLowerCase())
+    )).map(
+      exam => <MenuItem key={exam.id} onClick={() => onSelect(exam.id)}>{exam.name}</MenuItem>,
+    ));
+  };
 
   return (
     <div data-testid="exam_selection">
@@ -47,7 +53,7 @@ ExamSelection.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
   })).isRequired,
-  handleSelectExam: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default ExamSelection;

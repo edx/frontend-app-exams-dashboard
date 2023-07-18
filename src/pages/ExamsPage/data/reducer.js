@@ -38,7 +38,7 @@ const slice = createSlice({
     }),
     setCurrentExam: (state, examId) => ({
       ...state,
-      currentExamIndex: state.examsList.findIndex(exam => exam.id === examId.payload),
+      currentExamIndex: Math.max(0, state.examsList.findIndex(exam => exam.id === examId.payload)),
     }),
   },
 });

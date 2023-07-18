@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Tabs, Tab, Container, } from '@edx/paragon';
+import { Tabs, Tab, Container } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
 import messages from './messages';
 import {
-  useExamsData, useInitializeExamsPage, useFetchExamAttempts, useExamAttemptsData,
+  useExamsData, useInitializeExamsPage, useExamAttemptsData,
 } from './hooks';
 import AttemptList from './components/AttemptList';
 import ExternalReviewDashboard from './components/ExternalReviewDashboard';
 import ExamSelection from './components/ExamSelection';
 
-import './index.scss'
+import './index.scss';
 
 const ExamsPage = ({ courseId }) => {
   useInitializeExamsPage(courseId);
@@ -29,7 +29,7 @@ const ExamsPage = ({ courseId }) => {
   return (
     <Container>
       <Container id="exam-selector">
-        <ExamSelection exams={examsList} handleSelectExam={setCurrentExam} />
+        <ExamSelection exams={examsList} onSelect={setCurrentExam} />
       </Container>
       <Tabs variant="tabs" mountOnEnter defaultActiveKey="attempts">
         <Tab eventKey="attempts" title={formatMessage(messages.attemptsViewTabTitle)}>

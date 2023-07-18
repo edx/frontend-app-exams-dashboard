@@ -112,4 +112,19 @@ describe('ExamsPage hooks', () => {
       });
     });
   });
+  describe('useSetCurrentExam', () => {
+    it('dispatches setCurrentExam with the new exam id', () => {
+      hooks.useSetCurrentExam()(1);
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: 1,
+        type: 'exams/setCurrentExam',
+      });
+    });
+    it('calls fetchExamAttempts', () => {
+      const mockFetchExamAttempts = jest.fn();
+      jest.spyOn(hooks, 'useFetchExamAttempts').mockImplementation(() => mockFetchExamAttempts);
+      hooks.useSetCurrentExam()(1);
+      expect(mockFetchExamAttempts).toHaveBeenCalledWith(1);
+    });
+  });
 });
