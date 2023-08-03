@@ -36,26 +36,19 @@ const slice = createSlice({
       ...state,
       attemptsList: state.attemptsList.filter(attempt => attempt.attempt_id !== attemptId.payload),
     }),
-    modifyExamAttempt: (state, attemptId, action, attemptIndex) => ({
+    modifyExamAttempt: (state, { payload }) => ({
       ...state,
-      // TODO: Make the status of the attempt modified change in the UI
       attemptsList: state.attemptsList.map((attempt, index) => {
         // Set the status of the modified attempt to verified or rejected
-        debugger;
-        if (index === attemptIndex) {
+        if (attempt.attempt_id === payload.attemptId) {
           return {
             ...attempt,
-            status: (() => {
-              if (action === 'verify') {
-                return 'Verified'
-              }
-              return 'Rejected'
-            }),
-          }
+            status: payload.action === 'verify' ? 'Verified' : 'Rejected',
+          };
         }
         // Keep all other attempts as is
         return attempt;
-      })
+      }),
     }),
     setCurrentExam: (state, examId) => ({
       ...state,

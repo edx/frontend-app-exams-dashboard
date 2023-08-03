@@ -55,11 +55,11 @@ export const useDeleteExamAttempt = () => {
 export const useModifyExamAttempt = () => {
   const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
   const dispatch = useDispatch();
-  return (attemptId, action, attemptIndex) => (
+  return (attemptId, action) => (
     makeNetworkRequest({
       requestKey: RequestKeys.modifyExamAttempt,
       promise: api.modifyExamAttempt(attemptId, action),
-      onSuccess: () => dispatch(reducer.modifyExamAttempt(attemptId, action, attemptIndex)),
+      onSuccess: () => dispatch(reducer.modifyExamAttempt({ attemptId, action })),
     })
   );
 };

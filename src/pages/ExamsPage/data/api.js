@@ -26,9 +26,9 @@ export async function deleteExamAttempt(attemptId) {
   return response.data;
 }
 
-export async function modifyExamAttempt(attemptId, action){
+export async function modifyExamAttempt(attemptId, action) {
   const url = `${getExamsBaseUrl()}/api/v1/exams/attempt/${attemptId}`;
-  const payload = { 'action': action }
+  const payload = { action };
   const response = await getAuthenticatedHttpClient().put(url, payload);
   return response.data;
 }

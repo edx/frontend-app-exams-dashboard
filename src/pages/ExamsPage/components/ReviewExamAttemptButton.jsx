@@ -4,10 +4,12 @@ import {
   Button, useToggle, ModalDialog, ActionRow,
 } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
-import { useModifyExamAttempt } from '../hooks';
 import { Warning } from '@edx/paragon/icons';
+import { useModifyExamAttempt } from '../hooks';
 
-const ReviewExamAttemptButton = ({ username, examName, attemptId, attemptIndex, suspicionLevel }) => {
+const ReviewExamAttemptButton = ({
+  username, examName, attemptId, suspicionLevel,
+}) => {
   const [isOpen, open, close] = useToggle(false);
   const modifyExamAttempt = useModifyExamAttempt();
   const { formatMessage } = useIntl();
@@ -19,7 +21,7 @@ const ReviewExamAttemptButton = ({ username, examName, attemptId, attemptIndex, 
           <Warning />
           {formatMessage({
             id: 'ReviewExamAttemptButton.exam_name',
-            defaultMessage: 'Review',
+            defaultMessage: 'Second Review Required',
             description: 'Table header for the table column with buttons to review exam attempts',
           })}
         </Button>
@@ -67,9 +69,7 @@ const ReviewExamAttemptButton = ({ username, examName, attemptId, attemptIndex, 
             <Button
               variant="primary"
               onClick={e => { // eslint-disable-line no-unused-vars
-                // TODO: Make this open the link to review the exam attempt
-                modifyExamAttempt(attemptId, 'verify', attemptIndex);
-                console.log("\n\n\nINDEX:", attemptIndex)
+                modifyExamAttempt(attemptId, 'verify');
               }}
             >
               {formatMessage({
@@ -81,8 +81,7 @@ const ReviewExamAttemptButton = ({ username, examName, attemptId, attemptIndex, 
             <Button
               variant="primary"
               onClick={e => { // eslint-disable-line no-unused-vars
-                // TODO: Make this open the link to review the exam attempt
-                modifyExamAttempt(attemptId, 'reject', attemptIndex);
+                modifyExamAttempt(attemptId, 'reject');
               }}
             >
               {formatMessage({

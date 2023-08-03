@@ -4,9 +4,14 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 import ResetExamAttemptButton from './ResetExamAttemptButton';
 import ReviewExamAttemptButton from './ReviewExamAttemptButton';
 
-const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
+const cleanString = (string) => {
+  // Remove underscores, capitalize the first letter of each word, and return as a single string.
+  return string.split("_").map(string => string.charAt(0).toUpperCase() + string.slice(1)).join(" ");
+};
 
-// This component has to be compartmentalized here otherwise npm lint throws an unstable-nested-component error.
+// (string.charAt(0).toUpperCase() + string.slice(1)).replace(/_/g, " ");
+
+// The button components must be compartmentalized here otherwise npm lint throws an unstable-nested-component error.
 const ResetButton = (row) => (
   <ResetExamAttemptButton
     username={row.original.username}
@@ -15,27 +20,20 @@ const ResetButton = (row) => (
   />
 );
 
-const test = attempt => row.original.attempt_id === attempt.attempt_id
+const ReviewButton = (row, attempts) => (
+  <ReviewExamAttemptButton
+    username={row.original.username}
+    examName={row.original.exam_name}
+    attemptId={row.original.attempt_id}
+  />
+);
 
-const ReviewButton = (row, attempts) => {
-  // console.log("\n\nindex:", attempts.findIndex(attempt => row.original.attempt_id === attempt.attempt_id))
-  return (
-    <ReviewExamAttemptButton
-      username={row.original.username}
-      examName={row.original.exam_name}
-      attemptId={row.original.attempt_id}
-      attemptIndex={attempts.findIndex(attempt => row.original.attempt_id === attempt.attempt_id)}
-    />
-  );
-};
-
-const getAndReadAttempts = ( attempts ) => {
-  console.log("\n\n\nattempts:", attempts);
+const getAndReadAttempts = (attempts) => {
   if (attempts !== undefined) {
     return attempts;
   }
   return [];
-}
+};
 
 const AttemptList = ({ attempts }) => {
   const { formatMessage, formatDate } = useIntl();
@@ -67,7 +65,7 @@ const AttemptList = ({ attempts }) => {
               defaultMessage: 'Review',
               description: 'Table header for the table column listing review to reset the exam attempt',
             }),
-            Cell: ({ row }) => ReviewButton(row, attempts),
+            Cell: ({ row }) => (row.original.status === "second_review_required" ? ReviewButton(row, attempts) : null),
           },
         ]}
         data={getAndReadAttempts(attempts)}
@@ -106,7 +104,7 @@ const AttemptList = ({ attempts }) => {
               defaultMessage: 'Exam Type',
               description: 'Table header for the type of the exam',
             }),
-            Cell: ({ row }) => (capitalizeFirstLetter(row.original.exam_type)),
+            Cell: ({ row }) => (cleanString(row.original.exam_type)),
           },
           {
             Header: formatMessage({
@@ -142,7 +140,7 @@ const AttemptList = ({ attempts }) => {
               defaultMessage: 'Status',
               description: 'Table header for the current status of the exam attempt',
             }),
-            Cell: ({ row }) => (capitalizeFirstLetter(row.original.status)),
+            Cell: ({ row }) => cleanString(row.original.status),
           },
         ]}
       >
