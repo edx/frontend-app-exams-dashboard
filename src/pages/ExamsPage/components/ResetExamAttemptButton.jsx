@@ -5,6 +5,7 @@ import {
 } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { useDeleteExamAttempt } from '../hooks';
+import messages from '../messages';
 
 const ResetExamAttemptButton = ({ username, examName, attemptId }) => {
   const [isOpen, open, close] = useToggle(false);
@@ -15,11 +16,8 @@ const ResetExamAttemptButton = ({ username, examName, attemptId }) => {
     <>
       <div className="d-flex">
         <Button variant="link" size="sm" onClick={open}>
-          {formatMessage({
-            id: 'ResetExamAttemptButton.exam_name',
-            defaultMessage: 'Reset',
-            description: 'Table header for the table column with buttons to reset exam attempts',
-          })}
+          {/* TODO: Figure out why this has an extra semicolon on it by default */}
+          {formatMessage(messages.ResetExamAttemptButtonTitle)};
         </Button>
       </div>
       <ModalDialog
@@ -33,33 +31,23 @@ const ResetExamAttemptButton = ({ username, examName, attemptId }) => {
       >
         <ModalDialog.Header>
           <ModalDialog.Title>
-            {formatMessage({
-              id: 'ResetExamAttemptButton.confirmation_modal_title',
-              defaultMessage: 'Please confirm your choice.',
-              description: 'Title header of the modal that appears to confirm the reset of an exam attempt',
-            })}
+            {formatMessage(messages.ResetExamAttemptButtonModalTitle)}
           </ModalDialog.Title>
         </ModalDialog.Header>
 
         <ModalDialog.Body>
-          {formatMessage(
-            {
-              id: 'ResetExamAttemptButton.confirmation_modal_body',
-              defaultMessage: 'Are you sure you want to remove the exam attempt for learner with username "{username}" for the exam "{examName}"?.',
-              description: 'Body text of the modal that appears to confirm the reset of an exam attempt',
-            },
-            { username, examName },
-          )}
+          {/* TODO: Figure out how to move this while keeping the vars passed in */}
+          <p>{formatMessage(messages.ResetExamAttemptButtonModalBody)}</p>
+          <ul>
+            <li>{formatMessage(messages.Username)}{username}</li>
+            <li>{formatMessage(messages.ExamName)}{examName}</li>
+          </ul>
         </ModalDialog.Body>
 
         <ModalDialog.Footer>
           <ActionRow>
             <ModalDialog.CloseButton variant="tertiary">
-              {formatMessage({
-                id: 'ResetExamAttemptButton.cancel_button',
-                defaultMessage: 'No (Cancel)',
-                description: 'Text for the button to cancel resetting an exam attempt',
-              })}
+              {formatMessage(messages.ResetExamAttemptButtonCancel)}
             </ModalDialog.CloseButton>
             <Button
               variant="primary"
@@ -67,11 +55,7 @@ const ResetExamAttemptButton = ({ username, examName, attemptId }) => {
                 resetExamAttempt(attemptId);
               }}
             >
-              {formatMessage({
-                id: 'ResetExamAttemptButton.confirm_button',
-                defaultMessage: 'Yes, I\'m Sure',
-                description: 'Text for the button to confirm the reset of an exam attempt',
-              })}
+              {formatMessage(messages.ResetExamAttemptButtonConfirm)}
             </Button>
           </ActionRow>
         </ModalDialog.Footer>

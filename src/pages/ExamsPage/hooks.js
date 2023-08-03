@@ -59,7 +59,7 @@ export const useModifyExamAttempt = () => {
     makeNetworkRequest({
       requestKey: RequestKeys.modifyExamAttempt,
       promise: api.modifyExamAttempt(attemptId, action),
-      onSuccess: () => dispatch(reducer.modifyExamAttempt({ attemptId, action })),
+      onSuccess: () => dispatch(reducer.modifyExamAttemptStatus({ attemptId, action })),
     })
   );
 };

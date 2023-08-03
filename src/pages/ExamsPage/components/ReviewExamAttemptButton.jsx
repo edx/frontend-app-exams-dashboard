@@ -6,9 +6,10 @@ import {
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { Warning } from '@edx/paragon/icons';
 import { useModifyExamAttempt } from '../hooks';
+import messages from '../messages';
 
 const ReviewExamAttemptButton = ({
-  username, examName, attemptId, suspicionLevel,
+  username, examName, attemptId, severity, submissionReason,
 }) => {
   const [isOpen, open, close] = useToggle(false);
   const modifyExamAttempt = useModifyExamAttempt();
@@ -19,11 +20,7 @@ const ReviewExamAttemptButton = ({
       <div className="d-flex text-danger">
         <Button variant="link" size="sm" className="text-danger" onClick={open}>
           <Warning />
-          {formatMessage({
-            id: 'ReviewExamAttemptButton.exam_name',
-            defaultMessage: 'Second Review Required',
-            description: 'Table header for the table column with buttons to review exam attempts',
-          })}
+          {formatMessage(messages.ReviewExamAttemptButtonTitle)}
         </Button>
       </div>
       <ModalDialog
@@ -37,34 +34,25 @@ const ReviewExamAttemptButton = ({
       >
         <ModalDialog.Header>
           <ModalDialog.Title>
-            {formatMessage({
-              id: 'ReviewExamAttemptButton.confirmation_modal_title',
-              defaultMessage: 'Please confirm your choice.',
-              description: 'Title header of the modal that appears to confirm the review of an exam attempt',
-            })}
+            {formatMessage(messages.ReviewExamAttemptButtonModalTitle)}
           </ModalDialog.Title>
         </ModalDialog.Header>
 
         <ModalDialog.Body>
-          {formatMessage(
-            {
-              id: 'ReviewExamAttemptButton.confirmation_modal_body',
-              defaultMessage: `Are you sure you want to review the exam attempt for learner with username "${username}
-              for the exam "${examName}"?. Suspicion Level: ${suspicionLevel}.`,
-              description: 'Body text of the modal that appears to confirm the review of an exam attempt',
-            },
-            { username, examName },
-          )}
+          {/* TODO: Figure out how to move this formatMessage with the variables. */}
+          <p>{formatMessage(messages.ReviewExamAttemptButtonModalBody)}</p>
+          <ul>
+            <li>{formatMessage(messages.Username)}{username}</li>
+            <li>{formatMessage(messages.ExamName)}{examName}</li>
+            <li>{formatMessage(messages.SuspicionLevel)}{severity}</li>
+            <li>{formatMessage(messages.SubmissionReason)}{submissionReason}</li>
+          </ul>
         </ModalDialog.Body>
 
         <ModalDialog.Footer>
           <ActionRow>
             <ModalDialog.CloseButton variant="tertiary">
-              {formatMessage({
-                id: 'ReviewExamAttemptButton.cancel_button',
-                defaultMessage: 'No (Cancel)',
-                description: 'Text for the button to cancel reviewing an exam attempt',
-              })}
+              {formatMessage(messages.ReviewExamAttemptButtonCancel)}
             </ModalDialog.CloseButton>
             <Button
               variant="primary"
@@ -72,11 +60,7 @@ const ReviewExamAttemptButton = ({
                 modifyExamAttempt(attemptId, 'verify');
               }}
             >
-              {formatMessage({
-                id: 'ReviewExamAttemptButton.verify_button',
-                defaultMessage: 'Verify',
-                description: 'Text for the button to verify an exam attempt',
-              })}
+              {formatMessage(messages.ReviewExamAttemptButtonVerify)}
             </Button>
             <Button
               variant="primary"
@@ -84,11 +68,7 @@ const ReviewExamAttemptButton = ({
                 modifyExamAttempt(attemptId, 'reject');
               }}
             >
-              {formatMessage({
-                id: 'ReviewExamAttemptButton.reject_button',
-                defaultMessage: 'Reject',
-                description: 'Text for the button to reject an exam attempt',
-              })}
+              {formatMessage(messages.ReviewExamAttemptButtonReject)}
             </Button>
           </ActionRow>
         </ModalDialog.Footer>
@@ -101,6 +81,8 @@ ReviewExamAttemptButton.propTypes = {
   username: PropTypes.string.isRequired,
   examName: PropTypes.string.isRequired,
   attemptId: PropTypes.number.isRequired,
+  severity: PropTypes.number.isRequired,
+  submissionReason: PropTypes.string.isRequired,
 };
 
 export default ReviewExamAttemptButton;
