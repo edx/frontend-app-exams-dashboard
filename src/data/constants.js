@@ -28,6 +28,9 @@ export const ExamAttemptStatus = {
   submitted: 'Submitted',
   verified: 'Verified',
   rejected: 'Rejected',
+  // NOTE: This is a temporary workaround since the reducer sets the status to "Verified", not "verified".
+  Verified: 'Verified',
+  Rejected: 'Rejected',
   expired: 'Expired',
   second_review_required: 'Second Review Required',
   error: 'Error',
