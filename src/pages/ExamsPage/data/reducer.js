@@ -36,6 +36,27 @@ const slice = createSlice({
       ...state,
       attemptsList: state.attemptsList.filter(attempt => attempt.attempt_id !== attemptId.payload),
     }),
+    modifyExamAttempt: (state, attemptId, action, attemptIndex) => ({
+      ...state,
+      // TODO: Make the status of the attempt modified change in the UI
+      attemptsList: state.attemptsList.map((attempt, index) => {
+        // Set the status of the modified attempt to verified or rejected
+        debugger;
+        if (index === attemptIndex) {
+          return {
+            ...attempt,
+            status: (() => {
+              if (action === 'verify') {
+                return 'Verified'
+              }
+              return 'Rejected'
+            }),
+          }
+        }
+        // Keep all other attempts as is
+        return attempt;
+      })
+    }),
     setCurrentExam: (state, examId) => ({
       ...state,
       currentExamIndex: Math.max(0, state.examsList.findIndex(exam => exam.id === examId.payload)),
@@ -47,6 +68,7 @@ export const {
   loadExams,
   loadExamAttempts,
   deleteExamAttempt,
+  modifyExamAttempt,
   setCurrentExam,
 } = slice.actions;
 

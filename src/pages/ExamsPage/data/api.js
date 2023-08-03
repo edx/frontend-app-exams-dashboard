@@ -25,3 +25,10 @@ export async function deleteExamAttempt(attemptId) {
   const response = await getAuthenticatedHttpClient().delete(url);
   return response.data;
 }
+
+export async function modifyExamAttempt(attemptId, action){
+  const url = `${getExamsBaseUrl()}/api/v1/exams/attempt/${attemptId}`;
+  const payload = { 'action': action }
+  const response = await getAuthenticatedHttpClient().put(url, payload);
+  return response.data;
+}

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { DataTable } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import ResetExamAttemptButton from './ResetExamAttemptButton';
+import ReviewExamAttemptButton from './ReviewExamAttemptButton';
 
 const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
@@ -14,12 +15,35 @@ const ResetButton = (row) => (
   />
 );
 
+const test = attempt => row.original.attempt_id === attempt.attempt_id
+
+const ReviewButton = (row, attempts) => {
+  // console.log("\n\nindex:", attempts.findIndex(attempt => row.original.attempt_id === attempt.attempt_id))
+  return (
+    <ReviewExamAttemptButton
+      username={row.original.username}
+      examName={row.original.exam_name}
+      attemptId={row.original.attempt_id}
+      attemptIndex={attempts.findIndex(attempt => row.original.attempt_id === attempt.attempt_id)}
+    />
+  );
+};
+
+const getAndReadAttempts = ( attempts ) => {
+  console.log("\n\n\nattempts:", attempts);
+  if (attempts !== undefined) {
+    return attempts;
+  }
+  return [];
+}
+
 const AttemptList = ({ attempts }) => {
   const { formatMessage, formatDate } = useIntl();
 
   return (
     <div data-testid="attempt_list">
       <DataTable
+        isLoading={attempts == null}
         isPaginated
         initialState={{
           pageSize: 20,
@@ -36,8 +60,17 @@ const AttemptList = ({ attempts }) => {
             }),
             Cell: ({ row }) => ResetButton(row),
           },
+          {
+            id: 'review',
+            Header: formatMessage({
+              id: 'AttemptsList.review',
+              defaultMessage: 'Review',
+              description: 'Table header for the table column listing review to reset the exam attempt',
+            }),
+            Cell: ({ row }) => ReviewButton(row, attempts),
+          },
         ]}
-        data={attempts}
+        data={getAndReadAttempts(attempts)}
         columns={[
           {
             Header: formatMessage({

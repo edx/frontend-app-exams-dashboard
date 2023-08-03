@@ -9,6 +9,7 @@ export const RequestKeys = {
   fetchCourseExams: 'fetchCourseExams',
   fetchExamAttempts: 'fetchExamAttempts',
   deleteExamAttempt: 'deleteExamAttempt',
+  modifyExamAttempt: 'modifyExamAttempt',
 };
 
 export const ErrorStatuses = {
