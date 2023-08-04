@@ -2,6 +2,7 @@ import React from 'react';
 
 import * as reduxHooks from 'data/redux/hooks';
 
+import * as constants from 'data/constants';
 import * as api from './data/api';
 import * as hooks from './hooks';
 
@@ -112,6 +113,41 @@ describe('ExamsPage hooks', () => {
       });
     });
   });
+
+  describe('useModifyExamAttempt', () => {
+    const mockMakeNetworkRequest = jest.fn();
+    beforeEach(() => {
+      mockMakeNetworkRequest.mockClear();
+      reduxHooks.useMakeNetworkRequest.mockReturnValue(mockMakeNetworkRequest);
+      api.modifyExamAttempt.mockReturnValue(Promise.resolve({ data: 'data' }));
+    });
+    it('calls makeNetworkRequest to modify an exam attempt status', () => {
+      hooks.useModifyExamAttempt()(0, constants.ExamAttemptActions.verify);
+      expect(mockMakeNetworkRequest).toHaveBeenCalledWith({
+        requestKey: 'modifyExamAttempt',
+        promise: expect.any(Promise),
+        onSuccess: expect.any(Function),
+      });
+    });
+    it('dispatches modifyExamAttemptStatus on success', async () => {
+      const attemptId = 0;
+      const action = constants.ExamAttemptActions.verify;
+      await hooks.useModifyExamAttempt()(attemptId, action);
+      const { onSuccess } = mockMakeNetworkRequest.mock.calls[0][0];
+      onSuccess({
+        attemptId,
+        action,
+      });
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: {
+          attemptId,
+          action,
+        },
+        type: 'exams/modifyExamAttemptStatus',
+      });
+    });
+  });
+
   describe('useSetCurrentExam', () => {
     it('dispatches setCurrentExam with the new exam id', () => {
       hooks.useSetCurrentExam()(1);

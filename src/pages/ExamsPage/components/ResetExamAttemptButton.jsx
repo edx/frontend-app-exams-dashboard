@@ -35,7 +35,6 @@ const ResetExamAttemptButton = ({ username, examName, attemptId }) => {
         </ModalDialog.Header>
 
         <ModalDialog.Body>
-          {/* TODO: Figure out how to move this while keeping the vars passed in */}
           <p>{formatMessage(messages.ResetExamAttemptButtonModalBody)}</p>
           <ul>
             <li>{formatMessage(messages.Username)}{username}</li>

@@ -5,6 +5,7 @@ import {
 } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { Warning } from '@edx/paragon/icons';
+import * as constants from 'data/constants';
 import { useModifyExamAttempt } from '../hooks';
 import messages from '../messages';
 
@@ -39,7 +40,6 @@ const ReviewExamAttemptButton = ({
         </ModalDialog.Header>
 
         <ModalDialog.Body>
-          {/* TODO: Figure out how to move this formatMessage with the variables. */}
           <p>{formatMessage(messages.ReviewExamAttemptButtonModalBody)}</p>
           <ul>
             <li>{formatMessage(messages.Username)}{username}</li>
@@ -57,7 +57,7 @@ const ReviewExamAttemptButton = ({
             <Button
               variant="primary"
               onClick={e => { // eslint-disable-line no-unused-vars
-                modifyExamAttempt(attemptId, 'verify');
+                modifyExamAttempt(attemptId, constants.ExamAttemptActions.verify);
               }}
             >
               {formatMessage(messages.ReviewExamAttemptButtonVerify)}
@@ -65,7 +65,7 @@ const ReviewExamAttemptButton = ({
             <Button
               variant="primary"
               onClick={e => { // eslint-disable-line no-unused-vars
-                modifyExamAttempt(attemptId, 'reject');
+                modifyExamAttempt(attemptId, constants.ExamAttemptActions.reject);
               }}
             >
               {formatMessage(messages.ReviewExamAttemptButtonReject)}

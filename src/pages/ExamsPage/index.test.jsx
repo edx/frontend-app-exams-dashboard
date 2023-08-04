@@ -27,10 +27,10 @@ describe('ExamsPage', () => {
       exam_name: 'Exam 1',
       username: 'username',
       time_limit: 60,
-      exam_type: 'Timed',
+      exam_type: 'timed',
       started_at: '2023-04-05T19:27:16.000000Z',
       completed_at: '2023-04-05T19:27:17.000000Z',
-      status: 'completed',
+      status: 'submitted',
       attempt_id: 0,
     }],
   };

@@ -5,7 +5,7 @@ import ResetExamAttemptButton from './ResetExamAttemptButton';
 import ReviewExamAttemptButton from './ReviewExamAttemptButton';
 import messages from '../messages';
 
-export const ExamTypes = {
+const ExamTypes = {
   proctored: 'Proctored',
   timed: 'Timed',
   practice: 'Practice',
@@ -51,6 +51,7 @@ const AttemptList = ({ attempts }) => {
 
   return (
     <div data-testid="attempt_list">
+      {console.log('attempts:', attempts)}
       <DataTable
         isLoading={attempts == null}
         isPaginated
@@ -83,7 +84,7 @@ const AttemptList = ({ attempts }) => {
           },
           {
             Header: formatMessage(messages.examAttemptsTableHeaderTimeLimit),
-            Cell: ({ row }) => (row.original.time_limit),
+            accessor: 'time_limit',
           },
           {
             Header: formatMessage(messages.examAttemptsTableHeaderExamType),

@@ -133,7 +133,7 @@ const messages = defineMessages({
     description: 'Text for the button to reject an exam attempt',
   },
 
-  // NOTE: Wasn't sure how to title and id these since the first are used by both the Review & Reset buttons
+  // Labels for exam attempt info for review/reset modals
   Username: {
     id: 'ExamAttemptButton.username',
     defaultMessage: 'Username: ',
