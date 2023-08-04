@@ -19,28 +19,18 @@ export const ExamAttemptActions = {
 };
 
 export const ExamAttemptStatus = {
-  created: 'Created',
-  download_software_clicked: 'Download Software Clicked',
-  ready_to_start: 'Ready To Start',
-  started: 'Started',
-  ready_to_submit: 'Ready To Submit',
-  timed_out: 'Timed Out',
-  submitted: 'Submitted',
-  verified: 'Verified',
-  rejected: 'Rejected',
-  // NOTE: This is a temporary workaround since the reducer sets the status to "Verified", not "verified".
-  Verified: 'Verified',
-  Rejected: 'Rejected',
-  expired: 'Expired',
-  second_review_required: 'Second Review Required',
-  error: 'Error',
-};
-
-export const ExamTypes = {
-  proctored: 'Proctored',
-  timed: 'Timed',
-  practice: 'Practice',
-  onboarding: 'Onboarding',
+  created: 'created',
+  download_software_clicked: 'download_software_clicked',
+  ready_to_start: 'ready_to_start',
+  started: 'started',
+  ready_to_submit: 'ready_to_submit',
+  timed_out: 'timed_out',
+  submitted: 'submitted',
+  verified: 'verified',
+  rejected: 'rejected',
+  expired: 'expired',
+  second_review_required: 'second_review_required',
+  error: 'error',
 };
 
 export const ErrorStatuses = {

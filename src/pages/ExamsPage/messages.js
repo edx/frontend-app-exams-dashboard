@@ -76,7 +76,7 @@ const messages = defineMessages({
 
   // ResetExamAttemptButton
   ResetExamAttemptButtonTitle: {
-    id: 'ResetExamAttemptButton.exam_name',
+    id: 'ResetExamAttemptButton.title',
     defaultMessage: 'Reset',
     description: 'Title for the button to reset exam attempts',
   },
@@ -103,7 +103,7 @@ const messages = defineMessages({
 
   // ReviewExamAttemptButton
   ReviewExamAttemptButtonTitle: {
-    id: 'ReviewExamAttemptButton.exam_name',
+    id: 'ReviewExamAttemptButton.title',
     defaultMessage: 'Second Review Required',
     description: 'Title for the button to review exam attempts',
   },

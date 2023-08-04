@@ -1,10 +1,31 @@
 import PropTypes from 'prop-types';
 import { DataTable } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
-import * as constants from 'data/constants';
 import ResetExamAttemptButton from './ResetExamAttemptButton';
 import ReviewExamAttemptButton from './ReviewExamAttemptButton';
 import messages from '../messages';
+
+export const ExamTypes = {
+  proctored: 'Proctored',
+  timed: 'Timed',
+  practice: 'Practice',
+  onboarding: 'Onboarding',
+};
+
+const ExamAttemptStatusUILabels = {
+  created: 'Created',
+  download_software_clicked: 'Download Software Clicked',
+  ready_to_start: 'Ready To Start',
+  started: 'Started',
+  ready_to_submit: 'Ready To Submit',
+  timed_out: 'Timed Out',
+  submitted: 'Submitted',
+  verified: 'Verified',
+  rejected: 'Rejected',
+  expired: 'Expired',
+  second_review_required: 'Second Review Required',
+  error: 'Error',
+};
 
 // The button components must be compartmentalized here otherwise npm lint throws an unstable-nested-component error.
 const ResetButton = (row) => (
@@ -66,7 +87,7 @@ const AttemptList = ({ attempts }) => {
           },
           {
             Header: formatMessage(messages.examAttemptsTableHeaderExamType),
-            Cell: ({ row }) => constants.ExamTypes[row.original.exam_type],
+            Cell: ({ row }) => ExamTypes[row.original.exam_type],
           },
           {
             Header: formatMessage(messages.examAttemptsTableHeaderStartedAt),
@@ -90,7 +111,7 @@ const AttemptList = ({ attempts }) => {
           },
           {
             Header: formatMessage(messages.examAttemptsTableHeaderStatus),
-            Cell: ({ row }) => constants.ExamAttemptStatus[row.original.status],
+            Cell: ({ row }) => ExamAttemptStatusUILabels[row.original.status],
           },
         ]}
       >
