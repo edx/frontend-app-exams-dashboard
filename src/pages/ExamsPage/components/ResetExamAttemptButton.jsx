@@ -15,10 +15,8 @@ const ResetExamAttemptButton = ({ username, examName, attemptId }) => {
   return (
     <>
       <div className="d-flex">
-        {messages.ResetExamAttemptButtonTitle.defaultMessage};
         <Button variant="link" size="sm" onClick={open}>
-          {/* TODO: Figure out why this has an extra semicolon on it by default */}
-          {formatMessage(messages.ResetExamAttemptButtonTitle)};
+          {formatMessage(messages.ResetExamAttemptButtonTitle)}
         </Button>
       </div>
       <ModalDialog
