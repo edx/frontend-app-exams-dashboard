@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import { DataTable, TextFilter, CheckboxFilter } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
+import * as constants from 'data/constants';
 import ResetExamAttemptButton from './ResetExamAttemptButton';
 import ReviewExamAttemptButton from './ReviewExamAttemptButton';
 import messages from '../messages';
-import ExamAttemptStatus from 'data/constants'
+// import ExamAttemptStatus from 'data/constants'
 
 const ExamTypes = {
   proctored: 'Proctored',
@@ -31,51 +32,51 @@ const ExamAttemptStatusUILabels = {
 const StatusFilterChoices = [
   {
     name: ExamAttemptStatusUILabels.created,
-    value: ExamAttemptStatus.created,
+    value: constants.ExamAttemptStatus.created,
   },
   {
     name: ExamAttemptStatusUILabels.download_software_clicked,
-    value: ExamAttemptStatus.download_software_clicked,
+    value: constants.ExamAttemptStatus.download_software_clicked,
   },
   {
     name: ExamAttemptStatusUILabels.ready_to_start,
-    value: ExamAttemptStatus.ready_to_start,
+    value: constants.ExamAttemptStatus.ready_to_start,
   },
   {
     name: ExamAttemptStatusUILabels.started,
-    value: ExamAttemptStatus.started,
+    value: constants.ExamAttemptStatus.started,
   },
   {
     name: ExamAttemptStatusUILabels.ready_to_submit,
-    value: ExamAttemptStatus.ready_to_submit,
+    value: constants.ExamAttemptStatus.ready_to_submit,
   },
   {
     name: ExamAttemptStatusUILabels.timed_out,
-    value: ExamAttemptStatus.timed_out,
+    value: constants.ExamAttemptStatus.timed_out,
   },
   {
     name: ExamAttemptStatusUILabels.submitted,
-    value: ExamAttemptStatus.submitted,
+    value: constants.ExamAttemptStatus.submitted,
   },
   {
     name: ExamAttemptStatusUILabels.verified,
-    value: ExamAttemptStatus.verified,
+    value: constants.ExamAttemptStatus.verified,
   },
   {
     name: ExamAttemptStatusUILabels.rejected,
-    value: ExamAttemptStatus.rejected,
+    value: constants.ExamAttemptStatus.rejected,
   },
   {
     name: ExamAttemptStatusUILabels.expired,
-    value: ExamAttemptStatus.expired,
+    value: constants.ExamAttemptStatus.expired,
   },
   {
     name: ExamAttemptStatusUILabels.second_review_required,
-    value: ExamAttemptStatus.second_review_required,
+    value: constants.ExamAttemptStatus.second_review_required,
   },
   {
     name: ExamAttemptStatusUILabels.error,
-    value: ExamAttemptStatus.error,
+    value: constants.ExamAttemptStatus.error,
   },
 ];
 

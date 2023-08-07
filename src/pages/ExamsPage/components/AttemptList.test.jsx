@@ -1,4 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import {
+  fireEvent, render, screen,
+} from '@testing-library/react';
 
 import AttemptList from './AttemptList';
 
@@ -20,7 +22,7 @@ describe('AttemptList', () => {
   const defaultAttemptsData = [
     {
       exam_name: 'Exam 1',
-      username: 'username',
+      username: 'username1',
       time_limit: 60,
       exam_type: 'timed',
       started_at: '2023-04-05T19:27:16.000000Z',
@@ -32,12 +34,12 @@ describe('AttemptList', () => {
     },
     {
       exam_name: 'Exam 2',
-      username: 'username',
+      username: 'username2',
       time_limit: 60,
       exam_type: 'proctored',
       started_at: '2023-04-05T19:37:16.000000Z',
       completed_at: '2023-04-05T19:37:17.000000Z',
-      status: 'second_review_required',
+      status: 'submitted',
       attempt_id: 1,
     },
   ];
@@ -74,5 +76,26 @@ describe('AttemptList', () => {
         })[index]).toBeInTheDocument();
       }
     });
+  });
+  it('filtering by status displays the correct entry', () => {
+    render(<AttemptList attempts={defaultAttemptsData} />);
+    // Get the 2nd row of data which has the values of defaultAttemptsData[1]
+    const secondRow = screen.getAllByRole('row')[2];
+    screen.getByText('Filters').click();
+    screen.getByLabelText('Second Review Required').click();
+    // Expect the first data entry, but not the second from defaultAttemptsData
+    // NOTE: row with index '0' in 'screen' is the header row.
+    expect(screen.getAllByRole('row')[1]).toBeInTheDocument();
+    expect(secondRow).not.toBeInTheDocument();
+  });
+  it('filtering by username displays the correct entry', () => {
+    render(<AttemptList attempts={defaultAttemptsData} />);
+    // Get the 2nd row of data which has the values of defaultAttemptsData[1]
+    const secondRow = screen.getAllByRole('row')[2];
+    const searchInput = screen.getByLabelText('Search username');
+    fireEvent.change(searchInput, { target: { value: 'username1' } });
+    // Expect the first data entry, but not the second from defaultAttemptsData
+    expect(screen.getAllByRole('row')[1]).toBeInTheDocument();
+    expect(secondRow).not.toBeInTheDocument();
   });
 });
