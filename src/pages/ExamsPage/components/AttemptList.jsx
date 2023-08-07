@@ -4,6 +4,7 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 import ResetExamAttemptButton from './ResetExamAttemptButton';
 import ReviewExamAttemptButton from './ReviewExamAttemptButton';
 import messages from '../messages';
+import ExamAttemptStatus from 'data/constants'
 
 const ExamTypes = {
   proctored: 'Proctored',
@@ -29,52 +30,52 @@ const ExamAttemptStatusUILabels = {
 
 const StatusFilterChoices = [
   {
-    name: 'Created',
-    value: 'created',
+    name: ExamAttemptStatusUILabels.created,
+    value: ExamAttemptStatus.created,
   },
   {
-    name: 'Download Software Clicked',
-    value: 'download_software_clicked',
+    name: ExamAttemptStatusUILabels.download_software_clicked,
+    value: ExamAttemptStatus.download_software_clicked,
   },
   {
-    name: 'Ready To Start',
-    value: 'ready_to_start',
+    name: ExamAttemptStatusUILabels.ready_to_start,
+    value: ExamAttemptStatus.ready_to_start,
   },
   {
-    name: 'Started',
-    value: 'started',
+    name: ExamAttemptStatusUILabels.started,
+    value: ExamAttemptStatus.started,
   },
   {
-    name: 'Ready To Submit',
-    value: 'ready_to_submit',
+    name: ExamAttemptStatusUILabels.ready_to_submit,
+    value: ExamAttemptStatus.ready_to_submit,
   },
   {
-    name: 'Timed Out',
-    value: 'timed_out',
+    name: ExamAttemptStatusUILabels.timed_out,
+    value: ExamAttemptStatus.timed_out,
   },
   {
-    name: 'Submitted',
-    value: 'submitted',
+    name: ExamAttemptStatusUILabels.submitted,
+    value: ExamAttemptStatus.submitted,
   },
   {
-    name: 'Verified',
-    value: 'verified',
+    name: ExamAttemptStatusUILabels.verified,
+    value: ExamAttemptStatus.verified,
   },
   {
-    name: 'Rejected',
-    value: 'rejected',
+    name: ExamAttemptStatusUILabels.rejected,
+    value: ExamAttemptStatus.rejected,
   },
   {
-    name: 'Expired',
-    value: 'expired',
+    name: ExamAttemptStatusUILabels.expired,
+    value: ExamAttemptStatus.expired,
   },
   {
-    name: 'Second Review Required',
-    value: 'second_review_required',
+    name: ExamAttemptStatusUILabels.second_review_required,
+    value: ExamAttemptStatus.second_review_required,
   },
   {
-    name: 'Error',
-    value: 'error',
+    name: ExamAttemptStatusUILabels.error,
+    value: ExamAttemptStatus.error,
   },
 ];
 
