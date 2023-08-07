@@ -76,7 +76,7 @@ const StatusFilterChoices = [
     name: 'Error',
     value: 'error',
   },
-]
+];
 
 // The button components must be compartmentalized here otherwise npm lint throws an unstable-nested-component error.
 const ResetButton = (row) => (
