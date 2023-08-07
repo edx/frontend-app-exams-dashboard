@@ -5,7 +5,6 @@ import * as constants from 'data/constants';
 import ResetExamAttemptButton from './ResetExamAttemptButton';
 import ReviewExamAttemptButton from './ReviewExamAttemptButton';
 import messages from '../messages';
-// import ExamAttemptStatus from 'data/constants'
 
 const ExamTypes = {
   proctored: 'Proctored',
