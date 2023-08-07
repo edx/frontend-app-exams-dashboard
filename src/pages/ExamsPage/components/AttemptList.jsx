@@ -51,7 +51,6 @@ const AttemptList = ({ attempts }) => {
 
   return (
     <div data-testid="attempt_list">
-      {console.log('attempts:', attempts)}
       <DataTable
         isLoading={attempts == null}
         isPaginated
