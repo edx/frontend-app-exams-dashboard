@@ -21,6 +21,58 @@ Object {
                 class="pgn__data-table-status-bar"
               >
                 <div
+                  class="pgn__data-table-actions"
+                >
+                  <div
+                    class="pgn__data-table-actions-left"
+                  >
+                    <div
+                      class="pgn__data-table-filters"
+                    >
+                      <div
+                        class="pgn__data-table-filters-breakout-filter"
+                      >
+                        <div
+                          class="pgn__form-group"
+                        >
+                          <label
+                            class="pgn__form-label sr-only"
+                            for="form-field2"
+                            id="text-filter-label-header_username-1"
+                          >
+                            Search username
+                          </label>
+                          <input
+                            aria-labelledby="text-filter-label-header_username-1"
+                            class="form-control"
+                            placeholder="Search username"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="dropdown"
+                      >
+                        <button
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="dropdown-toggle btn btn-outline-primary"
+                          id="table-filters-dropdown"
+                          type="button"
+                        >
+                          Filters
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="pgn__data-table-actions-right"
+                  >
+                    <div />
+                  </div>
+                </div>
+                <div
                   class="pgn__data-table-status"
                 >
                   <div
@@ -33,13 +85,8 @@ Object {
                     </div>
                   </div>
                   <div
-                    class="pgn__data-table-actions-right"
-                  >
-                    <div
-                      class="pgn__data-table-toggle"
-                    />
-                    <div />
-                  </div>
+                    class="pgn__data-table-toggle"
+                  />
                 </div>
               </div>
               <div
@@ -53,40 +100,6 @@ Object {
                     <tr
                       role="row"
                     >
-                      <th
-                        colspan="1"
-                        role="columnheader"
-                        style="cursor: pointer;"
-                        title="Toggle SortBy"
-                      >
-                        <span
-                          class="d-flex align-items-center"
-                        >
-                          <span>
-                            Exam Name
-                          </span>
-                          <span
-                            class="pgn__icon"
-                            style="opacity: 0.5;"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              fill="none"
-                              focusable="false"
-                              height="24"
-                              role="img"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
-                                fill="currentColor"
-                              />
-                            </svg>
-                          </span>
-                        </span>
-                      </th>
                       <th
                         colspan="1"
                         role="columnheader"
@@ -194,12 +207,34 @@ Object {
                       <th
                         colspan="1"
                         role="columnheader"
+                        style="cursor: pointer;"
+                        title="Toggle SortBy"
                       >
                         <span
                           class="d-flex align-items-center"
                         >
                           <span>
                             Status
+                          </span>
+                          <span
+                            class="pgn__icon"
+                            style="opacity: 0.5;"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              fill="none"
+                              focusable="false"
+                              height="24"
+                              role="img"
+                              viewBox="0 0 24 24"
+                              width="24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
+                                fill="currentColor"
+                              />
+                            </svg>
                           </span>
                         </span>
                       </th>
@@ -240,13 +275,7 @@ Object {
                         class="pgn__data-table-cell-wrap"
                         role="cell"
                       >
-                        Exam 1
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        username
+                        username1
                       </td>
                       <td
                         class="pgn__data-table-cell-wrap"
@@ -329,13 +358,7 @@ Object {
                         class="pgn__data-table-cell-wrap"
                         role="cell"
                       >
-                        Exam 2
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        username
+                        username2
                       </td>
                       <td
                         class="pgn__data-table-cell-wrap"
@@ -365,7 +388,7 @@ Object {
                         class="pgn__data-table-cell-wrap"
                         role="cell"
                       >
-                        Second Review Required
+                        Submitted
                       </td>
                       <td
                         class="pgn__data-table-cell-wrap"
@@ -385,30 +408,7 @@ Object {
                       <td
                         class="pgn__data-table-cell-wrap"
                         role="cell"
-                      >
-                        <div
-                          class="d-flex text-danger"
-                        >
-                          <button
-                            class="text-danger btn btn-link btn-sm"
-                            type="button"
-                          >
-                            <svg
-                              fill="none"
-                              height="24"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
-                                fill="currentColor"
-                              />
-                            </svg>
-                            Second Review Required
-                          </button>
-                        </div>
-                      </td>
+                      />
                     </tr>
                   </tbody>
                 </table>
@@ -530,6 +530,58 @@ Object {
               class="pgn__data-table-status-bar"
             >
               <div
+                class="pgn__data-table-actions"
+              >
+                <div
+                  class="pgn__data-table-actions-left"
+                >
+                  <div
+                    class="pgn__data-table-filters"
+                  >
+                    <div
+                      class="pgn__data-table-filters-breakout-filter"
+                    >
+                      <div
+                        class="pgn__form-group"
+                      >
+                        <label
+                          class="pgn__form-label sr-only"
+                          for="form-field2"
+                          id="text-filter-label-header_username-1"
+                        >
+                          Search username
+                        </label>
+                        <input
+                          aria-labelledby="text-filter-label-header_username-1"
+                          class="form-control"
+                          placeholder="Search username"
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="dropdown"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        class="dropdown-toggle btn btn-outline-primary"
+                        id="table-filters-dropdown"
+                        type="button"
+                      >
+                        Filters
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="pgn__data-table-actions-right"
+                >
+                  <div />
+                </div>
+              </div>
+              <div
                 class="pgn__data-table-status"
               >
                 <div
@@ -542,13 +594,8 @@ Object {
                   </div>
                 </div>
                 <div
-                  class="pgn__data-table-actions-right"
-                >
-                  <div
-                    class="pgn__data-table-toggle"
-                  />
-                  <div />
-                </div>
+                  class="pgn__data-table-toggle"
+                />
               </div>
             </div>
             <div
@@ -562,40 +609,6 @@ Object {
                   <tr
                     role="row"
                   >
-                    <th
-                      colspan="1"
-                      role="columnheader"
-                      style="cursor: pointer;"
-                      title="Toggle SortBy"
-                    >
-                      <span
-                        class="d-flex align-items-center"
-                      >
-                        <span>
-                          Exam Name
-                        </span>
-                        <span
-                          class="pgn__icon"
-                          style="opacity: 0.5;"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            fill="none"
-                            focusable="false"
-                            height="24"
-                            role="img"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </span>
-                      </span>
-                    </th>
                     <th
                       colspan="1"
                       role="columnheader"
@@ -703,12 +716,34 @@ Object {
                     <th
                       colspan="1"
                       role="columnheader"
+                      style="cursor: pointer;"
+                      title="Toggle SortBy"
                     >
                       <span
                         class="d-flex align-items-center"
                       >
                         <span>
                           Status
+                        </span>
+                        <span
+                          class="pgn__icon"
+                          style="opacity: 0.5;"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            fill="none"
+                            focusable="false"
+                            height="24"
+                            role="img"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
+                              fill="currentColor"
+                            />
+                          </svg>
                         </span>
                       </span>
                     </th>
@@ -749,13 +784,7 @@ Object {
                       class="pgn__data-table-cell-wrap"
                       role="cell"
                     >
-                      Exam 1
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      username
+                      username1
                     </td>
                     <td
                       class="pgn__data-table-cell-wrap"
@@ -838,13 +867,7 @@ Object {
                       class="pgn__data-table-cell-wrap"
                       role="cell"
                     >
-                      Exam 2
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      username
+                      username2
                     </td>
                     <td
                       class="pgn__data-table-cell-wrap"
@@ -874,7 +897,7 @@ Object {
                       class="pgn__data-table-cell-wrap"
                       role="cell"
                     >
-                      Second Review Required
+                      Submitted
                     </td>
                     <td
                       class="pgn__data-table-cell-wrap"
@@ -894,30 +917,7 @@ Object {
                     <td
                       class="pgn__data-table-cell-wrap"
                       role="cell"
-                    >
-                      <div
-                        class="d-flex text-danger"
-                      >
-                        <button
-                          class="text-danger btn btn-link btn-sm"
-                          type="button"
-                        >
-                          <svg
-                            fill="none"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                          Second Review Required
-                        </button>
-                      </div>
-                    </td>
+                    />
                   </tr>
                 </tbody>
               </table>
