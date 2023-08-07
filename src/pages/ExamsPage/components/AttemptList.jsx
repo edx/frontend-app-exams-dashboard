@@ -2,15 +2,47 @@ import PropTypes from 'prop-types';
 import { DataTable } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import ResetExamAttemptButton from './ResetExamAttemptButton';
+import ReviewExamAttemptButton from './ReviewExamAttemptButton';
+import messages from '../messages';
 
-const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
+const ExamTypes = {
+  proctored: 'Proctored',
+  timed: 'Timed',
+  practice: 'Practice',
+  onboarding: 'Onboarding',
+};
 
-// This component has to be compartmentalized here otherwise npm lint throws an unstable-nested-component error.
+const ExamAttemptStatusUILabels = {
+  created: 'Created',
+  download_software_clicked: 'Download Software Clicked',
+  ready_to_start: 'Ready To Start',
+  started: 'Started',
+  ready_to_submit: 'Ready To Submit',
+  timed_out: 'Timed Out',
+  submitted: 'Submitted',
+  verified: 'Verified',
+  rejected: 'Rejected',
+  expired: 'Expired',
+  second_review_required: 'Second Review Required',
+  error: 'Error',
+};
+
+// The button components must be compartmentalized here otherwise npm lint throws an unstable-nested-component error.
 const ResetButton = (row) => (
   <ResetExamAttemptButton
     username={row.original.username}
     examName={row.original.exam_name}
     attemptId={row.original.attempt_id}
+  />
+);
+
+const ReviewButton = (row) => (
+  <ReviewExamAttemptButton
+    username={row.original.username}
+    examName={row.original.exam_name}
+    attemptId={row.original.attempt_id}
+    severity={row.original.severity}
+    submissionReason={row.original.submission_reason}
   />
 );
 
@@ -20,6 +52,7 @@ const AttemptList = ({ attempts }) => {
   return (
     <div data-testid="attempt_list">
       <DataTable
+        isLoading={attempts == null}
         isPaginated
         initialState={{
           pageSize: 20,
@@ -29,58 +62,35 @@ const AttemptList = ({ attempts }) => {
         additionalColumns={[
           {
             id: 'action',
-            Header: formatMessage({
-              id: 'AttemptsList.action',
-              defaultMessage: 'Action',
-              description: 'Table header for the table column listing action to reset the exam attempt',
-            }),
+            Header: formatMessage(messages.examAttemptsTableHeaderAction),
             Cell: ({ row }) => ResetButton(row),
+          },
+          {
+            id: 'review',
+            Header: formatMessage(messages.examAttemptsTableHeaderReview),
+            Cell: ({ row }) => (row.original.status === 'second_review_required' ? ReviewButton(row) : null),
           },
         ]}
         data={attempts}
         columns={[
           {
-            Header: formatMessage({
-              id: 'AttemptsList.exam_name',
-              defaultMessage: 'Exam Name',
-              description: 'Table header for the table column listing the exam name',
-            }),
+            Header: formatMessage(messages.examAttemptsTableHeaderExamName),
             accessor: 'exam_name',
           },
           {
-            Header: formatMessage({
-              id: 'AttemptsList.username',
-              defaultMessage: 'Username',
-              description: 'Table header for the table column listing the username',
-            }),
+            Header: formatMessage(messages.examAttemptsTableHeaderUsername),
             accessor: 'username',
           },
           {
-            Header: formatMessage({
-              id: 'AttemptsList.time_limit',
-              defaultMessage: 'Time Limit',
-              description: 'Table header for the table column listing the time limit to complete the exam',
-            }),
-            Cell: ({ row }) => formatMessage({
-              id: 'AttemptsList.time_limit',
-              defaultMessage: `${row.original.time_limit} minutes`,
-              description: 'Data cell for the time limit to complete the exam',
-            }),
+            Header: formatMessage(messages.examAttemptsTableHeaderTimeLimit),
+            accessor: 'time_limit',
           },
           {
-            Header: formatMessage({
-              id: 'AttemptsList.exam_type',
-              defaultMessage: 'Exam Type',
-              description: 'Table header for the type of the exam',
-            }),
-            Cell: ({ row }) => (capitalizeFirstLetter(row.original.exam_type)),
+            Header: formatMessage(messages.examAttemptsTableHeaderExamType),
+            Cell: ({ row }) => ExamTypes[row.original.exam_type],
           },
           {
-            Header: formatMessage({
-              id: 'AttemptsList.started_at',
-              defaultMessage: 'Started At',
-              description: 'Table header for the time the exam attempt was started',
-            }),
+            Header: formatMessage(messages.examAttemptsTableHeaderStartedAt),
             Cell: ({ row }) => (formatDate(row.original.started_at, {
               year: 'numeric',
               month: 'numeric',
@@ -90,11 +100,7 @@ const AttemptList = ({ attempts }) => {
             })),
           },
           {
-            Header: formatMessage({
-              id: 'AttemptsList.completed_at',
-              defaultMessage: 'Completed At',
-              description: 'Table header for the time the exam attempt was completed',
-            }),
+            Header: formatMessage(messages.examAttemptsTableHeaderCompletedAt),
             Cell: ({ row }) => (formatDate(row.original.completed_at, {
               year: 'numeric',
               month: 'numeric',
@@ -104,23 +110,14 @@ const AttemptList = ({ attempts }) => {
             })),
           },
           {
-            Header: formatMessage({
-              id: 'AttemptsList.status',
-              defaultMessage: 'Status',
-              description: 'Table header for the current status of the exam attempt',
-            }),
-            Cell: ({ row }) => (capitalizeFirstLetter(row.original.status)),
+            Header: formatMessage(messages.examAttemptsTableHeaderStatus),
+            Cell: ({ row }) => ExamAttemptStatusUILabels[row.original.status],
           },
         ]}
       >
         <DataTable.TableControlBar />
         <DataTable.Table />
-        <DataTable.EmptyTable content={formatMessage({
-          id: 'AttemptsList.DataTable.EmptyTable',
-          defaultMessage: 'No results found.',
-          description: 'Message that appears in the table if no data is found',
-        })}
-        />
+        <DataTable.EmptyTable content={formatMessage(messages.examAttemptsTableHeaderEmptyTable)} />
         <DataTable.TableFooter />
       </DataTable>
     </div>
