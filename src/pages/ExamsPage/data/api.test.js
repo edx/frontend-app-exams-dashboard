@@ -31,8 +31,10 @@ describe('ExamsPage data api', () => {
   describe('getExamAttempts', () => {
     it('calls get on instructor view url with exam id', async () => {
       axiosMock.onGet().reply(200, []);
-      const data = await api.getExamAttempts(examId);
-      expect(axiosMock.history.get[1].url).toBe('test-exams-url/api/v1/instructor_view/attempts?exam_id=0&limit=1000000');
+      const data = await api.getExamAttempts(courseId, examId);
+      expect(axiosMock.history.get[1].url).toBe(
+        `test-exams-url/api/v1/instructor_view/course_id/${courseId}/attempts?exam_id=0&limit=1000000`,
+      );
       expect(data).toEqual([]);
     });
   });

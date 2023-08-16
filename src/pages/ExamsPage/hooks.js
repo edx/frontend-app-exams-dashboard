@@ -30,11 +30,12 @@ export const useFetchCourseExams = () => {
 
 export const useFetchExamAttempts = () => {
   const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
+  const courseId = useSelector(selectors.courseId);
   const dispatch = useDispatch();
   return (examId) => (
     makeNetworkRequest({
       requestKey: RequestKeys.fetchExamAttempts,
-      promise: api.getExamAttempts(examId),
+      promise: api.getExamAttempts(courseId, examId),
       onSuccess: (response) => dispatch(reducer.loadExamAttempts(response)),
     })
   );
@@ -66,7 +67,11 @@ export const useModifyExamAttempt = () => {
 
 export const useInitializeExamsPage = (courseId) => {
   const fetchCourseExams = module.useFetchCourseExams();
-  React.useEffect(() => { fetchCourseExams(courseId); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    fetchCourseExams(courseId);
+    dispatch(reducer.setCourseId(courseId));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
 export const useSetCurrentExam = () => {

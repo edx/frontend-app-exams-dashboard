@@ -27,6 +27,7 @@ describe('ExamsPage reducer', () => {
           ],
         };
         expect(reducer(initialState, action)).toEqual({
+          courseId: null,
           currentExamIndex: 0,
           examsList: [
             {
@@ -72,6 +73,7 @@ describe('ExamsPage reducer', () => {
           },
         };
         expect(reducer(initialState, action)).toEqual({
+          courseId: null,
           currentExamIndex: 0,
           examsList: [],
           attemptsList: [
@@ -312,6 +314,20 @@ describe('ExamsPage reducer', () => {
           currentExamIndex: 0,
           examsList: state.examsList,
           attemptsList: state.attemptsList,
+        });
+      });
+    });
+    describe('setCourseId', () => {
+      it('sets the courseId', () => {
+        const action = {
+          type: 'exams/setCourseId',
+          payload: 'course-v1:edX+Test+Test',
+        };
+        expect(reducer(initialState, action)).toEqual({
+          currentExamIndex: 0,
+          examsList: [],
+          attemptsList: [],
+          courseId: 'course-v1:edX+Test+Test',
         });
       });
     });
