@@ -29,6 +29,7 @@ const testAttempts = [{
 
 const testState = {
   exams: {
+    courseId: 'course-v1:edX+Test+Test',
     examsList: testExams,
     currentExamIndex: 1,
     attemptsList: testAttempts,
@@ -49,6 +50,11 @@ describe('ExamsPage data selectors', () => {
   describe('selectExamAttemptsList', () => {
     it('should return attemptsList from store', () => {
       expect(selectors.courseExamAttemptsList(testState)).toEqual(testAttempts);
+    });
+  });
+  describe('selectCourseId', () => {
+    it('should return courseId from store', () => {
+      expect(selectors.courseId(testState)).toEqual('course-v1:edX+Test+Test');
     });
   });
 });

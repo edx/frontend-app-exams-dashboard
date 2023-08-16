@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import * as constants from 'data/constants';
 
 export const initialState = {
+  courseId: null,
   currentExamIndex: 0,
   examsList: [],
   attemptsList: [],
@@ -23,6 +24,10 @@ const slice = createSlice({
   name: 'exams',
   initialState,
   reducers: {
+    setCourseId: (state, courseId) => ({
+      ...state,
+      courseId: courseId.payload,
+    }),
     loadExams: (state, { payload }) => ({
       ...state,
       examsList: payload.map((exam) => ({
@@ -85,6 +90,7 @@ export const {
   deleteExamAttempt,
   modifyExamAttemptStatus,
   setCurrentExam,
+  setCourseId,
 } = slice.actions;
 
 export const {

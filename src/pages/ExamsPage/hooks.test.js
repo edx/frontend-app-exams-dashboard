@@ -7,8 +7,10 @@ import * as api from './data/api';
 import * as hooks from './hooks';
 
 const mockDispatch = jest.fn();
+const mockUseSelector = jest.fn();
 jest.mock('react-redux', () => ({
   useDispatch: () => mockDispatch,
+  useSelector: () => mockUseSelector,
 }));
 
 jest.mock('data/redux/hooks', () => ({
@@ -23,7 +25,7 @@ describe('ExamsPage hooks', () => {
     jest.restoreAllMocks();
   });
   describe('useInitializeExamsPage', () => {
-    it('calls useFetchCourseExams on component load', () => {
+    it('calls useFetchCourseExams and sets course id on component load', () => {
       const mockFetchCourseExams = jest.fn();
       jest.spyOn(hooks, 'useFetchCourseExams').mockImplementation(() => mockFetchCourseExams);
       hooks.useInitializeExamsPage('course-1');
@@ -32,6 +34,10 @@ describe('ExamsPage hooks', () => {
       expect(mockFetchCourseExams).not.toHaveBeenCalled();
       cb();
       expect(mockFetchCourseExams).toHaveBeenCalledWith('course-1');
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: 'course-1',
+        type: 'exams/setCourseId',
+      });
     });
   });
   describe('useFetchCourseExams', () => {
