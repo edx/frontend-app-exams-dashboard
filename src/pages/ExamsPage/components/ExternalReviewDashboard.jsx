@@ -1,13 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Button } from '@edx/paragon';
+import { useIntl } from '@edx/frontend-platform/i18n';
+import { Launch } from '@edx/paragon/icons';
 import { getLaunchUrlByExamId } from '../utils';
+import messages from '../messages';
 
-const ExternalReviewDashboard = ({ exam }) => (
-  <div data-testid="review_dash">
-    {exam && <iframe title="lti_tool" src={getLaunchUrlByExamId(exam.id)} width="100%" height="1100" style={{ border: 'none' }} />}
-  </div>
-);
+const ltiToolEmbed = false; // This is set to false for now but will eventually need to be a configurable variable.
+
+const ExternalReviewDashboard = ({ exam }) => {
+  const { formatMessage } = useIntl();
+
+  // By default, launch instructor tool in a new tab. Otherwise, embed in dashboard as iframe.
+  return (
+    <div data-testid="review_dash">
+      <div style={{ padding: 10 }}>
+        {!ltiToolEmbed && exam && (
+          <Button as="a" title="lti_link" target="_blank" href={getLaunchUrlByExamId(exam.id)}>
+            {formatMessage(messages.ReviewDashboardOpenLTITool)}
+            <Launch />
+          </Button>
+        )}
+      </div>
+      {ltiToolEmbed && exam && <iframe title="lti_tool" src={getLaunchUrlByExamId(exam.id)} width="100%" height="1100" style={{ border: 'none' }} />}
+    </div>
+  );
+};
 
 ExternalReviewDashboard.propTypes = {
   exam: PropTypes.shape({
