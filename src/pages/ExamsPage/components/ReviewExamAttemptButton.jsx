@@ -4,25 +4,72 @@ import {
   Button, useToggle, ModalDialog, ActionRow,
 } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
-import { Warning } from '@edx/paragon/icons';
+import { Info, Warning } from '@edx/paragon/icons';
 import * as constants from 'data/constants';
 import { useModifyExamAttempt } from '../hooks';
 import messages from '../messages';
+import { getLaunchUrlByExamId, getMessageLabelForStatus } from '../utils';
+
+const ReviewableStatuses = [
+  constants.ExamAttemptStatus.error,
+  constants.ExamAttemptStatus.rejected,
+  constants.ExamAttemptStatus.second_review_required,
+  constants.ExamAttemptStatus.verified,
+];
+
+const ReviewRequiredStatuses = [
+  constants.ExamAttemptStatus.error,
+  constants.ExamAttemptStatus.second_review_required,
+];
 
 const ReviewExamAttemptButton = ({
-  username, examName, attemptId, severity, submissionReason,
+  username, examName, attemptId, attemptStatus, severity, submissionReason,
 }) => {
   const [isOpen, open, close] = useToggle(false);
   const modifyExamAttempt = useModifyExamAttempt();
   const { formatMessage } = useIntl();
 
+  const getButton = (status) => {
+    if (ReviewRequiredStatuses.includes(status)) {
+      return (
+        <Button variant="link" size="sm" className="text-danger" onClick={open}>
+          <Warning />
+          {formatMessage(messages.ReviewRequiredButtonTitle)}
+        </Button>
+      );
+    }
+    if (ReviewableStatuses.includes(status)) {
+      return (
+        <Button variant="link" size="sm" className="text-info" onClick={open}>
+          <Info />
+          {formatMessage(messages.ReviewableButtonTitle)}
+        </Button>
+      );
+    }
+
+    // attempt is not reviewable, don't render a button
+    return null;
+  };
+
+  const getBodyText = (status) => {
+    if (status === constants.ExamAttemptStatus.error) {
+      return formatMessage(messages.ReviewExamAttemptModalBodyError);
+    }
+    if (ReviewRequiredStatuses.includes(status)) {
+      return formatMessage(messages.ReviewExamAttemptModalBodyReviewRequried);
+    }
+    if (ReviewableStatuses.includes(status)) {
+      return formatMessage(messages.ReviewExamAttemptModalBodyManageReview, {
+        statusLabel: formatMessage(getMessageLabelForStatus(status)),
+      });
+    }
+    return null; // we should not get here
+  };
+
   return (
     <>
       <div className="d-flex text-danger">
-        <Button variant="link" size="sm" className="text-danger" onClick={open}>
-          <Warning />
-          {formatMessage(messages.ReviewExamAttemptButtonTitle)}
-        </Button>
+        { getButton(attemptStatus) }
       </div>
       <ModalDialog
         title="my dialog"
@@ -40,13 +87,19 @@ const ReviewExamAttemptButton = ({
         </ModalDialog.Header>
 
         <ModalDialog.Body>
-          <p>{formatMessage(messages.ReviewExamAttemptButtonModalBody)}</p>
+          <p>{getBodyText(attemptStatus)}</p>
           <ul>
             <li>{formatMessage(messages.Username)}{username}</li>
             <li>{formatMessage(messages.ExamName)}{examName}</li>
             <li>{formatMessage(messages.SuspicionLevel)}{severity}</li>
             <li>{formatMessage(messages.SubmissionReason)}{submissionReason}</li>
           </ul>
+          <p>{formatMessage(messages.ReviewExamAttemptModalBodySessionInfo)}</p>
+          <ActionRow>
+            <Button as="a" href={getLaunchUrlByExamId(attemptId)} variant="secondary">
+              {formatMessage(messages.reviewDashboardTabTitle)}
+            </Button>
+          </ActionRow>
         </ModalDialog.Body>
 
         <ModalDialog.Footer>
@@ -81,6 +134,7 @@ ReviewExamAttemptButton.propTypes = {
   username: PropTypes.string.isRequired,
   examName: PropTypes.string.isRequired,
   attemptId: PropTypes.number.isRequired,
+  attemptStatus: PropTypes.string.isRequired,
   severity: PropTypes.number.isRequired,
   submissionReason: PropTypes.string.isRequired,
 };

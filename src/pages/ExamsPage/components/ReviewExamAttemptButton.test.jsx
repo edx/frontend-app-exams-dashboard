@@ -34,12 +34,12 @@ describe('ReviewExamAttemptButton', () => {
   });
   it('Modal appears upon clicking button', () => {
     render(reviewButton);
-    screen.getByText('Second Review Required').click();
+    screen.getByText('Review Required').click();
     expect(screen.getByText('Please confirm your choice.')).toBeInTheDocument();
   });
   it('Clicking the No button closes the modal', () => {
     render(reviewButton);
-    screen.getByText('Second Review Required').click();
+    screen.getByText('Review Required').click();
     screen.getByText('No (Cancel)').click();
     // Using queryByText here allows the function to throw
     expect(screen.queryByText('Please confirm your choice.')).not.toBeInTheDocument();
@@ -48,7 +48,7 @@ describe('ReviewExamAttemptButton', () => {
     const mockModifyExamAttempt = jest.fn();
     jest.spyOn(hooks, 'useModifyExamAttempt').mockImplementation(() => mockModifyExamAttempt);
     render(reviewButton);
-    screen.getByText('Second Review Required').click();
+    screen.getByText('Review Required').click();
     screen.getByText('Verify').click();
     expect(mockModifyExamAttempt).toHaveBeenCalledWith(0, constants.ExamAttemptActions.verify);
   });
@@ -56,7 +56,7 @@ describe('ReviewExamAttemptButton', () => {
     const mockModifyExamAttempt = jest.fn();
     jest.spyOn(hooks, 'useModifyExamAttempt').mockImplementation(() => mockModifyExamAttempt);
     render(reviewButton);
-    screen.getByText('Second Review Required').click();
+    screen.getByText('Review Required').click();
     screen.getByText('Reject').click();
     expect(mockModifyExamAttempt).toHaveBeenCalledWith(0, constants.ExamAttemptActions.reject);
   });
