@@ -19,6 +19,7 @@ const reviewButton = (
     username="username"
     examName="examName"
     attemptId={0}
+    attemptStatus={constants.ExamAttemptStatus.second_review_required}
     severity={1.0}
     submissionReason="Submitted by user"
   />

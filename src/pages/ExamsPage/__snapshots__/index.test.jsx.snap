@@ -442,7 +442,11 @@ Object {
                               <td
                                 class="pgn__data-table-cell-wrap"
                                 role="cell"
-                              />
+                              >
+                                <div
+                                  class="d-flex text-danger"
+                                />
+                              </td>
                             </tr>
                           </tbody>
                         </table>
@@ -989,7 +993,11 @@ Object {
                             <td
                               class="pgn__data-table-cell-wrap"
                               role="cell"
-                            />
+                            >
+                              <div
+                                class="d-flex text-danger"
+                              />
+                            </td>
                           </tr>
                         </tbody>
                       </table>

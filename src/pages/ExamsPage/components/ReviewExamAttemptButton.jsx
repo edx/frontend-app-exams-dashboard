@@ -135,8 +135,13 @@ ReviewExamAttemptButton.propTypes = {
   examName: PropTypes.string.isRequired,
   attemptId: PropTypes.number.isRequired,
   attemptStatus: PropTypes.string.isRequired,
-  severity: PropTypes.number.isRequired,
-  submissionReason: PropTypes.string.isRequired,
+  severity: PropTypes.number,
+  submissionReason: PropTypes.string,
+};
+
+ReviewExamAttemptButton.defaultProps = {
+  severity: null,
+  submissionReason: null,
 };
 
 export default ReviewExamAttemptButton;
