@@ -36,14 +36,14 @@ describe('ReviewExamAttemptButton', () => {
   it('Modal appears upon clicking button', () => {
     render(reviewButton());
     screen.getByText('Review Required').click();
-    expect(screen.getByText('Please confirm your choice.')).toBeInTheDocument();
+    expect(screen.getByText('Update review status')).toBeInTheDocument();
   });
   it('Clicking the No button closes the modal', () => {
     render(reviewButton());
     screen.getByText('Review Required').click();
-    screen.getByText('No (Cancel)').click();
+    screen.getByText('Cancel').click();
     // Using queryByText here allows the function to throw
-    expect(screen.queryByText('Please confirm your choice.')).not.toBeInTheDocument();
+    expect(screen.queryByText('Update review status')).not.toBeInTheDocument();
   });
   it('Clicking the Verify button calls the modify exam attempt hook', () => {
     const mockModifyExamAttempt = jest.fn();
@@ -84,7 +84,7 @@ describe('ReviewExamAttemptButton', () => {
     test('existing review', () => {
       render(reviewButton(constants.ExamAttemptStatus.verified));
       screen.getByText('Manage Review').click();
-      expect(screen.getByText(/attempt is verified/i)).toBeInTheDocument();
+      expect(screen.getByText(/attempt has a verified review/i)).toBeInTheDocument();
     });
     test('error status', () => {
       render(reviewButton(constants.ExamAttemptStatus.error));

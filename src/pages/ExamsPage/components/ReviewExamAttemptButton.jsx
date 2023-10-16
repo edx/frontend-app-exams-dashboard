@@ -96,7 +96,7 @@ const ReviewExamAttemptButton = ({
           </ul>
           <p>{formatMessage(messages.ReviewExamAttemptModalBodySessionInfo)}</p>
           <ActionRow>
-            <Button as="a" href={getLaunchUrlByExamId(attemptId)} variant="secondary">
+            <Button as="a" href={getLaunchUrlByExamId(attemptId)} variant="link">
               {formatMessage(messages.reviewDashboardTabTitle)}
             </Button>
           </ActionRow>
@@ -108,18 +108,20 @@ const ReviewExamAttemptButton = ({
               {formatMessage(messages.ReviewExamAttemptButtonCancel)}
             </ModalDialog.CloseButton>
             <Button
-              variant="primary"
+              variant="success"
               onClick={e => { // eslint-disable-line no-unused-vars
                 modifyExamAttempt(attemptId, constants.ExamAttemptActions.verify);
               }}
+              disabled={attemptStatus === constants.ExamAttemptStatus.verified}
             >
               {formatMessage(messages.ReviewExamAttemptButtonVerify)}
             </Button>
             <Button
-              variant="primary"
+              variant="danger"
               onClick={e => { // eslint-disable-line no-unused-vars
                 modifyExamAttempt(attemptId, constants.ExamAttemptActions.reject);
               }}
+              disabled={attemptStatus === constants.ExamAttemptStatus.rejected}
             >
               {formatMessage(messages.ReviewExamAttemptButtonReject)}
             </Button>

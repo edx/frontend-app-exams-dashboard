@@ -148,7 +148,7 @@ const messages = defineMessages({
   },
   ResetExamAttemptButtonCancel: {
     id: 'ResetExamAttemptButton.cancel_button',
-    defaultMessage: 'No (Cancel)',
+    defaultMessage: 'Cancel',
     description: 'Text for the button to cancel resetting an exam attempt',
   },
   ResetExamAttemptButtonConfirm: {
@@ -170,7 +170,7 @@ const messages = defineMessages({
   },
   ReviewExamAttemptButtonModalTitle: {
     id: 'ReviewExamAttemptButton.confirmation_modal_title',
-    defaultMessage: 'Please confirm your choice.',
+    defaultMessage: 'Update review status',
     description: 'Title header of the modal that appears to confirm the review of an exam attempt',
   },
   ReviewExamAttemptModalBodyReviewRequried: {
@@ -180,7 +180,7 @@ const messages = defineMessages({
   },
   ReviewExamAttemptModalBodyManageReview: {
     id: 'ReviewExamAttemptButton.confirmation_modal_body.review_manage',
-    defaultMessage: 'This exam attempt is {statusLabel}. Select a option manually override the review status for this session.',
+    defaultMessage: 'This exam attempt has a {statusLabel} review. Select a option manually override the review status for this session.',
     description: 'Body text of the review modal that appears when an exam attempt has an existing review',
   },
   ReviewExamAttemptModalBodyError: {
@@ -195,7 +195,7 @@ const messages = defineMessages({
   },
   ReviewExamAttemptButtonCancel: {
     id: 'ReviewExamAttemptButton.cancel_button',
-    defaultMessage: 'No (Cancel)',
+    defaultMessage: 'Cancel',
     description: 'Text for the button to cancel reviewing an exam attempt',
   },
   ReviewExamAttemptButtonVerify: {
