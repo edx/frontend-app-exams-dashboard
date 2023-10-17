@@ -29,7 +29,7 @@ const messages = defineMessages({
   statusLabelDownloadSoftwareClicked: {
     id: 'ExamsPage.status_label.download_software_clicked',
     defaultMessage: 'Download Software Clicked',
-    description: 'Label for the status of an exam attempt that has clicked to download the proctoring software',
+    description: 'Label for the status of an exam attempt in which a learner has started to download the proctoring software',
   },
   statusLabelReadyToStart: {
     id: 'ExamsPage.status_label.ready_to_start',
@@ -180,7 +180,7 @@ const messages = defineMessages({
   },
   ReviewExamAttemptModalBodyManageReview: {
     id: 'ReviewExamAttemptButton.confirmation_modal_body.review_manage',
-    defaultMessage: 'This exam attempt has a {statusLabel} review. Select a option to manually override the review status for this session.',
+    defaultMessage: 'This exam attempt has a {statusLabel} review. You may manually override the review status for this session.',
     description: 'Body text of the review modal that appears when an exam attempt has an existing review',
   },
   ReviewExamAttemptModalBodyError: {

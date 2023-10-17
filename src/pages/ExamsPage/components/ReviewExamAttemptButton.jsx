@@ -107,24 +107,28 @@ const ReviewExamAttemptButton = ({
             <ModalDialog.CloseButton variant="tertiary">
               {formatMessage(messages.ReviewExamAttemptButtonCancel)}
             </ModalDialog.CloseButton>
-            <Button
-              variant="success"
-              onClick={e => { // eslint-disable-line no-unused-vars
-                modifyExamAttempt(attemptId, constants.ExamAttemptActions.verify);
-              }}
-              disabled={attemptStatus === constants.ExamAttemptStatus.verified}
-            >
-              {formatMessage(messages.ReviewExamAttemptButtonVerify)}
-            </Button>
-            <Button
-              variant="danger"
-              onClick={e => { // eslint-disable-line no-unused-vars
-                modifyExamAttempt(attemptId, constants.ExamAttemptActions.reject);
-              }}
-              disabled={attemptStatus === constants.ExamAttemptStatus.rejected}
-            >
-              {formatMessage(messages.ReviewExamAttemptButtonReject)}
-            </Button>
+            { attemptStatus !== constants.ExamAttemptStatus.verified
+              && (
+              <Button
+                variant="success"
+                onClick={e => { // eslint-disable-line no-unused-vars
+                  modifyExamAttempt(attemptId, constants.ExamAttemptActions.verify);
+                }}
+              >
+                {formatMessage(messages.ReviewExamAttemptButtonVerify)}
+              </Button>
+              )}
+            { attemptStatus !== constants.ExamAttemptStatus.rejected
+              && (
+              <Button
+                variant="danger"
+                onClick={e => { // eslint-disable-line no-unused-vars
+                  modifyExamAttempt(attemptId, constants.ExamAttemptActions.reject);
+                }}
+              >
+                {formatMessage(messages.ReviewExamAttemptButtonReject)}
+              </Button>
+              )}
           </ActionRow>
         </ModalDialog.Footer>
       </ModalDialog>
