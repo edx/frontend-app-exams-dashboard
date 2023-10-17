@@ -31,7 +31,7 @@ describe('ResetExamAttemptButton', () => {
   it('Clicking the No button closes the modal', () => {
     render(resetButton);
     screen.getByText('Reset').click();
-    screen.getByText('No (Cancel)').click();
+    screen.getByText('Cancel').click();
     // Using queryByText here allows the function to throw
     expect(screen.queryByText('Please confirm your choice.')).not.toBeInTheDocument();
   });

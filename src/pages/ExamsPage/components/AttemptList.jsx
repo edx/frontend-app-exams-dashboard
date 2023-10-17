@@ -6,6 +6,7 @@ import ResetExamAttemptButton from './ResetExamAttemptButton';
 import ReviewExamAttemptButton from './ReviewExamAttemptButton';
 import messages from '../messages';
 
+// TODO: these should be updated to use intl messages
 const ExamTypes = {
   proctored: 'Proctored',
   timed: 'Timed',
@@ -13,6 +14,7 @@ const ExamTypes = {
   onboarding: 'Onboarding',
 };
 
+// TODO: these should be updated to use intl messages
 const ExamAttemptStatusUILabels = {
   created: 'Created',
   download_software_clicked: 'Download Software Clicked',
@@ -93,6 +95,7 @@ const ReviewButton = (row) => (
     username={row.original.username}
     examName={row.original.exam_name}
     attemptId={row.original.attempt_id}
+    attemptStatus={row.original.status}
     severity={row.original.severity}
     submissionReason={row.original.submission_reason}
   />
@@ -122,7 +125,7 @@ const AttemptList = ({ attempts }) => {
           {
             id: 'review',
             Header: formatMessage(messages.examAttemptsTableHeaderReview),
-            Cell: ({ row }) => (row.original.status === 'second_review_required' ? ReviewButton(row) : null),
+            Cell: ({ row }) => ReviewButton(row),
           },
         ]}
         data={attempts}

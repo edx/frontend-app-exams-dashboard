@@ -1,6 +1,62 @@
 import { defineMessages } from '@edx/frontend-platform/i18n';
 
 const messages = defineMessages({
+  statusLabelVerified: {
+    id: 'ExamsPage.status_label.verified',
+    defaultMessage: 'Verified',
+    description: 'Label for the status of an exam attempt that has been verified',
+  },
+  statusLabelRejected: {
+    id: 'ExamsPage.status_label.rejected',
+    defaultMessage: 'Rejected',
+    description: 'Label for the status of an exam attempt that has been rejected',
+  },
+  statusLabelError: {
+    id: 'ExamsPage.status_label.error',
+    defaultMessage: 'Error',
+    description: 'Label for the status of an exam attempt that ended in error',
+  },
+  statusLabelSecondReviewRequired: {
+    id: 'ExamsPage.status_label.second_review_required',
+    defaultMessage: 'Second Review Required',
+    description: 'Label for the status of an exam attempt that requires a second review',
+  },
+  statusLabelCreated: {
+    id: 'ExamsPage.status_label.created',
+    defaultMessage: 'Created',
+    description: 'Label for the status of an exam attempt that has been created',
+  },
+  statusLabelDownloadSoftwareClicked: {
+    id: 'ExamsPage.status_label.download_software_clicked',
+    defaultMessage: 'Download Software Clicked',
+    description: 'Label for the status of an exam attempt in which a learner has started to download the proctoring software',
+  },
+  statusLabelReadyToStart: {
+    id: 'ExamsPage.status_label.ready_to_start',
+    defaultMessage: 'Ready To Start',
+    description: 'Label for the status of an exam attempt that is ready to start',
+  },
+  statusLabelStarted: {
+    id: 'ExamsPage.status_label.started',
+    defaultMessage: 'Started',
+    description: 'Label for the status of an exam attempt that has started',
+  },
+  statusLabelReadyToSubmit: {
+    id: 'ExamsPage.status_label.ready_to_submit',
+    defaultMessage: 'Ready To Submit',
+    description: 'Label for the status of an exam attempt that is ready to submit',
+  },
+  statusLabelSubmitted: {
+    id: 'ExamsPage.status_label.submitted',
+    defaultMessage: 'Submitted',
+    description: 'Label for the status of an exam attempt that has been submitted',
+  },
+  statusLabelExpired: {
+    id: 'ExamsPage.status_label.expired',
+    defaultMessage: 'Expired',
+    description: 'Label for the status of an exam attempt that is past due',
+  },
+
   attemptsViewTabTitle: {
     id: 'ExamsPage.attemptsViewTabTitle',
     defaultMessage: 'Attempts',
@@ -92,7 +148,7 @@ const messages = defineMessages({
   },
   ResetExamAttemptButtonCancel: {
     id: 'ResetExamAttemptButton.cancel_button',
-    defaultMessage: 'No (Cancel)',
+    defaultMessage: 'Cancel',
     description: 'Text for the button to cancel resetting an exam attempt',
   },
   ResetExamAttemptButtonConfirm: {
@@ -102,24 +158,44 @@ const messages = defineMessages({
   },
 
   // ReviewExamAttemptButton
-  ReviewExamAttemptButtonTitle: {
+  ReviewableButtonTitle: {
+    id: 'ReviewExamAttemptButton.required.title',
+    defaultMessage: 'Manage Review',
+    description: 'Title for the button to review exam attempts',
+  },
+  ReviewRequiredButtonTitle: {
     id: 'ReviewExamAttemptButton.title',
-    defaultMessage: 'Second Review Required',
+    defaultMessage: 'Review Required',
     description: 'Title for the button to review exam attempts',
   },
   ReviewExamAttemptButtonModalTitle: {
     id: 'ReviewExamAttemptButton.confirmation_modal_title',
-    defaultMessage: 'Please confirm your choice.',
+    defaultMessage: 'Update review status',
     description: 'Title header of the modal that appears to confirm the review of an exam attempt',
   },
-  ReviewExamAttemptButtonModalBody: {
-    id: 'ReviewExamAttemptButton.confirmation_modal_body',
-    defaultMessage: 'Please "Verify" or "Reject" the exam attempt with the following data:',
-    description: 'Body text of the modal that appears to confirm the review of an exam attempt',
+  ReviewExamAttemptModalBodyReviewRequried: {
+    id: 'ReviewExamAttemptButton.confirmation_modal_body.review_required',
+    defaultMessage: 'Due to suspicious activity, this exam attempt requires manual review.',
+    description: 'Body text of the review modal that appears when an exam attempt requires review',
+  },
+  ReviewExamAttemptModalBodyManageReview: {
+    id: 'ReviewExamAttemptButton.confirmation_modal_body.review_manage',
+    defaultMessage: 'This exam attempt has a {statusLabel} review. You may manually override the review status for this session.',
+    description: 'Body text of the review modal that appears when an exam attempt has an existing review',
+  },
+  ReviewExamAttemptModalBodyError: {
+    id: 'ReviewExamAttemptButton.confirmation_modal_body.error_status',
+    defaultMessage: 'This exam attempt has been terminated due to an error; student progress may be incomplete. You may manually complete this session with a review.',
+    description: 'Body text of the review modal that appears when an exam attempt has an error status',
+  },
+  ReviewExamAttemptModalBodySessionInfo: {
+    id: 'ReviewExamAttemptButton.confirmation_modal_body.session_info',
+    defaultMessage: 'A session recording and details of suspicious behavior can be found on the review dashboard for the proctoring tool.',
+    description: 'Body text of the modal directing the user to an external dashboard to view session details',
   },
   ReviewExamAttemptButtonCancel: {
     id: 'ReviewExamAttemptButton.cancel_button',
-    defaultMessage: 'No (Cancel)',
+    defaultMessage: 'Cancel',
     description: 'Text for the button to cancel reviewing an exam attempt',
   },
   ReviewExamAttemptButtonVerify: {

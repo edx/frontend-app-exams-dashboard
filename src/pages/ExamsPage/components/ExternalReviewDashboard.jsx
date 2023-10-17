@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { getExamsBaseUrl } from '../data/api';
-
-const getLaunchUrlByExamId = (id) => `${getExamsBaseUrl()}/lti/exam/${id}/instructor_tool`;
+import { getLaunchUrlByExamId } from '../utils';
 
 const ExternalReviewDashboard = ({ exam }) => (
   <div data-testid="review_dash">

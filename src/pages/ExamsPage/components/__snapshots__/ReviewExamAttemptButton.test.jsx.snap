@@ -24,7 +24,7 @@ Object {
               fill="currentColor"
             />
           </svg>
-          Second Review Required
+          Review Required
         </button>
       </div>
     </div>
@@ -49,7 +49,7 @@ Object {
             fill="currentColor"
           />
         </svg>
-        Second Review Required
+        Review Required
       </button>
     </div>
   </div>,

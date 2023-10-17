@@ -12,6 +12,7 @@ jest.mock('./hooks', () => ({
   useExamsData: jest.fn(),
   useFetchExamAttempts: jest.fn(),
   useDeleteExamAttempt: jest.fn(),
+  useModifyExamAttempt: jest.fn(),
 }));
 
 describe('ExamsPage', () => {
