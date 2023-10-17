@@ -38,7 +38,7 @@ describe('ReviewExamAttemptButton', () => {
     screen.getByText('Review Required').click();
     expect(screen.getByText('Update review status')).toBeInTheDocument();
   });
-  it('Clicking the No button closes the modal', () => {
+  it('Clicking the Cancel button closes the modal', () => {
     render(reviewButton());
     screen.getByText('Review Required').click();
     screen.getByText('Cancel').click();

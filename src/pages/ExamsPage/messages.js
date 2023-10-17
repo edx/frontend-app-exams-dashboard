@@ -175,12 +175,12 @@ const messages = defineMessages({
   },
   ReviewExamAttemptModalBodyReviewRequried: {
     id: 'ReviewExamAttemptButton.confirmation_modal_body.review_required',
-    defaultMessage: 'Due to suspicious activity this exam attempt requires manual review.',
+    defaultMessage: 'Due to suspicious activity, this exam attempt requires manual review.',
     description: 'Body text of the review modal that appears when an exam attempt requires review',
   },
   ReviewExamAttemptModalBodyManageReview: {
     id: 'ReviewExamAttemptButton.confirmation_modal_body.review_manage',
-    defaultMessage: 'This exam attempt has a {statusLabel} review. Select a option manually override the review status for this session.',
+    defaultMessage: 'This exam attempt has a {statusLabel} review. Select a option to manually override the review status for this session.',
     description: 'Body text of the review modal that appears when an exam attempt has an existing review',
   },
   ReviewExamAttemptModalBodyError: {
