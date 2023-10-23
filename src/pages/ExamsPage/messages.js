@@ -230,6 +230,12 @@ const messages = defineMessages({
     defaultMessage: 'Submission Reason: ',
     description: 'Submission reason label for exam attempt data in the review/reset modal',
   },
+
+  ReviewDashboardOpenLTITool: {
+    id: 'ExternalReviewDashboard.open_lti_tool',
+    defaultMessage: 'View resource in a new window',
+    description: 'Text for button to open instructor LTI tool in a new window',
+  },
 });
 
 export default messages;
