@@ -96,7 +96,7 @@ const ReviewExamAttemptButton = ({
           </ul>
           <p>{formatMessage(messages.ReviewExamAttemptModalBodySessionInfo)}</p>
           <ActionRow>
-            <Button as="a" href={getLaunchUrlByExamId(attemptId)} variant="link">
+            <Button as="a" href={getLaunchUrlByExamId(attemptId)} target="_blank" variant="link">
               {formatMessage(messages.reviewDashboardTabTitle)}
             </Button>
           </ActionRow>
