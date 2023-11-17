@@ -392,7 +392,7 @@ Object {
                                 class="pgn__data-table-cell-wrap"
                                 role="cell"
                               >
-                                username
+                                username1
                               </td>
                               <td
                                 class="pgn__data-table-cell-wrap"
@@ -405,6 +405,89 @@ Object {
                                 role="cell"
                               >
                                 Timed
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                4/5/2023
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                4/5/2023
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                Second Review Required
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                <div
+                                  class="d-flex"
+                                >
+                                  <button
+                                    class="btn btn-link btn-sm"
+                                    type="button"
+                                  >
+                                    Reset
+                                  </button>
+                                </div>
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                <div
+                                  class="d-flex text-danger"
+                                >
+                                  <button
+                                    class="text-danger btn btn-link btn-sm"
+                                    type="button"
+                                  >
+                                    <svg
+                                      fill="none"
+                                      height="24"
+                                      viewBox="0 0 24 24"
+                                      width="24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                                        fill="currentColor"
+                                      />
+                                    </svg>
+                                    Review Required
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr
+                              class="pgn__data-table-row"
+                              role="row"
+                            >
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                username2
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                60
+                              </td>
+                              <td
+                                class="pgn__data-table-cell-wrap"
+                                role="cell"
+                              >
+                                Proctored
                               </td>
                               <td
                                 class="pgn__data-table-cell-wrap"
@@ -943,7 +1026,7 @@ Object {
                               class="pgn__data-table-cell-wrap"
                               role="cell"
                             >
-                              username
+                              username1
                             </td>
                             <td
                               class="pgn__data-table-cell-wrap"
@@ -956,6 +1039,89 @@ Object {
                               role="cell"
                             >
                               Timed
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              4/5/2023
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              4/5/2023
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              Second Review Required
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              <div
+                                class="d-flex"
+                              >
+                                <button
+                                  class="btn btn-link btn-sm"
+                                  type="button"
+                                >
+                                  Reset
+                                </button>
+                              </div>
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              <div
+                                class="d-flex text-danger"
+                              >
+                                <button
+                                  class="text-danger btn btn-link btn-sm"
+                                  type="button"
+                                >
+                                  <svg
+                                    fill="none"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    width="24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                                      fill="currentColor"
+                                    />
+                                  </svg>
+                                  Review Required
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr
+                            class="pgn__data-table-row"
+                            role="row"
+                          >
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              username2
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              60
+                            </td>
+                            <td
+                              class="pgn__data-table-cell-wrap"
+                              role="cell"
+                            >
+                              Proctored
                             </td>
                             <td
                               class="pgn__data-table-cell-wrap"
