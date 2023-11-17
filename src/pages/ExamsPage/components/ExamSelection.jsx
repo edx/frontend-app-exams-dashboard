@@ -11,7 +11,6 @@ import messages from '../messages';
 const ExamSelection = ({ exams, onSelect }) => {
   const { formatMessage } = useIntl();
   const [searchText, setSearchText] = useState('');
-
   const getMenuItems = () => {
     const menuItems = [
       <MenuItem
@@ -22,11 +21,17 @@ const ExamSelection = ({ exams, onSelect }) => {
         onSubmit={() => {}}
       />,
     ];
-    return menuItems.concat(exams.filter(exam => (
+    const examsMatchSearch = exams.filter(exam => (
       exam.name.toLowerCase().includes(searchText.toLowerCase())
     )).map(
       exam => <MenuItem key={exam.id} onClick={() => onSelect(exam.id)}>{exam.name}</MenuItem>,
-    ));
+    );
+    const examsNotMatchSearch = exams.filter(exam => !(
+      exam.name.toLowerCase().includes(searchText.toLowerCase())
+    )).map(
+      exam => <MenuItem key={exam.id} disabled>{exam.name}</MenuItem>,
+    );
+    return menuItems.concat(examsMatchSearch).concat(examsNotMatchSearch);
   };
 
   return (
