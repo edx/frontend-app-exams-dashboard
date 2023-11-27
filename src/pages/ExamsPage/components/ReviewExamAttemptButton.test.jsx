@@ -2,16 +2,18 @@ import { render, screen } from '@testing-library/react';
 
 import * as constants from 'data/constants';
 import ReviewExamAttemptButton from './ReviewExamAttemptButton';
+import * as testUtils from '../../../testUtils';
 
 import * as hooks from '../hooks';
 
 jest.mock('../hooks', () => ({
   useModifyExamAttempt: jest.fn(),
+  useExamsData: jest.fn(),
 }));
 
 const mockMakeNetworkRequest = jest.fn();
 
-// nomally mocked for unit tests but required for rendering/snapshots
+// normally mocked for unit tests but required for rendering/snapshots
 jest.unmock('react');
 
 const reviewButton = (status = constants.ExamAttemptStatus.second_review_required) => (
@@ -29,6 +31,7 @@ describe('ReviewExamAttemptButton', () => {
   beforeEach(() => {
     jest.restoreAllMocks();
     hooks.useModifyExamAttempt.mockReturnValue(mockMakeNetworkRequest);
+    hooks.useExamsData.mockReturnValue(testUtils.defaultExamsData);
   });
   it('Test that the ReviewExamAttemptButton matches snapshot', () => {
     expect(render(reviewButton())).toMatchSnapshot();

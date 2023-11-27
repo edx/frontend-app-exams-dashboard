@@ -2,8 +2,9 @@ import { render, screen } from '@testing-library/react';
 
 import ExamsPage from '.';
 import * as hooks from './hooks';
+import * as testUtils from '../../testUtils';
 
-// nomally mocked for unit tests but required for rendering/snapshots
+// normally mocked for unit tests but required for rendering/snapshots
 jest.unmock('react');
 
 jest.mock('./hooks', () => ({
@@ -16,34 +17,15 @@ jest.mock('./hooks', () => ({
 }));
 
 describe('ExamsPage', () => {
-  const defaultExamsData = {
-    examsList: [
-      { id: 1, name: 'exam1' },
-    ],
-    currentExam: { id: 1, name: 'exam1' },
-    setCurrentExam: jest.fn(),
-  };
-  const defaultAttemptsData = {
-    attemptsList: [{
-      exam_name: 'Exam 1',
-      username: 'username',
-      time_limit: 60,
-      exam_type: 'timed',
-      started_at: '2023-04-05T19:27:16.000000Z',
-      completed_at: '2023-04-05T19:27:17.000000Z',
-      status: 'submitted',
-      attempt_id: 0,
-    }],
-  };
   beforeAll(() => {
-    hooks.useExamAttemptsData.mockReturnValue(defaultAttemptsData);
+    hooks.useExamAttemptsData.mockReturnValue(testUtils.defaultAttemptsData);
   });
   describe('snapshots', () => {
     test('exams and attempts loaded', () => {
       // temporary, this won't fire on useEffect once we have an exam selection handler
       hooks.useFetchExamAttempts.mockReturnValue(jest.fn());
 
-      hooks.useExamsData.mockReturnValue(defaultExamsData);
+      hooks.useExamsData.mockReturnValue(testUtils.defaultExamsData);
       expect(render(<ExamsPage courseId="test_course" />)).toMatchSnapshot();
     });
   });

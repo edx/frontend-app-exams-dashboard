@@ -6,7 +6,7 @@ import {
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { Info, Warning } from '@edx/paragon/icons';
 import * as constants from 'data/constants';
-import { useModifyExamAttempt } from '../hooks';
+import { useExamsData, useModifyExamAttempt } from '../hooks';
 import messages from '../messages';
 import { getLaunchUrlByExamId, getMessageLabelForStatus } from '../utils';
 
@@ -27,6 +27,7 @@ const ReviewExamAttemptButton = ({
 }) => {
   const [isOpen, open, close] = useToggle(false);
   const modifyExamAttempt = useModifyExamAttempt();
+  const { currentExam } = useExamsData();
   const { formatMessage } = useIntl();
 
   const getButton = (status) => {
@@ -96,7 +97,7 @@ const ReviewExamAttemptButton = ({
           </ul>
           <p>{formatMessage(messages.ReviewExamAttemptModalBodySessionInfo)}</p>
           <ActionRow>
-            <Button as="a" href={getLaunchUrlByExamId(attemptId)} target="_blank" variant="link">
+            <Button as="a" href={getLaunchUrlByExamId(currentExam.id)} target="_blank" variant="link">
               {formatMessage(messages.reviewDashboardTabTitle)}
             </Button>
           </ActionRow>
