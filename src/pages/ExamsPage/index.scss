@@ -12,3 +12,9 @@
   border: none;
   width: 0px;
 }
+
+// Align modals towards the top of the iframe, as it aligns center (which is awkward to have to scroll to) by default
+div.pgn__modal-content-container {
+  align-items: start;
+  padding-top: 6.5%;
+}

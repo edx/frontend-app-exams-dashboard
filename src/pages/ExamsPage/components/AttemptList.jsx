@@ -110,7 +110,7 @@ const AttemptList = ({ attempts }) => {
         isLoading={attempts == null}
         isPaginated
         initialState={{
-          pageSize: 20,
+          pageSize: 10,
         }}
         isFilterable
         defaultColumnValues={{ Filter: TextFilter }}

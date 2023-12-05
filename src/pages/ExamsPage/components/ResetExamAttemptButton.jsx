@@ -23,7 +23,7 @@ const ResetExamAttemptButton = ({ username, examName, attemptId }) => {
         title="my dialog"
         isOpen={isOpen}
         onClose={close}
-        size="md"
+        size="lg"
         variant="default"
         hasCloseButton
         isFullscreenOnMobile
