@@ -3,7 +3,7 @@ import * as constants from 'data/constants';
 
 export const initialState = {
   courseId: null,
-  currentExamIndex: 0,
+  currentExamIndex: null,
   examsList: [],
   attemptsList: [],
 };

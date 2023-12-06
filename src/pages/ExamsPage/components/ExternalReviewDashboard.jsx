@@ -16,12 +16,15 @@ const ExternalReviewDashboard = ({ exam }) => {
   return (
     <div data-testid="review_dash">
       <div style={{ padding: 10 }}>
-        {!ltiToolEmbed && exam && (
-          <Button as="a" title="lti_link" target="_blank" href={getLaunchUrlByExamId(exam.id)}>
-            {formatMessage(messages.ReviewDashboardOpenLTITool)}
-            <Launch />
-          </Button>
-        )}
+        {
+          // If an exam is selected, show the button to open the external review dashboard, otherwise prompt the user to select an exam.
+          (!ltiToolEmbed && exam) ? (
+            <Button as="a" title="lti_link" target="_blank" href={getLaunchUrlByExamId(exam.id)}>
+              {formatMessage(messages.ReviewDashboardOpenLTITool) + exam.name}
+              <Launch />
+            </Button>
+          ) : formatMessage(messages.ReviewDashboardPleaseSelectExam)
+        }
       </div>
       {ltiToolEmbed && exam && <iframe title="lti_tool" src={getLaunchUrlByExamId(exam.id)} width="100%" height="1100" style={{ border: 'none' }} />}
     </div>
