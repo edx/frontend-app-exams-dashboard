@@ -17,7 +17,8 @@ const ExternalReviewDashboard = ({ exam }) => {
     <div data-testid="review_dash">
       <div style={{ padding: 10 }}>
         {
-          // If an exam is selected, show the button to open the external review dashboard, otherwise prompt the user to select an exam.
+          // If an exam is selected, show the button to open the external review dashboard,
+          // otherwise prompt the user to select an exam.
           (!ltiToolEmbed && exam) ? (
             <Button as="a" title="lti_link" target="_blank" href={getLaunchUrlByExamId(exam.id)}>
               {formatMessage(messages.ReviewDashboardOpenLTITool) + exam.name}
@@ -34,6 +35,7 @@ const ExternalReviewDashboard = ({ exam }) => {
 ExternalReviewDashboard.propTypes = {
   exam: PropTypes.shape({
     id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
   }),
 };
 
