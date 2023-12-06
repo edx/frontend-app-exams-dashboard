@@ -21,12 +21,12 @@ const getStatusFromAction = (action, status) => {
 };
 
 const getCurrentExamIndex = (examsList, examId) => {
-   const index = examsList.findIndex(exam => exam.id === examId.payload); 
+  const index = examsList.findIndex(exam => exam.id === examId.payload);
   if (index > -1) {
     return index;
   }
   return null;
-}
+};
 
 const slice = createSlice({
   name: 'exams',
