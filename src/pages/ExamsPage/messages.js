@@ -233,8 +233,14 @@ const messages = defineMessages({
 
   ReviewDashboardOpenLTITool: {
     id: 'ExternalReviewDashboard.open_lti_tool',
-    defaultMessage: 'View resource in a new window',
+    defaultMessage: 'Open the Review Dashboard for {exam_name}',
     description: 'Text for button to open instructor LTI tool in a new window',
+  },
+
+  ReviewDashboardPleaseSelectExam: {
+    id: 'ExternalReviewDashboard.please_select_exam',
+    defaultMessage: 'Please select an exam from the dropdown above.',
+    description: 'A prompt to select an exam before being able to open the external review dashboard.',
   },
 });
 

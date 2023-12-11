@@ -28,7 +28,7 @@ describe('ExamsPage reducer', () => {
         };
         expect(reducer(initialState, action)).toEqual({
           courseId: null,
-          currentExamIndex: 0,
+          currentExamIndex: null,
           examsList: [
             {
               id: 1,
@@ -74,7 +74,7 @@ describe('ExamsPage reducer', () => {
         };
         expect(reducer(initialState, action)).toEqual({
           courseId: null,
-          currentExamIndex: 0,
+          currentExamIndex: null,
           examsList: [],
           attemptsList: [
             {
@@ -104,7 +104,7 @@ describe('ExamsPage reducer', () => {
     describe('deleteExamAttempt', () => {
       it('deletes the expected attempt from attemptList', () => {
         const state = {
-          currentExamIndex: 0,
+          currentExamIndex: null,
           examsList: [],
           attemptsList: [
             {
@@ -134,7 +134,7 @@ describe('ExamsPage reducer', () => {
           payload: 0,
         };
         expect(reducer(state, action)).toEqual({
-          currentExamIndex: 0,
+          currentExamIndex: null,
           examsList: [],
           attemptsList: [
             {
@@ -154,7 +154,7 @@ describe('ExamsPage reducer', () => {
     describe('modifyExamAttemptStatus', () => {
       it('changes status of one attempt to verified when passed verify action', () => {
         const state = {
-          currentExamIndex: 0,
+          currentExamIndex: null,
           examsList: [],
           attemptsList: [
             {
@@ -187,7 +187,7 @@ describe('ExamsPage reducer', () => {
           },
         };
         expect(reducer(state, action)).toEqual({
-          currentExamIndex: 0,
+          currentExamIndex: null,
           examsList: [],
           attemptsList: [
             {
@@ -215,7 +215,7 @@ describe('ExamsPage reducer', () => {
       });
       it('changes status of one attempt to rejected when passed reject action', () => {
         const state = {
-          currentExamIndex: 0,
+          currentExamIndex: null,
           examsList: [],
           attemptsList: [
             {
@@ -248,7 +248,7 @@ describe('ExamsPage reducer', () => {
           },
         };
         expect(reducer(state, action)).toEqual({
-          currentExamIndex: 0,
+          currentExamIndex: null,
           examsList: [],
           attemptsList: [
             {
@@ -305,13 +305,13 @@ describe('ExamsPage reducer', () => {
           attemptsList: state.attemptsList,
         });
       });
-      it('sets currentExamIndex to 0 if exam id is not found', () => {
+      it('sets currentExamIndex to null if exam id is not found', () => {
         const action = {
           type: 'exams/setCurrentExam',
           payload: 1,
         };
         expect(reducer(state, action)).toEqual({
-          currentExamIndex: 0,
+          currentExamIndex: null,
           examsList: state.examsList,
           attemptsList: state.attemptsList,
         });
@@ -324,7 +324,7 @@ describe('ExamsPage reducer', () => {
           payload: 'course-v1:edX+Test+Test',
         };
         expect(reducer(initialState, action)).toEqual({
-          currentExamIndex: 0,
+          currentExamIndex: null,
           examsList: [],
           attemptsList: [],
           courseId: 'course-v1:edX+Test+Test',

@@ -3,7 +3,7 @@ import * as constants from 'data/constants';
 
 export const initialState = {
   courseId: null,
-  currentExamIndex: 0,
+  currentExamIndex: null,
   examsList: [],
   attemptsList: [],
 };
@@ -18,6 +18,14 @@ const getStatusFromAction = (action, status) => {
       // If invalid action, return the same status as before.
       return status;
   }
+};
+
+const getCurrentExamIndex = (examsList, examId) => {
+  const index = examsList.findIndex(exam => exam.id === examId.payload);
+  if (index > -1) {
+    return index;
+  }
+  return null;
 };
 
 const slice = createSlice({
@@ -79,7 +87,7 @@ const slice = createSlice({
     }),
     setCurrentExam: (state, examId) => ({
       ...state,
-      currentExamIndex: Math.max(0, state.examsList.findIndex(exam => exam.id === examId.payload)),
+      currentExamIndex: getCurrentExamIndex(state.examsList, examId),
     }),
   },
 });
