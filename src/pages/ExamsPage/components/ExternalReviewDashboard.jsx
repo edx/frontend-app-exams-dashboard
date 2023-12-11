@@ -21,7 +21,7 @@ const ExternalReviewDashboard = ({ exam }) => {
           // otherwise prompt the user to select an exam.
           (!ltiToolEmbed && exam) ? (
             <Button as="a" title="lti_link" target="_blank" href={getLaunchUrlByExamId(exam.id)}>
-              {formatMessage(messages.ReviewDashboardOpenLTITool) + exam.name}
+              {formatMessage(messages.ReviewDashboardOpenLTITool, { exam_name: exam.name })}
               <Launch />
             </Button>
           ) : formatMessage(messages.ReviewDashboardPleaseSelectExam)

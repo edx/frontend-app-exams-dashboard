@@ -233,7 +233,7 @@ const messages = defineMessages({
 
   ReviewDashboardOpenLTITool: {
     id: 'ExternalReviewDashboard.open_lti_tool',
-    defaultMessage: 'Open the Review Dashboard for ',
+    defaultMessage: 'Open the Review Dashboard for {exam_name}',
     description: 'Text for button to open instructor LTI tool in a new window',
   },
 
