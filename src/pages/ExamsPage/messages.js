@@ -130,103 +130,103 @@ const messages = defineMessages({
     description: 'Message that appears in the table if no data is found',
   },
 
-  // ResetExamAttemptButton
-  ResetExamAttemptButtonTitle: {
-    id: 'ResetExamAttemptButton.title',
+  // ResetExamAttemptModal
+  ResetExamAttemptModalTitle: {
+    id: 'ResetExamAttemptModal.title',
     defaultMessage: 'Reset',
     description: 'Title for the button to reset exam attempts',
   },
-  ResetExamAttemptButtonModalTitle: {
-    id: 'ResetExamAttemptButton.confirmation_modal_title',
+  ResetExamAttemptModalModalTitle: {
+    id: 'ResetExamAttemptModal.confirmation_modal_title',
     defaultMessage: 'Please confirm your choice.',
     description: 'Title header of the modal that appears to confirm the reset of an exam attempt',
   },
-  ResetExamAttemptButtonModalBody: {
-    id: 'ResetExamAttemptButton.confirmation_modal_body',
+  ResetExamAttemptModalModalBody: {
+    id: 'ResetExamAttemptModal.confirmation_modal_body',
     defaultMessage: 'Are you sure you want to remove the exam attempt with the following data?:',
     description: 'Body text of the modal that appears to confirm the reset of an exam attempt',
   },
-  ResetExamAttemptButtonCancel: {
-    id: 'ResetExamAttemptButton.cancel_button',
+  ResetExamAttemptModalCancel: {
+    id: 'ResetExamAttemptModal.cancel_button',
     defaultMessage: 'Cancel',
     description: 'Text for the button to cancel resetting an exam attempt',
   },
-  ResetExamAttemptButtonConfirm: {
-    id: 'ResetExamAttemptButton.confirm_button',
+  ResetExamAttemptModalConfirm: {
+    id: 'ResetExamAttemptModal.confirm_button',
     defaultMessage: 'Yes, I\'m Sure',
     description: 'Text for the button to confirm the reset of an exam attempt',
   },
 
-  // ReviewExamAttemptButton
+  // ReviewExamAttemptModal
   ReviewableButtonTitle: {
-    id: 'ReviewExamAttemptButton.required.title',
+    id: 'ReviewExamAttemptModal.required.title',
     defaultMessage: 'Manage Review',
     description: 'Title for the button to review exam attempts',
   },
   ReviewRequiredButtonTitle: {
-    id: 'ReviewExamAttemptButton.title',
+    id: 'ReviewExamAttemptModal.title',
     defaultMessage: 'Review Required',
     description: 'Title for the button to review exam attempts',
   },
-  ReviewExamAttemptButtonModalTitle: {
-    id: 'ReviewExamAttemptButton.confirmation_modal_title',
+  ReviewExamAttemptModalTitle: {
+    id: 'ReviewExamAttemptModal.confirmation_modal_title',
     defaultMessage: 'Update review status',
     description: 'Title header of the modal that appears to confirm the review of an exam attempt',
   },
   ReviewExamAttemptModalBodyReviewRequried: {
-    id: 'ReviewExamAttemptButton.confirmation_modal_body.review_required',
+    id: 'ReviewExamAttemptModal.confirmation_modal_body.review_required',
     defaultMessage: 'Due to suspicious activity, this exam attempt requires manual review.',
     description: 'Body text of the review modal that appears when an exam attempt requires review',
   },
   ReviewExamAttemptModalBodyManageReview: {
-    id: 'ReviewExamAttemptButton.confirmation_modal_body.review_manage',
+    id: 'ReviewExamAttemptModal.confirmation_modal_body.review_manage',
     defaultMessage: 'This exam attempt has a {statusLabel} review. You may manually override the review status for this session.',
     description: 'Body text of the review modal that appears when an exam attempt has an existing review',
   },
   ReviewExamAttemptModalBodyError: {
-    id: 'ReviewExamAttemptButton.confirmation_modal_body.error_status',
+    id: 'ReviewExamAttemptModal.confirmation_modal_body.error_status',
     defaultMessage: 'This exam attempt has been terminated due to an error; student progress may be incomplete. You may manually complete this session with a review.',
     description: 'Body text of the review modal that appears when an exam attempt has an error status',
   },
   ReviewExamAttemptModalBodySessionInfo: {
-    id: 'ReviewExamAttemptButton.confirmation_modal_body.session_info',
+    id: 'ReviewExamAttemptModal.confirmation_modal_body.session_info',
     defaultMessage: 'A session recording and details of suspicious behavior can be found on the review dashboard for the proctoring tool.',
     description: 'Body text of the modal directing the user to an external dashboard to view session details',
   },
-  ReviewExamAttemptButtonCancel: {
-    id: 'ReviewExamAttemptButton.cancel_button',
+  ReviewExamAttemptModalCancel: {
+    id: 'ReviewExamAttemptModal.cancel_button',
     defaultMessage: 'Cancel',
     description: 'Text for the button to cancel reviewing an exam attempt',
   },
-  ReviewExamAttemptButtonVerify: {
-    id: 'ReviewExamAttemptButton.verify_button',
+  ReviewExamAttemptModalVerify: {
+    id: 'ReviewExamAttemptModal.verify_button',
     defaultMessage: 'Verify',
     description: 'Text for the button to verify an exam attempt',
   },
-  ReviewExamAttemptButtonReject: {
-    id: 'ReviewExamAttemptButton.reject_button',
+  ReviewExamAttemptModalReject: {
+    id: 'ReviewExamAttemptModal.reject_button',
     defaultMessage: 'Reject',
     description: 'Text for the button to reject an exam attempt',
   },
 
   // Labels for exam attempt info for review/reset modals
   Username: {
-    id: 'ExamAttemptButton.username',
+    id: 'ExamAttemptModal.username',
     defaultMessage: 'Username: ',
     description: 'Username label for exam attempt data in the review/reset modal',
   },
   ExamName: {
-    id: 'ExamAttemptButton.exam_name',
+    id: 'ExamAttemptModal.exam_name',
     defaultMessage: 'Exam Name: ',
     description: 'Exam name label for exam attempt data in the review/reset modal',
   },
   SuspicionLevel: {
-    id: 'ExamAttemptButton.suspicion_level',
+    id: 'ExamAttemptModal.suspicion_level',
     defaultMessage: 'Suspicion Level: ',
     description: 'Suspicion level label for exam attempt data in the review/reset modal',
   },
   SubmissionReason: {
-    id: 'ExamAttemptButton.submission_reason',
+    id: 'ExamAttemptModal.submission_reason',
     defaultMessage: 'Submission Reason: ',
     description: 'Submission reason label for exam attempt data in the review/reset modal',
   },

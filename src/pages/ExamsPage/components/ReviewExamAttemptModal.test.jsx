@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import * as constants from 'data/constants';
-import ReviewExamAttemptButton from './ReviewExamAttemptButton';
+import ReviewExamAttemptModal from './ReviewExamAttemptModal';
 import * as testUtils from '../../../testUtils';
 
 import * as hooks from '../hooks';
@@ -16,8 +16,8 @@ const mockMakeNetworkRequest = jest.fn();
 // normally mocked for unit tests but required for rendering/snapshots
 jest.unmock('react');
 
-const reviewButton = (status = constants.ExamAttemptStatus.second_review_required) => (
-  <ReviewExamAttemptButton
+const reviewModal = (status = constants.ExamAttemptStatus.second_review_required) => (
+  <ReviewExamAttemptModal
     username="username"
     examName="examName"
     attemptId={0}
@@ -27,22 +27,22 @@ const reviewButton = (status = constants.ExamAttemptStatus.second_review_require
   />
 );
 
-describe('ReviewExamAttemptButton', () => {
+describe('ReviewExamAttemptModal', () => {
   beforeEach(() => {
     jest.restoreAllMocks();
     hooks.useModifyExamAttempt.mockReturnValue(mockMakeNetworkRequest);
     hooks.useExamsData.mockReturnValue(testUtils.defaultExamsData);
   });
-  it('Test that the ReviewExamAttemptButton matches snapshot', () => {
-    expect(render(reviewButton())).toMatchSnapshot();
+  it('Test that the ReviewExamAttemptModal matches snapshot', () => {
+    expect(render(reviewModal())).toMatchSnapshot();
   });
   it('Modal appears upon clicking button', () => {
-    render(reviewButton());
+    render(reviewModal());
     screen.getByText('Review Required').click();
     expect(screen.getByText('Update review status')).toBeInTheDocument();
   });
   it('Clicking the Cancel button closes the modal', () => {
-    render(reviewButton());
+    render(reviewModal());
     screen.getByText('Review Required').click();
     screen.getByText('Cancel').click();
     // Using queryByText here allows the function to throw
@@ -51,7 +51,7 @@ describe('ReviewExamAttemptButton', () => {
   it('Clicking the Verify button calls the modify exam attempt hook', () => {
     const mockModifyExamAttempt = jest.fn();
     jest.spyOn(hooks, 'useModifyExamAttempt').mockImplementation(() => mockModifyExamAttempt);
-    render(reviewButton());
+    render(reviewModal());
     screen.getByText('Review Required').click();
     screen.getByText('Verify').click();
     expect(mockModifyExamAttempt).toHaveBeenCalledWith(0, constants.ExamAttemptActions.verify);
@@ -59,14 +59,14 @@ describe('ReviewExamAttemptButton', () => {
   it('Clicking the Reject button calls the modify exam attempt hook', () => {
     const mockModifyExamAttempt = jest.fn();
     jest.spyOn(hooks, 'useModifyExamAttempt').mockImplementation(() => mockModifyExamAttempt);
-    render(reviewButton());
+    render(reviewModal());
     screen.getByText('Review Required').click();
     screen.getByText('Reject').click();
     expect(mockModifyExamAttempt).toHaveBeenCalledWith(0, constants.ExamAttemptActions.reject);
   });
   it('Does not show the modal if the attempt is not reviewable', () => {
     render(
-      <ReviewExamAttemptButton
+      <ReviewExamAttemptModal
         username="username"
         examName="examName"
         attemptId={0}
@@ -80,17 +80,17 @@ describe('ReviewExamAttemptButton', () => {
   });
   describe('Shows the correct text based on the attempt status', () => {
     test('review required', () => {
-      render(reviewButton());
+      render(reviewModal());
       screen.getByText('Review Required').click();
       expect(screen.getByText(/attempt requires manual review/i)).toBeInTheDocument();
     });
     test('existing review', () => {
-      render(reviewButton(constants.ExamAttemptStatus.verified));
+      render(reviewModal(constants.ExamAttemptStatus.verified));
       screen.getByText('Manage Review').click();
       expect(screen.getByText(/attempt has a verified review/i)).toBeInTheDocument();
     });
     test('error status', () => {
-      render(reviewButton(constants.ExamAttemptStatus.error));
+      render(reviewModal(constants.ExamAttemptStatus.error));
       screen.getByText('Review Required').click();
       expect(screen.getByText(/attempt has been terminated due to an error/i)).toBeInTheDocument();
     });

@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { DataTable, TextFilter, CheckboxFilter } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import * as constants from 'data/constants';
-import ResetExamAttemptButton from './ResetExamAttemptButton';
-import ReviewExamAttemptButton from './ReviewExamAttemptButton';
+import ResetExamAttemptModal from './ResetExamAttemptModal';
+import ReviewExamAttemptModal from './ReviewExamAttemptModal';
 import messages from '../messages';
 
 // TODO: these should be updated to use intl messages
@@ -81,17 +81,17 @@ const StatusFilterChoices = [
   },
 ];
 
-// The button components must be compartmentalized here otherwise npm lint throws an unstable-nested-component error.
-const ResetButton = (row) => (
-  <ResetExamAttemptButton
+// The modal components must be compartmentalized here otherwise npm lint throws an unstable-nested-component error.
+const ResetModal = (row) => (
+  <ResetExamAttemptModal
     username={row.original.username}
     examName={row.original.exam_name}
     attemptId={row.original.attempt_id}
   />
 );
 
-const ReviewButton = (row) => (
-  <ReviewExamAttemptButton
+const ReviewModal = (row) => (
+  <ReviewExamAttemptModal
     username={row.original.username}
     examName={row.original.exam_name}
     attemptId={row.original.attempt_id}
@@ -120,12 +120,12 @@ const AttemptList = ({ attempts }) => {
           {
             id: 'action',
             Header: formatMessage(messages.examAttemptsTableHeaderAction),
-            Cell: ({ row }) => ResetButton(row),
+            Cell: ({ row }) => ResetModal(row),
           },
           {
             id: 'review',
             Header: formatMessage(messages.examAttemptsTableHeaderReview),
-            Cell: ({ row }) => ReviewButton(row),
+            Cell: ({ row }) => ReviewModal(row),
           },
         ]}
         data={attempts}

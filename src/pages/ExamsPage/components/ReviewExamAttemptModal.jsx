@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 
+import { useState } from 'react';
 import {
-  Button, useToggle, ModalDialog, ActionRow,
+  Button, useToggle, ModalDialog, ActionRow, StatefulButton,
 } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { Info, Warning } from '@edx/paragon/icons';
@@ -22,13 +23,35 @@ const ReviewRequiredStatuses = [
   constants.ExamAttemptStatus.second_review_required,
 ];
 
-const ReviewExamAttemptButton = ({
+const VerifyButtonProps = {
+  labels: {
+    default: 'Verify',
+    pending: 'Verifying...',
+    complete: 'Verified',
+    error: 'Error'
+  },
+  variant: 'primary',
+};
+
+const RejectButtonProps = {
+  labels: {
+    default: 'Reject',
+    pending: 'Rejecting...',
+    complete: 'Rejected',
+    error: 'Error'
+  },
+  variant: 'primary',
+};
+
+const ReviewExamAttemptModal = ({
   username, examName, attemptId, attemptStatus, severity, submissionReason,
 }) => {
   const [isOpen, open, close] = useToggle(false);
   const modifyExamAttempt = useModifyExamAttempt();
   const { currentExam } = useExamsData();
   const { formatMessage } = useIntl();
+  const [rejectButtonStatus, setRejectButtonStatus] = useState("");
+  const [verifyButtonStatus, setVerifyButtonStatus] = useState("");
 
   const getButton = (status) => {
     if (ReviewRequiredStatuses.includes(status)) {
@@ -70,7 +93,7 @@ const ReviewExamAttemptButton = ({
   return (
     <>
       <div className="d-flex text-danger">
-        { getButton(attemptStatus) }
+        {getButton(attemptStatus)}
       </div>
       <ModalDialog
         title="my dialog"
@@ -83,7 +106,7 @@ const ReviewExamAttemptButton = ({
       >
         <ModalDialog.Header>
           <ModalDialog.Title>
-            {formatMessage(messages.ReviewExamAttemptButtonModalTitle)}
+            {formatMessage(messages.ReviewExamAttemptModalTitle)}
           </ModalDialog.Title>
         </ModalDialog.Header>
 
@@ -106,29 +129,31 @@ const ReviewExamAttemptButton = ({
         <ModalDialog.Footer>
           <ActionRow>
             <ModalDialog.CloseButton variant="tertiary">
-              {formatMessage(messages.ReviewExamAttemptButtonCancel)}
+              {formatMessage(messages.ReviewExamAttemptModalCancel)}
             </ModalDialog.CloseButton>
-            { attemptStatus !== constants.ExamAttemptStatus.verified
+            {attemptStatus !== constants.ExamAttemptStatus.verified
               && (
-              <Button
-                variant="success"
-                onClick={e => { // eslint-disable-line no-unused-vars
-                  modifyExamAttempt(attemptId, constants.ExamAttemptActions.verify);
-                }}
-              >
-                {formatMessage(messages.ReviewExamAttemptButtonVerify)}
-              </Button>
+                <StatefulButton state={verifyButtonStatus} {...VerifyButtonProps}
+                  variant="success"
+                  onClick={e => { // eslint-disable-line no-unused-vars
+                    setVerifyButtonStatus("pending");
+                    modifyExamAttempt(attemptId, constants.ExamAttemptActions.verify);
+                  }}
+                >
+                  {formatMessage(messages.ReviewExamAttemptModalVerify)}
+                </StatefulButton>
               )}
-            { attemptStatus !== constants.ExamAttemptStatus.rejected
+            {attemptStatus !== constants.ExamAttemptStatus.rejected
               && (
-              <Button
-                variant="danger"
-                onClick={e => { // eslint-disable-line no-unused-vars
-                  modifyExamAttempt(attemptId, constants.ExamAttemptActions.reject);
-                }}
-              >
-                {formatMessage(messages.ReviewExamAttemptButtonReject)}
-              </Button>
+                <StatefulButton state={rejectButtonStatus} {...RejectButtonProps}
+                  variant="danger"
+                  onClick={e => { // eslint-disable-line no-unused-vars
+                    setRejectButtonStatus("pending");
+                    modifyExamAttempt(attemptId, constants.ExamAttemptActions.reject);
+                  }}
+                >
+                  {formatMessage(messages.ReviewExamAttemptModalReject)}
+                </StatefulButton>
               )}
           </ActionRow>
         </ModalDialog.Footer>
@@ -137,7 +162,7 @@ const ReviewExamAttemptButton = ({
   );
 };
 
-ReviewExamAttemptButton.propTypes = {
+ReviewExamAttemptModal.propTypes = {
   username: PropTypes.string.isRequired,
   examName: PropTypes.string.isRequired,
   attemptId: PropTypes.number.isRequired,
@@ -146,9 +171,9 @@ ReviewExamAttemptButton.propTypes = {
   submissionReason: PropTypes.string,
 };
 
-ReviewExamAttemptButton.defaultProps = {
+ReviewExamAttemptModal.defaultProps = {
   severity: null,
   submissionReason: null,
 };
 
-export default ReviewExamAttemptButton;
+export default ReviewExamAttemptModal;

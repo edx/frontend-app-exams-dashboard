@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import ResetExamAttemptButton from './ResetExamAttemptButton';
+import ResetExamAttemptModal from './ResetExamAttemptModal';
 
 import * as hooks from '../hooks';
 
@@ -13,23 +13,23 @@ const mockMakeNetworkRequest = jest.fn();
 // nomally mocked for unit tests but required for rendering/snapshots
 jest.unmock('react');
 
-const resetButton = <ResetExamAttemptButton username="username" examName="examName" attemptId={0} />;
+const resetModal = <ResetExamAttemptModal username="username" examName="examName" attemptId={0} />;
 
-describe('ResetExamAttemptButton', () => {
+describe('ResetExamAttemptModal', () => {
   beforeEach(() => {
     jest.restoreAllMocks();
     hooks.useDeleteExamAttempt.mockReturnValue(mockMakeNetworkRequest);
   });
-  it('Test that the ResetExamAttemptButton matches snapshot', () => {
-    expect(render(resetButton)).toMatchSnapshot();
+  it('Test that the ResetExamAttemptModal matches snapshot', () => {
+    expect(render(resetModal)).toMatchSnapshot();
   });
   it('Modal appears upon clicking button', () => {
-    render(resetButton);
+    render(resetModal);
     screen.getByText('Reset').click();
     expect(screen.getByText('Please confirm your choice.')).toBeInTheDocument();
   });
   it('Clicking the No button closes the modal', () => {
-    render(resetButton);
+    render(resetModal);
     screen.getByText('Reset').click();
     screen.getByText('Cancel').click();
     // Using queryByText here allows the function to throw
@@ -38,7 +38,7 @@ describe('ResetExamAttemptButton', () => {
   it('Clicking the Yes button calls the deletion hook', () => {
     const mockDeleteExamAttempt = jest.fn();
     jest.spyOn(hooks, 'useDeleteExamAttempt').mockImplementation(() => mockDeleteExamAttempt);
-    render(resetButton);
+    render(resetModal);
     screen.getByText('Reset').click();
     screen.getByText('Yes, I\'m Sure').click();
     expect(mockDeleteExamAttempt).toHaveBeenCalledWith(0);
