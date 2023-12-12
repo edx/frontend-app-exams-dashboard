@@ -13,7 +13,7 @@ const ResetButtonProps = {
     default: 'Reset',
     pending: 'Resetting...',
     complete: 'Reset',
-    error: 'Error'
+    error: 'Error',
   },
   variant: 'primary',
 };
@@ -22,8 +22,7 @@ const ResetExamAttemptModal = ({ username, examName, attemptId }) => {
   const [isOpen, open, close] = useToggle(false);
   const resetExamAttempt = useDeleteExamAttempt();
   const { formatMessage } = useIntl();
-  const [resetButtonStatus, setResetButtonStatus] = useState("");
-
+  const [resetButtonStatus, setResetButtonStatus] = useState('');
 
   return (
     <>
@@ -60,10 +59,12 @@ const ResetExamAttemptModal = ({ username, examName, attemptId }) => {
             <ModalDialog.CloseButton variant="tertiary">
               {formatMessage(messages.ResetExamAttemptModalCancel)}
             </ModalDialog.CloseButton>
-            <StatefulButton state={resetButtonStatus} {...ResetButtonProps}
+            <StatefulButton
+              state={resetButtonStatus}
+              {...ResetButtonProps}
               variant="primary"
               onClick={e => { // eslint-disable-line no-unused-vars
-                setResetButtonStatus("pending");
+                setResetButtonStatus('pending');
                 resetExamAttempt(attemptId);
               }}
             >

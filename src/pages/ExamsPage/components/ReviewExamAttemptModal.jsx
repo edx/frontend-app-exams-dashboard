@@ -28,7 +28,7 @@ const VerifyButtonProps = {
     default: 'Verify',
     pending: 'Verifying...',
     complete: 'Verified',
-    error: 'Error'
+    error: 'Error',
   },
   variant: 'primary',
 };
@@ -38,7 +38,7 @@ const RejectButtonProps = {
     default: 'Reject',
     pending: 'Rejecting...',
     complete: 'Rejected',
-    error: 'Error'
+    error: 'Error',
   },
   variant: 'primary',
 };
@@ -50,8 +50,8 @@ const ReviewExamAttemptModal = ({
   const modifyExamAttempt = useModifyExamAttempt();
   const { currentExam } = useExamsData();
   const { formatMessage } = useIntl();
-  const [rejectButtonStatus, setRejectButtonStatus] = useState("");
-  const [verifyButtonStatus, setVerifyButtonStatus] = useState("");
+  const [rejectButtonStatus, setRejectButtonStatus] = useState('');
+  const [verifyButtonStatus, setVerifyButtonStatus] = useState('');
 
   const getButton = (status) => {
     if (ReviewRequiredStatuses.includes(status)) {
@@ -133,10 +133,12 @@ const ReviewExamAttemptModal = ({
             </ModalDialog.CloseButton>
             {attemptStatus !== constants.ExamAttemptStatus.verified
               && (
-                <StatefulButton state={verifyButtonStatus} {...VerifyButtonProps}
+                <StatefulButton
+                  state={verifyButtonStatus}
+                  {...VerifyButtonProps}
                   variant="success"
                   onClick={e => { // eslint-disable-line no-unused-vars
-                    setVerifyButtonStatus("pending");
+                    setVerifyButtonStatus('pending');
                     modifyExamAttempt(attemptId, constants.ExamAttemptActions.verify);
                   }}
                 >
@@ -145,10 +147,12 @@ const ReviewExamAttemptModal = ({
               )}
             {attemptStatus !== constants.ExamAttemptStatus.rejected
               && (
-                <StatefulButton state={rejectButtonStatus} {...RejectButtonProps}
+                <StatefulButton
+                  state={rejectButtonStatus}
+                  {...RejectButtonProps}
                   variant="danger"
                   onClick={e => { // eslint-disable-line no-unused-vars
-                    setRejectButtonStatus("pending");
+                    setRejectButtonStatus('pending');
                     modifyExamAttempt(attemptId, constants.ExamAttemptActions.reject);
                   }}
                 >
