@@ -209,6 +209,69 @@ const messages = defineMessages({
     description: 'Text for the button to reject an exam attempt',
   },
 
+  // Reset Button Labels
+  ResetExamAttemptButtonDefaultLabel: {
+    id: 'ResetExamAttemptModal.reset_button_default_label',
+    defaultMessage: 'Reset',
+    description: 'Label for the button to reset an exam attempt in its default state',
+  },
+  ResetExamAttemptButtonPendingLabel: {
+    id: 'ResetExamAttemptModal.reset_button_pending_label',
+    defaultMessage: 'Resetting...',
+    description: 'Label for the button to reset an exam attempt in its pending state',
+  },
+  ResetExamAttemptButtonCompelteLabel: {
+    id: 'ResetExamAttemptModal.reset_button_complete_label',
+    defaultMessage: 'Reset',
+    description: 'Label for the button to reset an exam attempt in its completed state',
+  },
+
+  // Verify Button Labels
+  VerifyExamAttemptButtonDefaultLabel: {
+    id: 'ReviewExamAttemptModal.verify_button_default_label',
+    defaultMessage: 'Verify',
+    description: 'Label for the button to verify an exam attempt in its default state',
+  },
+  VerifyExamAttemptButtonPendingLabel: {
+    id: 'ReviewExamAttemptModal.verify_button_pending_label',
+    defaultMessage: 'Verifying...',
+    description: 'Label for the button to verify an exam attempt in its pending state',
+  },
+  VerifyExamAttemptButtonCompelteLabel: {
+    id: 'ReviewExamAttemptModal.verify_button_complete_label',
+    defaultMessage: 'Verified',
+    description: 'Label for the button to verify an exam attempt in its completed state',
+  },
+
+  // Reject Button Labels
+  RejectExamAttemptButtonDefaultLabel: {
+    id: 'ReviewExamAttemptModal.reject_button_default_label',
+    defaultMessage: 'Reject',
+    description: 'Label for the button to reject an exam attempt in its default state',
+  },
+  RejectExamAttemptButtonPendingLabel: {
+    id: 'ReviewExamAttemptModal.reject_button_pending_label',
+    defaultMessage: 'Rejecting...',
+    description: 'Label for the button to reject an exam attempt in its pending state',
+  },
+  RejectExamAttemptButtonCompelteLabel: {
+    id: 'ReviewExamAttemptModal.reject_button_complete_label',
+    defaultMessage: 'Rejected',
+    description: 'Label for the button to reject an exam attempt in its completed state',
+  },
+
+  // Error Button Labels (Same across all buttons, split in two since message id's are component-specific)
+  ResetExamAttemptButtonErrorLabel: {
+    id: 'ResetExamAttemptModal.any_button_error_label',
+    defaultMessage: 'Error',
+    description: 'Label for a button to an modify an exam attempt in its errored state',
+  },
+  ReviewExamAttemptButtonErrorLabel: {
+    id: 'ReviewExamAttemptModal.any_button_error_label',
+    defaultMessage: 'Error',
+    description: 'Label for a button to an modify an exam attempt in its errored state',
+  },
+
   // Labels for exam attempt info for review/reset modals
   Username: {
     id: 'ExamAttemptModal.username',
@@ -231,12 +294,12 @@ const messages = defineMessages({
     description: 'Submission reason label for exam attempt data in the review/reset modal',
   },
 
+  // Labels for review dashboard button
   ReviewDashboardOpenLTITool: {
     id: 'ExternalReviewDashboard.open_lti_tool',
     defaultMessage: 'Open the Review Dashboard for {exam_name}',
     description: 'Text for button to open instructor LTI tool in a new window',
   },
-
   ReviewDashboardPleaseSelectExam: {
     id: 'ExternalReviewDashboard.please_select_exam',
     defaultMessage: 'Please select an exam from the dropdown above.',

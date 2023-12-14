@@ -23,35 +23,35 @@ const ReviewRequiredStatuses = [
   constants.ExamAttemptStatus.second_review_required,
 ];
 
-const VerifyButtonProps = {
-  labels: {
-    default: 'Verify',
-    pending: 'Verifying...',
-    complete: 'Verified',
-    error: 'Error',
-  },
-  variant: 'primary',
-};
-
-const RejectButtonProps = {
-  labels: {
-    default: 'Reject',
-    pending: 'Rejecting...',
-    complete: 'Rejected',
-    error: 'Error',
-  },
-  variant: 'primary',
-};
-
 const ReviewExamAttemptModal = ({
   username, examName, attemptId, attemptStatus, severity, submissionReason,
 }) => {
   const [isOpen, open, close] = useToggle(false);
   const modifyExamAttempt = useModifyExamAttempt();
   const { currentExam } = useExamsData();
-  const { formatMessage } = useIntl();
   const [rejectButtonStatus, setRejectButtonStatus] = useState('');
   const [verifyButtonStatus, setVerifyButtonStatus] = useState('');
+  const { formatMessage } = useIntl();
+
+  const VerifyButtonProps = {
+    labels: {
+      default: formatMessage(messages.VerifyExamAttemptButtonDefaultLabel),
+      pending: formatMessage(messages.VerifyExamAttemptButtonPendingLabel),
+      complete: formatMessage(messages.VerifyExamAttemptButtonCompelteLabel),
+      error: formatMessage(messages.ReviewExamAttemptButtonErrorLabel),
+    },
+    variant: 'primary',
+  };
+
+  const RejectButtonProps = {
+    labels: {
+      default: formatMessage(messages.RejectExamAttemptButtonDefaultLabel),
+      pending: formatMessage(messages.RejectExamAttemptButtonPendingLabel),
+      complete: formatMessage(messages.RejectExamAttemptButtonCompelteLabel),
+      error: formatMessage(messages.ReviewExamAttemptButtonErrorLabel),
+    },
+    variant: 'primary',
+  };
 
   const getButton = (status) => {
     if (ReviewRequiredStatuses.includes(status)) {
@@ -140,6 +140,11 @@ const ReviewExamAttemptModal = ({
                   onClick={e => { // eslint-disable-line no-unused-vars
                     setVerifyButtonStatus('pending');
                     modifyExamAttempt(attemptId, constants.ExamAttemptActions.verify);
+                    // TODO: Make this complete state only show after an exam attempt has been successfully modified
+                    // Or alternatively, we could have a toast message show up. Either way, we need to await the
+                    // call to modifyExamAttempt() before we show confirmation that it worked, so let's figure out
+                    // how to do that
+                    setRejectButtonStatus('complete');
                   }}
                 >
                   {formatMessage(messages.ReviewExamAttemptModalVerify)}
@@ -154,6 +159,7 @@ const ReviewExamAttemptModal = ({
                   onClick={e => { // eslint-disable-line no-unused-vars
                     setRejectButtonStatus('pending');
                     modifyExamAttempt(attemptId, constants.ExamAttemptActions.reject);
+                    setRejectButtonStatus('complete');
                   }}
                 >
                   {formatMessage(messages.ReviewExamAttemptModalReject)}

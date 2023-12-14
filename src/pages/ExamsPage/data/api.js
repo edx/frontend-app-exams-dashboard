@@ -26,7 +26,13 @@ export async function deleteExamAttempt(attemptId) {
   return response.data;
 }
 
+// function sleep(ms) {
+//   return new Promise(resolve => setTimeout(resolve, ms));
+// }
+
 export async function modifyExamAttempt(attemptId, action) {
+  // Temporary sleep code so I can see the button in the pending state, will remove in final version
+  // await sleep(2000);
   const url = `${getExamsBaseUrl()}/api/v1/exams/attempt/${attemptId}`;
   const payload = { action };
   const response = await getAuthenticatedHttpClient().put(url, payload);

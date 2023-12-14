@@ -8,21 +8,21 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 import { useDeleteExamAttempt } from '../hooks';
 import messages from '../messages';
 
-const ResetButtonProps = {
-  labels: {
-    default: 'Reset',
-    pending: 'Resetting...',
-    complete: 'Reset',
-    error: 'Error',
-  },
-  variant: 'primary',
-};
-
 const ResetExamAttemptModal = ({ username, examName, attemptId }) => {
   const [isOpen, open, close] = useToggle(false);
   const resetExamAttempt = useDeleteExamAttempt();
-  const { formatMessage } = useIntl();
   const [resetButtonStatus, setResetButtonStatus] = useState('');
+  const { formatMessage } = useIntl();
+
+  const ResetButtonProps = {
+    labels: {
+      default: formatMessage(messages.ResetExamAttemptButtonDefaultLabel),
+      pending: formatMessage(messages.ResetExamAttemptButtonPendingLabel),
+      complete: formatMessage(messages.ResetExamAttemptButtonCompelteLabel),
+      error: formatMessage(messages.ResetExamAttemptButtonErrorLabel),
+    },
+    variant: 'primary',
+  };
 
   return (
     <>
