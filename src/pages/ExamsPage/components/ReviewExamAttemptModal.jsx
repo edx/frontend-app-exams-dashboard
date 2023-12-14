@@ -10,6 +10,11 @@ import * as constants from 'data/constants';
 import { useExamsData, useModifyExamAttempt } from '../hooks';
 import messages from '../messages';
 import { getLaunchUrlByExamId, getMessageLabelForStatus } from '../utils';
+import { RequestKeys } from 'data/constants';
+import * as reduxHooks from 'data/redux/hooks';
+import { async } from 'regenerator-runtime';
+
+
 
 const ReviewableStatuses = [
   constants.ExamAttemptStatus.error,
@@ -51,6 +56,27 @@ const ReviewExamAttemptModal = ({
       error: formatMessage(messages.ReviewExamAttemptButtonErrorLabel),
     },
     variant: 'primary',
+  };
+
+  const getRequestStatus = () => {
+    console.log("OH BOY");
+    if (reduxHooks.useRequestIsPending(RequestKeys.modifyExamAttempt)) {
+      return 'pending';
+    } else if (reduxHooks.useRequestIsCompleted(RequestKeys.modifyExamAttempt)) {
+      return 'complete';
+    } else if (reduxHooks.useRequestError(RequestKeys.modifyExamAttempt)) {
+      return 'error';
+    };
+    return '';
+  };
+
+  // Set the status of the button 
+  const updateButtonStatus = (buttonType) => {
+    if (buttonType == 'verify') {
+      setVerifyButtonStatus(getRequestStatus());
+    } else if (buttonType == 'reject') {
+      setRejectButtonStatus(getRequestStatus());
+    }
   };
 
   const getButton = (status) => {
@@ -137,14 +163,10 @@ const ReviewExamAttemptModal = ({
                   state={verifyButtonStatus}
                   {...VerifyButtonProps}
                   variant="success"
-                  onClick={e => { // eslint-disable-line no-unused-vars
-                    setVerifyButtonStatus('pending');
-                    modifyExamAttempt(attemptId, constants.ExamAttemptActions.verify);
-                    // TODO: Make this complete state only show after an exam attempt has been successfully modified
-                    // Or alternatively, we could have a toast message show up. Either way, we need to await the
-                    // call to modifyExamAttempt() before we show confirmation that it worked, so let's figure out
-                    // how to do that
-                    setRejectButtonStatus('complete');
+                  onClick={async e => { // eslint-disable-line no-unused-vars
+                    updateButtonStatus('reject');
+                    await modifyExamAttempt(attemptId, constants.ExamAttemptActions.verify);
+                    // updateButtonStatus()
                   }}
                 >
                   {formatMessage(messages.ReviewExamAttemptModalVerify)}
@@ -157,9 +179,9 @@ const ReviewExamAttemptModal = ({
                   {...RejectButtonProps}
                   variant="danger"
                   onClick={e => { // eslint-disable-line no-unused-vars
-                    setRejectButtonStatus('pending');
+                    // setRejectButtonStatus('pending');
                     modifyExamAttempt(attemptId, constants.ExamAttemptActions.reject);
-                    setRejectButtonStatus('complete');
+                    // setRejectButtonStatus('complete');
                   }}
                 >
                   {formatMessage(messages.ReviewExamAttemptModalReject)}
