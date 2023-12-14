@@ -10,11 +10,7 @@ import * as constants from 'data/constants';
 import { useExamsData, useModifyExamAttempt } from '../hooks';
 import messages from '../messages';
 import { getLaunchUrlByExamId, getMessageLabelForStatus } from '../utils';
-import { RequestKeys } from 'data/constants';
 import * as reduxHooks from 'data/redux/hooks';
-import { async } from 'regenerator-runtime';
-
-
 
 const ReviewableStatuses = [
   constants.ExamAttemptStatus.error,
@@ -37,47 +33,6 @@ const ReviewExamAttemptModal = ({
   const [rejectButtonStatus, setRejectButtonStatus] = useState('');
   const [verifyButtonStatus, setVerifyButtonStatus] = useState('');
   const { formatMessage } = useIntl();
-
-  const VerifyButtonProps = {
-    labels: {
-      default: formatMessage(messages.VerifyExamAttemptButtonDefaultLabel),
-      pending: formatMessage(messages.VerifyExamAttemptButtonPendingLabel),
-      complete: formatMessage(messages.VerifyExamAttemptButtonCompelteLabel),
-      error: formatMessage(messages.ReviewExamAttemptButtonErrorLabel),
-    },
-    variant: 'primary',
-  };
-
-  const RejectButtonProps = {
-    labels: {
-      default: formatMessage(messages.RejectExamAttemptButtonDefaultLabel),
-      pending: formatMessage(messages.RejectExamAttemptButtonPendingLabel),
-      complete: formatMessage(messages.RejectExamAttemptButtonCompelteLabel),
-      error: formatMessage(messages.ReviewExamAttemptButtonErrorLabel),
-    },
-    variant: 'primary',
-  };
-
-  const getRequestStatus = () => {
-    console.log("OH BOY");
-    if (reduxHooks.useRequestIsPending(RequestKeys.modifyExamAttempt)) {
-      return 'pending';
-    } else if (reduxHooks.useRequestIsCompleted(RequestKeys.modifyExamAttempt)) {
-      return 'complete';
-    } else if (reduxHooks.useRequestError(RequestKeys.modifyExamAttempt)) {
-      return 'error';
-    };
-    return '';
-  };
-
-  // Set the status of the button 
-  const updateButtonStatus = (buttonType) => {
-    if (buttonType == 'verify') {
-      setVerifyButtonStatus(getRequestStatus());
-    } else if (buttonType == 'reject') {
-      setRejectButtonStatus(getRequestStatus());
-    }
-  };
 
   const getButton = (status) => {
     if (ReviewRequiredStatuses.includes(status)) {
@@ -114,6 +69,50 @@ const ReviewExamAttemptModal = ({
       });
     }
     return null; // we should not get here
+  };
+
+  const VerifyButtonProps = {
+    labels: {
+      default: formatMessage(messages.VerifyExamAttemptButtonDefaultLabel),
+      pending: formatMessage(messages.VerifyExamAttemptButtonPendingLabel),
+      complete: formatMessage(messages.VerifyExamAttemptButtonCompelteLabel),
+      error: formatMessage(messages.ReviewExamAttemptButtonErrorLabel),
+    },
+    variant: 'primary',
+  };
+
+  const RejectButtonProps = {
+    labels: {
+      default: formatMessage(messages.RejectExamAttemptButtonDefaultLabel),
+      pending: formatMessage(messages.RejectExamAttemptButtonPendingLabel),
+      complete: formatMessage(messages.RejectExamAttemptButtonCompelteLabel),
+      error: formatMessage(messages.ReviewExamAttemptButtonErrorLabel),
+    },
+    variant: 'primary',
+  };
+
+  const isPending = reduxHooks.useRequestIsPending(constants.RequestKeys.modifyExamAttempt);
+  const isCompleted = reduxHooks.useRequestIsCompleted(constants.RequestKeys.modifyExamAttempt);
+  const isError = reduxHooks.useRequestError(constants.RequestKeys.modifyExamAttempt);
+
+  const getRequestStatus = () => {
+    if (isPending) {
+      return 'pending';
+    } else if (isCompleted) {
+      return 'complete';
+    } else if (isError) {
+      return 'error';
+    };
+    return '';
+  };
+
+  // Set the status of the button 
+  const updateButtonStatus = (buttonType) => {
+    if (buttonType == 'verify') {
+      setVerifyButtonStatus(getRequestStatus());
+    } else if (buttonType == 'reject') {
+      setRejectButtonStatus(getRequestStatus());
+    }
   };
 
   return (
