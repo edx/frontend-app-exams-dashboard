@@ -2,7 +2,22 @@ import { RequestStates } from 'data/constants';
 
 export const requestStatus = (state, { requestKey }) => state.requests[requestKey];
 
-const statusSelector = (fn) => (requestKey) => (state) => fn(state.requests[requestKey]);
+
+const statusSelector = (fn) => (requestKey) => (state) => {
+  
+  // console.log("requestKey:"+requestKey)
+  if (requestKey === 'modifyExamAttempt') {
+      console.log("status:"+state.requests[requestKey].status);
+      // debugger;
+    } 
+  if (state.requests[requestKey] === undefined) {
+    throw new TypeError(`The request with RequestKey ${requestKey} is missing an initial state. \
+    If you see this error, then you must initialize your request statuses in the initialState variable in \
+    src/data/redux/requests/reducer.js \n\n \
+    This error replaces this otherwise vague error: TypeError: Cannot destructure property 'status' of '_ref3' as it is undefined.`)
+  }
+  fn(state.requests[requestKey]);
+};
 
 export const isInactive = ({ status }) => status === RequestStates.inactive;
 export const isPending = ({ status }) => status === RequestStates.pending;

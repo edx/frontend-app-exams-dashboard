@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Button, useToggle, ModalDialog, ActionRow, StatefulButton,
 } from '@edx/paragon';
@@ -33,6 +33,9 @@ const ReviewExamAttemptModal = ({
   const [rejectButtonStatus, setRejectButtonStatus] = useState('');
   const [verifyButtonStatus, setVerifyButtonStatus] = useState('');
   const { formatMessage } = useIntl();
+  const isPending = reduxHooks.useRequestIsPending(constants.RequestKeys.modifyExamAttempt);
+  const isCompleted = reduxHooks.useRequestIsCompleted(constants.RequestKeys.modifyExamAttempt);
+  const isError = reduxHooks.useRequestError(constants.RequestKeys.modifyExamAttempt);
 
   const getButton = (status) => {
     if (ReviewRequiredStatuses.includes(status)) {
@@ -91,10 +94,6 @@ const ReviewExamAttemptModal = ({
     variant: 'primary',
   };
 
-  const isPending = reduxHooks.useRequestIsPending(constants.RequestKeys.modifyExamAttempt);
-  const isCompleted = reduxHooks.useRequestIsCompleted(constants.RequestKeys.modifyExamAttempt);
-  const isError = reduxHooks.useRequestError(constants.RequestKeys.modifyExamAttempt);
-
   const getRequestStatus = () => {
     if (isPending) {
       return 'pending';
@@ -106,15 +105,37 @@ const ReviewExamAttemptModal = ({
     return '';
   };
 
-  // Set the status of the button 
-  const updateButtonStatus = (buttonType) => {
-    if (buttonType == 'verify') {
-      setVerifyButtonStatus(getRequestStatus());
-    } else if (buttonType == 'reject') {
-      setRejectButtonStatus(getRequestStatus());
+  useEffect(() => {
+    const status = '';
+    if (isPending) {
+      status = 'pending';
+    } else if (isCompleted) {
+      status = 'complete';
+    } else if (isError) {
+      status = 'error';
     }
-  };
+    console.log("STATUS: ", isPending, isCompleted, isError);
+  }, [isPending, isCompleted, isError])
 
+  // insert above code here later
+  const updateAttemptStatusStuff = (action) => {
+    // Set the status of the button
+    const status = '';
+    if (isPending) {
+      status = 'pending';
+    } else if (isCompleted) {
+      status = 'complete';
+    } else if (isError) {
+      status = 'error';
+    }
+
+    if (action == 'verify') {
+      setVerifyButtonStatus();
+    } else if (action == 'reject') {
+      setRejectButtonStatus();
+    }
+  }
+  
   return (
     <>
       <div className="d-flex text-danger">
@@ -163,8 +184,10 @@ const ReviewExamAttemptModal = ({
                   {...VerifyButtonProps}
                   variant="success"
                   onClick={async e => { // eslint-disable-line no-unused-vars
-                    updateButtonStatus('reject');
-                    await modifyExamAttempt(attemptId, constants.ExamAttemptActions.verify);
+                    // updateButtonStatus('reject');
+                    modifyExamAttempt(attemptId, constants.ExamAttemptActions.verify);
+                    updateAttemptStatusStuff(constants.ExamAttemptActions.verify);
+                    // modifyExamAttempt(constants.ExamAttemptActions.verify);
                     // updateButtonStatus()
                   }}
                 >
@@ -177,9 +200,11 @@ const ReviewExamAttemptModal = ({
                   state={rejectButtonStatus}
                   {...RejectButtonProps}
                   variant="danger"
-                  onClick={e => { // eslint-disable-line no-unused-vars
+                  onClick={async e => { // eslint-disable-line no-unused-vars
                     // setRejectButtonStatus('pending');
                     modifyExamAttempt(attemptId, constants.ExamAttemptActions.reject);
+                    updateAttemptStatusStuff(constants.ExamAttemptActions.reject);
+                    // modifyExamAttempt(constants.ExamAttemptActions.reject);
                     // setRejectButtonStatus('complete');
                   }}
                 >
