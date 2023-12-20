@@ -1,8 +1,6 @@
+import * as reduxHooks from 'data/redux/hooks';
 import messages from './messages';
 import { getExamsBaseUrl } from './data/api';
-
-const isPending = reduxHooks.useRequestIsPending(constants.RequestKeys.modifyExamAttempt);
-const isError = reduxHooks.useRequestError(constants.RequestKeys.modifyExamAttempt);
 
 const examAttemptStatusLabels = {
   created: messages.statusLabelCreated,
@@ -22,11 +20,13 @@ export const getLaunchUrlByExamId = (id) => `${getExamsBaseUrl()}/lti/exam/${id}
 
 export const getMessageLabelForStatus = (status) => examAttemptStatusLabels[status];
 
-export const getUpdateRequestStatusFromRedux = () => {
+export const getRequestStatusFromRedux = (requestKey) => {
+  const isPending = reduxHooks.useRequestIsPending(requestKey);
+  const isError = reduxHooks.useRequestError(requestKey);
   if (isPending) {
     return 'pending';
-  } else if (isError) {
+  } if (isError) {
     return 'error';
   }
-  return;
+  return '';
 };

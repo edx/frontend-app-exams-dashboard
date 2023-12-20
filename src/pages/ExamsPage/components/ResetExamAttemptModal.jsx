@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 
-import { useState } from 'react';
 import {
   Button, useToggle, ModalDialog, ActionRow, StatefulButton,
 } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
+import * as constants from 'data/constants';
 import { useDeleteExamAttempt } from '../hooks';
 import messages from '../messages';
+import { getRequestStatusFromRedux } from '../utils';
 
 const ResetExamAttemptModal = ({ username, examName, attemptId }) => {
   const [isOpen, open, close] = useToggle(false);
   const resetExamAttempt = useDeleteExamAttempt();
-  const [resetButtonStatus, setResetButtonStatus] = useState('');
   const { formatMessage } = useIntl();
 
   const ResetButtonProps = {
@@ -60,11 +60,10 @@ const ResetExamAttemptModal = ({ username, examName, attemptId }) => {
               {formatMessage(messages.ResetExamAttemptModalCancel)}
             </ModalDialog.CloseButton>
             <StatefulButton
-              state={resetButtonStatus}
+              state={getRequestStatusFromRedux(constants.RequestKeys.deleteExamAttempt)}
               {...ResetButtonProps}
               variant="primary"
               onClick={e => { // eslint-disable-line no-unused-vars
-                setResetButtonStatus('pending');
                 resetExamAttempt(attemptId);
               }}
             >

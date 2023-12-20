@@ -8,7 +8,7 @@ import { Info, Warning } from '@edx/paragon/icons';
 import * as constants from 'data/constants';
 import { useExamsData, useModifyExamAttempt } from '../hooks';
 import messages from '../messages';
-import { getLaunchUrlByExamId, getMessageLabelForStatus, getUpdateRequestStatusFromRedux } from '../utils';
+import { getLaunchUrlByExamId, getMessageLabelForStatus, getRequestStatusFromRedux } from '../utils';
 
 const ReviewableStatuses = [
   constants.ExamAttemptStatus.error,
@@ -131,7 +131,7 @@ const ReviewExamAttemptModal = ({
             {attemptStatus !== constants.ExamAttemptStatus.verified
               && (
                 <StatefulButton
-                  state={getUpdateRequestStatusFromRedux()}
+                  state={getRequestStatusFromRedux(constants.RequestKeys.modifyExamAttempt)}
                   {...VerifyButtonProps}
                   variant="success"
                   onClick={async e => { // eslint-disable-line no-unused-vars
@@ -144,7 +144,7 @@ const ReviewExamAttemptModal = ({
             {attemptStatus !== constants.ExamAttemptStatus.rejected
               && (
                 <StatefulButton
-                  state={getUpdateRequestStatusFromRedux()}
+                  state={getRequestStatusFromRedux(constants.RequestKeys.modifyExamAttempt)}
                   {...RejectButtonProps}
                   variant="danger"
                   onClick={async e => { // eslint-disable-line no-unused-vars
