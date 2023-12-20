@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 
-import { useEffect, useState } from 'react';
 import {
   Button, useToggle, ModalDialog, ActionRow, StatefulButton,
 } from '@edx/paragon';
@@ -9,8 +8,7 @@ import { Info, Warning } from '@edx/paragon/icons';
 import * as constants from 'data/constants';
 import { useExamsData, useModifyExamAttempt } from '../hooks';
 import messages from '../messages';
-import { getLaunchUrlByExamId, getMessageLabelForStatus } from '../utils';
-import * as reduxHooks from 'data/redux/hooks';
+import { getLaunchUrlByExamId, getMessageLabelForStatus, getUpdateRequestStatusFromRedux } from '../utils';
 
 const ReviewableStatuses = [
   constants.ExamAttemptStatus.error,
@@ -30,12 +28,7 @@ const ReviewExamAttemptModal = ({
   const [isOpen, open, close] = useToggle(false);
   const modifyExamAttempt = useModifyExamAttempt();
   const { currentExam } = useExamsData();
-  const [rejectButtonStatus, setRejectButtonStatus] = useState('');
-  const [verifyButtonStatus, setVerifyButtonStatus] = useState('');
   const { formatMessage } = useIntl();
-  const isPending = reduxHooks.useRequestIsPending(constants.RequestKeys.modifyExamAttempt);
-  const isCompleted = reduxHooks.useRequestIsCompleted(constants.RequestKeys.modifyExamAttempt);
-  const isError = reduxHooks.useRequestError(constants.RequestKeys.modifyExamAttempt);
 
   const getButton = (status) => {
     if (ReviewRequiredStatuses.includes(status)) {
@@ -94,48 +87,6 @@ const ReviewExamAttemptModal = ({
     variant: 'primary',
   };
 
-  const getRequestStatus = () => {
-    if (isPending) {
-      return 'pending';
-    } else if (isCompleted) {
-      return 'complete';
-    } else if (isError) {
-      return 'error';
-    };
-    return '';
-  };
-
-  useEffect(() => {
-    const status = '';
-    if (isPending) {
-      status = 'pending';
-    } else if (isCompleted) {
-      status = 'complete';
-    } else if (isError) {
-      status = 'error';
-    }
-    console.log("STATUS: ", isPending, isCompleted, isError);
-  }, [isPending, isCompleted, isError])
-
-  // insert above code here later
-  const updateAttemptStatusStuff = (action) => {
-    // Set the status of the button
-    const status = '';
-    if (isPending) {
-      status = 'pending';
-    } else if (isCompleted) {
-      status = 'complete';
-    } else if (isError) {
-      status = 'error';
-    }
-
-    if (action == 'verify') {
-      setVerifyButtonStatus();
-    } else if (action == 'reject') {
-      setRejectButtonStatus();
-    }
-  }
-  
   return (
     <>
       <div className="d-flex text-danger">
@@ -180,15 +131,11 @@ const ReviewExamAttemptModal = ({
             {attemptStatus !== constants.ExamAttemptStatus.verified
               && (
                 <StatefulButton
-                  state={verifyButtonStatus}
+                  state={getUpdateRequestStatusFromRedux()}
                   {...VerifyButtonProps}
                   variant="success"
                   onClick={async e => { // eslint-disable-line no-unused-vars
-                    // updateButtonStatus('reject');
                     modifyExamAttempt(attemptId, constants.ExamAttemptActions.verify);
-                    updateAttemptStatusStuff(constants.ExamAttemptActions.verify);
-                    // modifyExamAttempt(constants.ExamAttemptActions.verify);
-                    // updateButtonStatus()
                   }}
                 >
                   {formatMessage(messages.ReviewExamAttemptModalVerify)}
@@ -197,15 +144,11 @@ const ReviewExamAttemptModal = ({
             {attemptStatus !== constants.ExamAttemptStatus.rejected
               && (
                 <StatefulButton
-                  state={rejectButtonStatus}
+                  state={getUpdateRequestStatusFromRedux()}
                   {...RejectButtonProps}
                   variant="danger"
                   onClick={async e => { // eslint-disable-line no-unused-vars
-                    // setRejectButtonStatus('pending');
                     modifyExamAttempt(attemptId, constants.ExamAttemptActions.reject);
-                    updateAttemptStatusStuff(constants.ExamAttemptActions.reject);
-                    // modifyExamAttempt(constants.ExamAttemptActions.reject);
-                    // setRejectButtonStatus('complete');
                   }}
                 >
                   {formatMessage(messages.ReviewExamAttemptModalReject)}

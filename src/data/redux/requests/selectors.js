@@ -7,7 +7,7 @@ const statusSelector = (fn) => (requestKey) => (state) => {
   
   // console.log("requestKey:"+requestKey)
   if (requestKey === 'modifyExamAttempt') {
-      console.log("status:"+state.requests[requestKey].status);
+      console.log("status: "+state.requests[requestKey].status);
       // debugger;
     } 
   if (state.requests[requestKey] === undefined) {
@@ -16,7 +16,7 @@ const statusSelector = (fn) => (requestKey) => (state) => {
     src/data/redux/requests/reducer.js \n\n \
     This error replaces this otherwise vague error: TypeError: Cannot destructure property 'status' of '_ref3' as it is undefined.`)
   }
-  fn(state.requests[requestKey]);
+  return fn(state.requests[requestKey]);
 };
 
 export const isInactive = ({ status }) => status === RequestStates.inactive;
