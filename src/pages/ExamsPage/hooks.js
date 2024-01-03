@@ -104,3 +104,16 @@ export const useExamAttemptsData = () => {
   const attemptsList = useSelector(selectors.courseExamAttemptsList);
   return { attemptsList };
 };
+
+export const useRequestStatusFromRedux = (requestKey) => {
+  const isPending = reduxHooks.useRequestIsPending(requestKey);
+  const isError = reduxHooks.useRequestError(requestKey);
+  return () => {
+    if (isPending) {
+      return 'pending';
+    } if (isError) {
+      return 'error';
+    }
+    return '';
+  };
+};

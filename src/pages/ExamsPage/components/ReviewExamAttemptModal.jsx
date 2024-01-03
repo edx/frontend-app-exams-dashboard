@@ -6,10 +6,9 @@ import {
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { Info, Warning } from '@edx/paragon/icons';
 import * as constants from 'data/constants';
-import { useExamsData, useModifyExamAttempt } from '../hooks';
+import { useExamsData, useModifyExamAttempt, useRequestStatusFromRedux } from '../hooks';
 import messages from '../messages';
-import { getLaunchUrlByExamId } from '../utils';
-import { getMessageLabelForStatus, getRequestStatusFromRedux } from 'data/redux/utils';
+import { getLaunchUrlByExamId, getMessageLabelForStatus } from '../utils';
 
 const ReviewableStatuses = [
   constants.ExamAttemptStatus.error,
@@ -28,6 +27,7 @@ const ReviewExamAttemptModal = ({
 }) => {
   const [isOpen, open, close] = useToggle(false);
   const modifyExamAttempt = useModifyExamAttempt();
+  const getRequestStatus = useRequestStatusFromRedux();
   const { currentExam } = useExamsData();
   const { formatMessage } = useIntl();
 
@@ -132,7 +132,7 @@ const ReviewExamAttemptModal = ({
             {attemptStatus !== constants.ExamAttemptStatus.verified
               && (
                 <StatefulButton
-                  state={getRequestStatusFromRedux(constants.RequestKeys.modifyExamAttempt)}
+                  state={getRequestStatus(constants.RequestKeys.modifyExamAttempt)}
                   {...VerifyButtonProps}
                   variant="success"
                   onClick={async e => { // eslint-disable-line no-unused-vars
@@ -145,7 +145,7 @@ const ReviewExamAttemptModal = ({
             {attemptStatus !== constants.ExamAttemptStatus.rejected
               && (
                 <StatefulButton
-                  state={getRequestStatusFromRedux(constants.RequestKeys.modifyExamAttempt)}
+                  state={getRequestStatus(constants.RequestKeys.modifyExamAttempt)}
                   {...RejectButtonProps}
                   variant="danger"
                   onClick={async e => { // eslint-disable-line no-unused-vars
