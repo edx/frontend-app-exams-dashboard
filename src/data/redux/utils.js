@@ -1,7 +1,6 @@
 import * as reduxHooks from 'data/redux/hooks';
 import messages from 'pages/ExamsPage/messages';
 
-
 const examAttemptStatusLabels = {
   created: messages.statusLabelCreated,
   download_software_clicked: messages.statusLabelDownloadSoftwareClicked,
