@@ -8,6 +8,7 @@ import * as hooks from '../hooks';
 
 jest.mock('../hooks', () => ({
   useModifyExamAttempt: jest.fn(),
+  useRequestStatusFromRedux: jest.fn(),
   useExamsData: jest.fn(),
 }));
 
@@ -31,6 +32,7 @@ describe('ReviewExamAttemptModal', () => {
   beforeEach(() => {
     jest.restoreAllMocks();
     hooks.useModifyExamAttempt.mockReturnValue(mockMakeNetworkRequest);
+    hooks.useRequestStatusFromRedux.mockReturnValue(mockMakeNetworkRequest);
     hooks.useExamsData.mockReturnValue(testUtils.defaultExamsData);
   });
   it('Test that the ReviewExamAttemptModal matches snapshot', () => {

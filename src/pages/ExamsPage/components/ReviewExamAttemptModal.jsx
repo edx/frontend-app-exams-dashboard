@@ -139,7 +139,6 @@ const ReviewExamAttemptModal = ({
                     modifyExamAttempt(attemptId, constants.ExamAttemptActions.verify);
                   }}
                 >
-                  {formatMessage(messages.ReviewExamAttemptModalVerify)}
                 </StatefulButton>
               )}
             {attemptStatus !== constants.ExamAttemptStatus.rejected
@@ -152,7 +151,6 @@ const ReviewExamAttemptModal = ({
                     modifyExamAttempt(attemptId, constants.ExamAttemptActions.reject);
                   }}
                 >
-                  {formatMessage(messages.ReviewExamAttemptModalReject)}
                 </StatefulButton>
               )}
           </ActionRow>

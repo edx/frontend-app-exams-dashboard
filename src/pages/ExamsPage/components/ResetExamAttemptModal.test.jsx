@@ -6,6 +6,7 @@ import * as hooks from '../hooks';
 
 jest.mock('../hooks', () => ({
   useDeleteExamAttempt: jest.fn(),
+  useRequestStatusFromRedux: jest.fn(),
 }));
 
 const mockMakeNetworkRequest = jest.fn();
@@ -19,6 +20,7 @@ describe('ResetExamAttemptModal', () => {
   beforeEach(() => {
     jest.restoreAllMocks();
     hooks.useDeleteExamAttempt.mockReturnValue(mockMakeNetworkRequest);
+    hooks.useRequestStatusFromRedux.mockReturnValue(mockMakeNetworkRequest);
   });
   it('Test that the ResetExamAttemptModal matches snapshot', () => {
     expect(render(resetModal)).toMatchSnapshot();
@@ -40,7 +42,7 @@ describe('ResetExamAttemptModal', () => {
     jest.spyOn(hooks, 'useDeleteExamAttempt').mockImplementation(() => mockDeleteExamAttempt);
     render(resetModal);
     screen.getByText('Reset').click();
-    screen.getByText('Yes, I\'m Sure').click();
+    screen.getByTestId('reset-stateful-button').click();
     expect(mockDeleteExamAttempt).toHaveBeenCalledWith(0);
   });
 });

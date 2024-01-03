@@ -151,11 +151,6 @@ const messages = defineMessages({
     defaultMessage: 'Cancel',
     description: 'Text for the button to cancel resetting an exam attempt',
   },
-  ResetExamAttemptModalConfirm: {
-    id: 'ResetExamAttemptModal.confirm_button',
-    defaultMessage: 'Yes, I\'m Sure',
-    description: 'Text for the button to confirm the reset of an exam attempt',
-  },
 
   // ReviewExamAttemptModal
   ReviewableButtonTitle: {
@@ -197,16 +192,6 @@ const messages = defineMessages({
     id: 'ReviewExamAttemptModal.cancel_button',
     defaultMessage: 'Cancel',
     description: 'Text for the button to cancel reviewing an exam attempt',
-  },
-  ReviewExamAttemptModalVerify: {
-    id: 'ReviewExamAttemptModal.verify_button',
-    defaultMessage: 'Verify',
-    description: 'Text for the button to verify an exam attempt',
-  },
-  ReviewExamAttemptModalReject: {
-    id: 'ReviewExamAttemptModal.reject_button',
-    defaultMessage: 'Reject',
-    description: 'Text for the button to reject an exam attempt',
   },
 
   // Reset Button Labels

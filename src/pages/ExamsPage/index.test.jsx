@@ -14,6 +14,7 @@ jest.mock('./hooks', () => ({
   useFetchExamAttempts: jest.fn(),
   useDeleteExamAttempt: jest.fn(),
   useModifyExamAttempt: jest.fn(),
+  useRequestStatusFromRedux: jest.fn(),
 }));
 
 describe('ExamsPage', () => {
@@ -24,7 +25,7 @@ describe('ExamsPage', () => {
     test('exams and attempts loaded', () => {
       // temporary, this won't fire on useEffect once we have an exam selection handler
       hooks.useFetchExamAttempts.mockReturnValue(jest.fn());
-
+      hooks.useRequestStatusFromRedux.mockReturnValue(jest.fn());
       hooks.useExamsData.mockReturnValue(testUtils.defaultExamsData);
       expect(render(<ExamsPage courseId="test_course" />)).toMatchSnapshot();
     });

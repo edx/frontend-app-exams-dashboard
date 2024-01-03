@@ -60,6 +60,7 @@ const ResetExamAttemptModal = ({ username, examName, attemptId }) => {
               {formatMessage(messages.ResetExamAttemptModalCancel)}
             </ModalDialog.CloseButton>
             <StatefulButton
+              data-testid="reset-stateful-button"
               state={getRequestStatus(constants.RequestKeys.deleteExamAttempt)}
               {...ResetButtonProps}
               variant="primary"
@@ -67,7 +68,6 @@ const ResetExamAttemptModal = ({ username, examName, attemptId }) => {
                 resetExamAttempt(attemptId);
               }}
             >
-              {formatMessage(messages.ResetExamAttemptModalConfirm)}
             </StatefulButton>
           </ActionRow>
         </ModalDialog.Footer>

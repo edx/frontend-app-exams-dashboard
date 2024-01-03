@@ -13,6 +13,7 @@ const initialState = {
   [RequestKeys.fetchExamAttempts]: { status: RequestStates.inactive },
   [RequestKeys.deleteExamAttempt]: { status: RequestStates.inactive },
   [RequestKeys.modifyExamAttempt]: { status: RequestStates.inactive },
+  [undefined]: { status: RequestStates.inactive },
 };
 
 // eslint-disable-next-line no-unused-vars
