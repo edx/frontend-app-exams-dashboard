@@ -7,7 +7,7 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 import * as constants from 'data/constants';
 import { useDeleteExamAttempt } from '../hooks';
 import messages from '../messages';
-import { getRequestStatusFromRedux } from '../utils';
+import { getRequestStatusFromRedux } from 'data/redux/utils';
 
 const ResetExamAttemptModal = ({ username, examName, attemptId }) => {
   const [isOpen, open, close] = useToggle(false);

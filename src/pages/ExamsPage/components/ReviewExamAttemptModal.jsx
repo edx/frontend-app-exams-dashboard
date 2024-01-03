@@ -8,7 +8,8 @@ import { Info, Warning } from '@edx/paragon/icons';
 import * as constants from 'data/constants';
 import { useExamsData, useModifyExamAttempt } from '../hooks';
 import messages from '../messages';
-import { getLaunchUrlByExamId, getMessageLabelForStatus, getRequestStatusFromRedux } from '../utils';
+import { getLaunchUrlByExamId } from '../utils';
+import { getMessageLabelForStatus, getRequestStatusFromRedux } from 'data/redux/utils';
 
 const ReviewableStatuses = [
   constants.ExamAttemptStatus.error,
