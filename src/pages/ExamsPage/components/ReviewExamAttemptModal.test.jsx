@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, waitFor, screen } from '@testing-library/react';
 
 import * as constants from 'data/constants';
 import ReviewExamAttemptModal from './ReviewExamAttemptModal';
@@ -50,14 +50,18 @@ describe('ReviewExamAttemptModal', () => {
     // Using queryByText here allows the function to throw
     expect(screen.queryByText('Update review status')).not.toBeInTheDocument();
   });
-  it('Clicking the Verify button calls the modify exam attempt hook', () => {
+  it('Clicking the Verify button calls the modify exam attempt hook', async () => {
     const mockModifyExamAttempt = jest.fn();
     jest.spyOn(hooks, 'useModifyExamAttempt').mockImplementation(() => mockModifyExamAttempt);
     render(reviewModal());
     screen.getByText('Review Required').click();
     screen.getByText('Verify').click();
-    // Using queryByText here allows the function to throw
-    expect(screen.queryByText('Verifying...')).toBeInTheDocument();
+    // expect(screen.getByRole('button', { name: 'Verify' })).toBeInTheDocument();
+    // screen.getByRole('button', { name: 'Verify' }).click();
+    await waitFor(() => {
+      expect(queryByText('Verifying...')).toBeInTheDocument()
+    })
+    // await screen.findByText('Verifying...');
     expect(mockModifyExamAttempt).toHaveBeenCalledWith(0, constants.ExamAttemptActions.verify);
   });
   it('Clicking the Reject button calls the modify exam attempt hook', () => {
