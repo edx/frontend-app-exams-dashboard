@@ -56,6 +56,8 @@ describe('ReviewExamAttemptModal', () => {
     render(reviewModal());
     screen.getByText('Review Required').click();
     screen.getByText('Verify').click();
+    // Using queryByText here allows the function to throw
+    expect(screen.queryByText('Verifying...')).toBeInTheDocument();
     expect(mockModifyExamAttempt).toHaveBeenCalledWith(0, constants.ExamAttemptActions.verify);
   });
   it('Clicking the Reject button calls the modify exam attempt hook', () => {
@@ -64,6 +66,7 @@ describe('ReviewExamAttemptModal', () => {
     render(reviewModal());
     screen.getByText('Review Required').click();
     screen.getByText('Reject').click();
+    expect(screen.queryByText('Rejecting...')).toBeInTheDocument();
     expect(mockModifyExamAttempt).toHaveBeenCalledWith(0, constants.ExamAttemptActions.reject);
   });
   it('Does not show the modal if the attempt is not reviewable', () => {
