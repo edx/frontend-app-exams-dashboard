@@ -138,8 +138,7 @@ const ReviewExamAttemptModal = ({
                   onClick={async e => { // eslint-disable-line no-unused-vars
                     modifyExamAttempt(attemptId, constants.ExamAttemptActions.verify);
                   }}
-                >
-                </StatefulButton>
+                />
               )}
             {attemptStatus !== constants.ExamAttemptStatus.rejected
               && (
@@ -150,8 +149,7 @@ const ReviewExamAttemptModal = ({
                   onClick={async e => { // eslint-disable-line no-unused-vars
                     modifyExamAttempt(attemptId, constants.ExamAttemptActions.reject);
                   }}
-                >
-                </StatefulButton>
+                />
               )}
           </ActionRow>
         </ModalDialog.Footer>

@@ -16,6 +16,7 @@ jest.mock('react-redux', () => ({
 jest.mock('data/redux/hooks', () => ({
   useMakeNetworkRequest: jest.fn(),
   useRequestIsPending: jest.fn(),
+  useRequestError: jest.fn(),
 }));
 
 jest.mock('./data/api');
@@ -167,6 +168,27 @@ describe('ExamsPage hooks', () => {
       jest.spyOn(hooks, 'useFetchExamAttempts').mockImplementation(() => mockFetchExamAttempts);
       hooks.useSetCurrentExam()(1);
       expect(mockFetchExamAttempts).toHaveBeenCalledWith(1);
+    });
+  });
+
+  describe('useRequestStatusFromRedux', () => {
+    it('returns empty string if no request made', () => {
+      reduxHooks.useRequestIsPending.mockReturnValue(false);
+      reduxHooks.useRequestError.mockReturnValue(false);
+      const getRequestStatus = hooks.useRequestStatusFromRedux(constants.modifyExamAttempt);
+      expect(getRequestStatus()).toBe('');
+    });
+    it('', () => {
+      reduxHooks.useRequestIsPending.mockReturnValue(true);
+      reduxHooks.useRequestError.mockReturnValue(false);
+      const getRequestStatus = hooks.useRequestStatusFromRedux(constants.modifyExamAttempt);
+      expect(getRequestStatus()).toBe('pending');
+    });
+    it('', () => {
+      reduxHooks.useRequestIsPending.mockReturnValue(false);
+      reduxHooks.useRequestError.mockReturnValue(true);
+      const getRequestStatus = hooks.useRequestStatusFromRedux(constants.modifyExamAttempt);
+      expect(getRequestStatus()).toBe('error');
     });
   });
 });

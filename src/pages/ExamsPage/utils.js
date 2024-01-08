@@ -1,5 +1,5 @@
-import { getExamsBaseUrl } from './data/api';
 import messages from 'pages/ExamsPage/messages';
+import { getExamsBaseUrl } from './data/api';
 
 export const getLaunchUrlByExamId = (id) => `${getExamsBaseUrl()}/lti/exam/${id}/instructor_tool`;
 

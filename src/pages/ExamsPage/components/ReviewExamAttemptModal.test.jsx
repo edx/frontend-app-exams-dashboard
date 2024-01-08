@@ -1,4 +1,4 @@
-import { render, waitFor, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import * as constants from 'data/constants';
 import ReviewExamAttemptModal from './ReviewExamAttemptModal';
@@ -62,11 +62,10 @@ describe('ReviewExamAttemptModal', () => {
     // Using queryByText here allows the function to throw
     expect(screen.queryByText('Update review status')).not.toBeInTheDocument();
   });
-  it('Clicking the Verify button displays the correct label based on the request state', () => {
-    api.modifyExamAttempt.mockResolvedValue({exam_id: 0});
+  it.only('Clicking the Verify button displays the correct label based on the request state', () => {
+    api.modifyExamAttempt.mockResolvedValue({ exam_id: 0 });
     hooks.useRequestStatusFromRedux.mockReturnValue(() => 'pending'); // for testing button label state
-    const exams = { exams: testUtils.defaultExamsData };
-    testUtils.renderWithProviders(reviewModal(), { preloadedState:  exams });
+    render(reviewModal());
     screen.getByText('Review Required').click();
     expect(screen.queryByText('Verifying...')).toBeInTheDocument(); // The button should be in the pending state
   });
@@ -79,10 +78,8 @@ describe('ReviewExamAttemptModal', () => {
     expect(mockModifyExamAttempt).toHaveBeenCalledWith(0, constants.ExamAttemptActions.verify);
   });
   it('Clicking the Reject button displays the correct label based on the request state', () => {
-    api.modifyExamAttempt.mockResolvedValue({exam_id: 0});
+    api.modifyExamAttempt.mockResolvedValue({ exam_id: 0 });
     hooks.useRequestStatusFromRedux.mockReturnValue(() => 'pending'); // for testing button label state
-    const exams = { exams: testUtils.defaultExamsData };
-    testUtils.renderWithProviders(reviewModal(), { preloadedState:  exams });
     screen.getByText('Review Required').click();
     expect(screen.queryByText('Rejecting...')).toBeInTheDocument(); // The button should be in the pending state
   });

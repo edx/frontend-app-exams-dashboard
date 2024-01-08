@@ -67,8 +67,7 @@ const ResetExamAttemptModal = ({ username, examName, attemptId }) => {
               onClick={e => { // eslint-disable-line no-unused-vars
                 resetExamAttempt(attemptId);
               }}
-            >
-            </StatefulButton>
+            />
           </ActionRow>
         </ModalDialog.Footer>
       </ModalDialog>
