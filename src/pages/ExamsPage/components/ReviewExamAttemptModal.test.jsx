@@ -5,6 +5,18 @@ import ReviewExamAttemptModal from './ReviewExamAttemptModal';
 import * as testUtils from '../../../testUtils';
 
 import * as hooks from '../hooks';
+import * as api from '../data/api';
+
+jest.mock('../data/api', () => {
+  const originalModule = jest.requireActual('../data/api');
+
+  return {
+    __esModule: true,
+    ...originalModule,
+    // Only modifyExamAttempt is mocked and everything else from api.js is the same
+    modifyExamAttempt: jest.fn(),
+  };
+});
 
 jest.mock('../hooks', () => ({
   useModifyExamAttempt: jest.fn(),
@@ -50,19 +62,29 @@ describe('ReviewExamAttemptModal', () => {
     // Using queryByText here allows the function to throw
     expect(screen.queryByText('Update review status')).not.toBeInTheDocument();
   });
+  it('Clicking the Verify button displays the correct label based on the request state', () => {
+    api.modifyExamAttempt.mockResolvedValue({exam_id: 0});
+    hooks.useRequestStatusFromRedux.mockReturnValue(() => 'pending'); // for testing button label state
+    const exams = { exams: testUtils.defaultExamsData };
+    testUtils.renderWithProviders(reviewModal(), { preloadedState:  exams });
+    screen.getByText('Review Required').click();
+    expect(screen.queryByText('Verifying...')).toBeInTheDocument(); // The button should be in the pending state
+  });
   it('Clicking the Verify button calls the modify exam attempt hook', async () => {
     const mockModifyExamAttempt = jest.fn();
     jest.spyOn(hooks, 'useModifyExamAttempt').mockImplementation(() => mockModifyExamAttempt);
     render(reviewModal());
     screen.getByText('Review Required').click();
     screen.getByText('Verify').click();
-    // expect(screen.getByRole('button', { name: 'Verify' })).toBeInTheDocument();
-    // screen.getByRole('button', { name: 'Verify' }).click();
-    await waitFor(() => {
-      expect(queryByText('Verifying...')).toBeInTheDocument()
-    })
-    // await screen.findByText('Verifying...');
     expect(mockModifyExamAttempt).toHaveBeenCalledWith(0, constants.ExamAttemptActions.verify);
+  });
+  it('Clicking the Reject button displays the correct label based on the request state', () => {
+    api.modifyExamAttempt.mockResolvedValue({exam_id: 0});
+    hooks.useRequestStatusFromRedux.mockReturnValue(() => 'pending'); // for testing button label state
+    const exams = { exams: testUtils.defaultExamsData };
+    testUtils.renderWithProviders(reviewModal(), { preloadedState:  exams });
+    screen.getByText('Review Required').click();
+    expect(screen.queryByText('Rejecting...')).toBeInTheDocument(); // The button should be in the pending state
   });
   it('Clicking the Reject button calls the modify exam attempt hook', () => {
     const mockModifyExamAttempt = jest.fn();
@@ -70,7 +92,6 @@ describe('ReviewExamAttemptModal', () => {
     render(reviewModal());
     screen.getByText('Review Required').click();
     screen.getByText('Reject').click();
-    expect(screen.queryByText('Rejecting...')).toBeInTheDocument();
     expect(mockModifyExamAttempt).toHaveBeenCalledWith(0, constants.ExamAttemptActions.reject);
   });
   it('Does not show the modal if the attempt is not reviewable', () => {

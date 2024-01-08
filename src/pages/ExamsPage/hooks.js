@@ -54,6 +54,8 @@ export const useDeleteExamAttempt = () => {
 };
 
 export const useModifyExamAttempt = () => {
+  // something's up with useMakeNetworkRequest here?
+  // ok it says line 1473... but there's only like 200 in this file
   const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
   const dispatch = useDispatch();
   return (attemptId, action) => (
