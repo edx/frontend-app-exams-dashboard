@@ -5,7 +5,6 @@ import ReviewExamAttemptModal from './ReviewExamAttemptModal';
 import * as testUtils from '../../../testUtils';
 
 import * as hooks from '../hooks';
-import * as api from '../data/api';
 
 jest.mock('../data/api', () => {
   const originalModule = jest.requireActual('../data/api');
