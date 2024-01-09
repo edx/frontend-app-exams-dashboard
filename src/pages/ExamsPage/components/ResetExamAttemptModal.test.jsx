@@ -48,6 +48,8 @@ describe('ResetExamAttemptModal', () => {
     jest.spyOn(hooks, 'useDeleteExamAttempt').mockImplementation(() => mockDeleteExamAttempt);
     render(resetModal);
     screen.getByText('Reset').click();
+    // Need to use a test id here b/c there are two button with label 'Reset',
+    // One in the table, and one in the modal
     screen.getByTestId('reset-stateful-button').click();
     expect(mockDeleteExamAttempt).toHaveBeenCalledWith(0);
   });

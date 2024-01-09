@@ -132,6 +132,8 @@ const ReviewExamAttemptModal = ({
             {attemptStatus !== constants.ExamAttemptStatus.verified
               && (
                 <StatefulButton
+                  // The state of this button is updated based on the request status of the modifyExamAttempt
+                  // api function. The change of the button's label is based on VerifyButtonProps.
                   state={getRequestStatus(constants.RequestKeys.modifyExamAttempt)}
                   {...VerifyButtonProps}
                   variant="success"
@@ -143,6 +145,7 @@ const ReviewExamAttemptModal = ({
             {attemptStatus !== constants.ExamAttemptStatus.rejected
               && (
                 <StatefulButton
+                  // See above comment in the other StatefulButton to understand how this works
                   state={getRequestStatus(constants.RequestKeys.modifyExamAttempt)}
                   {...RejectButtonProps}
                   variant="danger"

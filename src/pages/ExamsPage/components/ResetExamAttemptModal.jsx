@@ -61,6 +61,8 @@ const ResetExamAttemptModal = ({ username, examName, attemptId }) => {
             </ModalDialog.CloseButton>
             <StatefulButton
               data-testid="reset-stateful-button"
+              // The state of this button is updated based on the request status of the deleteExamAttempt
+              // api function. The change of the button's label is based on VerifyButtonProps
               state={getRequestStatus(constants.RequestKeys.deleteExamAttempt)}
               {...ResetButtonProps}
               variant="primary"
