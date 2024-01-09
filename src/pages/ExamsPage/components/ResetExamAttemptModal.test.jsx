@@ -6,7 +6,7 @@ import * as hooks from '../hooks';
 
 jest.mock('../hooks', () => ({
   useDeleteExamAttempt: jest.fn(),
-  useRequestStatusFromRedux: jest.fn(),
+  useButtonStateFromRequestStatus: jest.fn(),
 }));
 
 const mockMakeNetworkRequest = jest.fn();
@@ -20,7 +20,7 @@ describe('ResetExamAttemptModal', () => {
   beforeEach(() => {
     jest.restoreAllMocks();
     hooks.useDeleteExamAttempt.mockReturnValue(mockMakeNetworkRequest);
-    hooks.useRequestStatusFromRedux.mockReturnValue(mockMakeNetworkRequest);
+    hooks.useButtonStateFromRequestStatus.mockReturnValue(mockMakeNetworkRequest);
   });
   it('Test that the ResetExamAttemptModal matches snapshot', () => {
     expect(render(resetModal)).toMatchSnapshot();
@@ -36,6 +36,12 @@ describe('ResetExamAttemptModal', () => {
     screen.getByText('Cancel').click();
     // Using queryByText here allows the function to throw
     expect(screen.queryByText('Please confirm your choice.')).not.toBeInTheDocument();
+  });
+  it('Clicking the Reset button displays the correct label based on the request state', () => {
+    render(resetModal);
+    hooks.useButtonStateFromRequestStatus.mockReturnValue(() => 'pending'); // for testing button label state
+    screen.getByText('Reset').click();
+    expect(screen.queryByText('Resetting...')).toBeInTheDocument(); // The button should be in the pending state
   });
   it('Clicking the Yes button calls the deletion hook', () => {
     const mockDeleteExamAttempt = jest.fn();

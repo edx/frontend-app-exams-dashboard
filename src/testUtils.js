@@ -1,5 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-import React from 'react';
 
 /**
  * Mocked formatMessage provided by react-intl

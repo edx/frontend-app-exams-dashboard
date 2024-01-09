@@ -6,7 +6,7 @@ import {
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { Info, Warning } from '@edx/paragon/icons';
 import * as constants from 'data/constants';
-import { useExamsData, useModifyExamAttempt, useRequestStatusFromRedux } from '../hooks';
+import { useExamsData, useModifyExamAttempt, useButtonStateFromRequestStatus } from '../hooks';
 import messages from '../messages';
 import { getLaunchUrlByExamId, getMessageLabelForStatus } from '../utils';
 
@@ -27,7 +27,7 @@ const ReviewExamAttemptModal = ({
 }) => {
   const [isOpen, open, close] = useToggle(false);
   const modifyExamAttempt = useModifyExamAttempt();
-  const getRequestStatus = useRequestStatusFromRedux();
+  const getRequestStatus = useButtonStateFromRequestStatus();
   const { currentExam } = useExamsData();
   const { formatMessage } = useIntl();
 

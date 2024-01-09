@@ -5,13 +5,13 @@ import {
 } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import * as constants from 'data/constants';
-import { useDeleteExamAttempt, useRequestStatusFromRedux } from '../hooks';
+import { useDeleteExamAttempt, useButtonStateFromRequestStatus } from '../hooks';
 import messages from '../messages';
 
 const ResetExamAttemptModal = ({ username, examName, attemptId }) => {
   const [isOpen, open, close] = useToggle(false);
   const resetExamAttempt = useDeleteExamAttempt();
-  const getRequestStatus = useRequestStatusFromRedux();
+  const getRequestStatus = useButtonStateFromRequestStatus();
   const { formatMessage } = useIntl();
 
   const ResetButtonProps = {

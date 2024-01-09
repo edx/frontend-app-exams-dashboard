@@ -20,7 +20,7 @@ jest.mock('../data/api', () => {
 
 jest.mock('../hooks', () => ({
   useModifyExamAttempt: jest.fn(),
-  useRequestStatusFromRedux: jest.fn(),
+  useButtonStateFromRequestStatus: jest.fn(),
   useExamsData: jest.fn(),
 }));
 
@@ -44,7 +44,7 @@ describe('ReviewExamAttemptModal', () => {
   beforeEach(() => {
     jest.restoreAllMocks();
     hooks.useModifyExamAttempt.mockReturnValue(mockMakeNetworkRequest);
-    hooks.useRequestStatusFromRedux.mockReturnValue(mockMakeNetworkRequest);
+    hooks.useButtonStateFromRequestStatus.mockReturnValue(mockMakeNetworkRequest);
     hooks.useExamsData.mockReturnValue(testUtils.defaultExamsData);
   });
   it('Test that the ReviewExamAttemptModal matches snapshot', () => {
@@ -62,9 +62,8 @@ describe('ReviewExamAttemptModal', () => {
     // Using queryByText here allows the function to throw
     expect(screen.queryByText('Update review status')).not.toBeInTheDocument();
   });
-  it.only('Clicking the Verify button displays the correct label based on the request state', () => {
-    api.modifyExamAttempt.mockResolvedValue({ exam_id: 0 });
-    hooks.useRequestStatusFromRedux.mockReturnValue(() => 'pending'); // for testing button label state
+  it('Clicking the Verify button displays the correct label based on the request state', () => {
+    hooks.useButtonStateFromRequestStatus.mockReturnValue(() => 'pending'); // for testing button label state
     render(reviewModal());
     screen.getByText('Review Required').click();
     expect(screen.queryByText('Verifying...')).toBeInTheDocument(); // The button should be in the pending state
@@ -78,8 +77,8 @@ describe('ReviewExamAttemptModal', () => {
     expect(mockModifyExamAttempt).toHaveBeenCalledWith(0, constants.ExamAttemptActions.verify);
   });
   it('Clicking the Reject button displays the correct label based on the request state', () => {
-    api.modifyExamAttempt.mockResolvedValue({ exam_id: 0 });
-    hooks.useRequestStatusFromRedux.mockReturnValue(() => 'pending'); // for testing button label state
+    render(reviewModal());
+    hooks.useButtonStateFromRequestStatus.mockReturnValue(() => 'pending'); // for testing button label state
     screen.getByText('Review Required').click();
     expect(screen.queryByText('Rejecting...')).toBeInTheDocument(); // The button should be in the pending state
   });

@@ -13,14 +13,14 @@ jest.mock('../hooks', () => ({
   useDeleteExamAttempt: jest.fn(),
   useModifyExamAttempt: jest.fn(),
   useExamsData: jest.fn(),
-  useRequestStatusFromRedux: jest.fn(),
+  useButtonStateFromRequestStatus: jest.fn(),
 }));
 
 describe('AttemptList', () => {
   beforeEach(() => {
     hooks.useDeleteExamAttempt.mockReturnValue(jest.fn());
     hooks.useModifyExamAttempt.mockReturnValue(jest.fn());
-    hooks.useRequestStatusFromRedux.mockReturnValue(jest.fn());
+    hooks.useButtonStateFromRequestStatus.mockReturnValue(jest.fn());
     hooks.useExamsData.mockReturnValue(testUtils.defaultExamsData);
   });
   it('Test that the AttemptList matches snapshot', () => {

@@ -107,7 +107,7 @@ export const useExamAttemptsData = () => {
   return { attemptsList };
 };
 
-export const useRequestStatusFromRedux = (requestKey) => {
+export const useButtonStateFromRequestStatus = (requestKey) => {
   const isPending = reduxHooks.useRequestIsPending(requestKey);
   const isError = reduxHooks.useRequestError(requestKey);
   return () => {

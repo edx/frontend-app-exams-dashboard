@@ -171,23 +171,23 @@ describe('ExamsPage hooks', () => {
     });
   });
 
-  describe('useRequestStatusFromRedux', () => {
+  describe('useButtonStateFromRequestStatus', () => {
     it('returns empty string if no request made', () => {
       reduxHooks.useRequestIsPending.mockReturnValue(false);
       reduxHooks.useRequestError.mockReturnValue(false);
-      const getRequestStatus = hooks.useRequestStatusFromRedux(constants.modifyExamAttempt);
+      const getRequestStatus = hooks.useButtonStateFromRequestStatus(constants.modifyExamAttempt);
       expect(getRequestStatus()).toBe('');
     });
-    it('', () => {
+    it('returns pending if request is pending', () => {
       reduxHooks.useRequestIsPending.mockReturnValue(true);
       reduxHooks.useRequestError.mockReturnValue(false);
-      const getRequestStatus = hooks.useRequestStatusFromRedux(constants.modifyExamAttempt);
+      const getRequestStatus = hooks.useButtonStateFromRequestStatus(constants.modifyExamAttempt);
       expect(getRequestStatus()).toBe('pending');
     });
-    it('', () => {
+    it('returns error if request errors', () => {
       reduxHooks.useRequestIsPending.mockReturnValue(false);
       reduxHooks.useRequestError.mockReturnValue(true);
-      const getRequestStatus = hooks.useRequestStatusFromRedux(constants.modifyExamAttempt);
+      const getRequestStatus = hooks.useButtonStateFromRequestStatus(constants.modifyExamAttempt);
       expect(getRequestStatus()).toBe('error');
     });
   });
