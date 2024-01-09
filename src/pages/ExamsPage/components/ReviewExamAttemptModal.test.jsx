@@ -6,17 +6,6 @@ import * as testUtils from '../../../testUtils';
 
 import * as hooks from '../hooks';
 
-jest.mock('../data/api', () => {
-  const originalModule = jest.requireActual('../data/api');
-
-  return {
-    __esModule: true,
-    ...originalModule,
-    // Only modifyExamAttempt is mocked and everything else from api.js is the same
-    modifyExamAttempt: jest.fn(),
-  };
-});
-
 jest.mock('../hooks', () => ({
   useModifyExamAttempt: jest.fn(),
   useButtonStateFromRequestStatus: jest.fn(),
