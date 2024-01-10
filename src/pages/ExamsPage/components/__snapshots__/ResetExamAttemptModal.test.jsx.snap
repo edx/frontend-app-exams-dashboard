@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ResetExamAttemptButton Test that the ResetExamAttemptButton matches snapshot 1`] = `
+exports[`ResetExamAttemptModal Test that the ResetExamAttemptModal matches snapshot 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>

@@ -1,22 +1,34 @@
 import PropTypes from 'prop-types';
 
 import {
-  Button, useToggle, ModalDialog, ActionRow,
+  Button, useToggle, ModalDialog, ActionRow, StatefulButton,
 } from '@edx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
-import { useDeleteExamAttempt } from '../hooks';
+import * as constants from 'data/constants';
+import { useDeleteExamAttempt, useButtonStateFromRequestStatus } from '../hooks';
 import messages from '../messages';
 
-const ResetExamAttemptButton = ({ username, examName, attemptId }) => {
+const ResetExamAttemptModal = ({ username, examName, attemptId }) => {
   const [isOpen, open, close] = useToggle(false);
   const resetExamAttempt = useDeleteExamAttempt();
+  const getRequestStatus = useButtonStateFromRequestStatus();
   const { formatMessage } = useIntl();
+
+  const ResetButtonProps = {
+    labels: {
+      default: formatMessage(messages.ResetExamAttemptButtonDefaultLabel),
+      pending: formatMessage(messages.ResetExamAttemptButtonPendingLabel),
+      complete: formatMessage(messages.ResetExamAttemptButtonCompelteLabel),
+      error: formatMessage(messages.ResetExamAttemptButtonErrorLabel),
+    },
+    variant: 'primary',
+  };
 
   return (
     <>
       <div className="d-flex">
         <Button variant="link" size="sm" onClick={open}>
-          {formatMessage(messages.ResetExamAttemptButtonTitle)}
+          {formatMessage(messages.ResetExamAttemptModalTitle)}
         </Button>
       </div>
       <ModalDialog
@@ -30,12 +42,12 @@ const ResetExamAttemptButton = ({ username, examName, attemptId }) => {
       >
         <ModalDialog.Header>
           <ModalDialog.Title>
-            {formatMessage(messages.ResetExamAttemptButtonModalTitle)}
+            {formatMessage(messages.ResetExamAttemptModalModalTitle)}
           </ModalDialog.Title>
         </ModalDialog.Header>
 
         <ModalDialog.Body>
-          <p>{formatMessage(messages.ResetExamAttemptButtonModalBody)}</p>
+          <p>{formatMessage(messages.ResetExamAttemptModalModalBody)}</p>
           <ul>
             <li>{formatMessage(messages.Username)}{username}</li>
             <li>{formatMessage(messages.ExamName)}{examName}</li>
@@ -45,16 +57,19 @@ const ResetExamAttemptButton = ({ username, examName, attemptId }) => {
         <ModalDialog.Footer>
           <ActionRow>
             <ModalDialog.CloseButton variant="tertiary">
-              {formatMessage(messages.ResetExamAttemptButtonCancel)}
+              {formatMessage(messages.ResetExamAttemptModalCancel)}
             </ModalDialog.CloseButton>
-            <Button
+            <StatefulButton
+              data-testid="reset-stateful-button"
+              // The state of this button is updated based on the request status of the deleteExamAttempt
+              // api function. The change of the button's label is based on VerifyButtonProps
+              state={getRequestStatus(constants.RequestKeys.deleteExamAttempt)}
+              {...ResetButtonProps}
               variant="primary"
               onClick={e => { // eslint-disable-line no-unused-vars
                 resetExamAttempt(attemptId);
               }}
-            >
-              {formatMessage(messages.ResetExamAttemptButtonConfirm)}
-            </Button>
+            />
           </ActionRow>
         </ModalDialog.Footer>
       </ModalDialog>
@@ -62,10 +77,10 @@ const ResetExamAttemptButton = ({ username, examName, attemptId }) => {
   );
 };
 
-ResetExamAttemptButton.propTypes = {
+ResetExamAttemptModal.propTypes = {
   username: PropTypes.string.isRequired,
   examName: PropTypes.string.isRequired,
   attemptId: PropTypes.number.isRequired,
 };
 
-export default ResetExamAttemptButton;
+export default ResetExamAttemptModal;

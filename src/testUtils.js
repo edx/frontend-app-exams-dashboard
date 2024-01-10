@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+
 /**
  * Mocked formatMessage provided by react-intl
  */
@@ -23,6 +24,7 @@ export const defaultExamsData = {
   examsList: [
     { id: 1, name: 'exam1' },
   ],
+  currentExamIndex: 0,
   currentExam: { id: 1, name: 'exam1' },
   setCurrentExam: jest.fn(),
 };

@@ -1,5 +1,7 @@
-import messages from './messages';
+import messages from 'pages/ExamsPage/messages';
 import { getExamsBaseUrl } from './data/api';
+
+export const getLaunchUrlByExamId = (id) => `${getExamsBaseUrl()}/lti/exam/${id}/instructor_tool`;
 
 const examAttemptStatusLabels = {
   created: messages.statusLabelCreated,
@@ -14,7 +16,5 @@ const examAttemptStatusLabels = {
   second_review_required: messages.statusLabelSecondReviewRequired,
   error: messages.statusLabelError,
 };
-
-export const getLaunchUrlByExamId = (id) => `${getExamsBaseUrl()}/lti/exam/${id}/instructor_tool`;
 
 export const getMessageLabelForStatus = (status) => examAttemptStatusLabels[status];
