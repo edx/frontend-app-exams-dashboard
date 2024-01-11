@@ -87,7 +87,6 @@ const ReviewExamAttemptModal = ({
     },
     variant: 'primary',
   };
-
   return (
     <>
       <div className="d-flex text-danger">
