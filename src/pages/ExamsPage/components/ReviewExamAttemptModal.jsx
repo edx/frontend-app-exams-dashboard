@@ -27,9 +27,9 @@ const ReviewExamAttemptModal = ({
 }) => {
   const [isOpen, open, close] = useToggle(false);
   const modifyExamAttempt = useModifyExamAttempt();
-  const getRequestStatus = useButtonStateFromRequestStatus();
   const { currentExam } = useExamsData();
   const { formatMessage } = useIntl();
+  const modifyExamAttemptRequestStatus = useButtonStateFromRequestStatus(constants.RequestKeys.modifyExamAttempt);
 
   const getButton = (status) => {
     if (ReviewRequiredStatuses.includes(status)) {
@@ -134,7 +134,7 @@ const ReviewExamAttemptModal = ({
                 <StatefulButton
                   // The state of this button is updated based on the request status of the modifyExamAttempt
                   // api function. The change of the button's label is based on VerifyButtonProps.
-                  state={getRequestStatus(constants.RequestKeys.modifyExamAttempt)}
+                  state={modifyExamAttemptRequestStatus()}
                   {...VerifyButtonProps}
                   variant="success"
                   onClick={async e => { // eslint-disable-line no-unused-vars
@@ -146,7 +146,7 @@ const ReviewExamAttemptModal = ({
               && (
                 <StatefulButton
                   // See above comment in the other StatefulButton to understand how this works
-                  state={getRequestStatus(constants.RequestKeys.modifyExamAttempt)}
+                  state={modifyExamAttemptRequestStatus()}
                   {...RejectButtonProps}
                   variant="danger"
                   onClick={async e => { // eslint-disable-line no-unused-vars

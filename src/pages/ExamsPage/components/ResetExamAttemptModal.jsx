@@ -11,8 +11,8 @@ import messages from '../messages';
 const ResetExamAttemptModal = ({ username, examName, attemptId }) => {
   const [isOpen, open, close] = useToggle(false);
   const resetExamAttempt = useDeleteExamAttempt();
-  const getRequestStatus = useButtonStateFromRequestStatus();
   const { formatMessage } = useIntl();
+  const deleteExamAttemptRequestStatus = useButtonStateFromRequestStatus(constants.RequestKeys.deleteExamAttempt);
 
   const ResetButtonProps = {
     labels: {
@@ -63,7 +63,7 @@ const ResetExamAttemptModal = ({ username, examName, attemptId }) => {
               data-testid="reset-stateful-button"
               // The state of this button is updated based on the request status of the deleteExamAttempt
               // api function. The change of the button's label is based on VerifyButtonProps
-              state={getRequestStatus(constants.RequestKeys.deleteExamAttempt)}
+              state={deleteExamAttemptRequestStatus()}
               {...ResetButtonProps}
               variant="primary"
               onClick={e => { // eslint-disable-line no-unused-vars

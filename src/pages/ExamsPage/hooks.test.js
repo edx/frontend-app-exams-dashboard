@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as reduxHooks from 'data/redux/hooks';
+import * as reduxHooks from 'data/redux/hooks/requests';
 
 import * as constants from 'data/constants';
 import * as api from './data/api';
@@ -13,7 +13,7 @@ jest.mock('react-redux', () => ({
   useSelector: () => mockUseSelector,
 }));
 
-jest.mock('data/redux/hooks', () => ({
+jest.mock('data/redux/hooks/requests', () => ({
   useMakeNetworkRequest: jest.fn(),
   useRequestIsPending: jest.fn(),
   useRequestError: jest.fn(),
@@ -175,20 +175,17 @@ describe('ExamsPage hooks', () => {
     it('returns empty string if no request made', () => {
       reduxHooks.useRequestIsPending.mockReturnValue(false);
       reduxHooks.useRequestError.mockReturnValue(false);
-      const getRequestStatus = hooks.useButtonStateFromRequestStatus(constants.modifyExamAttempt);
-      expect(getRequestStatus()).toBe('');
+      expect(hooks.useButtonStateFromRequestStatus(constants.RequestKeys.modifyExamAttempt)()).toBe('');
     });
     it('returns pending if request is pending', () => {
       reduxHooks.useRequestIsPending.mockReturnValue(true);
       reduxHooks.useRequestError.mockReturnValue(false);
-      const getRequestStatus = hooks.useButtonStateFromRequestStatus(constants.modifyExamAttempt);
-      expect(getRequestStatus()).toBe('pending');
+      expect(hooks.useButtonStateFromRequestStatus(constants.RequestKeys.modifyExamAttempt)()).toBe('pending');
     });
     it('returns error if request errors', () => {
       reduxHooks.useRequestIsPending.mockReturnValue(false);
       reduxHooks.useRequestError.mockReturnValue(true);
-      const getRequestStatus = hooks.useButtonStateFromRequestStatus(constants.modifyExamAttempt);
-      expect(getRequestStatus()).toBe('error');
+      expect(hooks.useButtonStateFromRequestStatus(constants.RequestKeys.modifyExamAttempt)()).toBe('error');
     });
   });
 });

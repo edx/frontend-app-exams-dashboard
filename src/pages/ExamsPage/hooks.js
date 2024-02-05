@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { RequestKeys } from 'data/constants';
 
-import * as reduxHooks from 'data/redux/hooks';
+import * as reduxHooks from 'data/redux/hooks/requests';
 
 import * as api from './data/api';
 import * as selectors from './data/selectors';
