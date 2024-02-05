@@ -50,7 +50,7 @@ describe('ReviewExamAttemptModal', () => {
     // Using queryByText here allows the function to throw
     expect(screen.queryByText('Update review status')).not.toBeInTheDocument();
   });
-  it('Clicking the Verify button displays the correct label based on the request state', () => {
+  it('Clicking the Verify button displays the correct label based on the request state', async () => {
     hooks.useButtonStateFromRequestStatus.mockReturnValue(() => 'pending'); // for testing button label state
     render(reviewModal());
     screen.getByText('Review Required').click();

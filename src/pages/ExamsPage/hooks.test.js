@@ -175,20 +175,17 @@ describe('ExamsPage hooks', () => {
     it('returns empty string if no request made', () => {
       reduxHooks.useRequestIsPending.mockReturnValue(false);
       reduxHooks.useRequestError.mockReturnValue(false);
-      const getRequestStatus = hooks.useButtonStateFromRequestStatus();
-      expect(getRequestStatus(constants.RequestKeys.modifyExamAttempt)).toBe('');
+      expect(hooks.useButtonStateFromRequestStatus(constants.RequestKeys.modifyExamAttempt)()).toBe('');
     });
     it('returns pending if request is pending', () => {
       reduxHooks.useRequestIsPending.mockReturnValue(true);
       reduxHooks.useRequestError.mockReturnValue(false);
-      const getRequestStatus = hooks.useButtonStateFromRequestStatus();
-      expect(getRequestStatus(constants.RequestKeys.modifyExamAttempt)).toBe('pending');
+      expect(hooks.useButtonStateFromRequestStatus(constants.RequestKeys.modifyExamAttempt)()).toBe('pending');
     });
     it('returns error if request errors', () => {
       reduxHooks.useRequestIsPending.mockReturnValue(false);
       reduxHooks.useRequestError.mockReturnValue(true);
-      const getRequestStatus = hooks.useButtonStateFromRequestStatus();
-      expect(getRequestStatus(constants.RequestKeys.modifyExamAttempt)).toBe('error');
+      expect(hooks.useButtonStateFromRequestStatus(constants.RequestKeys.modifyExamAttempt)()).toBe('error');
     });
   });
 });
