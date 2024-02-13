@@ -154,7 +154,7 @@ const AttemptList = ({ attempts }) => {
               day: 'numeric',
               hour: 'numeric',
               minute: 'numeric',
-            }) : "-"),
+            }) : '-'),
           },
           {
             Header: formatMessage(messages.examAttemptsTableHeaderCompletedAt),
@@ -164,7 +164,7 @@ const AttemptList = ({ attempts }) => {
               day: 'numeric',
               hour: 'numeric',
               minute: 'numeric',
-            }) : "-"),
+            }) : '-'),
           },
           {
             Header: formatMessage(messages.examAttemptsTableHeaderStatus),
