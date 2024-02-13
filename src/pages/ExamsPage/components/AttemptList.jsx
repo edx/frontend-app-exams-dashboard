@@ -145,23 +145,26 @@ const AttemptList = ({ attempts }) => {
           },
           {
             Header: formatMessage(messages.examAttemptsTableHeaderStartedAt),
-            Cell: ({ row }) => (formatDate(row.original.started_at, {
+            // The ternary operator here sets the value of the started/completed at datetime to
+            // "-" if the value is null, as otherwise the DataTable will default to the
+            // UNIX epoch (i.e. 1/1/1970) for some reason.
+            Cell: ({ row }) => (row.original.started_at ? formatDate(row.original.started_at, {
               year: 'numeric',
               month: 'numeric',
               day: 'numeric',
               hour: 'numeric',
               minute: 'numeric',
-            })),
+            }) : '-'),
           },
           {
             Header: formatMessage(messages.examAttemptsTableHeaderCompletedAt),
-            Cell: ({ row }) => (formatDate(row.original.completed_at, {
+            Cell: ({ row }) => (row.original.completed_at ? formatDate(row.original.completed_at, {
               year: 'numeric',
               month: 'numeric',
               day: 'numeric',
               hour: 'numeric',
               minute: 'numeric',
-            })),
+            }) : '-'),
           },
           {
             Header: formatMessage(messages.examAttemptsTableHeaderStatus),
