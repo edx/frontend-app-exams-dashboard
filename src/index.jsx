@@ -32,7 +32,12 @@ subscribe(APP_READY, () => {
 });
 
 subscribe(APP_INIT_ERROR, (error) => {
-  ReactDOM.render(<ErrorPage message={error.message} />, document.getElementById('root'));
+  ReactDOM.render(
+    <IntlProvider locale="en">
+      <ErrorPage message={error.message} />
+    </IntlProvider>,
+    document.getElementById('root'),
+  );
 });
 
 initialize({
