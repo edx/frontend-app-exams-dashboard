@@ -6,7 +6,7 @@ import {
 } from '@edx/frontend-platform';
 import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
 import ReactDOM from 'react-dom';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import store from 'data/store';
 import messages from './i18n';
@@ -17,17 +17,12 @@ import Dashboard from './Dashboard';
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={store}>
-      <Switch>
+      <Routes>
         <Route
-          path="/course/:courseId/exams"
-          render={({ match }) => {
-            const { params: { courseId } } = match;
-            return (
-              <Dashboard courseId={courseId} />
-            );
-          }}
+          path="/course/:courseId/exams*"
+          element={<Dashboard />}
         />
-      </Switch>
+      </Routes>
     </AppProvider>,
     document.getElementById('root'),
   );
