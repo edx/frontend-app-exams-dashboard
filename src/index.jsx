@@ -5,6 +5,7 @@ import {
   APP_INIT_ERROR, APP_READY, subscribe, initialize, mergeConfig,
 } from '@edx/frontend-platform';
 import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
+import { IntlProvider } from 'react-intl';
 import ReactDOM from 'react-dom';
 import { Route, Routes } from 'react-router-dom';
 
@@ -17,12 +18,14 @@ import Dashboard from './Dashboard';
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={store}>
-      <Routes>
-        <Route
-          path="/course/:courseId/exams/*"
-          element={<Dashboard />}
-        />
-      </Routes>
+      <IntlProvider locale="en">
+        <Routes>
+          <Route
+            path="/course/:courseId/exams/*"
+            element={<Dashboard />}
+          />
+        </Routes>
+      </IntlProvider>
     </AppProvider>,
     document.getElementById('root'),
   );
