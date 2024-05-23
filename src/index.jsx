@@ -19,7 +19,7 @@ subscribe(APP_READY, () => {
     <AppProvider store={store}>
       <Routes>
         <Route
-          path="/course/:courseId/exams*"
+          path="/course/:courseId/exams/*"
           element={<Dashboard />}
         />
       </Routes>
