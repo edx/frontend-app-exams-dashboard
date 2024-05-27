@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from '@edx/paragon';
+import { Button } from '@openedx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
-import { Launch } from '@edx/paragon/icons';
+import { Launch } from '@openedx/paragon/icons';
 import { getLaunchUrlByExamId } from '../utils';
 import messages from '../messages';
 
