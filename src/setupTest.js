@@ -35,3 +35,19 @@ jest.mock('react-intl', () => ({
   ...jest.requireActual('react-intl'),
   FormattedMessage: () => 'FormattedMessage',
 }));
+
+class ResizeObserver {
+  observe() {
+    // do nothing
+  }
+
+  unobserve() {
+    // do nothing
+  }
+
+  disconnect() {
+    // do nothing
+  }
+}
+
+window.ResizeObserver = ResizeObserver;

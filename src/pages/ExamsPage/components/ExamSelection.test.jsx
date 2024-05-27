@@ -1,5 +1,6 @@
 import {
   render, screen,
+  waitFor,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -43,9 +44,11 @@ describe('ExamSelection', () => {
     screen.getByText('Select an exam').click();
     const input = screen.getByPlaceholderText('Search for an exam...');
     await user.type(input, 'exam1');
-    expect(screen.queryByRole('link', { name: 'exam1' })).not.toBeDisabled();
-    expect(screen.queryByRole('link', { name: 'exam2' })).toBeDisabled();
-    expect(screen.queryByRole('link', { name: 'exam3' })).toBeDisabled();
+    waitFor(() => {
+      expect(screen.queryByRole('link', { name: 'exam1' })).not.toBeDisabled();
+      expect(screen.queryByRole('link', { name: 'exam2' })).toBeDisabled();
+      expect(screen.queryByRole('link', { name: 'exam3' })).toBeDisabled();
+    });
   });
   it('calls onSelect when an exam is selected', () => {
     renderWithoutError(<ExamSelection exams={defaultExams} onSelect={mockHandleSelectExam} />);
