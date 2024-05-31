@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ExamsPage snapshots exams and attempts loaded 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -136,6 +136,7 @@ Object {
                     >
                       <div
                         class="pgn__data-table-status-bar"
+                        data-testid="table-control-bar"
                       >
                         <div
                           class="pgn__data-table-actions"
@@ -154,18 +155,21 @@ Object {
                                 >
                                   <label
                                     class="pgn__form-label sr-only"
-                                    for="form-field2"
-                                    id="text-filter-label-header_username-1"
+                                    for="text-filter-label-header_username-1"
                                   >
                                     Search username
                                   </label>
-                                  <input
-                                    aria-labelledby="text-filter-label-header_username-1"
-                                    class="form-control"
-                                    placeholder="Search username"
-                                    type="text"
-                                    value=""
-                                  />
+                                  <div
+                                    class="pgn__form-control-decorator-group"
+                                  >
+                                    <input
+                                      class="form-control"
+                                      id="text-filter-label-header_username-1"
+                                      placeholder="Search username"
+                                      type="text"
+                                      value=""
+                                    />
+                                  </div>
                                 </div>
                               </div>
                               <div
@@ -197,6 +201,7 @@ Object {
                           >
                             <div
                               class="pgn__smart-status"
+                              data-testid="row-status"
                             >
                               FormattedMessage
                             </div>
@@ -208,6 +213,7 @@ Object {
                       </div>
                       <div
                         class="pgn__data-table-container"
+                        data-testid="data-table-container"
                       >
                         <table
                           class="pgn__data-table is-striped"
@@ -231,6 +237,7 @@ Object {
                                   </span>
                                   <span
                                     class="pgn__icon"
+                                    data-testid="arrow-drop-up-down"
                                     style="opacity: 0.5;"
                                   >
                                     <svg
@@ -265,6 +272,7 @@ Object {
                                   </span>
                                   <span
                                     class="pgn__icon"
+                                    data-testid="arrow-drop-up-down"
                                     style="opacity: 0.5;"
                                   >
                                     <svg
@@ -335,6 +343,7 @@ Object {
                                   </span>
                                   <span
                                     class="pgn__icon"
+                                    data-testid="arrow-drop-up-down"
                                     style="opacity: 0.5;"
                                   >
                                     <svg
@@ -536,8 +545,11 @@ Object {
                       </div>
                       <div
                         class="pgn__data-table-footer"
+                        data-testid="table-footer"
                       >
-                        <div>
+                        <div
+                          data-testid="row-status"
+                        >
                           FormattedMessage
                         </div>
                         <nav
@@ -770,6 +782,7 @@ Object {
                   >
                     <div
                       class="pgn__data-table-status-bar"
+                      data-testid="table-control-bar"
                     >
                       <div
                         class="pgn__data-table-actions"
@@ -788,18 +801,21 @@ Object {
                               >
                                 <label
                                   class="pgn__form-label sr-only"
-                                  for="form-field2"
-                                  id="text-filter-label-header_username-1"
+                                  for="text-filter-label-header_username-1"
                                 >
                                   Search username
                                 </label>
-                                <input
-                                  aria-labelledby="text-filter-label-header_username-1"
-                                  class="form-control"
-                                  placeholder="Search username"
-                                  type="text"
-                                  value=""
-                                />
+                                <div
+                                  class="pgn__form-control-decorator-group"
+                                >
+                                  <input
+                                    class="form-control"
+                                    id="text-filter-label-header_username-1"
+                                    placeholder="Search username"
+                                    type="text"
+                                    value=""
+                                  />
+                                </div>
                               </div>
                             </div>
                             <div
@@ -831,6 +847,7 @@ Object {
                         >
                           <div
                             class="pgn__smart-status"
+                            data-testid="row-status"
                           >
                             FormattedMessage
                           </div>
@@ -842,6 +859,7 @@ Object {
                     </div>
                     <div
                       class="pgn__data-table-container"
+                      data-testid="data-table-container"
                     >
                       <table
                         class="pgn__data-table is-striped"
@@ -865,6 +883,7 @@ Object {
                                 </span>
                                 <span
                                   class="pgn__icon"
+                                  data-testid="arrow-drop-up-down"
                                   style="opacity: 0.5;"
                                 >
                                   <svg
@@ -899,6 +918,7 @@ Object {
                                 </span>
                                 <span
                                   class="pgn__icon"
+                                  data-testid="arrow-drop-up-down"
                                   style="opacity: 0.5;"
                                 >
                                   <svg
@@ -969,6 +989,7 @@ Object {
                                 </span>
                                 <span
                                   class="pgn__icon"
+                                  data-testid="arrow-drop-up-down"
                                   style="opacity: 0.5;"
                                 >
                                   <svg
@@ -1170,8 +1191,11 @@ Object {
                     </div>
                     <div
                       class="pgn__data-table-footer"
+                      data-testid="table-footer"
                     >
-                      <div>
+                      <div
+                        data-testid="row-status"
+                      >
                         FormattedMessage
                       </div>
                       <nav

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import {
   Button, useToggle, ModalDialog, ActionRow, StatefulButton,
-} from '@edx/paragon';
+} from '@openedx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import * as constants from 'data/constants';
 import { useDeleteExamAttempt, useButtonStateFromRequestStatus } from '../hooks';

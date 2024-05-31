@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Tabs, Tab, Container } from '@edx/paragon';
+import { Tabs, Tab, Container } from '@openedx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
 import messages from './messages';

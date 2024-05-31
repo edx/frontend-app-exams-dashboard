@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { DataTable, TextFilter, CheckboxFilter } from '@edx/paragon';
+import { DataTable, TextFilter, CheckboxFilter } from '@openedx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import * as constants from 'data/constants';
 import ResetExamAttemptModal from './ResetExamAttemptModal';
