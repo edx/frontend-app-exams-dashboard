@@ -93,6 +93,15 @@ exports[`ExamsPage snapshots exams and attempts loaded 1`] = `
               Review Dashboard
             </a>
             <a
+              aria-selected="false"
+              class="nav-item nav-link"
+              data-rb-event-key="allowances"
+              href="#"
+              role="tab"
+            >
+              Allowances
+            </a>
+            <a
               class="pgn__tab_invisible pgn__tab_more nav-item nav-link"
               href="#"
               role="tab"
@@ -607,7 +616,7 @@ exports[`ExamsPage snapshots exams and attempts loaded 1`] = `
                             >
                               <button
                                 aria-label="Next"
-                                class="btn-icon btn-icon-primary btn-icon-md next page-link"
+                                class="btn-icon btn-icon-primary btn-icon-md previous page-link"
                                 disabled=""
                                 tabindex="-1"
                                 type="button"
@@ -737,6 +746,15 @@ exports[`ExamsPage snapshots exams and attempts loaded 1`] = `
             role="tab"
           >
             Review Dashboard
+          </a>
+          <a
+            aria-selected="false"
+            class="nav-item nav-link"
+            data-rb-event-key="allowances"
+            href="#"
+            role="tab"
+          >
+            Allowances
           </a>
           <a
             class="pgn__tab_invisible pgn__tab_more nav-item nav-link"
@@ -1253,7 +1271,7 @@ exports[`ExamsPage snapshots exams and attempts loaded 1`] = `
                           >
                             <button
                               aria-label="Next"
-                              class="btn-icon btn-icon-primary btn-icon-md next page-link"
+                              class="btn-icon btn-icon-primary btn-icon-md previous page-link"
                               disabled=""
                               tabindex="-1"
                               type="button"

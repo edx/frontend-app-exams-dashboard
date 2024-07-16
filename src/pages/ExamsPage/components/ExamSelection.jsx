@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 import messages from '../messages';
 
-const ExamSelection = ({ exams, onSelect }) => {
+const ExamSelection = ({ exams, onSelect, isDisabled }) => {
   const { formatMessage } = useIntl();
   const [searchText, setSearchText] = useState('');
   const getMenuItems = () => {
@@ -38,6 +38,7 @@ const ExamSelection = ({ exams, onSelect }) => {
     <div data-testid="exam_selection">
       <SelectMenu
         defaultMessage={formatMessage(messages.examSelectDropdownLabel)}
+        disabled={isDisabled}
       >
         { getMenuItems() }
       </SelectMenu>
@@ -51,6 +52,11 @@ ExamSelection.propTypes = {
     name: PropTypes.string,
   })).isRequired,
   onSelect: PropTypes.func.isRequired,
+  isDisabled: PropTypes.bool,
+};
+
+ExamSelection.defaultProps = {
+  isDisabled: false,
 };
 
 export default ExamSelection;
