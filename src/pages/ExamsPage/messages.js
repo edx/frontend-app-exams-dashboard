@@ -290,6 +290,26 @@ const messages = defineMessages({
     defaultMessage: 'Please select an exam from the dropdown above.',
     description: 'A prompt to select an exam before being able to open the external review dashboard.',
   },
+  allowanceDashboardTabTitle: {
+    id: 'ExamsPage.allowanceDashboardTabTitle',
+    defaultMessage: 'Allowances',
+    description: 'Title for the allowances tab',
+  },
+  allowanceButton: {
+    id: 'ExamsPage.allowanceButton',
+    defaultMessage: 'Add allowance',
+    description: 'Label for a button to add an allowance',
+  },
+  noAllowancesHeader: {
+    id: 'ExamsPage.noAllowancesHeader',
+    defaultMessage: 'No Allowances',
+    description: 'Header shown when no allowances have been created',
+  },
+  noAllowancesBody: {
+    id: 'ExamsPage.noAllowancesBody',
+    defaultMessage: 'Need to grant an allowance? Get started here.',
+    description: 'Text shown when no allowances have been created',
+  },
 });
 
 export default messages;

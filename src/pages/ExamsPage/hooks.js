@@ -117,3 +117,8 @@ export const useButtonStateFromRequestStatus = (requestKey) => {
     return '';
   };
 };
+
+export const useAllowancesData = () => {
+  const allowancesList = useSelector(selectors.courseAllowancesList);
+  return { allowancesList };
+};

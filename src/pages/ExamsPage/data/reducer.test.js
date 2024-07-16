@@ -40,6 +40,7 @@ describe('ExamsPage reducer', () => {
             },
           ],
           attemptsList: [],
+          allowancesList: [],
         });
       });
     });
@@ -98,6 +99,7 @@ describe('ExamsPage reducer', () => {
               attempt_id: 1,
             },
           ],
+          allowancesList: [],
         });
       });
     });
@@ -327,6 +329,7 @@ describe('ExamsPage reducer', () => {
           currentExamIndex: null,
           examsList: [],
           attemptsList: [],
+          allowancesList: [],
           courseId: 'course-v1:edX+Test+Test',
         });
       });
