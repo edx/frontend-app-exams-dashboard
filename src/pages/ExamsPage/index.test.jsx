@@ -11,6 +11,7 @@ jest.mock('./hooks', () => ({
   useInitializeExamsPage: jest.fn(),
   useExamAttemptsData: jest.fn(),
   useExamsData: jest.fn(),
+  useAllowancesData: jest.fn(),
   useFetchExamAttempts: jest.fn(),
   useDeleteExamAttempt: jest.fn(),
   useModifyExamAttempt: jest.fn(),
@@ -20,6 +21,7 @@ jest.mock('./hooks', () => ({
 describe('ExamsPage', () => {
   beforeAll(() => {
     hooks.useExamAttemptsData.mockReturnValue(testUtils.defaultAttemptsData);
+    hooks.useAllowancesData.mockReturnValue({ allowancesList: [] });
   });
   describe('snapshots', () => {
     test('exams and attempts loaded', () => {
@@ -43,6 +45,10 @@ describe('ExamsPage', () => {
     test('switch tabs to review dashboard', () => {
       screen.getByText('Review Dashboard').click();
       expect(screen.getByTestId('review_dash')).toBeInTheDocument();
+    });
+    test('switch tabs to allowances', () => {
+      screen.getByText('Allowances').click();
+      expect(screen.getByTestId('allowances')).toBeInTheDocument();
     });
   });
 });

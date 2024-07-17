@@ -1,0 +1,214 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AllowanceList Test that the AllowanceList matches snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="allowances-header"
+      >
+        <h3
+          data-testid="allowances"
+        >
+           
+          Allowances
+           
+        </h3>
+        <button
+          class="header-allowance-button btn btn-outline-primary btn-sm"
+          type="button"
+        >
+          <span
+            class="pgn__icon pgn__icon__sm btn-icon-before"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"
+                fill="currentColor"
+              />
+            </svg>
+          </span>
+          Add allowance
+        </button>
+      </div>
+      <div
+        class="allowances-body"
+      >
+        <h4>
+           
+          No Allowances
+           
+        </h4>
+        <p>
+           
+          Need to grant an allowance? Get started here.
+           
+        </p>
+        <button
+          class="btn btn-primary"
+          type="button"
+        >
+          <span
+            class="pgn__icon btn-icon-before"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"
+                fill="currentColor"
+              />
+            </svg>
+          </span>
+          Add allowance
+        </button>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="allowances-header"
+    >
+      <h3
+        data-testid="allowances"
+      >
+         
+        Allowances
+         
+      </h3>
+      <button
+        class="header-allowance-button btn btn-outline-primary btn-sm"
+        type="button"
+      >
+        <span
+          class="pgn__icon pgn__icon__sm btn-icon-before"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        Add allowance
+      </button>
+    </div>
+    <div
+      class="allowances-body"
+    >
+      <h4>
+         
+        No Allowances
+         
+      </h4>
+      <p>
+         
+        Need to grant an allowance? Get started here.
+         
+      </p>
+      <button
+        class="btn btn-primary"
+        type="button"
+      >
+        <span
+          class="pgn__icon btn-icon-before"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        Add allowance
+      </button>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

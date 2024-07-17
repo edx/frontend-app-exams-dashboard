@@ -6,6 +6,7 @@ export const initialState = {
   currentExamIndex: null,
   examsList: [],
   attemptsList: [],
+  allowancesList: [],
 };
 
 const getStatusFromAction = (action, status) => {

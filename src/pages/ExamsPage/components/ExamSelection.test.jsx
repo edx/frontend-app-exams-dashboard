@@ -57,4 +57,8 @@ describe('ExamSelection', () => {
     expect(mockHandleSelectExam).toHaveBeenCalledTimes(1);
     expect(mockHandleSelectExam).toHaveBeenCalledWith(27);
   });
+  it('button disabled when isDisabled is true', () => {
+    renderWithoutError(<ExamSelection exams={defaultExams} onSelect={mockHandleSelectExam} isDisabled />);
+    expect(screen.getByText('Select an exam')).toBeDisabled();
+  });
 });
