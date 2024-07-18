@@ -96,7 +96,7 @@ const ReviewModal = (row) => (
     examName={row.original.exam_name}
     attemptId={row.original.attempt_id}
     attemptStatus={row.original.status}
-    severity={row.original.severity}
+    severity={+row.original.severity || 0}
     submissionReason={row.original.submission_reason}
   />
 );
