@@ -16,6 +16,18 @@ export const state = {
   exampleValue: (val) => React.useState(val), // eslint-disable-line
 };
 
+export const useFetchAllowances = () => {
+  const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
+  const dispatch = useDispatch();
+  return (courseId) => (
+    makeNetworkRequest({
+      requestKey: RequestKeys.fetchAllowances,
+      promise: api.getAllowances(courseId),
+      onSuccess: (response) => dispatch(reducer.setAllowancesList(response)),
+    })
+  );
+};
+
 export const useFetchCourseExams = () => {
   const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
   const dispatch = useDispatch();
@@ -67,9 +79,12 @@ export const useModifyExamAttempt = () => {
 
 export const useInitializeExamsPage = (courseId) => {
   const fetchCourseExams = module.useFetchCourseExams();
+  const fetchAllowances = module.useFetchAllowances();
   const dispatch = useDispatch();
+
   React.useEffect(() => {
     fetchCourseExams(courseId);
+    fetchAllowances(courseId);
     dispatch(reducer.setCourseId(courseId));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 };

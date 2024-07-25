@@ -8,6 +8,12 @@ export function getExamsBaseUrl() {
   return getConfig().EXAMS_BASE_URL;
 }
 
+export async function getAllowances(courseId) {
+  const url = `${getExamsBaseUrl()}/api/v1/exams/course_id/${courseId}/allowances`;
+  const response = await getAuthenticatedHttpClient().get(url);
+  return response.data;
+}
+
 export async function getCourseExams(courseId) {
   const url = `${getExamsBaseUrl()}/api/v1/exams/course_id/${courseId}/`;
   const response = await getAuthenticatedHttpClient().get(url);
