@@ -28,16 +28,46 @@ describe('ExamsPage hooks', () => {
   describe('useInitializeExamsPage', () => {
     it('calls useFetchCourseExams and sets course id on component load', () => {
       const mockFetchCourseExams = jest.fn();
+      const mockFetchAllowances = jest.fn();
       jest.spyOn(hooks, 'useFetchCourseExams').mockImplementation(() => mockFetchCourseExams);
+      jest.spyOn(hooks, 'useFetchAllowances').mockImplementation(() => mockFetchAllowances);
       hooks.useInitializeExamsPage('course-1');
       const [cb, prereqs] = React.useEffect.mock.calls[0];
       expect(prereqs).toEqual([]);
       expect(mockFetchCourseExams).not.toHaveBeenCalled();
+      expect(mockFetchAllowances).not.toHaveBeenCalled();
       cb();
       expect(mockFetchCourseExams).toHaveBeenCalledWith('course-1');
+      expect(mockFetchAllowances).toHaveBeenCalledWith('course-1');
       expect(mockDispatch).toHaveBeenCalledWith({
         payload: 'course-1',
         type: 'exams/setCourseId',
+      });
+    });
+  });
+  describe('useFetchAllowances', () => {
+    const mockMakeNetworkRequest = jest.fn();
+    beforeEach(() => {
+      mockMakeNetworkRequest.mockClear();
+      reduxHooks.useMakeNetworkRequest.mockReturnValue(mockMakeNetworkRequest);
+      api.getAllowances.mockReturnValue(Promise.resolve({ data: 'data' }));
+    });
+
+    it('calls makeNetworkRequest to fetch allowances', () => {
+      hooks.useFetchAllowances()('course-1');
+      expect(mockMakeNetworkRequest).toHaveBeenCalledWith({
+        requestKey: 'fetchAllowances',
+        promise: expect.any(Promise),
+        onSuccess: expect.any(Function),
+      });
+    });
+    it('dispatches exams/setAllowancesList on success', async () => {
+      await hooks.useFetchAllowances()('course-1');
+      const { onSuccess } = mockMakeNetworkRequest.mock.calls[0][0];
+      onSuccess('response');
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: 'response',
+        type: 'exams/setAllowancesList',
       });
     });
   });
