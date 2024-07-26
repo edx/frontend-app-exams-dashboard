@@ -91,29 +91,22 @@ const slice = createSlice({
       currentExamIndex: getCurrentExamIndex(state.examsList, examId),
     }),
     setAllowancesList: (state, { payload }) => {
-      try {
-        const allowancesList = [...payload];
+      const allowancesList = [...payload];
 
-        // Sorting the list by username first and then by exam name.
-        // Makes it easier to list alphabetically.
-        allowancesList.sort((a, b) => {
-          const compare = `${a.username}`.localeCompare(`${b.username}`);
+      // Sorting the list by username first and then by exam name.
+      // Makes it easier to list alphabetically.
+      allowancesList.sort((a, b) => {
+        const compare = `${a.username}`.localeCompare(`${b.username}`);
 
-          if (compare !== 0) { return compare; }
+        if (compare !== 0) { return compare; }
 
-          return `${a.exam_name}`.localeCompare(`${b.exam_name}`);
-        });
+        return `${a.exam_name}`.localeCompare(`${b.exam_name}`);
+      });
 
-        return {
-          ...state,
-          allowancesList,
-        };
-      } catch (e) {
-        // Something wrong, skip update.
-        console.error('Error updating allowances list.', payload); // eslint-disable-line no-console
-
-        return state;
-      }
+      return {
+        ...state,
+        allowancesList,
+      };
     },
   },
 });
