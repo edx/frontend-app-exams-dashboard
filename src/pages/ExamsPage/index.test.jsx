@@ -11,7 +11,7 @@ jest.mock('./hooks', () => ({
   useInitializeExamsPage: jest.fn(),
   useExamAttemptsData: jest.fn(),
   useExamsData: jest.fn(),
-  useAllowancesData: () => ({ allowancesList: [] }), // TODO: Use a provider rather than mocking the hooks.
+  useAllowancesData: jest.fn(),
   useFetchExamAttempts: jest.fn(),
   useDeleteExamAttempt: jest.fn(),
   useModifyExamAttempt: jest.fn(),
@@ -21,6 +21,7 @@ jest.mock('./hooks', () => ({
 describe('ExamsPage', () => {
   beforeAll(() => {
     hooks.useExamAttemptsData.mockReturnValue(testUtils.defaultAttemptsData);
+    hooks.useAllowancesData.mockReturnValue({ allowancesList: [] });
   });
   describe('snapshots', () => {
     test('exams and attempts loaded', () => {
