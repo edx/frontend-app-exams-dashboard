@@ -134,6 +134,6 @@ export const useButtonStateFromRequestStatus = (requestKey) => {
 };
 
 export const useAllowancesData = () => {
-  const allowancesList = useSelector(selectors.courseAllowancesList);
+  const allowancesList = useSelector(selectors.courseAllowancesList) || [];
   return { allowancesList };
 };
