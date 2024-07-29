@@ -90,6 +90,24 @@ const slice = createSlice({
       ...state,
       currentExamIndex: getCurrentExamIndex(state.examsList, examId),
     }),
+    setAllowancesList: (state, { payload }) => {
+      const allowancesList = [...payload];
+
+      // Sorting the list by username first and then by exam name.
+      // Makes it easier to list alphabetically.
+      allowancesList.sort((a, b) => {
+        const compare = `${a.username}`.localeCompare(`${b.username}`);
+
+        if (compare !== 0) { return compare; }
+
+        return `${a.exam_name}`.localeCompare(`${b.exam_name}`);
+      });
+
+      return {
+        ...state,
+        allowancesList,
+      };
+    },
   },
 });
 
@@ -100,6 +118,7 @@ export const {
   modifyExamAttemptStatus,
   setCurrentExam,
   setCourseId,
+  setAllowancesList,
 } = slice.actions;
 
 export const {

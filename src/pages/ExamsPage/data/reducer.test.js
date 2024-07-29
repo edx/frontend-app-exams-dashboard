@@ -334,5 +334,72 @@ describe('ExamsPage reducer', () => {
         });
       });
     });
+    describe('setAllowancesList', () => {
+      it('sets the setAllowancesList ordered by user -> exam alphabetically', () => {
+        const action = {
+          type: 'exams/setAllowancesList',
+          payload: [
+            {
+              id: 1,
+              exam_id: 4,
+              user_id: 2,
+              extra_time_mins: 35,
+              username: 'edx',
+              exam_name: 'This should go third',
+              email: 'edx@example.com',
+            },
+            {
+              id: 2,
+              exam_id: 3,
+              user_id: 1,
+              extra_time_mins: 45,
+              username: 'edx',
+              exam_name: 'This should go second',
+              email: 'edx@example.com',
+            },
+            {
+              id: 3,
+              exam_id: 1,
+              user_id: 1,
+              extra_time_mins: 15,
+              username: 'edx',
+              exam_name: 'This should go first',
+              email: 'edx@example.com',
+            },
+          ],
+        };
+        expect(reducer(initialState, action)).toEqual(expect.objectContaining({
+          allowancesList: [
+            {
+              id: 3,
+              exam_id: 1,
+              user_id: 1,
+              extra_time_mins: 15,
+              username: 'edx',
+              exam_name: 'This should go first',
+              email: 'edx@example.com',
+            },
+            {
+              id: 2,
+              exam_id: 3,
+              user_id: 1,
+              extra_time_mins: 45,
+              username: 'edx',
+              exam_name: 'This should go second',
+              email: 'edx@example.com',
+            },
+            {
+              id: 1,
+              exam_id: 4,
+              user_id: 2,
+              extra_time_mins: 35,
+              username: 'edx',
+              exam_name: 'This should go third',
+              email: 'edx@example.com',
+            },
+          ],
+        }));
+      });
+    });
   });
 });

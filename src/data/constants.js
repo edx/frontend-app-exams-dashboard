@@ -6,6 +6,7 @@ export const RequestStates = {
 };
 
 export const RequestKeys = {
+  fetchAllowances: 'fetchAllowances',
   fetchCourseExams: 'fetchCourseExams',
   fetchExamAttempts: 'fetchExamAttempts',
   deleteExamAttempt: 'deleteExamAttempt',

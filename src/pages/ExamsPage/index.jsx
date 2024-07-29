@@ -9,7 +9,6 @@ import {
   useExamsData,
   useInitializeExamsPage,
   useExamAttemptsData,
-  useAllowancesData,
 } from './hooks';
 import AttemptList from './components/AttemptList';
 import ExternalReviewDashboard from './components/ExternalReviewDashboard';
@@ -32,9 +31,6 @@ const ExamsPage = ({ courseId }) => {
   const {
     attemptsList,
   } = useExamAttemptsData();
-  const {
-    allowancesList,
-  } = useAllowancesData();
 
   return (
     <Container>
@@ -53,7 +49,7 @@ const ExamsPage = ({ courseId }) => {
           <ExternalReviewDashboard exam={currentExam} />
         </Tab>
         <Tab eventKey="allowances" title={formatMessage(messages.allowanceDashboardTabTitle)}>
-          <AllowanceList allowances={allowancesList} />
+          <AllowanceList />
         </Tab>
       </Tabs>
     </Container>

@@ -295,20 +295,52 @@ const messages = defineMessages({
     defaultMessage: 'Allowances',
     description: 'Title for the allowances tab',
   },
-  allowanceButton: {
-    id: 'ExamsPage.allowanceButton',
+
+  // <AllowanceList />
+  addAllowanceButton: {
+    id: 'AllowanceList.addAllowanceButton',
     defaultMessage: 'Add allowance',
     description: 'Label for a button to add an allowance',
   },
+  editAllowanceButton: {
+    id: 'AllowanceList.editAllowanceButton',
+    defaultMessage: 'Edit allowance',
+    description: 'Label for a button to add an allowance',
+  },
+  deleteAllowanceButton: {
+    id: 'AllowanceList.deleteAllowanceButton',
+    defaultMessage: 'Delete allowance',
+    description: 'Label for a button to add an allowance',
+  },
   noAllowancesHeader: {
-    id: 'ExamsPage.noAllowancesHeader',
+    id: 'AllowanceList.noAllowancesHeader',
     defaultMessage: 'No Allowances',
     description: 'Header shown when no allowances have been created',
   },
   noAllowancesBody: {
-    id: 'ExamsPage.noAllowancesBody',
+    id: 'AllowanceList.noAllowancesBody',
     defaultMessage: 'Need to grant an allowance? Get started here.',
     description: 'Text shown when no allowances have been created',
+  },
+  allowanceTypeMinutes: {
+    id: 'AllowanceList.allowanceTypeMinutes',
+    defaultMessage: 'Additional time (minutes)',
+    description: 'Description for the allowance type that increases minutes to the exam',
+  },
+  tableColumnExamName: {
+    id: 'AllowanceList.tableColumnExamName',
+    defaultMessage: 'Exam name',
+    description: 'Description for the exam name column in allowance table',
+  },
+  tableColumnAllowanceType: {
+    id: 'AllowanceList.tableColumnAllowanceType',
+    defaultMessage: 'Allowance type',
+    description: 'Description for the allowance type column in allowance table',
+  },
+  tableColumnAllowanceValue: {
+    id: 'AllowanceList.tableColumnAllowanceValue',
+    defaultMessage: 'Allowance value',
+    description: 'Description for the allowance value column in allowance table',
   },
 });
 
