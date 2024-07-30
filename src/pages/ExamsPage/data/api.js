@@ -38,3 +38,9 @@ export async function modifyExamAttempt(attemptId, action) {
   const response = await getAuthenticatedHttpClient().put(url, payload);
   return response.data;
 }
+
+export async function createAllowance(courseId, data) {
+  const url = `${getExamsBaseUrl()}/api/v1/exams/course_id/${courseId}/allowances`;
+  const response = await getAuthenticatedHttpClient().post(url, data);
+  return response.data;
+}

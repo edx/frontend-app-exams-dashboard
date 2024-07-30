@@ -1,10 +1,13 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import AllowanceList from './AllowanceList';
-import { useAllowancesData } from '../hooks';
+import * as hooks from '../hooks';
+import * as testUtils from '../../../testUtils';
 
-// nomally mocked for unit tests but required for rendering/snapshots
+// normally mocked for unit tests but required for rendering/snapshots
 jest.unmock('react');
+
+const mockMakeNetworkRequest = jest.fn();
 
 const mockedAllowancesData = {
   allowancesList: [
@@ -31,26 +34,39 @@ const mockedAllowancesData = {
 
 jest.mock('../hooks', () => ({
   useAllowancesData: jest.fn(),
+  useExamsData: jest.fn(),
+  useButtonStateFromRequestStatus: jest.fn(),
+  useCreateAllowance: jest.fn(),
+  useFilteredExamsData: jest.fn(),
 }));
 
 describe('AllowanceList', () => {
   beforeEach(() => {
     jest.resetAllMocks();
+    hooks.useExamsData.mockReturnValue(testUtils.defaultExamsData);
+    hooks.useButtonStateFromRequestStatus.mockReturnValue(mockMakeNetworkRequest);
+    hooks.useFilteredExamsData.mockReturnValue({ proctoredExams: {}, timedExams: {} });
   });
 
   describe('when listing allowances', () => {
     beforeEach(() => {
-      useAllowancesData.mockReturnValue(mockedAllowancesData);
+      hooks.useAllowancesData.mockReturnValue(mockedAllowancesData);
     });
 
     it('should match snapshot', () => {
       expect(render(<AllowanceList />)).toMatchSnapshot();
     });
+
+    it('should open allowance modal', () => {
+      render(<AllowanceList />);
+      screen.getByText('Add allowance').click();
+      expect(screen.getByText('Add a new allowance')).toBeInTheDocument();
+    });
   });
 
   describe('when there are no allowances', () => {
     beforeEach(() => {
-      useAllowancesData.mockReturnValue({ allowancesList: [] });
+      hooks.useAllowancesData.mockReturnValue({ allowancesList: [] });
     });
 
     it('should match snapshot', () => {

@@ -10,6 +10,7 @@ import * as selectors from './data/selectors';
 import * as reducer from './data/reducer';
 
 import * as module from './hooks'; // eslint-disable-line import/no-self-import
+import { createAllowanceData } from './utils';
 
 export const state = {
   // example of component state that does not need to be in redux
@@ -136,4 +137,30 @@ export const useButtonStateFromRequestStatus = (requestKey) => {
 export const useAllowancesData = () => {
   const allowancesList = useSelector(selectors.courseAllowancesList);
   return { allowancesList };
+};
+
+export const useCreateAllowance = () => {
+  const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
+  const courseId = useSelector(selectors.courseId);
+  const fetchAllowances = module.useFetchAllowances();
+  return (formData, closeModal) => {
+    const allowanceData = createAllowanceData(formData);
+    makeNetworkRequest({
+      requestKey: RequestKeys.createAllowance,
+      promise: api.createAllowance(courseId, allowanceData),
+      onSuccess: () => {
+        closeModal();
+        fetchAllowances(courseId);
+      },
+    });
+  };
+};
+
+export const useFilteredExamsData = () => {
+  const { examsList } = useExamsData();
+
+  const proctoredExams = examsList.filter(e => e.examType === 'proctored');
+  const timedExams = examsList.filter(e => e.examType !== 'proctored');
+
+  return { proctoredExams, timedExams };
 };

@@ -18,11 +18,13 @@ describe('ExamsPage reducer', () => {
               id: 1,
               exam_name: 'Exam 1',
               exam_type: 'timed',
+              time_limit_mins: 60,
             },
             {
               id: 2,
               exam_name: 'Exam 2',
               exam_type: 'timed',
+              time_limit_mins: 60,
             },
           ],
         };
@@ -33,10 +35,14 @@ describe('ExamsPage reducer', () => {
             {
               id: 1,
               name: 'Exam 1',
+              examType: 'timed',
+              timeLimitMins: 60,
             },
             {
               id: 2,
               name: 'Exam 2',
+              examType: 'timed',
+              timeLimitMins: 60,
             },
           ],
           attemptsList: [],
