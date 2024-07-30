@@ -1,10 +1,7 @@
-import PropTypes from 'prop-types';
 import {
   Button,
   Collapsible,
   DataTable,
-  Icon,
-  IconButtonWithTooltip,
 } from '@openedx/paragon';
 import { Add, DeleteOutline, EditOutline } from '@openedx/paragon/icons';
 import { useIntl } from '@edx/frontend-platform/i18n';
@@ -12,42 +9,10 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 import messages from '../messages';
 import { useAllowancesData } from '../hooks';
 
+import AllowanceListActions from './AllowanceListActions';
+
 import './AllowanceList.scss';
 
-const AllowanceListActions = ({ onEdit, onDelete }) => {
-  const { formatMessage } = useIntl();
-
-  return (
-    <div className="allowances-actions text-right">
-      <IconButtonWithTooltip
-        tooltipPlacement="top"
-        tooltipContent={formatMessage(messages.editAllowanceButton)}
-        src={EditOutline}
-        iconAs={Icon}
-        alt={formatMessage(messages.editAllowanceButton)}
-        onClick={onEdit}
-        variant="primary"
-        className="mr-2"
-        size="sm"
-      />
-      <IconButtonWithTooltip
-        tooltipPlacement="top"
-        tooltipContent={formatMessage(messages.deleteAllowanceButton)}
-        alt={formatMessage(messages.deleteAllowanceButton)}
-        src={DeleteOutline}
-        iconAs={Icon}
-        onClick={onDelete}
-        variant="secondary"
-        size="sm"
-      />
-    </div>
-  );
-};
-
-AllowanceListActions.propTypes = {
-  onEdit: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
-};
 
 const AllowanceList = () => {
   const { formatMessage } = useIntl();
@@ -160,7 +125,7 @@ const AllowanceList = () => {
                     additionalColumns={[
                       {
                         id: 'actions',
-                        Cell: () => AllowanceListActions({ onEdit: handleEdit, onDelete: handleDelete }),
+                        Cell: () => AllowanceListActions(),
                       },
                     ]}
                   >
