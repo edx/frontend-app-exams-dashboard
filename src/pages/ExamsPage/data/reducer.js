@@ -70,6 +70,10 @@ const slice = createSlice({
         return data;
       }),
     }),
+    deleteAllowance: (state, allowanceId) => ({
+      ...state,
+      allowancesList: state.allowancesList.filter(allowance => allowance.id !== allowanceId.payload),
+    }),
     deleteExamAttempt: (state, attemptId) => ({
       ...state,
       attemptsList: state.attemptsList.filter(attempt => attempt.attempt_id !== attemptId.payload),
@@ -117,6 +121,7 @@ export const {
   loadExams,
   loadExamAttempts,
   deleteExamAttempt,
+  deleteAllowance,
   modifyExamAttemptStatus,
   setCurrentExam,
   setCourseId,

@@ -129,7 +129,7 @@ const AllowanceList = () => {
                     additionalColumns={[
                       {
                         id: 'actions',
-                        Cell: () => AllowanceListActions(),
+                        Cell: ({ row }) => AllowanceListActions(row.original),
                       },
                     ]}
                   >

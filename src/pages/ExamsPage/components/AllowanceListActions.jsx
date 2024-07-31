@@ -10,11 +10,12 @@ import { Add, DeleteOutline, EditOutline } from '@openedx/paragon/icons';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
 import messages from '../messages';
+import { useDeleteAllowance } from '../hooks';
 
-const DeleteModal = (isDeleteModalOpen, setDeleteModalClosed) => (
+const DeleteModal = (isOpen, onDelete, onCancel) => (
   <ModalDialog
-    isOpen={isDeleteModalOpen}
-    onClose={setDeleteModalClosed}
+    isOpen={isOpen}
+    onClose={onCancel}
     variant="default"
     hasCloseButton
     isFullscreenOnMobile
@@ -29,7 +30,7 @@ const DeleteModal = (isDeleteModalOpen, setDeleteModalClosed) => (
     </ModalDialog.Body>
     <ModalDialog.Footer>
       <ActionRow>
-        <ModalDialog.CloseButton variant="tertiary" onClick={setDeleteModalClosed}>
+        <ModalDialog.CloseButton variant="tertiary" onClick={onCancel}>
           Cancel
         </ModalDialog.CloseButton>
         <StatefulButton
@@ -39,8 +40,7 @@ const DeleteModal = (isDeleteModalOpen, setDeleteModalClosed) => (
             default: 'Delete',
           }}
           onClick={e => {
-            console.log('Delete', e); // eslint-disable-line no-console
-            setDeleteModalClosed();
+            onDelete();
           }}
         />
       </ActionRow>
@@ -48,9 +48,16 @@ const DeleteModal = (isDeleteModalOpen, setDeleteModalClosed) => (
   </ModalDialog>
 )
 
-const AllowanceListActions = () => {
+const AllowanceListActions = (allowance) => {
   const { formatMessage } = useIntl();
   const [isDeleteModalOpen, setDeleteModalOpen, setDeleteModalClosed] = useToggle(false);
+
+  const deleteAllowance = useDeleteAllowance();
+
+  const handleDelete = () => {
+    deleteAllowance(allowance.id);
+    setDeleteModalClosed();
+  }
 
   return (
     <div className="allowances-actions text-right">
@@ -75,7 +82,7 @@ const AllowanceListActions = () => {
         variant="secondary"
         size="sm"
       />
-      {DeleteModal(isDeleteModalOpen, setDeleteModalClosed)}
+      {DeleteModal(isDeleteModalOpen, handleDelete,  setDeleteModalClosed)}
     </div>
   );
 };
