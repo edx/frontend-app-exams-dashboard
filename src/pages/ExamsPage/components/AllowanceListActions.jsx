@@ -12,6 +12,9 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 import messages from '../messages';
 import { useDeleteAllowance } from '../hooks';
 
+// todo: add EditModal
+// const EditModal;
+
 const DeleteModal = (isOpen, onCancel, onDelete, formatMessage) => (
   <ModalDialog
     isOpen={isOpen}
