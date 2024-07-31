@@ -60,14 +60,6 @@ const AllowanceList = () => {
     return acc;
   }, []);
 
-  const handleEdit = (row) => {
-    console.log('Edit', row); // eslint-disable-line no-console
-  };
-
-  const handleDelete = (row) => {
-    console.log('Delete', row); // eslint-disable-line no-console
-  };
-
   return (
     <>
       <div className="allowances-header">
