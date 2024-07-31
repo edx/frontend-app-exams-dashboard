@@ -1,9 +1,9 @@
 import {
   ActionRow,
+  Button,
   Icon,
   IconButtonWithTooltip,
   ModalDialog,
-  StatefulButton,
   useToggle,
 } from '@openedx/paragon';
 import { DeleteOutline, EditOutline } from '@openedx/paragon/icons';
@@ -33,14 +33,9 @@ const DeleteModal = (isOpen, onCancel, onDelete, formatMessage) => (
         <ModalDialog.CloseButton variant="tertiary" onClick={onCancel}>
           {formatMessage(messages.deleteAllowanceCancel)}
         </ModalDialog.CloseButton>
-        <StatefulButton
-          variant="primary"
-          state=""
-          labels={{
-            default: formatMessage(messages.deleteAllowanceDelete),
-          }}
-          onClick={onDelete}
-        />
+        <Button variant="primary" onClick={onDelete}>
+          {formatMessage(messages.deleteAllowanceDelete)}
+        </Button>
       </ActionRow>
     </ModalDialog.Footer>
   </ModalDialog>
