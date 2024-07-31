@@ -28,6 +28,19 @@ export const useFetchAllowances = () => {
   );
 };
 
+export const useDeleteAllowance = () => {
+  const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
+  const courseId = useSelector(selectors.courseId);
+  const dispatch = useDispatch();
+  return (allowanceId) => (
+    makeNetworkRequest({
+      requestKey: RequestKeys.deleteAllowance,
+      promise: api.deleteAllowance(courseId, allowanceId),
+      onSuccess: () => dispatch(reducer.deleteAllowance(allowanceId)),
+    })
+  );
+};
+
 export const useFetchCourseExams = () => {
   const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
   const dispatch = useDispatch();

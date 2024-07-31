@@ -14,6 +14,12 @@ export async function getAllowances(courseId) {
   return response.data;
 }
 
+export async function deleteAllowance(courseId, allowanceId) {
+  const url = `${getExamsBaseUrl()}/api/v1/exams/course_id/${courseId}/allowances/${allowanceId}`;
+  const response = await getAuthenticatedHttpClient().delete(url);
+  return response.data;
+}
+
 export async function getCourseExams(courseId) {
   const url = `${getExamsBaseUrl()}/api/v1/exams/course_id/${courseId}/`;
   const response = await getAuthenticatedHttpClient().get(url);
