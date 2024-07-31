@@ -31,6 +31,7 @@ const mockedAllowancesData = {
 
 jest.mock('../hooks', () => ({
   useAllowancesData: jest.fn(),
+  useDeleteAllowance: jest.fn(),
 }));
 
 describe('AllowanceList', () => {

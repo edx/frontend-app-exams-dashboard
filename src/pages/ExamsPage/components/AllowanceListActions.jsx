@@ -6,13 +6,13 @@ import {
   StatefulButton,
   useToggle,
 } from '@openedx/paragon';
-import { Add, DeleteOutline, EditOutline } from '@openedx/paragon/icons';
+import { DeleteOutline, EditOutline } from '@openedx/paragon/icons';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
 import messages from '../messages';
 import { useDeleteAllowance } from '../hooks';
 
-const DeleteModal = (isOpen, onDelete, onCancel) => (
+const DeleteModal = (isOpen, onCancel, onDelete, formatMessage) => (
   <ModalDialog
     isOpen={isOpen}
     onClose={onCancel}
@@ -22,31 +22,29 @@ const DeleteModal = (isOpen, onDelete, onCancel) => (
   >
     <ModalDialog.Header>
       <ModalDialog.Title>
-          Delete Allowance?
+        {formatMessage(messages.deleteAllowanceHeader)}
       </ModalDialog.Title>
     </ModalDialog.Header>
     <ModalDialog.Body>
-      <p>Are you sure you want to delete this allowance?</p>
+      <p>{formatMessage(messages.deleteAllowanceBody)}</p>
     </ModalDialog.Body>
     <ModalDialog.Footer>
       <ActionRow>
         <ModalDialog.CloseButton variant="tertiary" onClick={onCancel}>
-          Cancel
+          {formatMessage(messages.deleteAllowanceCancel)}
         </ModalDialog.CloseButton>
         <StatefulButton
           variant="primary"
           state=""
           labels={{
-            default: 'Delete',
+            default: formatMessage(messages.deleteAllowanceDelete),
           }}
-          onClick={e => {
-            onDelete();
-          }}
+          onClick={onDelete}
         />
       </ActionRow>
     </ModalDialog.Footer>
   </ModalDialog>
-)
+);
 
 const AllowanceListActions = (allowance) => {
   const { formatMessage } = useIntl();
@@ -57,7 +55,7 @@ const AllowanceListActions = (allowance) => {
   const handleDelete = () => {
     deleteAllowance(allowance.id);
     setDeleteModalClosed();
-  }
+  };
 
   return (
     <div className="allowances-actions text-right">
@@ -82,7 +80,7 @@ const AllowanceListActions = (allowance) => {
         variant="secondary"
         size="sm"
       />
-      {DeleteModal(isDeleteModalOpen, handleDelete,  setDeleteModalClosed)}
+      {DeleteModal(isDeleteModalOpen, setDeleteModalClosed, handleDelete, formatMessage)}
     </div>
   );
 };

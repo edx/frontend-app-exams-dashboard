@@ -3,7 +3,7 @@ import {
   Collapsible,
   DataTable,
 } from '@openedx/paragon';
-import { Add, DeleteOutline, EditOutline } from '@openedx/paragon/icons';
+import { Add } from '@openedx/paragon/icons';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
 import messages from '../messages';
@@ -60,14 +60,6 @@ const AllowanceList = () => {
 
   const handleAdd = () => {
     console.log('Add'); // eslint-disable-line no-console
-  };
-
-  const handleEdit = (row) => {
-    console.log('Edit', row); // eslint-disable-line no-console
-  };
-
-  const handleDelete = (row) => {
-    console.log('Delete', row); // eslint-disable-line no-console
   };
 
   return (

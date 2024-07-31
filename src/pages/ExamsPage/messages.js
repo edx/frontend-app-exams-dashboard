@@ -342,6 +342,28 @@ const messages = defineMessages({
     defaultMessage: 'Allowance value',
     description: 'Description for the allowance value column in allowance table',
   },
+
+  // <AllowanceListActions />
+  deleteAllowanceHeader: {
+    id: 'AllowanceListActions.deleteAllowanceHeader',
+    defaultMessage: 'Delete Allowance?',
+    description: 'Header for the delete allowance modal',
+  },
+  deleteAllowanceBody: {
+    id: 'AllowanceListActions.deleteAllowanceBody',
+    defaultMessage: 'Are you sure you want to delete this allowance?',
+    description: 'Body for the delete allowance modal',
+  },
+  deleteAllowanceCancel: {
+    id: 'AllowanceListActions.deleteAllowanceCancel',
+    defaultMessage: 'Cancel',
+    description: 'Label for the cancel button in the delete allowance modal',
+  },
+  deleteAllowanceDelete: {
+    id: 'AllowanceListActions.deleteAllowanceDelete',
+    defaultMessage: 'Delete',
+    description: 'Label for the delete button in the delete allowance modal',
+  },
 });
 
 export default messages;
