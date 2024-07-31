@@ -14,6 +14,7 @@ import { useDeleteAllowance } from '../hooks';
 
 const DeleteModal = (isOpen, onCancel, onDelete, formatMessage) => (
   <ModalDialog
+    title="delete allowance"
     isOpen={isOpen}
     onClose={onCancel}
     variant="default"
@@ -41,7 +42,7 @@ const DeleteModal = (isOpen, onCancel, onDelete, formatMessage) => (
   </ModalDialog>
 );
 
-const AllowanceListActions = (allowance) => {
+const AllowanceListActions = ({allowance}) => {
   const { formatMessage } = useIntl();
   const [isDeleteModalOpen, setDeleteModalOpen, setDeleteModalClosed] = useToggle(false);
 
@@ -74,6 +75,7 @@ const AllowanceListActions = (allowance) => {
         onClick={setDeleteModalOpen}
         variant="secondary"
         size="sm"
+        data-testid="delete-allowance-icon"
       />
       {DeleteModal(isDeleteModalOpen, setDeleteModalClosed, handleDelete, formatMessage)}
     </div>
