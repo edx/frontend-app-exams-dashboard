@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import {
   ActionRow,
   Button,
@@ -42,7 +43,7 @@ const DeleteModal = (isOpen, onCancel, onDelete, formatMessage) => (
   </ModalDialog>
 );
 
-const AllowanceListActions = ({allowance}) => {
+const AllowanceListActions = ({ allowance }) => {
   const { formatMessage } = useIntl();
   const [isDeleteModalOpen, setDeleteModalOpen, setDeleteModalClosed] = useToggle(false);
 
@@ -80,6 +81,12 @@ const AllowanceListActions = ({allowance}) => {
       {DeleteModal(isDeleteModalOpen, setDeleteModalClosed, handleDelete, formatMessage)}
     </div>
   );
+};
+
+AllowanceListActions.propTypes = {
+  allowance: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default AllowanceListActions;

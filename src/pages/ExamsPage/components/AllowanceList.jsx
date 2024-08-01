@@ -14,7 +14,6 @@ import AllowanceListActions from './AllowanceListActions';
 
 import './AllowanceList.scss';
 
-
 const AllowanceList = () => {
   const { formatMessage } = useIntl();
   const [isOpen, open, close] = useToggle(false);

@@ -71,6 +71,32 @@ describe('ExamsPage hooks', () => {
       });
     });
   });
+  describe('useDeleteAllowance', () => {
+    const mockMakeNetworkRequest = jest.fn();
+    beforeEach(() => {
+      mockMakeNetworkRequest.mockClear();
+      reduxHooks.useMakeNetworkRequest.mockReturnValue(mockMakeNetworkRequest);
+      api.deleteAllowance.mockReturnValue(Promise.resolve());
+    });
+
+    it('calls makeNetworkRequest to delete an allowance', () => {
+      hooks.useDeleteAllowance()('course-1', 0);
+      expect(mockMakeNetworkRequest).toHaveBeenCalledWith({
+        requestKey: 'deleteAllowance',
+        promise: expect.any(Promise),
+        onSuccess: expect.any(Function),
+      });
+    });
+    it('dispatches exams/deleteAllowance on success', async () => {
+      await hooks.useDeleteAllowance()(19);
+      const { onSuccess } = mockMakeNetworkRequest.mock.calls[0][0];
+      onSuccess();
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: 19,
+        type: 'exams/deleteAllowance',
+      });
+    });
+  });
   describe('useFetchCourseExams', () => {
     const mockMakeNetworkRequest = jest.fn();
     beforeEach(() => {
