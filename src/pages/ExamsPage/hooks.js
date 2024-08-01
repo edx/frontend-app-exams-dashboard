@@ -33,11 +33,14 @@ export const useDeleteAllowance = () => {
   const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
   const courseId = useSelector(selectors.courseId);
   const dispatch = useDispatch();
-  return (allowanceId) => (
+  return (allowanceId, cb) => (
     makeNetworkRequest({
       requestKey: RequestKeys.deleteAllowance,
       promise: api.deleteAllowance(courseId, allowanceId),
-      onSuccess: () => dispatch(reducer.deleteAllowance(allowanceId)),
+      onSuccess: () => {
+        dispatch(reducer.deleteAllowance(allowanceId));
+        cb();
+      },
     })
   );
 };

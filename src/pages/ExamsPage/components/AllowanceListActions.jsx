@@ -50,8 +50,7 @@ const AllowanceListActions = ({ allowance }) => {
   const deleteAllowance = useDeleteAllowance();
 
   const handleDelete = () => {
-    deleteAllowance(allowance.id);
-    setDeleteModalClosed();
+    deleteAllowance(allowance.id, setDeleteModalClosed);
   };
 
   return (
