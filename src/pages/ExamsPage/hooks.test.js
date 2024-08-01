@@ -218,4 +218,38 @@ describe('ExamsPage hooks', () => {
       expect(hooks.useButtonStateFromRequestStatus(constants.RequestKeys.modifyExamAttempt)()).toBe('error');
     });
   });
+
+  describe('useCreateAllowance', () => {
+    const mockMakeNetworkRequest = jest.fn();
+    const formData = {
+      users: 'edx, edx@example.com',
+      'exam-type': 'proctored',
+      exams: { 1: '60', 2: '30' },
+      'additional-time-multiplier': '1.5',
+      'allowance-type': 'time-multiplier',
+
+    };
+    beforeEach(() => {
+      mockMakeNetworkRequest.mockClear();
+      reduxHooks.useMakeNetworkRequest.mockReturnValue(mockMakeNetworkRequest);
+      api.createAllowance.mockReturnValue(Promise.resolve({ data: 'data' }));
+    });
+    it('calls makeNetworkRequest to create an allowance', () => {
+      hooks.useCreateAllowance()(formData);
+      expect(mockMakeNetworkRequest).toHaveBeenCalledWith({
+        requestKey: 'createAllowance',
+        promise: expect.any(Promise),
+        onSuccess: expect.any(Function),
+      });
+      expect(api.createAllowance).toHaveBeenCalledWith(
+        mockUseSelector,
+        [
+          { username: 'edx', exam_id: 1, extra_time_mins: 30 },
+          { username: 'edx', exam_id: 2, extra_time_mins: 15 },
+          { email: 'edx@example.com', exam_id: 1, extra_time_mins: 30 },
+          { email: 'edx@example.com', exam_id: 2, extra_time_mins: 15 },
+        ],
+      );
+    });
+  });
 });

@@ -18,3 +18,24 @@ const examAttemptStatusLabels = {
 };
 
 export const getMessageLabelForStatus = (status) => examAttemptStatusLabels[status];
+
+export const createAllowanceData = (form) => {
+  const data = [];
+  const users = form.users.split(',').map((item) => item.trim());
+  for (let i = 0; i < users.length; i++) {
+    const user = users[i];
+    Object.keys(form.exams).forEach(examId => {
+      const timeLimitMins = form.exams[examId];
+      let additionalTime;
+      if (form['allowance-type'] === 'time-multiplier') {
+        additionalTime = (Number(timeLimitMins) * Number(form['additional-time-multiplier'])) - Number(timeLimitMins);
+      } else {
+        additionalTime = Number(form['additional-time-minutes']);
+      }
+
+      const userKey = user.includes('@') ? 'email' : 'username';
+      data.push({ [userKey]: user, exam_id: Number(examId), extra_time_mins: additionalTime });
+    });
+  }
+  return data;
+};

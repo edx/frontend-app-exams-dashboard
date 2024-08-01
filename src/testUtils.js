@@ -22,7 +22,12 @@ export const formatMessage = (msg, values) => {
 
 export const defaultExamsData = {
   examsList: [
-    { id: 1, name: 'exam1' },
+    {
+      id: 1,
+      name: 'exam1',
+      examType: 'proctored',
+      timeLimitMins: 60,
+    },
   ],
   currentExamIndex: 0,
   currentExam: { id: 1, name: 'exam1' },

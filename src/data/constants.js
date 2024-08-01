@@ -11,6 +11,7 @@ export const RequestKeys = {
   fetchExamAttempts: 'fetchExamAttempts',
   deleteExamAttempt: 'deleteExamAttempt',
   modifyExamAttempt: 'modifyExamAttempt',
+  createAllowance: 'createAllowance',
 };
 
 export const ExamAttemptActions = {

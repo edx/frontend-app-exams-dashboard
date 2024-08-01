@@ -792,7 +792,12 @@ exports[`AllowanceList when listing allowances should match snapshot 1`] = `
 exports[`AllowanceList when there are no allowances should match snapshot 1`] = `
 {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    class=""
+  >
+    <div
+      id="paragon-portal-root"
+    />
     <div>
       <div
         class="allowances-header"

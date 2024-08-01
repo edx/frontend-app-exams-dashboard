@@ -342,6 +342,118 @@ const messages = defineMessages({
     defaultMessage: 'Allowance value',
     description: 'Description for the allowance value column in allowance table',
   },
+
+  // <AddAllowanceModal />
+  addAllowanceButtonDefaultLabel: {
+    id: 'AddAllowanceModal.addAllowanceButtonDefaultLabel',
+    defaultMessage: 'Add allowance',
+    description: 'Default label for the add allowance button on modal',
+  },
+  addAllowanceButtonPendingLabel: {
+    id: 'AddAllowanceModal.addAllowanceButtonPendingLabel',
+    defaultMessage: 'Adding allowance...',
+    description: 'Pending label for the add allowance button on modal',
+  },
+  addAllowanceButtonCompleteLabel: {
+    id: 'AddAllowanceModal.addAllowanceButtonCompleteLabel',
+    defaultMessage: 'Add allowance',
+    description: 'Complete label for the add allowance button on modal',
+  },
+  addAllowanceButtonErrorLabel: {
+    id: 'AddAllowanceModal.addAllowanceButtonErrorLabel',
+    defaultMessage: 'Error',
+    description: 'Error label for the add allowance button on modal',
+  },
+  addAllowanceModalTitle: {
+    id: 'AddAllowanceModal.addAllowanceModalTitle',
+    defaultMessage: 'Add a new allowance',
+    description: 'Title for the allowance modal',
+  },
+  addAllowanceLearnerField: {
+    id: 'AddAllowanceModal.addAllowanceLearnerField',
+    defaultMessage: 'Learners',
+    description: 'Labels for learner field on allowance modal',
+  },
+  addAllowanceLearnerFieldFeedback: {
+    id: 'AddAllowanceModal.addAllowanceLearnerFieldFeedback',
+    defaultMessage: 'Enter usernames or emails separated by commas',
+    description: 'Feedback text for learner field on allowance modal',
+  },
+  addAllowanceLearnerFieldErrorFeedback: {
+    id: 'AddAllowanceModal.addAllowanceLearnerFieldErrorFeedback',
+    defaultMessage: 'Enter learners',
+    description: 'Error feedback text for learner field on allowance modal',
+  },
+  addAllowanceExamTypeField: {
+    id: 'AddAllowanceModal.addAllowanceExamTypeField',
+    defaultMessage: 'Exam type',
+    description: 'Labels for exam type field on allowance modal',
+  },
+  addAllowanceTimedExamOption: {
+    id: 'AddAllowanceModal.addAllowanceTimedExamOption',
+    defaultMessage: 'Timed exam',
+    description: 'Text for timed exam selection',
+  },
+  addAllowanceProctoredExamOption: {
+    id: 'AddAllowanceModal.addAllowanceProctoredExamOption',
+    defaultMessage: 'Proctored exam',
+    description: 'Text for proctored exam selection',
+  },
+  addAllowanceExamField: {
+    id: 'AddAllowanceModal.addAllowanceExamField',
+    defaultMessage: 'Exams',
+    description: 'Labels for exams field on allowance modal',
+  },
+  addAllowanceExamErrorFeedback: {
+    id: 'AddAllowanceModal.addAllowanceExamErrorFeedback',
+    defaultMessage: 'Select exams',
+    description: 'Error feedback text for exams field on allowance modal',
+  },
+  addAllowanceAllowanceTypeField: {
+    id: 'AddAllowanceModal.addAllowanceAllowanceTypeField',
+    defaultMessage: 'Allowance type',
+    description: 'Labels for allowance type field on allowance modal',
+  },
+  addAllowanceAdditionalMinutesOption: {
+    id: 'AddAllowanceModal.addAllowanceAdditionalMinutesOption',
+    defaultMessage: 'Additional time (minutes)',
+    description: 'Text for the additional minutes selection',
+  },
+  addAllowanceTimeMultiplierOption: {
+    id: 'AddAllowanceModal.addAllowanceAllowanceTypeField',
+    defaultMessage: 'Time multiplier',
+    description: 'Text for the time multiplier selection',
+  },
+  addAllowanceMinutesField: {
+    id: 'AddAllowanceModal.addAllowanceMinutesField',
+    defaultMessage: 'Minutes',
+    description: 'Labels for minutes field on allowance modal',
+  },
+  addAllowanceMinutesErrorFeedback: {
+    id: 'AddAllowanceModal.addAllowanceMinutesErrorFeedback',
+    defaultMessage: 'Enter minutes',
+    description: 'Error feedback for minutes field on allowance modal',
+  },
+  addAllowanceMultiplierField: {
+    id: 'AddAllowanceModal.addAllowanceMultiplierField',
+    defaultMessage: 'Multiplier',
+    description: 'Labels for multiplier field on allowance modal',
+  },
+  addAllowanceMultiplierErrorFeedback: {
+    id: 'AddAllowanceModal.addAllowanceMultiplierErrorFeedback',
+    defaultMessage: 'Enter multiplier as a number greater than 1',
+    description: 'Error feedback for multiplier field on allowance modal',
+  },
+  addAllowanceMultiplierFeedback: {
+    id: 'AddAllowanceModal.addAllowanceMultiplierFeedback',
+    defaultMessage: 'Enter multiplier',
+    description: 'Feedback for multiplier field on allowance modal',
+  },
+  addAllowanceCloseButton: {
+    id: 'AddAllowanceModal.addAllowanceCloseButton',
+    defaultMessage: 'Cancel',
+    description: 'Button label for modal close',
+  },
 });
 
 export default messages;

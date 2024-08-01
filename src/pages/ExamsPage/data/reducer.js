@@ -42,6 +42,8 @@ const slice = createSlice({
       examsList: payload.map((exam) => ({
         id: exam.id,
         name: exam.exam_name,
+        examType: exam.exam_type,
+        timeLimitMins: exam.time_limit_mins,
       })),
     }),
     loadExamAttempts: (state, { payload }) => ({

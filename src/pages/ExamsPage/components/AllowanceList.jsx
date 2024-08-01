@@ -5,13 +5,14 @@ import {
   DataTable,
   Icon,
   IconButtonWithTooltip,
+  useToggle,
 } from '@openedx/paragon';
 import { Add, DeleteOutline, EditOutline } from '@openedx/paragon/icons';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
 import messages from '../messages';
 import { useAllowancesData } from '../hooks';
-
+import AddAllowanceModal from './AddAllowanceModal';
 import './AllowanceList.scss';
 
 const AllowanceListActions = ({ onEdit, onDelete }) => {
@@ -51,6 +52,7 @@ AllowanceListActions.propTypes = {
 
 const AllowanceList = () => {
   const { formatMessage } = useIntl();
+  const [isOpen, open, close] = useToggle(false);
 
   const {
     allowancesList,
@@ -93,10 +95,6 @@ const AllowanceList = () => {
     return acc;
   }, []);
 
-  const handleAdd = () => {
-    console.log('Add'); // eslint-disable-line no-console
-  };
-
   const handleEdit = (row) => {
     console.log('Edit', row); // eslint-disable-line no-console
   };
@@ -109,7 +107,13 @@ const AllowanceList = () => {
     <>
       <div className="allowances-header">
         <h3 data-testid="allowances">{formatMessage(messages.allowanceDashboardTabTitle)}</h3>
-        <Button variant="outline-primary" iconBefore={Add} size="sm" className="header-allowance-button" onClick={handleAdd}>
+        <Button
+          variant="outline-primary"
+          iconBefore={Add}
+          size="sm"
+          className="header-allowance-button"
+          onClick={open}
+        >
           {formatMessage(messages.addAllowanceButton)}
         </Button>
       </div>
@@ -119,7 +123,7 @@ const AllowanceList = () => {
             <div className="allowances-empty">
               <h4>{formatMessage(messages.noAllowancesHeader)}</h4>
               <p>{formatMessage(messages.noAllowancesBody)}</p>
-              <Button variant="primary" iconBefore={Add} onClick={handleAdd}>
+              <Button variant="primary" iconBefore={Add} onClick={open}>
                 {formatMessage(messages.addAllowanceButton)}
               </Button>
             </div>
@@ -171,6 +175,7 @@ const AllowanceList = () => {
             </div>
           )}
       </div>
+      <AddAllowanceModal isOpen={isOpen} close={close} />
     </>
   );
 };

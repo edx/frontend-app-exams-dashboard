@@ -11,17 +11,20 @@ jest.mock('./hooks', () => ({
   useInitializeExamsPage: jest.fn(),
   useExamAttemptsData: jest.fn(),
   useExamsData: jest.fn(),
+  useFilteredExamsData: jest.fn(),
   useAllowancesData: jest.fn(),
   useFetchExamAttempts: jest.fn(),
   useDeleteExamAttempt: jest.fn(),
   useModifyExamAttempt: jest.fn(),
   useButtonStateFromRequestStatus: jest.fn(),
+  useCreateAllowance: jest.fn(),
 }));
 
 describe('ExamsPage', () => {
   beforeAll(() => {
     hooks.useExamAttemptsData.mockReturnValue(testUtils.defaultAttemptsData);
     hooks.useAllowancesData.mockReturnValue({ allowancesList: [] });
+    hooks.useFilteredExamsData.mockReturnValue({ proctoredExams: {}, timedExams: {} });
   });
   describe('snapshots', () => {
     test('exams and attempts loaded', () => {
