@@ -38,6 +38,14 @@ describe('ExamsPage data api', () => {
     });
   });
 
+  describe('deleteAllowance', () => {
+    it('calls delete on allowances url with course id and allowance id', async () => {
+      axiosMock.onDelete().reply(204);
+      await api.deleteAllowance(courseId, 19);
+      expect(axiosMock.history.delete[0].url).toBe('test-exams-url/api/v1/exams/course_id/course-v1:edX+DemoX+Demo_Course/allowances/19');
+    });
+  });
+
   describe('getCourseExams', () => {
     it('calls get on exams url with course id', async () => {
       axiosMock.onGet().reply(200, []);

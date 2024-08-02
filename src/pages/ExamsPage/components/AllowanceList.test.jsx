@@ -38,6 +38,7 @@ jest.mock('../hooks', () => ({
   useButtonStateFromRequestStatus: jest.fn(),
   useCreateAllowance: jest.fn(),
   useFilteredExamsData: jest.fn(),
+  useDeleteAllowance: jest.fn(),
 }));
 
 describe('AllowanceList', () => {

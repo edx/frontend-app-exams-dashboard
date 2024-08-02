@@ -71,6 +71,41 @@ describe('ExamsPage hooks', () => {
       });
     });
   });
+  describe('useDeleteAllowance', () => {
+    const mockMakeNetworkRequest = jest.fn();
+    const successCb = jest.fn();
+    beforeEach(() => {
+      mockMakeNetworkRequest.mockClear();
+      reduxHooks.useMakeNetworkRequest.mockReturnValue(mockMakeNetworkRequest);
+      api.deleteAllowance.mockReturnValue(Promise.resolve());
+    });
+
+    it('calls makeNetworkRequest to delete an allowance', () => {
+      hooks.useDeleteAllowance()(0, successCb);
+      expect(mockMakeNetworkRequest).toHaveBeenCalledWith({
+        requestKey: 'deleteAllowance',
+        promise: expect.any(Promise),
+        onSuccess: expect.any(Function),
+      });
+    });
+    it('dispatches exams/deleteAllowance on success', async () => {
+      await hooks.useDeleteAllowance()(19, successCb);
+      const { onSuccess } = mockMakeNetworkRequest.mock.calls[0][0];
+      onSuccess();
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: 19,
+        type: 'exams/deleteAllowance',
+      });
+    });
+    it('calls cb on success', async () => {
+      successCb.mockClear();
+      await hooks.useDeleteAllowance()(19, successCb);
+      const { onSuccess } = mockMakeNetworkRequest.mock.calls[0][0];
+      expect(successCb).not.toHaveBeenCalled();
+      onSuccess();
+      expect(successCb).toHaveBeenCalled();
+    });
+  });
   describe('useFetchCourseExams', () => {
     const mockMakeNetworkRequest = jest.fn();
     beforeEach(() => {

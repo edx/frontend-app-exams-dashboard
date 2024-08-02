@@ -9,6 +9,7 @@ export const RequestKeys = {
   fetchAllowances: 'fetchAllowances',
   fetchCourseExams: 'fetchCourseExams',
   fetchExamAttempts: 'fetchExamAttempts',
+  deleteAllowance: 'deleteAllowance',
   deleteExamAttempt: 'deleteExamAttempt',
   modifyExamAttempt: 'modifyExamAttempt',
   createAllowance: 'createAllowance',

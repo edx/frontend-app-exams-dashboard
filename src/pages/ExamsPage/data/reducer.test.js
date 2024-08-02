@@ -407,5 +407,51 @@ describe('ExamsPage reducer', () => {
         }));
       });
     });
+    describe('deleteAllowance', () => {
+      it('deletes the expected allowance from allowancesList', () => {
+        const state = {
+          currentExamIndex: null,
+          examsList: [],
+          attemptsList: [],
+          allowancesList: [
+            {
+              id: 1,
+              exam_id: 4,
+              user_id: 2,
+              extra_time_mins: 35,
+              username: 'edx',
+              exam_name: 'Exam One',
+            },
+            {
+              id: 2,
+              exam_id: 3,
+              user_id: 1,
+              extra_time_mins: 45,
+              username: 'edx',
+              exam_name: 'Exam Two',
+            },
+          ],
+        };
+        const action = {
+          type: 'exams/deleteAllowance',
+          payload: 2,
+        };
+        expect(reducer(state, action)).toEqual({
+          currentExamIndex: null,
+          examsList: [],
+          attemptsList: [],
+          allowancesList: [
+            {
+              id: 1,
+              exam_id: 4,
+              user_id: 2,
+              extra_time_mins: 35,
+              username: 'edx',
+              exam_name: 'Exam One',
+            },
+          ],
+        });
+      });
+    });
   });
 });
