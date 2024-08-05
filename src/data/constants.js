@@ -13,6 +13,7 @@ export const RequestKeys = {
   deleteExamAttempt: 'deleteExamAttempt',
   modifyExamAttempt: 'modifyExamAttempt',
   createAllowance: 'createAllowance',
+  editAllowance: 'editAllowance',
 };
 
 export const ExamAttemptActions = {
