@@ -14,6 +14,7 @@ const initialState = {
   [RequestKeys.deleteExamAttempt]: { status: RequestStates.inactive },
   [RequestKeys.modifyExamAttempt]: { status: RequestStates.inactive },
   [RequestKeys.createAllowance]: { status: RequestStates.inactive },
+  [RequestKeys.editAllowance]: { status: RequestStates.inactive },
   [undefined]: { status: RequestStates.inactive },
 };
 
