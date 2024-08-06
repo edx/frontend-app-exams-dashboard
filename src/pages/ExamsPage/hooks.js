@@ -10,7 +10,7 @@ import * as selectors from './data/selectors';
 import * as reducer from './data/reducer';
 
 import * as module from './hooks'; // eslint-disable-line import/no-self-import
-import { createAllowanceData } from './utils';
+import { createAllowanceData, editAllowanceData } from './utils';
 
 export const state = {
   // example of component state that does not need to be in redux
@@ -167,6 +167,22 @@ export const useCreateAllowance = () => {
       onSuccess: () => {
         closeModal();
         fetchAllowances(courseId);
+      },
+    });
+  };
+};
+
+export const useEditAllowance = () => {
+  const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
+  const dispatch = useDispatch();
+  const courseId = useSelector(selectors.courseId);
+  return (allowanceId, extraTimeMins, cb) => {
+    makeNetworkRequest({
+      requestKey: RequestKeys.editAllowance,
+      promise: api.editAllowance(courseId, allowanceId, extraTimeMins),
+      onSuccess: () => {
+        dispatch(reducer.editAllowance(allowanceId, extraTimeMins));
+        cb();
       },
     });
   };

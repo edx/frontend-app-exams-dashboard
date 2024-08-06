@@ -11,7 +11,38 @@ import { DeleteOutline, EditOutline } from '@openedx/paragon/icons';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
 import messages from '../messages';
-import { useDeleteAllowance } from '../hooks';
+import { useDeleteAllowance, useEditAllowance } from '../hooks';
+
+// todo: add onEdit
+const EditModal = (isOpen, onCancel, onEdit, formatMessage) => (
+  <ModalDialog
+    title="edit allowance"
+    isOpen={isOpen}
+    onClose={onCancel}
+    variant="default"
+    hasCloseButton
+    isFullscreenOnMobile
+  >
+    <ModalDialog.Header>
+      <ModalDialog.Title>
+        {formatMessage(messages.editAllowanceHeader)}
+      </ModalDialog.Title>
+    </ModalDialog.Header>
+    <ModalDialog.Body>
+      <p>{formatMessage(messages.editAllowanceBody)}</p>
+    </ModalDialog.Body>
+    <ModalDialog.Footer>
+      <ActionRow>
+        <ModalDialog.CloseButton variant="tertiary" onClick={onCancel}>
+          {formatMessage(messages.editAllowanceCancel)}
+        </ModalDialog.CloseButton>
+        <Button variant="primary" onClick={onEdit}>
+          {formatMessage(messages.editAllowanceSave)}
+        </Button>
+      </ActionRow>
+    </ModalDialog.Footer>
+  </ModalDialog>
+);
 
 const DeleteModal = (isOpen, onCancel, onDelete, formatMessage) => (
   <ModalDialog
@@ -45,8 +76,15 @@ const DeleteModal = (isOpen, onCancel, onDelete, formatMessage) => (
 
 const AllowanceListActions = ({ allowance }) => {
   const { formatMessage } = useIntl();
-  const [isDeleteModalOpen, setDeleteModalOpen, setDeleteModalClosed] = useToggle(false);
 
+  const [isEditModalOpen, setEditModalOpen, setEditModalClosed] = useToggle(false);
+  const editAllowance = useEditAllowance();
+
+  const handleEdit = () => {
+    editAllowance(allowance.id, setEditModalClosed);
+  };
+
+  const [isDeleteModalOpen, setDeleteModalOpen, setDeleteModalClosed] = useToggle(false);
   const deleteAllowance = useDeleteAllowance();
 
   const handleDelete = () => {
@@ -61,7 +99,7 @@ const AllowanceListActions = ({ allowance }) => {
         src={EditOutline}
         iconAs={Icon}
         alt={formatMessage(messages.editAllowanceButton)}
-        onClick={setDeleteModalOpen}
+        onClick={setEditModalOpen}
         variant="primary"
         className="mr-2"
         size="sm"
@@ -77,6 +115,7 @@ const AllowanceListActions = ({ allowance }) => {
         size="sm"
         data-testid="delete-allowance-icon"
       />
+      {EditModal(isEditModalOpen, setEditModalClosed, handleEdit, formatMessage)}
       {DeleteModal(isDeleteModalOpen, setDeleteModalClosed, handleDelete, formatMessage)}
     </div>
   );
