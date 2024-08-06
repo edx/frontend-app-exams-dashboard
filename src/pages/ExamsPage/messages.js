@@ -466,6 +466,11 @@ const messages = defineMessages({
     defaultMessage: 'todo: need to add this',
     description: 'Body for the edit allowance modal',
   },
+  editAllowanceLearnerField: {
+    id: 'EditAllowanceModal.editAllowanceLearnerField',
+    defaultMessage: 'Learners',
+    description: 'Labels for learner field on edit allowance modal',
+  },
   editAllowanceCancel: {
     id: 'AllowanceListActions.editAllowanceCancel',
     defaultMessage: 'Cancel',

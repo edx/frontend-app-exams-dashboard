@@ -10,39 +10,53 @@ import {
 import { DeleteOutline, EditOutline } from '@openedx/paragon/icons';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
+import { Form } from 'react-router-dom';
+import { useState } from 'react';
 import messages from '../messages';
 import { useDeleteAllowance, useEditAllowance } from '../hooks';
 
 // todo: add onEdit
-const EditModal = (isOpen, onCancel, onEdit, formatMessage) => (
-  <ModalDialog
-    title="edit allowance"
-    isOpen={isOpen}
-    onClose={onCancel}
-    variant="default"
-    hasCloseButton
-    isFullscreenOnMobile
-  >
-    <ModalDialog.Header>
-      <ModalDialog.Title>
-        {formatMessage(messages.editAllowanceHeader)}
-      </ModalDialog.Title>
-    </ModalDialog.Header>
-    <ModalDialog.Body>
-      <p>{formatMessage(messages.editAllowanceBody)}</p>
-    </ModalDialog.Body>
-    <ModalDialog.Footer>
-      <ActionRow>
-        <ModalDialog.CloseButton variant="tertiary" onClick={onCancel}>
-          {formatMessage(messages.editAllowanceCancel)}
-        </ModalDialog.CloseButton>
-        <Button variant="primary" onClick={onEdit}>
-          {formatMessage(messages.editAllowanceSave)}
-        </Button>
-      </ActionRow>
-    </ModalDialog.Footer>
-  </ModalDialog>
-);
+const EditModal = ({
+  isOpen, onCancel, onEdit,
+}) => {
+  const [ additionalTimeError, setAdditionalTimeError ] = useState(false);
+  const { formatMessage } = useIntl();
+
+  return (
+    <ModalDialog
+      title="edit allowance"
+      isOpen={isOpen}
+      onClose={onCancel}
+      variant="default"
+      hasCloseButton
+      isFullscreenOnMobile
+    >
+      <ModalDialog.Header>
+        <ModalDialog.Title>
+          {formatMessage(messages.editAllowanceHeader)}
+        </ModalDialog.Title>
+      </ModalDialog.Header>
+      <ModalDialog.Body>
+        <Form id="edit-allowance-form">
+          <Form.Group controlId="form-learner">
+            <Form.Label>learners</Form.Label>
+            hellow
+          </Form.Group>
+        </Form>
+      </ModalDialog.Body>
+      <ModalDialog.Footer>
+        <ActionRow>
+          <ModalDialog.CloseButton variant="tertiary" onClick={onCancel}>
+            {formatMessage(messages.editAllowanceCancel)}
+          </ModalDialog.CloseButton>
+          <Button variant="primary" onClick={onEdit}>
+            {formatMessage(messages.editAllowanceSave)}
+          </Button>
+        </ActionRow>
+      </ModalDialog.Footer>
+    </ModalDialog>
+  );
+};
 
 const DeleteModal = (isOpen, onCancel, onDelete, formatMessage) => (
   <ModalDialog
@@ -119,6 +133,12 @@ const AllowanceListActions = ({ allowance }) => {
       {DeleteModal(isDeleteModalOpen, setDeleteModalClosed, handleDelete, formatMessage)}
     </div>
   );
+};
+
+EditModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
 };
 
 AllowanceListActions.propTypes = {
