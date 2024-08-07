@@ -28,17 +28,82 @@ describe('ExamsPage hooks', () => {
   describe('useInitializeExamsPage', () => {
     it('calls useFetchCourseExams and sets course id on component load', () => {
       const mockFetchCourseExams = jest.fn();
+      const mockFetchAllowances = jest.fn();
       jest.spyOn(hooks, 'useFetchCourseExams').mockImplementation(() => mockFetchCourseExams);
+      jest.spyOn(hooks, 'useFetchAllowances').mockImplementation(() => mockFetchAllowances);
       hooks.useInitializeExamsPage('course-1');
       const [cb, prereqs] = React.useEffect.mock.calls[0];
       expect(prereqs).toEqual([]);
       expect(mockFetchCourseExams).not.toHaveBeenCalled();
+      expect(mockFetchAllowances).not.toHaveBeenCalled();
       cb();
       expect(mockFetchCourseExams).toHaveBeenCalledWith('course-1');
+      expect(mockFetchAllowances).toHaveBeenCalledWith('course-1');
       expect(mockDispatch).toHaveBeenCalledWith({
         payload: 'course-1',
         type: 'exams/setCourseId',
       });
+    });
+  });
+  describe('useFetchAllowances', () => {
+    const mockMakeNetworkRequest = jest.fn();
+    beforeEach(() => {
+      mockMakeNetworkRequest.mockClear();
+      reduxHooks.useMakeNetworkRequest.mockReturnValue(mockMakeNetworkRequest);
+      api.getAllowances.mockReturnValue(Promise.resolve({ data: 'data' }));
+    });
+
+    it('calls makeNetworkRequest to fetch allowances', () => {
+      hooks.useFetchAllowances()('course-1');
+      expect(mockMakeNetworkRequest).toHaveBeenCalledWith({
+        requestKey: 'fetchAllowances',
+        promise: expect.any(Promise),
+        onSuccess: expect.any(Function),
+      });
+    });
+    it('dispatches exams/setAllowancesList on success', async () => {
+      await hooks.useFetchAllowances()('course-1');
+      const { onSuccess } = mockMakeNetworkRequest.mock.calls[0][0];
+      onSuccess('response');
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: 'response',
+        type: 'exams/setAllowancesList',
+      });
+    });
+  });
+  describe('useDeleteAllowance', () => {
+    const mockMakeNetworkRequest = jest.fn();
+    const successCb = jest.fn();
+    beforeEach(() => {
+      mockMakeNetworkRequest.mockClear();
+      reduxHooks.useMakeNetworkRequest.mockReturnValue(mockMakeNetworkRequest);
+      api.deleteAllowance.mockReturnValue(Promise.resolve());
+    });
+
+    it('calls makeNetworkRequest to delete an allowance', () => {
+      hooks.useDeleteAllowance()(0, successCb);
+      expect(mockMakeNetworkRequest).toHaveBeenCalledWith({
+        requestKey: 'deleteAllowance',
+        promise: expect.any(Promise),
+        onSuccess: expect.any(Function),
+      });
+    });
+    it('dispatches exams/deleteAllowance on success', async () => {
+      await hooks.useDeleteAllowance()(19, successCb);
+      const { onSuccess } = mockMakeNetworkRequest.mock.calls[0][0];
+      onSuccess();
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: 19,
+        type: 'exams/deleteAllowance',
+      });
+    });
+    it('calls cb on success', async () => {
+      successCb.mockClear();
+      await hooks.useDeleteAllowance()(19, successCb);
+      const { onSuccess } = mockMakeNetworkRequest.mock.calls[0][0];
+      expect(successCb).not.toHaveBeenCalled();
+      onSuccess();
+      expect(successCb).toHaveBeenCalled();
     });
   });
   describe('useFetchCourseExams', () => {
@@ -186,6 +251,40 @@ describe('ExamsPage hooks', () => {
       reduxHooks.useRequestIsPending.mockReturnValue(false);
       reduxHooks.useRequestError.mockReturnValue(true);
       expect(hooks.useButtonStateFromRequestStatus(constants.RequestKeys.modifyExamAttempt)()).toBe('error');
+    });
+  });
+
+  describe('useCreateAllowance', () => {
+    const mockMakeNetworkRequest = jest.fn();
+    const formData = {
+      users: 'edx, edx@example.com',
+      'exam-type': 'proctored',
+      exams: { 1: '60', 2: '30' },
+      'additional-time-multiplier': '1.5',
+      'allowance-type': 'time-multiplier',
+
+    };
+    beforeEach(() => {
+      mockMakeNetworkRequest.mockClear();
+      reduxHooks.useMakeNetworkRequest.mockReturnValue(mockMakeNetworkRequest);
+      api.createAllowance.mockReturnValue(Promise.resolve({ data: 'data' }));
+    });
+    it('calls makeNetworkRequest to create an allowance', () => {
+      hooks.useCreateAllowance()(formData);
+      expect(mockMakeNetworkRequest).toHaveBeenCalledWith({
+        requestKey: 'createAllowance',
+        promise: expect.any(Promise),
+        onSuccess: expect.any(Function),
+      });
+      expect(api.createAllowance).toHaveBeenCalledWith(
+        mockUseSelector,
+        [
+          { username: 'edx', exam_id: 1, extra_time_mins: 30 },
+          { username: 'edx', exam_id: 2, extra_time_mins: 15 },
+          { email: 'edx@example.com', exam_id: 1, extra_time_mins: 30 },
+          { email: 'edx@example.com', exam_id: 2, extra_time_mins: 15 },
+        ],
+      );
     });
   });
 });

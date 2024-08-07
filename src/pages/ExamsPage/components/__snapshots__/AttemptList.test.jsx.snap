@@ -490,7 +490,7 @@ exports[`AttemptList Test that the AttemptList matches snapshot 1`] = `
                     >
                       <button
                         aria-label="Next"
-                        class="btn-icon btn-icon-primary btn-icon-md next page-link"
+                        class="btn-icon btn-icon-primary btn-icon-md previous page-link"
                         disabled=""
                         tabindex="-1"
                         type="button"
@@ -1015,7 +1015,7 @@ exports[`AttemptList Test that the AttemptList matches snapshot 1`] = `
                   >
                     <button
                       aria-label="Next"
-                      class="btn-icon btn-icon-primary btn-icon-md next page-link"
+                      class="btn-icon btn-icon-primary btn-icon-md previous page-link"
                       disabled=""
                       tabindex="-1"
                       type="button"

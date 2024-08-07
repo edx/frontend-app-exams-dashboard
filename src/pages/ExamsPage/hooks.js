@@ -10,10 +10,39 @@ import * as selectors from './data/selectors';
 import * as reducer from './data/reducer';
 
 import * as module from './hooks'; // eslint-disable-line import/no-self-import
+import { createAllowanceData } from './utils';
 
 export const state = {
   // example of component state that does not need to be in redux
   exampleValue: (val) => React.useState(val), // eslint-disable-line
+};
+
+export const useFetchAllowances = () => {
+  const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
+  const dispatch = useDispatch();
+  return (courseId) => (
+    makeNetworkRequest({
+      requestKey: RequestKeys.fetchAllowances,
+      promise: api.getAllowances(courseId),
+      onSuccess: (response) => dispatch(reducer.setAllowancesList(response)),
+    })
+  );
+};
+
+export const useDeleteAllowance = () => {
+  const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
+  const courseId = useSelector(selectors.courseId);
+  const dispatch = useDispatch();
+  return (allowanceId, cb) => (
+    makeNetworkRequest({
+      requestKey: RequestKeys.deleteAllowance,
+      promise: api.deleteAllowance(courseId, allowanceId),
+      onSuccess: () => {
+        dispatch(reducer.deleteAllowance(allowanceId));
+        cb();
+      },
+    })
+  );
 };
 
 export const useFetchCourseExams = () => {
@@ -67,9 +96,12 @@ export const useModifyExamAttempt = () => {
 
 export const useInitializeExamsPage = (courseId) => {
   const fetchCourseExams = module.useFetchCourseExams();
+  const fetchAllowances = module.useFetchAllowances();
   const dispatch = useDispatch();
+
   React.useEffect(() => {
     fetchCourseExams(courseId);
+    fetchAllowances(courseId);
     dispatch(reducer.setCourseId(courseId));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 };
@@ -116,4 +148,35 @@ export const useButtonStateFromRequestStatus = (requestKey) => {
     }
     return '';
   };
+};
+
+export const useAllowancesData = () => {
+  const allowancesList = useSelector(selectors.courseAllowancesList);
+  return { allowancesList };
+};
+
+export const useCreateAllowance = () => {
+  const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
+  const courseId = useSelector(selectors.courseId);
+  const fetchAllowances = module.useFetchAllowances();
+  return (formData, closeModal) => {
+    const allowanceData = createAllowanceData(formData);
+    makeNetworkRequest({
+      requestKey: RequestKeys.createAllowance,
+      promise: api.createAllowance(courseId, allowanceData),
+      onSuccess: () => {
+        closeModal();
+        fetchAllowances(courseId);
+      },
+    });
+  };
+};
+
+export const useFilteredExamsData = () => {
+  const { examsList } = useExamsData();
+
+  const proctoredExams = examsList.filter(e => e.examType === 'proctored');
+  const timedExams = examsList.filter(e => e.examType !== 'proctored');
+
+  return { proctoredExams, timedExams };
 };

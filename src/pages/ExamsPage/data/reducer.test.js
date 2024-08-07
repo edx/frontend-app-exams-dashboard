@@ -18,11 +18,13 @@ describe('ExamsPage reducer', () => {
               id: 1,
               exam_name: 'Exam 1',
               exam_type: 'timed',
+              time_limit_mins: 60,
             },
             {
               id: 2,
               exam_name: 'Exam 2',
               exam_type: 'timed',
+              time_limit_mins: 60,
             },
           ],
         };
@@ -33,13 +35,18 @@ describe('ExamsPage reducer', () => {
             {
               id: 1,
               name: 'Exam 1',
+              examType: 'timed',
+              timeLimitMins: 60,
             },
             {
               id: 2,
               name: 'Exam 2',
+              examType: 'timed',
+              timeLimitMins: 60,
             },
           ],
           attemptsList: [],
+          allowancesList: [],
         });
       });
     });
@@ -98,6 +105,7 @@ describe('ExamsPage reducer', () => {
               attempt_id: 1,
             },
           ],
+          allowancesList: [],
         });
       });
     });
@@ -327,7 +335,121 @@ describe('ExamsPage reducer', () => {
           currentExamIndex: null,
           examsList: [],
           attemptsList: [],
+          allowancesList: [],
           courseId: 'course-v1:edX+Test+Test',
+        });
+      });
+    });
+    describe('setAllowancesList', () => {
+      it('sets the setAllowancesList ordered by user -> exam alphabetically', () => {
+        const action = {
+          type: 'exams/setAllowancesList',
+          payload: [
+            {
+              id: 1,
+              exam_id: 4,
+              user_id: 2,
+              extra_time_mins: 35,
+              username: 'edx',
+              exam_name: 'This should go third',
+              email: 'edx@example.com',
+            },
+            {
+              id: 2,
+              exam_id: 3,
+              user_id: 1,
+              extra_time_mins: 45,
+              username: 'edx',
+              exam_name: 'This should go second',
+              email: 'edx@example.com',
+            },
+            {
+              id: 3,
+              exam_id: 1,
+              user_id: 1,
+              extra_time_mins: 15,
+              username: 'edx',
+              exam_name: 'This should go first',
+              email: 'edx@example.com',
+            },
+          ],
+        };
+        expect(reducer(initialState, action)).toEqual(expect.objectContaining({
+          allowancesList: [
+            {
+              id: 3,
+              exam_id: 1,
+              user_id: 1,
+              extra_time_mins: 15,
+              username: 'edx',
+              exam_name: 'This should go first',
+              email: 'edx@example.com',
+            },
+            {
+              id: 2,
+              exam_id: 3,
+              user_id: 1,
+              extra_time_mins: 45,
+              username: 'edx',
+              exam_name: 'This should go second',
+              email: 'edx@example.com',
+            },
+            {
+              id: 1,
+              exam_id: 4,
+              user_id: 2,
+              extra_time_mins: 35,
+              username: 'edx',
+              exam_name: 'This should go third',
+              email: 'edx@example.com',
+            },
+          ],
+        }));
+      });
+    });
+    describe('deleteAllowance', () => {
+      it('deletes the expected allowance from allowancesList', () => {
+        const state = {
+          currentExamIndex: null,
+          examsList: [],
+          attemptsList: [],
+          allowancesList: [
+            {
+              id: 1,
+              exam_id: 4,
+              user_id: 2,
+              extra_time_mins: 35,
+              username: 'edx',
+              exam_name: 'Exam One',
+            },
+            {
+              id: 2,
+              exam_id: 3,
+              user_id: 1,
+              extra_time_mins: 45,
+              username: 'edx',
+              exam_name: 'Exam Two',
+            },
+          ],
+        };
+        const action = {
+          type: 'exams/deleteAllowance',
+          payload: 2,
+        };
+        expect(reducer(state, action)).toEqual({
+          currentExamIndex: null,
+          examsList: [],
+          attemptsList: [],
+          allowancesList: [
+            {
+              id: 1,
+              exam_id: 4,
+              user_id: 2,
+              extra_time_mins: 35,
+              username: 'edx',
+              exam_name: 'Exam One',
+            },
+          ],
         });
       });
     });

@@ -6,6 +6,7 @@ export const initialState = {
   currentExamIndex: null,
   examsList: [],
   attemptsList: [],
+  allowancesList: [],
 };
 
 const getStatusFromAction = (action, status) => {
@@ -41,6 +42,8 @@ const slice = createSlice({
       examsList: payload.map((exam) => ({
         id: exam.id,
         name: exam.exam_name,
+        examType: exam.exam_type,
+        timeLimitMins: exam.time_limit_mins,
       })),
     }),
     loadExamAttempts: (state, { payload }) => ({
@@ -67,6 +70,10 @@ const slice = createSlice({
         return data;
       }),
     }),
+    deleteAllowance: (state, allowanceId) => ({
+      ...state,
+      allowancesList: state.allowancesList.filter(allowance => allowance.id !== allowanceId.payload),
+    }),
     deleteExamAttempt: (state, attemptId) => ({
       ...state,
       attemptsList: state.attemptsList.filter(attempt => attempt.attempt_id !== attemptId.payload),
@@ -89,6 +96,24 @@ const slice = createSlice({
       ...state,
       currentExamIndex: getCurrentExamIndex(state.examsList, examId),
     }),
+    setAllowancesList: (state, { payload }) => {
+      const allowancesList = [...payload];
+
+      // Sorting the list by username first and then by exam name.
+      // Makes it easier to list alphabetically.
+      allowancesList.sort((a, b) => {
+        const compare = `${a.username}`.localeCompare(`${b.username}`);
+
+        if (compare !== 0) { return compare; }
+
+        return `${a.exam_name}`.localeCompare(`${b.exam_name}`);
+      });
+
+      return {
+        ...state,
+        allowancesList,
+      };
+    },
   },
 });
 
@@ -96,9 +121,11 @@ export const {
   loadExams,
   loadExamAttempts,
   deleteExamAttempt,
+  deleteAllowance,
   modifyExamAttemptStatus,
   setCurrentExam,
   setCourseId,
+  setAllowancesList,
 } = slice.actions;
 
 export const {
