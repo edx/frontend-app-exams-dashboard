@@ -50,3 +50,10 @@ export async function createAllowance(courseId, data) {
   const response = await getAuthenticatedHttpClient().post(url, data);
   return response.data;
 }
+
+export async function editAllowance(courseId, allowanceId, extraTimeMins) {
+  const url = `${getExamsBaseUrl()}/api/v1/exams/course_id/${courseId}/allowances/${allowanceId}`;
+  const payload = { extraTimeMins };
+  const response = await getAuthenticatedHttpClient().post(url, payload);
+  return response.data;
+}

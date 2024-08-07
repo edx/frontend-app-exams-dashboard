@@ -456,6 +456,31 @@ const messages = defineMessages({
   },
 
   // <AllowanceListActions />
+  editAllowanceHeader: {
+    id: 'AllowanceListActions.editAllowanceHeader',
+    defaultMessage: 'Edit Allowance?',
+    description: 'Header for the edit allowance modal',
+  },
+  editAllowanceBody: {
+    id: 'AllowanceListActions.editAllowanceBody',
+    defaultMessage: 'todo: need to add this',
+    description: 'Body for the edit allowance modal',
+  },
+  editAllowanceLearnerField: {
+    id: 'EditAllowanceModal.editAllowanceLearnerField',
+    defaultMessage: 'Learners',
+    description: 'Labels for learner field on edit allowance modal',
+  },
+  editAllowanceCancel: {
+    id: 'AllowanceListActions.editAllowanceCancel',
+    defaultMessage: 'Cancel',
+    description: 'Label for the cancel button in the edit allowance modal',
+  },
+  editAllowanceSave: {
+    id: 'AllowanceListActions.editAllowanceSave',
+    defaultMessage: 'Save',
+    description: 'Label for the save button in the edit allowance modal',
+  },
   deleteAllowanceHeader: {
     id: 'AllowanceListActions.deleteAllowanceHeader',
     defaultMessage: 'Delete Allowance?',

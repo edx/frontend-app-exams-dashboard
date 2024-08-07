@@ -78,6 +78,20 @@ const slice = createSlice({
       ...state,
       attemptsList: state.attemptsList.filter(attempt => attempt.attempt_id !== attemptId.payload),
     }),
+    editAllowance: (state, allowanceId, { payload }) => ({
+      ...state,
+      allowancesList: state.allowancesList.map((allowance) => {
+        // Set the status of the modified attempt to verified or rejected
+        if (allowance.allowance_id === allowanceId) {
+          return {
+            ...allowance,
+            status: payload.extra_time_mins,
+          };
+        }
+        // Keep all other attempts as is
+        return allowance;
+      }),
+    }),
     modifyExamAttemptStatus: (state, { payload }) => ({
       ...state,
       attemptsList: state.attemptsList.map((attempt) => {
@@ -122,6 +136,7 @@ export const {
   loadExamAttempts,
   deleteExamAttempt,
   deleteAllowance,
+  editAllowance,
   modifyExamAttemptStatus,
   setCurrentExam,
   setCourseId,
