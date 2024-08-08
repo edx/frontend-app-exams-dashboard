@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as reduxHooks from 'data/redux/hooks/requests';
+import * as reduxHooks from 'data/redux/hooks';
 
 import * as constants from 'data/constants';
 import * as api from './data/api';
@@ -13,7 +13,7 @@ jest.mock('react-redux', () => ({
   useSelector: () => mockUseSelector,
 }));
 
-jest.mock('data/redux/hooks/requests', () => ({
+jest.mock('data/redux/hooks', () => ({
   useMakeNetworkRequest: jest.fn(),
   useRequestIsPending: jest.fn(),
   useRequestError: jest.fn(),

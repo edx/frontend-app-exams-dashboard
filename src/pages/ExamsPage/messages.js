@@ -454,6 +454,11 @@ const messages = defineMessages({
     defaultMessage: 'Cancel',
     description: 'Button label for modal close',
   },
+  addAllowanceFailedAlertHeader: {
+    id: 'AddAllowanceModal.addAllowanceFailedAlertHeader',
+    defaultMessage: 'We couldn\'t apply your changes',
+    description: 'Alert header for failed allowance addition',
+  },
 
   // <AllowanceListActions />
   deleteAllowanceHeader: {
