@@ -1,10 +1,13 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 
 import * as hooks from '../hooks';
+import * as reduxHooks from '../../../data/redux/hooks';
 import AddAllowanceModal from './AddAllowanceModal';
 
 const mockMakeNetworkRequest = jest.fn();
 const mockCreateAllowance = jest.fn();
+const mockClearRequest = jest.fn();
+const mockRequestError = jest.fn();
 
 const proctoredExams = [
   { id: 1, name: 'exam1', examType: 'proctored', timeLimitMins: 60 }, // eslint-disable-line object-curly-newline
@@ -23,12 +26,19 @@ jest.mock('../hooks', () => ({
   useCreateAllowance: jest.fn(),
 }));
 
+jest.mock('../../../data/redux/hooks', () => ({
+  useRequestError: jest.fn(),
+  useClearRequest: jest.fn(),
+}));
+
 describe('AddAllowanceModal', () => {
   beforeEach(() => {
     jest.resetAllMocks();
     hooks.useFilteredExamsData.mockReturnValue({ proctoredExams, timedExams });
     hooks.useButtonStateFromRequestStatus.mockReturnValue(mockMakeNetworkRequest);
     hooks.useCreateAllowance.mockReturnValue(mockCreateAllowance);
+    reduxHooks.useRequestError.mockReturnValue(mockRequestError);
+    reduxHooks.useClearRequest.mockReturnValue(mockClearRequest);
   });
 
   it('should match snapshot', () => {
@@ -70,5 +80,17 @@ describe('AddAllowanceModal', () => {
     expect(screen.getByText('Enter learners')).toBeInTheDocument();
     expect(screen.getByText('Select exams')).toBeInTheDocument();
     expect(screen.getByText('Enter minutes')).toBeInTheDocument();
+  });
+
+  it('should show an alert if the request fails', () => {
+    reduxHooks.useRequestError.mockReturnValue({ detail: 'some test error' });
+    render(<AddAllowanceModal isOpen close={jest.fn()} />);
+    expect(screen.getByText('some test error')).toBeInTheDocument();
+  });
+
+  it('should clear request errors if form is altered', () => {
+    render(<AddAllowanceModal isOpen close={jest.fn()} />);
+    fireEvent.change(screen.getByTestId('users'), { target: { value: 'edx, edx@example.com' } });
+    expect(reduxHooks.useClearRequest).toHaveBeenCalled();
   });
 });

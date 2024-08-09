@@ -41,6 +41,11 @@ jest.mock('../hooks', () => ({
   useDeleteAllowance: jest.fn(),
 }));
 
+jest.mock('../../../data/redux/hooks', () => ({
+  useRequestError: jest.fn(),
+  useClearRequest: jest.fn(),
+}));
+
 describe('AllowanceList', () => {
   beforeEach(() => {
     jest.resetAllMocks();

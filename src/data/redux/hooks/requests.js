@@ -29,15 +29,20 @@ export const useMakeNetworkRequest = () => {
       if (onSuccess) { onSuccess(response); }
       dispatch(actions.completeRequest({ requestKey, response }));
     }).catch((error) => {
-      if (onFailure) { onFailure(error); }
-      dispatch(actions.failRequest({ requestKey, error }));
+      // Parse backend error from axios object
+      let errorParsed = error;
+      if (error?.customAttributes?.httpErrorResponseData) {
+        errorParsed = JSON.parse(error.customAttributes.httpErrorResponseData);
+      }
+      if (onFailure) { onFailure(errorParsed); }
+      dispatch(actions.failRequest({ requestKey, error: errorParsed }));
     });
   };
 };
 
-export const useClearRequest = () => {
+export const useClearRequest = (requestKey) => {
   const dispatch = useDispatch();
-  return (requestKey) => {
+  return () => {
     dispatch(actions.clearRequest({ requestKey }));
   };
 };

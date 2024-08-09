@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
+  Alert,
   ModalDialog,
   Form,
   ActionRow,
   StatefulButton,
 } from '@openedx/paragon';
+import { Info } from '@openedx/paragon/icons';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
 import * as constants from '../../../data/constants';
+import { useClearRequest, useRequestError } from '../../../data/redux/hooks';
 import { useFilteredExamsData, useCreateAllowance, useButtonStateFromRequestStatus } from '../hooks';
 import messages from '../messages';
 
@@ -31,6 +34,8 @@ const AddAllowanceModal = ({ isOpen, close }) => {
   const [additionalTimeError, setAdditionalTimeError] = useState(false);
   const createAllowanceRequestStatus = useButtonStateFromRequestStatus(constants.RequestKeys.createAllowance);
   const createAllowance = useCreateAllowance();
+  const requestError = useRequestError(constants.RequestKeys.createAllowance);
+  const resetRequestError = useClearRequest(constants.RequestKeys.createAllowance);
   const { formatMessage } = useIntl();
 
   const handleExamTypeChange = (examType) => {
@@ -45,6 +50,7 @@ const AddAllowanceModal = ({ isOpen, close }) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    resetRequestError();
     setForm(prev => ({ ...prev, [name]: value }));
     if (name === 'exam-type') {
       handleExamTypeChange(value);
@@ -65,6 +71,12 @@ const AddAllowanceModal = ({ isOpen, close }) => {
     setForm(prev => ({ ...prev, exams: selectedExams }));
   };
 
+  const onClose = () => {
+    resetRequestError();
+    setForm(initialFormState);
+    close();
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     setLearnerFieldError(!form.users);
@@ -76,8 +88,10 @@ const AddAllowanceModal = ({ isOpen, close }) => {
         && (form['additional-time-minutes'] || form['additional-time-multiplier'])
     );
     if (valid) {
-      createAllowance(form, close);
-      setForm(initialFormState);
+      createAllowance(form, () => {
+        setForm(initialFormState);
+        onClose();
+      });
     }
   };
 
@@ -85,7 +99,7 @@ const AddAllowanceModal = ({ isOpen, close }) => {
     <ModalDialog
       title={formatMessage(messages.addAllowanceModalTitle)}
       isOpen={isOpen}
-      onClose={close}
+      onClose={onClose}
       size="md"
       hasCloseButton
       isFullscreenOnMobile
@@ -96,6 +110,18 @@ const AddAllowanceModal = ({ isOpen, close }) => {
         </ModalDialog.Title>
       </ModalDialog.Header>
       <ModalDialog.Body>
+        { requestError
+          && (
+          <Alert
+            variant="danger"
+            icon={Info}
+          >
+            <Alert.Heading>{ formatMessage(messages.addAllowanceFailedAlertHeader) }</Alert.Heading>
+            <p>
+              { requestError.detail }
+            </p>
+          </Alert>
+          )}
         <Form id="add-allowance-form" onSubmit={onSubmit}>
           <Form.Group isInvalid={learnerFieldError}>
             <Form.Label>{ formatMessage(messages.addAllowanceLearnerField) }</Form.Label>

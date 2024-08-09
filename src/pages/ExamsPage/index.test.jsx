@@ -20,6 +20,11 @@ jest.mock('./hooks', () => ({
   useCreateAllowance: jest.fn(),
 }));
 
+jest.mock('../../data/redux/hooks', () => ({
+  useRequestError: jest.fn(),
+  useClearRequest: jest.fn(),
+}));
+
 describe('ExamsPage', () => {
   beforeAll(() => {
     hooks.useExamAttemptsData.mockReturnValue(testUtils.defaultAttemptsData);
