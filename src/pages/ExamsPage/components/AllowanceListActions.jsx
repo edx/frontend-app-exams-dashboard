@@ -1,6 +1,7 @@
 import { PropTypes } from 'prop-types';
 import {
   ActionRow,
+  Form,
   Button,
   Icon,
   IconButtonWithTooltip,
@@ -10,23 +11,41 @@ import {
 import { DeleteOutline, EditOutline } from '@openedx/paragon/icons';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
-import { Form } from 'react-router-dom';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import messages from '../messages';
-import { useDeleteAllowance, useEditAllowance } from '../hooks';
+import { useCreateOrUpdateAllowance, useDeleteAllowance } from '../hooks';
 
-// todo: add onEdit
-const EditModal = ({
-  isOpen, onCancel, onEdit,
-}) => {
-  const [ additionalTimeError, setAdditionalTimeError ] = useState(false);
-  const { formatMessage } = useIntl();
+const EditModal = (isOpen, onClose, allowance, formatMessage) => {
+  const editAllowance = useCreateOrUpdateAllowance();
+  const [additionalTimeError, setAdditionalTimeError] = useState(false);
+  // const isEdit = useState(false);
+  const initialFormState = {
+    'allowance-id': allowance.id,
+  };
+  const [form, setForm] = useState(initialFormState);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setForm(prev => ({ ...prev, [name]: value }));
+  };
+
+  const onSubmit = () => {
+    setAdditionalTimeError(!form['additional-time-minutes']);
+    const valid = (
+      form['additional-time-minutes']
+    );
+    if (valid) {
+      editAllowance(form, onClose);
+      // createAllowance(form, close);
+      setForm(initialFormState);
+    }
+  };
 
   return (
     <ModalDialog
       title="edit allowance"
       isOpen={isOpen}
-      onClose={onCancel}
+      onClose={onClose}
       variant="default"
       hasCloseButton
       isFullscreenOnMobile
@@ -37,19 +56,26 @@ const EditModal = ({
         </ModalDialog.Title>
       </ModalDialog.Header>
       <ModalDialog.Body>
-        <Form id="edit-allowance-form">
-          <Form.Group controlId="form-learner">
-            <Form.Label>learners</Form.Label>
-            hellow
+        <Form id="edit-allowance-form" onSubmit={onSubmit}>
+          <Form.Group controlId="form-allowance-value-minutes" isInvalid={additionalTimeError}>
+            <Form.Label>{ formatMessage(messages.addAllowanceMinutesField) }</Form.Label>
+            <Form.Control
+              name="additional-time-minutes"
+              value={form['additional-time-minutes'] || ''}
+              onChange={handleChange}
+              data-testid="additional-time-minutes"
+            />
+            {/* eslint-disable-next-line max-len */}
+            {/* { additionalTimeError && <Form.Control.Feedback type="invalid">{ formatMessage(messages.addAllowanceMinutesErrorFeedback) }</Form.Control.Feedback> } */}
           </Form.Group>
         </Form>
       </ModalDialog.Body>
       <ModalDialog.Footer>
         <ActionRow>
-          <ModalDialog.CloseButton variant="tertiary" onClick={onCancel}>
+          <ModalDialog.CloseButton variant="tertiary" onClick={onClose}>
             {formatMessage(messages.editAllowanceCancel)}
           </ModalDialog.CloseButton>
-          <Button variant="primary" onClick={onEdit}>
+          <Button variant="primary" onClick={onSubmit}>
             {formatMessage(messages.editAllowanceSave)}
           </Button>
         </ActionRow>
@@ -92,11 +118,6 @@ const AllowanceListActions = ({ allowance }) => {
   const { formatMessage } = useIntl();
 
   const [isEditModalOpen, setEditModalOpen, setEditModalClosed] = useToggle(false);
-  const editAllowance = useEditAllowance();
-
-  const handleEdit = () => {
-    editAllowance(allowance.id, setEditModalClosed);
-  };
 
   const [isDeleteModalOpen, setDeleteModalOpen, setDeleteModalClosed] = useToggle(false);
   const deleteAllowance = useDeleteAllowance();
@@ -129,16 +150,10 @@ const AllowanceListActions = ({ allowance }) => {
         size="sm"
         data-testid="delete-allowance-icon"
       />
-      {EditModal(isEditModalOpen, setEditModalClosed, handleEdit, formatMessage)}
+      {EditModal(isEditModalOpen, setEditModalClosed, allowance, formatMessage)}
       {DeleteModal(isDeleteModalOpen, setDeleteModalClosed, handleDelete, formatMessage)}
     </div>
   );
-};
-
-EditModal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onCancel: PropTypes.func.isRequired,
-  onEdit: PropTypes.func.isRequired,
 };
 
 AllowanceListActions.propTypes = {

@@ -270,7 +270,7 @@ describe('ExamsPage hooks', () => {
       api.createAllowance.mockReturnValue(Promise.resolve({ data: 'data' }));
     });
     it('calls makeNetworkRequest to create an allowance', () => {
-      hooks.useCreateAllowance()(formData);
+      hooks.useCreateOrUpdateAllowance()(formData);
       expect(mockMakeNetworkRequest).toHaveBeenCalledWith({
         requestKey: 'createAllowance',
         promise: expect.any(Promise),

@@ -9,7 +9,7 @@ import {
 import { useIntl } from '@edx/frontend-platform/i18n';
 
 import * as constants from '../../../data/constants';
-import { useFilteredExamsData, useCreateAllowance, useButtonStateFromRequestStatus } from '../hooks';
+import { useFilteredExamsData, useCreateOrUpdateAllowance, useButtonStateFromRequestStatus } from '../hooks';
 import messages from '../messages';
 
 const AddAllowanceModal = ({ isOpen, close }) => {
@@ -30,7 +30,8 @@ const AddAllowanceModal = ({ isOpen, close }) => {
   const [examFieldError, setExamFieldError] = useState(false);
   const [additionalTimeError, setAdditionalTimeError] = useState(false);
   const createAllowanceRequestStatus = useButtonStateFromRequestStatus(constants.RequestKeys.createAllowance);
-  const createAllowance = useCreateAllowance();
+  const createAllowance = useCreateOrUpdateAllowance();
+  // const isCreate = useState(true);
   const { formatMessage } = useIntl();
 
   const handleExamTypeChange = (examType) => {

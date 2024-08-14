@@ -81,14 +81,14 @@ const slice = createSlice({
     editAllowance: (state, allowanceId, { payload }) => ({
       ...state,
       allowancesList: state.allowancesList.map((allowance) => {
-        // Set the status of the modified attempt to verified or rejected
+        // Update the modified allowance
         if (allowance.allowance_id === allowanceId) {
           return {
             ...allowance,
             status: payload.extra_time_mins,
           };
         }
-        // Keep all other attempts as is
+        // Keep all other allowances as is
         return allowance;
       }),
     }),

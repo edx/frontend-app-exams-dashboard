@@ -28,7 +28,7 @@ describe('AddAllowanceModal', () => {
     jest.resetAllMocks();
     hooks.useFilteredExamsData.mockReturnValue({ proctoredExams, timedExams });
     hooks.useButtonStateFromRequestStatus.mockReturnValue(mockMakeNetworkRequest);
-    hooks.useCreateAllowance.mockReturnValue(mockCreateAllowance);
+    hooks.useCreateOrUpdateAllowance.mockReturnValue(mockCreateAllowance);
   });
 
   it('should match snapshot', () => {

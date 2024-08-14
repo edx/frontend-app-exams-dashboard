@@ -155,12 +155,17 @@ export const useAllowancesData = () => {
   return { allowancesList };
 };
 
-export const useCreateAllowance = () => {
+export const useCreateOrUpdateAllowance = () => {
   const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
   const courseId = useSelector(selectors.courseId);
   const fetchAllowances = module.useFetchAllowances();
   return (formData, closeModal) => {
+    // let allowanceData = formData;
+    // if (isCreate) {
+    //   allowanceData = createAllowanceData(formData);
+    // }
     const allowanceData = createAllowanceData(formData);
+
     makeNetworkRequest({
       requestKey: RequestKeys.createAllowance,
       promise: api.createAllowance(courseId, allowanceData),
@@ -172,21 +177,21 @@ export const useCreateAllowance = () => {
   };
 };
 
-export const useEditAllowance = () => {
-  const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
-  const dispatch = useDispatch();
-  const courseId = useSelector(selectors.courseId);
-  return (allowanceId, extraTimeMins, cb) => {
-    makeNetworkRequest({
-      requestKey: RequestKeys.editAllowance,
-      promise: api.editAllowance(courseId, allowanceId, extraTimeMins),
-      onSuccess: () => {
-        dispatch(reducer.editAllowance(allowanceId, extraTimeMins));
-        cb();
-      },
-    });
-  };
-};
+// export const useEditAllowance = () => {
+//   const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
+//   const dispatch = useDispatch();
+//   const courseId = useSelector(selectors.courseId);
+//   return (allowanceId, extraTimeMins, cb) => {
+//     makeNetworkRequest({
+//       requestKey: RequestKeys.createAllowance,
+//       promise: api.createAllowance(courseId, allowanceId, extraTimeMins),
+//       onSuccess: () => {
+//         dispatch(reducer.createAllowance(allowanceId, extraTimeMins));
+//         cb();
+//       },
+//     });
+//   };
+// };
 
 export const useFilteredExamsData = () => {
   const { examsList } = useExamsData();
