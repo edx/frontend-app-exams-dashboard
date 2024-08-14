@@ -79,7 +79,7 @@ describe('AddAllowanceModal', () => {
     fireEvent.click(screen.getByTestId('create-allowance-stateful-button'));
     expect(screen.getByText('Enter learners')).toBeInTheDocument();
     expect(screen.getByText('Select exams')).toBeInTheDocument();
-    expect(screen.getByText('Enter minutes')).toBeInTheDocument();
+    expect(screen.getByText('Enter minutes greater than 0')).toBeInTheDocument();
   });
 
   it('should show an alert if the request fails', () => {

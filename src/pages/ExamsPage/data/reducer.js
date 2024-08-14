@@ -70,6 +70,20 @@ const slice = createSlice({
         return data;
       }),
     }),
+    editAllowance: (state, { payload }) => ({
+      ...state,
+      allowancesList: state.allowancesList.map((allowance) => {
+        // Update the minutes for the allowance
+        if (allowance.id === payload.allowanceId) {
+          return {
+            ...allowance,
+            extra_time_mins: payload.extraTimeMins,
+          };
+        }
+        // Keep all other allowances as is
+        return allowance;
+      }),
+    }),
     deleteAllowance: (state, allowanceId) => ({
       ...state,
       allowancesList: state.allowancesList.filter(allowance => allowance.id !== allowanceId.payload),
@@ -122,6 +136,7 @@ export const {
   loadExamAttempts,
   deleteExamAttempt,
   deleteAllowance,
+  editAllowance,
   modifyExamAttemptStatus,
   setCurrentExam,
   setCourseId,

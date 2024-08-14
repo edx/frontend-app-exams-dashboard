@@ -36,9 +36,12 @@ const AllowanceList = () => {
     const allowance = {
       id,
       examId,
+      userId,
       examName,
       allowanceType: formatMessage(messages.allowanceTypeMinutes),
       extraTimeMins,
+      username,
+      email,
     };
 
     const user = acc.find(u => u.userId === userId);

@@ -343,6 +343,38 @@ const messages = defineMessages({
     description: 'Description for the allowance value column in allowance table',
   },
 
+  // Allowance form
+  allowanceUsernameField: {
+    id: 'allowanceForm.allowanceUsernameField',
+    defaultMessage: 'Username',
+    description: 'Label for username field on allowance form',
+  },
+  allowanceTypeField: {
+    id: 'allowanceForm.allowanceTypeField',
+    defaultMessage: 'Allowance type',
+    description: 'Label for Allowance type field on allowance form',
+  },
+  allowanceMinutesField: {
+    id: 'allowanceForm.allowanceMinutesField',
+    defaultMessage: 'Minutes',
+    description: 'Label for minutes field on the allowance form',
+  },
+  allowanceAdditionalMinutesOption: {
+    id: 'allowanceForm.allowanceAdditionalMinutesOption',
+    defaultMessage: 'Additional time (minutes)',
+    description: 'Text for the additional minutes selection',
+  },
+  allowanceCancelButton: {
+    id: 'allowanceForm.allowanceCancelButton',
+    defaultMessage: 'Cancel',
+    description: 'Label for the cancel button in the allowance form',
+  },
+  allowanceMinutesErrorFeedback: {
+    id: 'allowanceForm.addAllowanceMinutesErrorFeedback',
+    defaultMessage: 'Enter minutes greater than 0',
+    description: 'Error feedback for minutes field on allowance modal',
+  },
+
   // <AddAllowanceModal />
   addAllowanceButtonDefaultLabel: {
     id: 'AddAllowanceModal.addAllowanceButtonDefaultLabel',
@@ -414,11 +446,6 @@ const messages = defineMessages({
     defaultMessage: 'Allowance type',
     description: 'Labels for allowance type field on allowance modal',
   },
-  addAllowanceAdditionalMinutesOption: {
-    id: 'AddAllowanceModal.addAllowanceAdditionalMinutesOption',
-    defaultMessage: 'Additional time (minutes)',
-    description: 'Text for the additional minutes selection',
-  },
   addAllowanceTimeMultiplierOption: {
     id: 'AddAllowanceModal.addAllowanceAllowanceTypeField',
     defaultMessage: 'Time multiplier',
@@ -428,11 +455,6 @@ const messages = defineMessages({
     id: 'AddAllowanceModal.addAllowanceMinutesField',
     defaultMessage: 'Minutes',
     description: 'Labels for minutes field on allowance modal',
-  },
-  addAllowanceMinutesErrorFeedback: {
-    id: 'AddAllowanceModal.addAllowanceMinutesErrorFeedback',
-    defaultMessage: 'Enter minutes',
-    description: 'Error feedback for minutes field on allowance modal',
   },
   addAllowanceMultiplierField: {
     id: 'AddAllowanceModal.addAllowanceMultiplierField',
@@ -461,6 +483,21 @@ const messages = defineMessages({
   },
 
   // <AllowanceListActions />
+  editAllowanceHeader: {
+    id: 'AllowanceListActions.editAllowanceHeader',
+    defaultMessage: 'Edit Allowance?',
+    description: 'Header for the edit allowance modal',
+  },
+  editAllowanceExamField: {
+    id: 'EditAllowanceModal.editAllowanceExamField',
+    defaultMessage: 'Exam',
+    description: 'Label for exam field on edit allowance modal',
+  },
+  editAllowanceSave: {
+    id: 'AllowanceListActions.editAllowanceSave',
+    defaultMessage: 'Save',
+    description: 'Label for the save button in the edit allowance modal',
+  },
   deleteAllowanceHeader: {
     id: 'AllowanceListActions.deleteAllowanceHeader',
     defaultMessage: 'Delete Allowance?',
@@ -470,11 +507,6 @@ const messages = defineMessages({
     id: 'AllowanceListActions.deleteAllowanceBody',
     defaultMessage: 'Are you sure you want to delete this allowance?',
     description: 'Body for the delete allowance modal',
-  },
-  deleteAllowanceCancel: {
-    id: 'AllowanceListActions.deleteAllowanceCancel',
-    defaultMessage: 'Cancel',
-    description: 'Label for the cancel button in the delete allowance modal',
   },
   deleteAllowanceDelete: {
     id: 'AllowanceListActions.deleteAllowanceDelete',
