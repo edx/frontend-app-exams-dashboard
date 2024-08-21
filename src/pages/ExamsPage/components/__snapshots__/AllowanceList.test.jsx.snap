@@ -208,6 +208,7 @@ exports[`AllowanceList when listing allowances should match snapshot 1`] = `
                                     <button
                                       aria-label="Edit allowance"
                                       class="btn-icon btn-icon-primary btn-icon-sm mr-2"
+                                      data-testid="edit-allowance-icon"
                                       type="button"
                                     >
                                       <span
@@ -299,6 +300,7 @@ exports[`AllowanceList when listing allowances should match snapshot 1`] = `
                                     <button
                                       aria-label="Edit allowance"
                                       class="btn-icon btn-icon-primary btn-icon-sm mr-2"
+                                      data-testid="edit-allowance-icon"
                                       type="button"
                                     >
                                       <span
@@ -576,6 +578,7 @@ exports[`AllowanceList when listing allowances should match snapshot 1`] = `
                                   <button
                                     aria-label="Edit allowance"
                                     class="btn-icon btn-icon-primary btn-icon-sm mr-2"
+                                    data-testid="edit-allowance-icon"
                                     type="button"
                                   >
                                     <span
@@ -667,6 +670,7 @@ exports[`AllowanceList when listing allowances should match snapshot 1`] = `
                                   <button
                                     aria-label="Edit allowance"
                                     class="btn-icon btn-icon-primary btn-icon-sm mr-2"
+                                    data-testid="edit-allowance-icon"
                                     type="button"
                                   >
                                     <span

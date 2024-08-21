@@ -172,6 +172,24 @@ export const useCreateAllowance = () => {
   };
 };
 
+export const useEditAllowance = () => {
+  const makeNetworkRequest = reduxHooks.useMakeNetworkRequest();
+  const courseId = useSelector(selectors.courseId);
+  const dispatch = useDispatch();
+  return (allowanceId, formData, closeModal) => {
+    const allowanceData = [formData];
+    const extraTimeMins = formData.extra_time_mins;
+    makeNetworkRequest({
+      requestKey: RequestKeys.createAllowance,
+      promise: api.createAllowance(courseId, allowanceData),
+      onSuccess: () => {
+        dispatch(reducer.editAllowance({ allowanceId, extraTimeMins }));
+        closeModal();
+      },
+    });
+  };
+};
+
 export const useFilteredExamsData = () => {
   const { examsList } = useExamsData();
 

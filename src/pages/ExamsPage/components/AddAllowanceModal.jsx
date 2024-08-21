@@ -188,7 +188,7 @@ const AddAllowanceModal = ({ isOpen, close }) => {
               value={form['allowance-type']}
               data-testid="allowance-type"
             >
-              <option value="additional-minutes">{ formatMessage(messages.addAllowanceAdditionalMinutesOption) }</option>
+              <option value="additional-minutes">{ formatMessage(messages.allowanceAdditionalMinutesOption) }</option>
               <option value="time-multiplier">{ formatMessage(messages.addAllowanceTimeMultiplierOption) }</option>
             </Form.Control>
           </Form.Group>
@@ -202,7 +202,7 @@ const AddAllowanceModal = ({ isOpen, close }) => {
                   onChange={handleChange}
                   data-testid="additional-time-minutes"
                 />
-                { additionalTimeError && <Form.Control.Feedback type="invalid">{ formatMessage(messages.addAllowanceMinutesErrorFeedback) }</Form.Control.Feedback> }
+                { additionalTimeError && <Form.Control.Feedback type="invalid">{ formatMessage(messages.allowanceMinutesErrorFeedback) }</Form.Control.Feedback> }
               </Form.Group>
             )
             : (

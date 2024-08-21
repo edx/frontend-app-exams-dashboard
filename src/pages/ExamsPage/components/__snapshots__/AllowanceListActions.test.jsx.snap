@@ -11,6 +11,7 @@ exports[`AllowanceListActions snapshots displayed buttons should match snapshot 
         <button
           aria-label="Edit allowance"
           class="btn-icon btn-icon-primary btn-icon-sm mr-2"
+          data-testid="edit-allowance-icon"
           type="button"
         >
           <span
@@ -77,6 +78,7 @@ exports[`AllowanceListActions snapshots displayed buttons should match snapshot 
       <button
         aria-label="Edit allowance"
         class="btn-icon btn-icon-primary btn-icon-sm mr-2"
+        data-testid="edit-allowance-icon"
         type="button"
       >
         <span

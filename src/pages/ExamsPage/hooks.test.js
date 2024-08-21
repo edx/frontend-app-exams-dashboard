@@ -287,4 +287,28 @@ describe('ExamsPage hooks', () => {
       );
     });
   });
+
+  describe('useEditAllowance', () => {
+    const mockMakeNetworkRequest = jest.fn();
+    const formData = { username: 'edx', exam_id: 1, extra_time_mins: 30 };
+    beforeEach(() => {
+      mockMakeNetworkRequest.mockClear();
+      reduxHooks.useMakeNetworkRequest.mockReturnValue(mockMakeNetworkRequest);
+      api.createAllowance.mockReturnValue(Promise.resolve({ data: 'data' }));
+    });
+    it('calls makeNetworkRequest to edit an allowance', () => {
+      hooks.useEditAllowance()(0, formData);
+      expect(mockMakeNetworkRequest).toHaveBeenCalledWith({
+        requestKey: 'createAllowance',
+        promise: expect.any(Promise),
+        onSuccess: expect.any(Function),
+      });
+      expect(api.createAllowance).toHaveBeenCalledWith(
+        mockUseSelector,
+        [
+          { username: 'edx', exam_id: 1, extra_time_mins: 30 },
+        ],
+      );
+    });
+  });
 });
