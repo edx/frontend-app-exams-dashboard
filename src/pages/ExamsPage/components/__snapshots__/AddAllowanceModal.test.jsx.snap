@@ -310,6 +310,7 @@ exports[`AddAllowanceModal should match snapshot 1`] = `
               >
                 <button
                   class="pgn__modal-close-button btn btn-tertiary"
+                  data-testid="close-modal"
                   type="button"
                 >
                   Cancel
