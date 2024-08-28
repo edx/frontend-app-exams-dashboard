@@ -93,4 +93,20 @@ describe('AddAllowanceModal', () => {
     fireEvent.change(screen.getByTestId('users'), { target: { value: 'edx, edx@example.com' } });
     expect(reduxHooks.useClearRequest).toHaveBeenCalled();
   });
+
+  it('should reset form state when closed', () => {
+    render(<AddAllowanceModal isOpen close={jest.fn()} />);
+    fireEvent.change(screen.getByTestId('exam-type'), { target: { value: 'timed' } });
+    fireEvent.click(screen.getByTestId('create-allowance-stateful-button'));
+
+    expect(screen.getByText('Enter minutes greater than 0')).toBeInTheDocument();
+    expect(screen.getByText('exam2')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByTestId('close-modal'));
+    // any errors and timed exam selections should be reset
+    expect(screen.queryByText('Enter minutes greater than 0')).not.toBeInTheDocument();
+    expect(screen.queryByText('exam2')).not.toBeInTheDocument();
+    // expect the default selection to revert back to proctored exams
+    expect(screen.queryByText('exam1')).toBeInTheDocument();
+  });
 });

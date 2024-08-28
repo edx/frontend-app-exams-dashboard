@@ -71,9 +71,17 @@ const AddAllowanceModal = ({ isOpen, close }) => {
     setForm(prev => ({ ...prev, exams: selectedExams }));
   };
 
-  const onClose = () => {
+  const resetForm = () => {
     resetRequestError();
     setForm(initialFormState);
+    setDisplayExams(defaultExamsList);
+    setLearnerFieldError(false);
+    setExamFieldError(false);
+    setAdditionalTimeError(false);
+  };
+
+  const onClose = () => {
+    resetForm();
     close();
   };
 
@@ -233,7 +241,7 @@ const AddAllowanceModal = ({ isOpen, close }) => {
 
       <ModalDialog.Footer>
         <ActionRow>
-          <ModalDialog.CloseButton variant="tertiary">
+          <ModalDialog.CloseButton variant="tertiary" data-testid="close-modal">
             { formatMessage(messages.addAllowanceCloseButton) }
           </ModalDialog.CloseButton>
           <StatefulButton
