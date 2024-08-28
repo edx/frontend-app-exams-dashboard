@@ -34,7 +34,7 @@ exports[`AddAllowanceModal should match snapshot 1`] = `
           />
           <div
             aria-label="Add a new allowance"
-            class="pgn__modal pgn__modal-md pgn__modal-default pgn__modal-visible-overflow"
+            class="pgn__modal pgn__modal-md pgn__modal-default pgn__modal-scroll-fullscreen"
             role="dialog"
           >
             <div
