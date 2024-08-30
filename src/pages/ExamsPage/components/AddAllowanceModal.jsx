@@ -109,8 +109,10 @@ const AddAllowanceModal = ({ isOpen, close }) => {
       isOpen={isOpen}
       onClose={onClose}
       size="md"
+      isOverflowVisible={false}
       hasCloseButton
       isFullscreenOnMobile
+      isFullscreenScroll
     >
       <ModalDialog.Header>
         <ModalDialog.Title>
