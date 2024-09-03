@@ -99,8 +99,10 @@ const ReviewExamAttemptModal = ({
         onClose={close}
         size="lg"
         variant="default"
+        isOverflowVisible={false}
         hasCloseButton
         isFullscreenOnMobile
+        isFullscreenScroll
       >
         <ModalDialog.Header>
           <ModalDialog.Title>
