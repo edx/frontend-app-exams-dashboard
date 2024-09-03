@@ -70,8 +70,10 @@ const EditModal = (isOpen, close, allowance, formatMessage) => {
       isOpen={isOpen}
       onClose={onClose}
       variant="default"
+      isOverflowVisible={false}
       hasCloseButton
       isFullscreenOnMobile
+      isFullscreenScroll
     >
       <ModalDialog.Header>
         <ModalDialog.Title data-testid="edit-allowance-header">
@@ -146,8 +148,10 @@ const DeleteModal = (isOpen, onCancel, onDelete, formatMessage) => (
     isOpen={isOpen}
     onClose={onCancel}
     variant="default"
+    isOverflowVisible={false}
     hasCloseButton
     isFullscreenOnMobile
+    isFullscreenScroll
   >
     <ModalDialog.Header>
       <ModalDialog.Title>
