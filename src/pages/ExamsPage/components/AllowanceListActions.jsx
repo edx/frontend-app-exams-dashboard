@@ -16,6 +16,7 @@ import messages from '../messages';
 import { useDeleteAllowance, useEditAllowance } from '../hooks';
 import { useClearRequest, useRequestError } from '../../../data/redux/hooks';
 import * as constants from '../../../data/constants';
+import { validateTimeField } from '../utils';
 
 const EditModal = (isOpen, close, allowance, formatMessage) => {
   const editAllowance = useEditAllowance();
@@ -43,13 +44,7 @@ const EditModal = (isOpen, close, allowance, formatMessage) => {
   };
 
   const onSubmit = () => {
-    const extraTimeMins = +form['extra-time-mins'] || 0;
-    // todo: We should maybe move the handling of this validation to the backend,
-    //  as this should also be handled for the add allowance modal.
-    const valid = (
-      extraTimeMins
-        && extraTimeMins > 0
-    );
+    const [valid, extraTimeMins] = validateTimeField(form['extra-time-mins'], 0);
     setAdditionalTimeError(!valid);
     if (valid) {
       const payload = {

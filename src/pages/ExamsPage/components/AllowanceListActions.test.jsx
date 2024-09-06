@@ -106,7 +106,7 @@ describe('AllowanceListActions', () => {
       render(<AllowanceListActions allowance={mockAllowance} />);
       screen.getByTestId('edit-allowance-icon').click();
       screen.getByText('Save').click();
-      expect(screen.getByText('Enter minutes greater than 0')).toBeInTheDocument();
+      expect(screen.getByText('Enter minutes as a number greater than 0')).toBeInTheDocument();
     });
 
     it('should close the modal when the cancel button is clicked', () => {
