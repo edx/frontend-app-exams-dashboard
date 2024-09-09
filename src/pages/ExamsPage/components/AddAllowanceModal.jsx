@@ -14,6 +14,7 @@ import * as constants from '../../../data/constants';
 import { useClearRequest, useRequestError } from '../../../data/redux/hooks';
 import { useFilteredExamsData, useCreateAllowance, useButtonStateFromRequestStatus } from '../hooks';
 import messages from '../messages';
+import { validateTimeField } from '../utils';
 
 const AddAllowanceModal = ({ isOpen, close }) => {
   const { proctoredExams, timedExams } = useFilteredExamsData();
@@ -85,15 +86,30 @@ const AddAllowanceModal = ({ isOpen, close }) => {
     close();
   };
 
+  const validateAdditionalTime = () => {
+    let isValid = true;
+    const [additionalTimeValid,] = validateTimeField(form['additional-time-minutes'], 0); // eslint-disable-line comma-dangle
+    const [timeMultiplierValid,] = validateTimeField(form['additional-time-multiplier'], 1); // eslint-disable-line comma-dangle
+    if (
+      (!form['additional-time-minutes'] && !form['additional-time-multiplier'])
+      || (form['additional-time-minutes'] && !additionalTimeValid)
+      || (form['additional-time-multiplier'] && !timeMultiplierValid)
+    ) {
+      isValid = false;
+    }
+    return isValid;
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     setLearnerFieldError(!form.users);
     setExamFieldError(Object.keys(form.exams).length === 0);
-    setAdditionalTimeError(!form['additional-time-minutes'] && !form['additional-time-multiplier']);
+    const isAdditionalTimeValid = validateAdditionalTime();
+    setAdditionalTimeError(!isAdditionalTimeValid);
     const valid = (
       form.users
         && Object.keys(form.exams).length > 0
-        && (form['additional-time-minutes'] || form['additional-time-multiplier'])
+        && isAdditionalTimeValid
     );
     if (valid) {
       createAllowance(form, () => {
@@ -222,17 +238,18 @@ const AddAllowanceModal = ({ isOpen, close }) => {
                   name="additional-time-multiplier"
                   value={form['additional-time-multiplier'] || ''}
                   onChange={handleChange}
+                  data-testid="additional-time-multiplier"
                 />
                 {
                   additionalTimeError
                     ? (
                       <Form.Control.Feedback type="invalid">
-                        { formatMessage(messages.addAllowanceMultiplierFeedback) }
+                        { formatMessage(messages.addAllowanceMultiplierErrorFeedback) }
                       </Form.Control.Feedback>
                     )
                     : (
                       <Form.Control.Feedback>
-                        { formatMessage(messages.addAllowanceMultiplierErrorFeedback) }
+                        { formatMessage(messages.addAllowanceMultiplierFeedback) }
                       </Form.Control.Feedback>
                     )
                 }

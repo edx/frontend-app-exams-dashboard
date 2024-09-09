@@ -371,7 +371,7 @@ const messages = defineMessages({
   },
   allowanceMinutesErrorFeedback: {
     id: 'allowanceForm.addAllowanceMinutesErrorFeedback',
-    defaultMessage: 'Enter minutes greater than 0',
+    defaultMessage: 'Enter minutes as a number greater than 0',
     description: 'Error feedback for minutes field on allowance modal',
   },
 

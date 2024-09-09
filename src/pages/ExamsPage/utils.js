@@ -39,3 +39,12 @@ export const createAllowanceData = (form) => {
   }
   return data;
 };
+
+export const validateTimeField = (fieldValue, minimumValue) => {
+  const timeValue = +fieldValue || 0;
+  const valid = (
+    timeValue
+    && timeValue > minimumValue
+  );
+  return [valid, timeValue];
+};
