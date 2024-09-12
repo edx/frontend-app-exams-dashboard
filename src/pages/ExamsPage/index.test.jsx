@@ -11,20 +11,31 @@ jest.mock('./hooks', () => ({
   useInitializeExamsPage: jest.fn(),
   useExamAttemptsData: jest.fn(),
   useExamsData: jest.fn(),
+  useFilteredExamsData: jest.fn(),
+  useAllowancesData: jest.fn(),
   useFetchExamAttempts: jest.fn(),
   useDeleteExamAttempt: jest.fn(),
   useModifyExamAttempt: jest.fn(),
+  useButtonStateFromRequestStatus: jest.fn(),
+  useCreateAllowance: jest.fn(),
+}));
+
+jest.mock('../../data/redux/hooks', () => ({
+  useRequestError: jest.fn(),
+  useClearRequest: jest.fn(),
 }));
 
 describe('ExamsPage', () => {
   beforeAll(() => {
     hooks.useExamAttemptsData.mockReturnValue(testUtils.defaultAttemptsData);
+    hooks.useAllowancesData.mockReturnValue({ allowancesList: [] });
+    hooks.useFilteredExamsData.mockReturnValue({ proctoredExams: {}, timedExams: {} });
   });
   describe('snapshots', () => {
     test('exams and attempts loaded', () => {
       // temporary, this won't fire on useEffect once we have an exam selection handler
       hooks.useFetchExamAttempts.mockReturnValue(jest.fn());
-
+      hooks.useButtonStateFromRequestStatus.mockReturnValue(jest.fn());
       hooks.useExamsData.mockReturnValue(testUtils.defaultExamsData);
       expect(render(<ExamsPage courseId="test_course" />)).toMatchSnapshot();
     });
@@ -42,6 +53,10 @@ describe('ExamsPage', () => {
     test('switch tabs to review dashboard', () => {
       screen.getByText('Review Dashboard').click();
       expect(screen.getByTestId('review_dash')).toBeInTheDocument();
+    });
+    test('switch tabs to allowances', () => {
+      screen.getByText('Allowances').click();
+      expect(screen.getByTestId('allowances')).toBeInTheDocument();
     });
   });
 });

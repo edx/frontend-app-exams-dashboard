@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AttemptList Test that the AttemptList matches snapshot 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -19,6 +19,7 @@ Object {
             >
               <div
                 class="pgn__data-table-status-bar"
+                data-testid="table-control-bar"
               >
                 <div
                   class="pgn__data-table-actions"
@@ -37,18 +38,21 @@ Object {
                         >
                           <label
                             class="pgn__form-label sr-only"
-                            for="form-field2"
-                            id="text-filter-label-header_username-1"
+                            for="text-filter-label-header_username-1"
                           >
                             Search username
                           </label>
-                          <input
-                            aria-labelledby="text-filter-label-header_username-1"
-                            class="form-control"
-                            placeholder="Search username"
-                            type="text"
-                            value=""
-                          />
+                          <div
+                            class="pgn__form-control-decorator-group"
+                          >
+                            <input
+                              class="form-control"
+                              id="text-filter-label-header_username-1"
+                              placeholder="Search username"
+                              type="text"
+                              value=""
+                            />
+                          </div>
                         </div>
                       </div>
                       <div
@@ -80,6 +84,7 @@ Object {
                   >
                     <div
                       class="pgn__smart-status"
+                      data-testid="row-status"
                     >
                       FormattedMessage
                     </div>
@@ -91,6 +96,7 @@ Object {
               </div>
               <div
                 class="pgn__data-table-container"
+                data-testid="data-table-container"
               >
                 <table
                   class="pgn__data-table is-striped"
@@ -114,6 +120,7 @@ Object {
                           </span>
                           <span
                             class="pgn__icon"
+                            data-testid="arrow-drop-up-down"
                             style="opacity: 0.5;"
                           >
                             <svg
@@ -127,7 +134,7 @@ Object {
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
+                                d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
                                 fill="currentColor"
                               />
                             </svg>
@@ -148,6 +155,7 @@ Object {
                           </span>
                           <span
                             class="pgn__icon"
+                            data-testid="arrow-drop-up-down"
                             style="opacity: 0.5;"
                           >
                             <svg
@@ -161,7 +169,7 @@ Object {
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
+                                d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
                                 fill="currentColor"
                               />
                             </svg>
@@ -218,6 +226,7 @@ Object {
                           </span>
                           <span
                             class="pgn__icon"
+                            data-testid="arrow-drop-up-down"
                             style="opacity: 0.5;"
                           >
                             <svg
@@ -231,7 +240,7 @@ Object {
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
+                                d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
                                 fill="currentColor"
                               />
                             </svg>
@@ -341,7 +350,7 @@ Object {
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                                d="M1 21h22L12 2 1 21Zm12-3h-2v-2h2v2Zm0-4h-2v-4h2v4Z"
                                 fill="currentColor"
                               />
                             </svg>
@@ -419,8 +428,11 @@ Object {
               </div>
               <div
                 class="pgn__data-table-footer"
+                data-testid="table-footer"
               >
-                <div>
+                <div
+                  data-testid="row-status"
+                >
                   FormattedMessage
                 </div>
                 <nav
@@ -465,7 +477,7 @@ Object {
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z"
+                                d="M17.51 3.87 15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13Z"
                                 fill="currentColor"
                               />
                             </svg>
@@ -478,7 +490,7 @@ Object {
                     >
                       <button
                         aria-label="Next"
-                        class="btn-icon btn-icon-primary btn-icon-md next page-link"
+                        class="btn-icon btn-icon-primary btn-icon-md previous page-link"
                         disabled=""
                         tabindex="-1"
                         type="button"
@@ -500,7 +512,7 @@ Object {
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                d="M6.49 20.13l1.77 1.77 9.9-9.9-9.9-9.9-1.77 1.77L14.62 12l-8.13 8.13z"
+                                d="m6.49 20.13 1.77 1.77 9.9-9.9-9.9-9.9-1.77 1.77L14.62 12l-8.13 8.13Z"
                                 fill="currentColor"
                               />
                             </svg>
@@ -532,6 +544,7 @@ Object {
           >
             <div
               class="pgn__data-table-status-bar"
+              data-testid="table-control-bar"
             >
               <div
                 class="pgn__data-table-actions"
@@ -550,18 +563,21 @@ Object {
                       >
                         <label
                           class="pgn__form-label sr-only"
-                          for="form-field2"
-                          id="text-filter-label-header_username-1"
+                          for="text-filter-label-header_username-1"
                         >
                           Search username
                         </label>
-                        <input
-                          aria-labelledby="text-filter-label-header_username-1"
-                          class="form-control"
-                          placeholder="Search username"
-                          type="text"
-                          value=""
-                        />
+                        <div
+                          class="pgn__form-control-decorator-group"
+                        >
+                          <input
+                            class="form-control"
+                            id="text-filter-label-header_username-1"
+                            placeholder="Search username"
+                            type="text"
+                            value=""
+                          />
+                        </div>
                       </div>
                     </div>
                     <div
@@ -593,6 +609,7 @@ Object {
                 >
                   <div
                     class="pgn__smart-status"
+                    data-testid="row-status"
                   >
                     FormattedMessage
                   </div>
@@ -604,6 +621,7 @@ Object {
             </div>
             <div
               class="pgn__data-table-container"
+              data-testid="data-table-container"
             >
               <table
                 class="pgn__data-table is-striped"
@@ -627,6 +645,7 @@ Object {
                         </span>
                         <span
                           class="pgn__icon"
+                          data-testid="arrow-drop-up-down"
                           style="opacity: 0.5;"
                         >
                           <svg
@@ -640,7 +659,7 @@ Object {
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
+                              d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
                               fill="currentColor"
                             />
                           </svg>
@@ -661,6 +680,7 @@ Object {
                         </span>
                         <span
                           class="pgn__icon"
+                          data-testid="arrow-drop-up-down"
                           style="opacity: 0.5;"
                         >
                           <svg
@@ -674,7 +694,7 @@ Object {
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
+                              d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
                               fill="currentColor"
                             />
                           </svg>
@@ -731,6 +751,7 @@ Object {
                         </span>
                         <span
                           class="pgn__icon"
+                          data-testid="arrow-drop-up-down"
                           style="opacity: 0.5;"
                         >
                           <svg
@@ -744,7 +765,7 @@ Object {
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M7 10l5-5 5 5H7zM7 14l5 5 5-5H7z"
+                              d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
                               fill="currentColor"
                             />
                           </svg>
@@ -854,7 +875,7 @@ Object {
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                              d="M1 21h22L12 2 1 21Zm12-3h-2v-2h2v2Zm0-4h-2v-4h2v4Z"
                               fill="currentColor"
                             />
                           </svg>
@@ -932,8 +953,11 @@ Object {
             </div>
             <div
               class="pgn__data-table-footer"
+              data-testid="table-footer"
             >
-              <div>
+              <div
+                data-testid="row-status"
+              >
                 FormattedMessage
               </div>
               <nav
@@ -978,7 +1002,7 @@ Object {
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z"
+                              d="M17.51 3.87 15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13Z"
                               fill="currentColor"
                             />
                           </svg>
@@ -991,7 +1015,7 @@ Object {
                   >
                     <button
                       aria-label="Next"
-                      class="btn-icon btn-icon-primary btn-icon-md next page-link"
+                      class="btn-icon btn-icon-primary btn-icon-md previous page-link"
                       disabled=""
                       tabindex="-1"
                       type="button"
@@ -1013,7 +1037,7 @@ Object {
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M6.49 20.13l1.77 1.77 9.9-9.9-9.9-9.9-1.77 1.77L14.62 12l-8.13 8.13z"
+                              d="m6.49 20.13 1.77 1.77 9.9-9.9-9.9-9.9-1.77 1.77L14.62 12l-8.13 8.13Z"
                               fill="currentColor"
                             />
                           </svg>

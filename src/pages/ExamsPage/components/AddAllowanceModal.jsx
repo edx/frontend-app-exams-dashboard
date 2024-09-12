@@ -1,0 +1,289 @@
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import {
+  Alert,
+  ModalDialog,
+  Form,
+  ActionRow,
+  StatefulButton,
+} from '@openedx/paragon';
+import { Info } from '@openedx/paragon/icons';
+import { useIntl } from '@edx/frontend-platform/i18n';
+
+import * as constants from '../../../data/constants';
+import { useClearRequest, useRequestError } from '../../../data/redux/hooks';
+import { useFilteredExamsData, useCreateAllowance, useButtonStateFromRequestStatus } from '../hooks';
+import messages from '../messages';
+import { validateTimeField } from '../utils';
+
+const AddAllowanceModal = ({ isOpen, close }) => {
+  const { proctoredExams, timedExams } = useFilteredExamsData();
+
+  const defaultExamType = proctoredExams.length > 0 ? 'proctored' : 'timed';
+  const defaultExamsList = defaultExamType === 'proctored' ? proctoredExams : timedExams;
+
+  const initialFormState = {
+    'allowance-type': 'additional-minutes',
+    'exam-type': defaultExamType,
+    exams: {},
+  };
+
+  const [displayExams, setDisplayExams] = useState(defaultExamsList);
+  const [form, setForm] = useState(initialFormState);
+  const [learnerFieldError, setLearnerFieldError] = useState(false);
+  const [examFieldError, setExamFieldError] = useState(false);
+  const [additionalTimeError, setAdditionalTimeError] = useState(false);
+  const createAllowanceRequestStatus = useButtonStateFromRequestStatus(constants.RequestKeys.createAllowance);
+  const createAllowance = useCreateAllowance();
+  const requestError = useRequestError(constants.RequestKeys.createAllowance);
+  const resetRequestError = useClearRequest(constants.RequestKeys.createAllowance);
+  const { formatMessage } = useIntl();
+
+  const handleExamTypeChange = (examType) => {
+    if (examType === 'proctored') {
+      setDisplayExams(proctoredExams);
+    } else {
+      setDisplayExams(timedExams);
+    }
+    // reset exam selection state
+    setForm(prev => ({ ...prev, exams: {} }));
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    resetRequestError();
+    setForm(prev => ({ ...prev, [name]: value }));
+    if (name === 'exam-type') {
+      handleExamTypeChange(value);
+    }
+  };
+
+  const handleCheckboxChange = (event) => {
+    const el = event.target;
+    const id = el.getAttribute('data-key');
+    const timeLimitMins = el.value;
+    const selectedExams = { ...form.exams };
+
+    if (el.checked) {
+      selectedExams[id] = timeLimitMins;
+    } else {
+      delete selectedExams[id];
+    }
+    setForm(prev => ({ ...prev, exams: selectedExams }));
+  };
+
+  const resetForm = () => {
+    resetRequestError();
+    setForm(initialFormState);
+    setDisplayExams(defaultExamsList);
+    setLearnerFieldError(false);
+    setExamFieldError(false);
+    setAdditionalTimeError(false);
+  };
+
+  const onClose = () => {
+    resetForm();
+    close();
+  };
+
+  const validateAdditionalTime = () => {
+    let isValid = true;
+    const [additionalTimeValid,] = validateTimeField(form['additional-time-minutes'], 0); // eslint-disable-line comma-dangle
+    const [timeMultiplierValid,] = validateTimeField(form['additional-time-multiplier'], 1); // eslint-disable-line comma-dangle
+    if (
+      (!form['additional-time-minutes'] && !form['additional-time-multiplier'])
+      || (form['additional-time-minutes'] && !additionalTimeValid)
+      || (form['additional-time-multiplier'] && !timeMultiplierValid)
+    ) {
+      isValid = false;
+    }
+    return isValid;
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setLearnerFieldError(!form.users);
+    setExamFieldError(Object.keys(form.exams).length === 0);
+    const isAdditionalTimeValid = validateAdditionalTime();
+    setAdditionalTimeError(!isAdditionalTimeValid);
+    const valid = (
+      form.users
+        && Object.keys(form.exams).length > 0
+        && isAdditionalTimeValid
+    );
+    if (valid) {
+      createAllowance(form, () => {
+        setForm(initialFormState);
+        onClose();
+      });
+    }
+  };
+
+  return (
+    <ModalDialog
+      title={formatMessage(messages.addAllowanceModalTitle)}
+      isOpen={isOpen}
+      onClose={onClose}
+      size="md"
+      isOverflowVisible={false}
+      hasCloseButton
+      isFullscreenOnMobile
+      isFullscreenScroll
+    >
+      <ModalDialog.Header>
+        <ModalDialog.Title>
+          { formatMessage(messages.addAllowanceModalTitle) }
+        </ModalDialog.Title>
+      </ModalDialog.Header>
+      <ModalDialog.Body>
+        { requestError
+          && (
+          <Alert
+            variant="danger"
+            icon={Info}
+          >
+            <Alert.Heading>{ formatMessage(messages.addAllowanceFailedAlertHeader) }</Alert.Heading>
+            <p>
+              { requestError.detail }
+            </p>
+          </Alert>
+          )}
+        <Form id="add-allowance-form" onSubmit={onSubmit}>
+          <Form.Group isInvalid={learnerFieldError}>
+            <Form.Label>{ formatMessage(messages.addAllowanceLearnerField) }</Form.Label>
+            <Form.Control name="users" value={form.users || ''} onChange={handleChange} data-testid="users" />
+            { !learnerFieldError
+              ? (
+                <Form.Control.Feedback>
+                  { formatMessage(messages.addAllowanceLearnerFieldFeedback) }
+                </Form.Control.Feedback>
+              )
+              : (
+                <Form.Control.Feedback type="invalid">
+                  { formatMessage(messages.addAllowanceLearnerFieldErrorFeedback) }
+                </Form.Control.Feedback>
+              )}
+          </Form.Group>
+          <Form.Group controlId="form-exam-type">
+            <Form.Label>{ formatMessage(messages.addAllowanceExamTypeField) }</Form.Label>
+            <Form.Control
+              as="select"
+              onChange={handleChange}
+              name="exam-type"
+              value={form['exam-type']}
+              data-testid="exam-type"
+            >
+              {
+                proctoredExams.length > 0
+                && <option value="proctored">{ formatMessage(messages.addAllowanceProctoredExamOption) }</option>
+              }
+              {
+                timedExams.length > 0
+                && <option value="timed">{ formatMessage(messages.addAllowanceTimedExamOption) }</option>
+              }
+            </Form.Control>
+          </Form.Group>
+          { displayExams.length > 0 ? (
+            <Form.Group isInvalid={examFieldError}>
+              <Form.Label>{ formatMessage(messages.addAllowanceExamField) }</Form.Label>
+              <Form.CheckboxSet
+                name="exams"
+                onChange={handleCheckboxChange}
+              >
+                {
+                  displayExams.map((exam) => (
+                    <Form.Checkbox
+                      key={exam.id}
+                      data-key={exam.id}
+                      value={exam.timeLimitMins}
+                    >
+                      {exam.name}
+                    </Form.Checkbox>
+                  ))
+                }
+              </Form.CheckboxSet>
+              { examFieldError && <Form.Control.Feedback type="invalid">{ formatMessage(messages.addAllowanceExamErrorFeedback) }</Form.Control.Feedback>}
+            </Form.Group>
+          ) : null }
+          <Form.Group controlId="form-allowance-type">
+            <Form.Label>{ formatMessage(messages.addAllowanceAllowanceTypeField) }</Form.Label>
+            <Form.Control
+              as="select"
+              name="allowance-type"
+              onChange={handleChange}
+              value={form['allowance-type']}
+              data-testid="allowance-type"
+            >
+              <option value="additional-minutes">{ formatMessage(messages.allowanceAdditionalMinutesOption) }</option>
+              <option value="time-multiplier">{ formatMessage(messages.addAllowanceTimeMultiplierOption) }</option>
+            </Form.Control>
+          </Form.Group>
+          { form['allowance-type'] === 'additional-minutes'
+            ? (
+              <Form.Group controlId="form-allowance-value-minutes" isInvalid={additionalTimeError}>
+                <Form.Label>{ formatMessage(messages.addAllowanceMinutesField) }</Form.Label>
+                <Form.Control
+                  name="additional-time-minutes"
+                  value={form['additional-time-minutes'] || ''}
+                  onChange={handleChange}
+                  data-testid="additional-time-minutes"
+                />
+                { additionalTimeError && <Form.Control.Feedback type="invalid">{ formatMessage(messages.allowanceMinutesErrorFeedback) }</Form.Control.Feedback> }
+              </Form.Group>
+            )
+            : (
+              <Form.Group controlId="form-allowance-value-multiplier" isInvalid={additionalTimeError}>
+                <Form.Label>{ formatMessage(messages.addAllowanceMultiplierField) }</Form.Label>
+                <Form.Control
+                  name="additional-time-multiplier"
+                  value={form['additional-time-multiplier'] || ''}
+                  onChange={handleChange}
+                  data-testid="additional-time-multiplier"
+                />
+                {
+                  additionalTimeError
+                    ? (
+                      <Form.Control.Feedback type="invalid">
+                        { formatMessage(messages.addAllowanceMultiplierErrorFeedback) }
+                      </Form.Control.Feedback>
+                    )
+                    : (
+                      <Form.Control.Feedback>
+                        { formatMessage(messages.addAllowanceMultiplierFeedback) }
+                      </Form.Control.Feedback>
+                    )
+                }
+              </Form.Group>
+            )}
+        </Form>
+      </ModalDialog.Body>
+
+      <ModalDialog.Footer>
+        <ActionRow>
+          <ModalDialog.CloseButton variant="tertiary" data-testid="close-modal">
+            { formatMessage(messages.addAllowanceCloseButton) }
+          </ModalDialog.CloseButton>
+          <StatefulButton
+            data-testid="create-allowance-stateful-button"
+            state={createAllowanceRequestStatus()}
+            labels={{
+              default: formatMessage(messages.addAllowanceButtonDefaultLabel),
+              pending: formatMessage(messages.addAllowanceButtonPendingLabel),
+              complete: formatMessage(messages.addAllowanceButtonCompleteLabel),
+              error: formatMessage(messages.addAllowanceButtonErrorLabel),
+            }}
+            type="submit"
+            form="add-allowance-form"
+          />
+        </ActionRow>
+      </ModalDialog.Footer>
+    </ModalDialog>
+  );
+};
+
+AddAllowanceModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  close: PropTypes.func.isRequired,
+};
+
+export default AddAllowanceModal;

@@ -13,12 +13,14 @@ jest.mock('../hooks', () => ({
   useDeleteExamAttempt: jest.fn(),
   useModifyExamAttempt: jest.fn(),
   useExamsData: jest.fn(),
+  useButtonStateFromRequestStatus: jest.fn(),
 }));
 
 describe('AttemptList', () => {
   beforeEach(() => {
     hooks.useDeleteExamAttempt.mockReturnValue(jest.fn());
     hooks.useModifyExamAttempt.mockReturnValue(jest.fn());
+    hooks.useButtonStateFromRequestStatus.mockReturnValue(jest.fn());
     hooks.useExamsData.mockReturnValue(testUtils.defaultExamsData);
   });
   it('Test that the AttemptList matches snapshot', () => {
@@ -54,6 +56,23 @@ describe('AttemptList', () => {
         })[index]).toBeInTheDocument();
       }
     });
+  });
+  it('attempt null start and end time makes "-" appear in UI', () => {
+    render(<AttemptList attempts={[{
+      exam_name: 'Exam 1',
+      username: 'username1',
+      time_limit: 60,
+      exam_type: 'timed',
+      started_at: null,
+      completed_at: null,
+      status: 'second_review_required',
+      attempt_id: 0,
+      severity: 1.0,
+      submission_reason: 'Submitted by user',
+    }]}
+    />);
+    // Expect a two cells with '-' to be present (index 1 is for the second entry)
+    expect(screen.getAllByText('-')[1]).toBeInTheDocument();
   });
   it('filtering by status displays the correct entry', () => {
     render(<AttemptList attempts={testUtils.defaultAttemptsData.attemptsList} />);

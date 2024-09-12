@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from '@edx/paragon';
+import { Button } from '@openedx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
-import { Launch } from '@edx/paragon/icons';
+import { Launch } from '@openedx/paragon/icons';
 import { getLaunchUrlByExamId } from '../utils';
 import messages from '../messages';
 
@@ -16,12 +16,16 @@ const ExternalReviewDashboard = ({ exam }) => {
   return (
     <div data-testid="review_dash">
       <div style={{ padding: 10 }}>
-        {!ltiToolEmbed && exam && (
-          <Button as="a" title="lti_link" target="_blank" href={getLaunchUrlByExamId(exam.id)}>
-            {formatMessage(messages.ReviewDashboardOpenLTITool)}
-            <Launch />
-          </Button>
-        )}
+        {
+          // If an exam is selected, show the button to open the external review dashboard,
+          // otherwise prompt the user to select an exam.
+          (!ltiToolEmbed && exam) ? (
+            <Button as="a" title="lti_link" target="_blank" href={getLaunchUrlByExamId(exam.id)}>
+              {formatMessage(messages.ReviewDashboardOpenLTITool, { exam_name: exam.name })}
+              <Launch />
+            </Button>
+          ) : formatMessage(messages.ReviewDashboardPleaseSelectExam)
+        }
       </div>
       {ltiToolEmbed && exam && <iframe title="lti_tool" src={getLaunchUrlByExamId(exam.id)} width="100%" height="1100" style={{ border: 'none' }} />}
     </div>
@@ -31,6 +35,7 @@ const ExternalReviewDashboard = ({ exam }) => {
 ExternalReviewDashboard.propTypes = {
   exam: PropTypes.shape({
     id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
   }),
 };
 

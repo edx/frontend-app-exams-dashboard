@@ -8,6 +8,18 @@ export function getExamsBaseUrl() {
   return getConfig().EXAMS_BASE_URL;
 }
 
+export async function getAllowances(courseId) {
+  const url = `${getExamsBaseUrl()}/api/v1/exams/course_id/${courseId}/allowances`;
+  const response = await getAuthenticatedHttpClient().get(url);
+  return response.data;
+}
+
+export async function deleteAllowance(courseId, allowanceId) {
+  const url = `${getExamsBaseUrl()}/api/v1/exams/course_id/${courseId}/allowances/${allowanceId}`;
+  const response = await getAuthenticatedHttpClient().delete(url);
+  return response.data;
+}
+
 export async function getCourseExams(courseId) {
   const url = `${getExamsBaseUrl()}/api/v1/exams/course_id/${courseId}/`;
   const response = await getAuthenticatedHttpClient().get(url);
@@ -30,5 +42,11 @@ export async function modifyExamAttempt(attemptId, action) {
   const url = `${getExamsBaseUrl()}/api/v1/exams/attempt/${attemptId}`;
   const payload = { action };
   const response = await getAuthenticatedHttpClient().put(url, payload);
+  return response.data;
+}
+
+export async function createAllowance(courseId, data) {
+  const url = `${getExamsBaseUrl()}/api/v1/exams/course_id/${courseId}/allowances`;
+  const response = await getAuthenticatedHttpClient().post(url, data);
   return response.data;
 }

@@ -1,4 +1,7 @@
-@import "~@edx/paragon/scss/core/core";
+@import "~@edx/brand/paragon/fonts";
+@import "~@edx/brand/paragon/variables";
+@import "~@openedx/paragon/scss/core/core";
+@import "~@edx/brand/paragon/overrides";
 
 #exam-selector {
   margin: 0.5em auto;
@@ -11,4 +14,10 @@
 .pgn__searchfield.has-focus:not(.pgn__searchfield--external)::after {
   border: none;
   width: 0px;
+}
+
+// Align modals towards the top of the iframe, as it aligns center (which is awkward to have to scroll to) by default
+div.pgn__modal-content-container {
+  align-items: start;
+  padding-top: 6.5%;
 }

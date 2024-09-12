@@ -6,3 +6,5 @@ export const currentExam = state => state.exams.examsList[state.exams.currentExa
 export const courseExamAttemptsList = state => state.exams.attemptsList;
 
 export const courseId = state => state.exams.courseId;
+
+export const courseAllowancesList = state => state.exams.allowancesList;

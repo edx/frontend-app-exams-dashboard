@@ -3,15 +3,14 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 import {
   MenuItem, SearchField,
   SelectMenu,
-} from '@edx/paragon';
+} from '@openedx/paragon';
 import PropTypes from 'prop-types';
 
 import messages from '../messages';
 
-const ExamSelection = ({ exams, onSelect }) => {
+const ExamSelection = ({ exams, onSelect, isDisabled }) => {
   const { formatMessage } = useIntl();
   const [searchText, setSearchText] = useState('');
-
   const getMenuItems = () => {
     const menuItems = [
       <MenuItem
@@ -22,17 +21,24 @@ const ExamSelection = ({ exams, onSelect }) => {
         onSubmit={() => {}}
       />,
     ];
-    return menuItems.concat(exams.filter(exam => (
+    const examsMatchSearch = exams.filter(exam => (
       exam.name.toLowerCase().includes(searchText.toLowerCase())
     )).map(
       exam => <MenuItem key={exam.id} onClick={() => onSelect(exam.id)}>{exam.name}</MenuItem>,
-    ));
+    );
+    const examsNotMatchSearch = exams.filter(exam => !(
+      exam.name.toLowerCase().includes(searchText.toLowerCase())
+    )).map(
+      exam => <MenuItem key={exam.id} disabled>{exam.name}</MenuItem>,
+    );
+    return menuItems.concat(examsMatchSearch).concat(examsNotMatchSearch);
   };
 
   return (
     <div data-testid="exam_selection">
       <SelectMenu
         defaultMessage={formatMessage(messages.examSelectDropdownLabel)}
+        disabled={isDisabled}
       >
         { getMenuItems() }
       </SelectMenu>
@@ -46,6 +52,11 @@ ExamSelection.propTypes = {
     name: PropTypes.string,
   })).isRequired,
   onSelect: PropTypes.func.isRequired,
+  isDisabled: PropTypes.bool,
+};
+
+ExamSelection.defaultProps = {
+  isDisabled: false,
 };
 
 export default ExamSelection;

@@ -5,8 +5,9 @@ import {
   APP_INIT_ERROR, APP_READY, subscribe, initialize, mergeConfig,
 } from '@edx/frontend-platform';
 import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
+import { IntlProvider } from 'react-intl';
 import ReactDOM from 'react-dom';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import store from 'data/store';
 import messages from './i18n';
@@ -17,24 +18,26 @@ import Dashboard from './Dashboard';
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={store}>
-      <Switch>
-        <Route
-          path="/course/:courseId/exams"
-          render={({ match }) => {
-            const { params: { courseId } } = match;
-            return (
-              <Dashboard courseId={courseId} />
-            );
-          }}
-        />
-      </Switch>
+      <IntlProvider locale="en">
+        <Routes>
+          <Route
+            path="/course/:courseId/exams/*"
+            element={<Dashboard />}
+          />
+        </Routes>
+      </IntlProvider>
     </AppProvider>,
     document.getElementById('root'),
   );
 });
 
 subscribe(APP_INIT_ERROR, (error) => {
-  ReactDOM.render(<ErrorPage message={error.message} />, document.getElementById('root'));
+  ReactDOM.render(
+    <IntlProvider locale="en">
+      <ErrorPage message={error.message} />
+    </IntlProvider>,
+    document.getElementById('root'),
+  );
 });
 
 initialize({

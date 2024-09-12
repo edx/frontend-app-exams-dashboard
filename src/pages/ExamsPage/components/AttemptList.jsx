@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import { DataTable, TextFilter, CheckboxFilter } from '@edx/paragon';
+import { DataTable, TextFilter, CheckboxFilter } from '@openedx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import * as constants from 'data/constants';
-import ResetExamAttemptButton from './ResetExamAttemptButton';
-import ReviewExamAttemptButton from './ReviewExamAttemptButton';
+import ResetExamAttemptModal from './ResetExamAttemptModal';
+import ReviewExamAttemptModal from './ReviewExamAttemptModal';
 import messages from '../messages';
 
 // TODO: these should be updated to use intl messages
@@ -81,22 +81,22 @@ const StatusFilterChoices = [
   },
 ];
 
-// The button components must be compartmentalized here otherwise npm lint throws an unstable-nested-component error.
-const ResetButton = (row) => (
-  <ResetExamAttemptButton
+// The modal components must be compartmentalized here otherwise npm lint throws an unstable-nested-component error.
+const ResetModal = (row) => (
+  <ResetExamAttemptModal
     username={row.original.username}
     examName={row.original.exam_name}
     attemptId={row.original.attempt_id}
   />
 );
 
-const ReviewButton = (row) => (
-  <ReviewExamAttemptButton
+const ReviewModal = (row) => (
+  <ReviewExamAttemptModal
     username={row.original.username}
     examName={row.original.exam_name}
     attemptId={row.original.attempt_id}
     attemptStatus={row.original.status}
-    severity={row.original.severity}
+    severity={+row.original.severity || 0}
     submissionReason={row.original.submission_reason}
   />
 );
@@ -110,7 +110,7 @@ const AttemptList = ({ attempts }) => {
         isLoading={attempts == null}
         isPaginated
         initialState={{
-          pageSize: 20,
+          pageSize: 10,
         }}
         isFilterable
         defaultColumnValues={{ Filter: TextFilter }}
@@ -120,12 +120,12 @@ const AttemptList = ({ attempts }) => {
           {
             id: 'action',
             Header: formatMessage(messages.examAttemptsTableHeaderAction),
-            Cell: ({ row }) => ResetButton(row),
+            Cell: ({ row }) => ResetModal(row),
           },
           {
             id: 'review',
             Header: formatMessage(messages.examAttemptsTableHeaderReview),
-            Cell: ({ row }) => ReviewButton(row),
+            Cell: ({ row }) => ReviewModal(row),
           },
         ]}
         data={attempts}
@@ -145,23 +145,26 @@ const AttemptList = ({ attempts }) => {
           },
           {
             Header: formatMessage(messages.examAttemptsTableHeaderStartedAt),
-            Cell: ({ row }) => (formatDate(row.original.started_at, {
+            // The ternary operator here sets the value of the started/completed at datetime to
+            // "-" if the value is null, as otherwise the DataTable will default to the
+            // UNIX epoch (i.e. 1/1/1970) for some reason.
+            Cell: ({ row }) => (row.original.started_at ? formatDate(row.original.started_at, {
               year: 'numeric',
               month: 'numeric',
               day: 'numeric',
               hour: 'numeric',
               minute: 'numeric',
-            })),
+            }) : '-'),
           },
           {
             Header: formatMessage(messages.examAttemptsTableHeaderCompletedAt),
-            Cell: ({ row }) => (formatDate(row.original.completed_at, {
+            Cell: ({ row }) => (row.original.completed_at ? formatDate(row.original.completed_at, {
               year: 'numeric',
               month: 'numeric',
               day: 'numeric',
               hour: 'numeric',
               minute: 'numeric',
-            })),
+            }) : '-'),
           },
           {
             Header: formatMessage(messages.examAttemptsTableHeaderStatus),

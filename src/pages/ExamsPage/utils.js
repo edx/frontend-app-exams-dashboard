@@ -1,5 +1,7 @@
-import messages from './messages';
+import messages from 'pages/ExamsPage/messages';
 import { getExamsBaseUrl } from './data/api';
+
+export const getLaunchUrlByExamId = (id) => `${getExamsBaseUrl()}/lti/exam/${id}/instructor_tool`;
 
 const examAttemptStatusLabels = {
   created: messages.statusLabelCreated,
@@ -15,6 +17,34 @@ const examAttemptStatusLabels = {
   error: messages.statusLabelError,
 };
 
-export const getLaunchUrlByExamId = (id) => `${getExamsBaseUrl()}/lti/exam/${id}/instructor_tool`;
-
 export const getMessageLabelForStatus = (status) => examAttemptStatusLabels[status];
+
+export const createAllowanceData = (form) => {
+  const data = [];
+  const users = form.users.split(',').map((item) => item.trim());
+  for (let i = 0; i < users.length; i++) {
+    const user = users[i];
+    Object.keys(form.exams).forEach(examId => {
+      const timeLimitMins = form.exams[examId];
+      let additionalTime;
+      if (form['allowance-type'] === 'time-multiplier') {
+        additionalTime = (Number(timeLimitMins) * Number(form['additional-time-multiplier'])) - Number(timeLimitMins);
+      } else {
+        additionalTime = Number(form['additional-time-minutes']);
+      }
+
+      const userKey = user.includes('@') ? 'email' : 'username';
+      data.push({ [userKey]: user, exam_id: Number(examId), extra_time_mins: additionalTime });
+    });
+  }
+  return data;
+};
+
+export const validateTimeField = (fieldValue, minimumValue) => {
+  const timeValue = +fieldValue || 0;
+  const valid = (
+    timeValue
+    && timeValue > minimumValue
+  );
+  return [valid, timeValue];
+};

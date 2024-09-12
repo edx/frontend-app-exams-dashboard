@@ -1,55 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ReviewExamAttemptButton Test that the ReviewExamAttemptButton matches snapshot 1`] = `
-Object {
+exports[`ResetExamAttemptModal Test that the ResetExamAttemptModal matches snapshot 1`] = `
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <div
-        class="d-flex text-danger"
+        class="d-flex"
       >
         <button
-          class="text-danger btn btn-link btn-sm"
+          class="btn btn-link btn-sm"
           type="button"
         >
-          <svg
-            fill="none"
-            height="24"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
-              fill="currentColor"
-            />
-          </svg>
-          Review Required
+          Reset
         </button>
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="d-flex text-danger"
+      class="d-flex"
     >
       <button
-        class="text-danger btn btn-link btn-sm"
+        class="btn btn-link btn-sm"
         type="button"
       >
-        <svg
-          fill="none"
-          height="24"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
-            fill="currentColor"
-          />
-        </svg>
-        Review Required
+        Reset
       </button>
     </div>
   </div>,
