@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import {render, screen, waitFor} from '@testing-library/react';
 
 import AllowanceList from './AllowanceList';
 import * as hooks from '../hooks';
@@ -67,7 +67,7 @@ describe('AllowanceList', () => {
     it('should open allowance modal', () => {
       render(<AllowanceList />);
       screen.getByText('Add allowance').click();
-      expect(screen.getByText('Add a new allowance')).toBeInTheDocument();
+      waitFor(() => expect(screen.getByText('Add a new allowance')).toBeInTheDocument());
     });
   });
 
