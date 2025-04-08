@@ -6,51 +6,67 @@ exports[`ReviewExamAttemptModal Test that the ReviewExamAttemptModal matches sna
   "baseElement": <body>
     <div>
       <div
-        class="d-flex text-danger"
+        data-testid="redux-provider"
       >
-        <button
-          class="text-danger btn btn-link btn-sm"
-          type="button"
+        <div
+          data-testid="browser-router"
         >
-          <svg
-            fill="none"
-            height="24"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
+          <div
+            class="d-flex text-danger"
           >
-            <path
-              d="M1 21h22L12 2 1 21Zm12-3h-2v-2h2v2Zm0-4h-2v-4h2v4Z"
-              fill="currentColor"
-            />
-          </svg>
-          Review Required
-        </button>
+            <button
+              class="text-danger btn btn-link btn-sm"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 21h22L12 2 1 21Zm12-3h-2v-2h2v2Zm0-4h-2v-4h2v4Z"
+                  fill="currentColor"
+                />
+              </svg>
+              Review Required
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="d-flex text-danger"
+      data-testid="redux-provider"
     >
-      <button
-        class="text-danger btn btn-link btn-sm"
-        type="button"
+      <div
+        data-testid="browser-router"
       >
-        <svg
-          fill="none"
-          height="24"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
+        <div
+          class="d-flex text-danger"
         >
-          <path
-            d="M1 21h22L12 2 1 21Zm12-3h-2v-2h2v2Zm0-4h-2v-4h2v4Z"
-            fill="currentColor"
-          />
-        </svg>
-        Review Required
-      </button>
+          <button
+            class="text-danger btn btn-link btn-sm"
+            type="button"
+          >
+            <svg
+              fill="none"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 21h22L12 2 1 21Zm12-3h-2v-2h2v2Zm0-4h-2v-4h2v4Z"
+                fill="currentColor"
+              />
+            </svg>
+            Review Required
+          </button>
+        </div>
+      </div>
     </div>
   </div>,
   "debug": [Function],

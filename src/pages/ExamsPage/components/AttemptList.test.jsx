@@ -1,28 +1,17 @@
-import {
-  fireEvent, render, screen,
-} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { fireEvent, screen } from '@testing-library/react';
+import { initializeMockApp } from '@edx/frontend-platform/testing';
 
 import AttemptList from './AttemptList';
 import * as testUtils from '../../../testUtils';
-import * as hooks from '../hooks';
 
-// normally mocked for unit tests but required for rendering/snapshots
-jest.unmock('react');
+import { initialStoreState } from '../../../testUtils';
+import { initializeTestStore, render } from '../../../setupTest';
 
-jest.mock('../hooks', () => ({
-  useDeleteExamAttempt: jest.fn(),
-  useModifyExamAttempt: jest.fn(),
-  useExamsData: jest.fn(),
-  useButtonStateFromRequestStatus: jest.fn(),
-}));
+initializeTestStore(initialStoreState);
+initializeMockApp();
 
 describe('AttemptList', () => {
-  beforeEach(() => {
-    hooks.useDeleteExamAttempt.mockReturnValue(jest.fn());
-    hooks.useModifyExamAttempt.mockReturnValue(jest.fn());
-    hooks.useButtonStateFromRequestStatus.mockReturnValue(jest.fn());
-    hooks.useExamsData.mockReturnValue(testUtils.defaultExamsData);
-  });
   it('Test that the AttemptList matches snapshot', () => {
     expect(render(<AttemptList attempts={testUtils.defaultAttemptsData.attemptsList} />)).toMatchSnapshot();
   });
@@ -74,12 +63,13 @@ describe('AttemptList', () => {
     // Expect a two cells with '-' to be present (index 1 is for the second entry)
     expect(screen.getAllByText('-')[1]).toBeInTheDocument();
   });
-  it('filtering by status displays the correct entry', () => {
+  it('filtering by status displays the correct entry', async () => {
+    const user = userEvent.setup();
     render(<AttemptList attempts={testUtils.defaultAttemptsData.attemptsList} />);
     // Get the 2nd row of data which has the values of defaultAttemptsData[1]
     const secondRow = screen.getAllByRole('row')[2];
-    screen.getByText('Filters').click();
-    screen.getByLabelText('Second Review Required').click();
+    await user.click(screen.getByText('Filters'));
+    await user.click(screen.getByLabelText('Second Review Required'));
     // Expect the first data entry, but not the second from defaultAttemptsData
     // NOTE: row with index '0' in 'screen' is the header row.
     expect(screen.getAllByRole('row')[1]).toBeInTheDocument();

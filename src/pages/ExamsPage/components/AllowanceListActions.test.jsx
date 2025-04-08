@@ -1,11 +1,20 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { initializeMockApp } from '@edx/frontend-platform/testing';
 
-import { useDeleteAllowance, useEditAllowance } from '../hooks';
 import AllowanceListActions from './AllowanceListActions';
-import * as reduxHooks from '../../../data/redux/hooks';
+import { createAllowance, deleteAllowance } from '../data/api';
+import { initialStoreState } from '../../../testUtils';
+import { initializeTestStore, render } from '../../../setupTest';
 
-const mockClearRequest = jest.fn();
-const mockRequestError = jest.fn();
+jest.mock('../data/api', () => ({
+  ...jest.requireActual('../data/api'),
+  createAllowance: jest.fn().mockResolvedValue({}),
+  deleteAllowance: jest.fn().mockResolvedValue({}),
+}));
+
+initializeTestStore(initialStoreState);
+initializeMockApp();
 
 const mockAllowance = {
   id: 1,
@@ -17,24 +26,10 @@ const mockAllowance = {
 };
 const newExtraTimeMins = 60;
 
-jest.mock('../hooks', () => ({
-  useDeleteAllowance: jest.fn(),
-  useEditAllowance: jest.fn(),
-}));
-
-jest.mock('../../../data/redux/hooks', () => ({
-  useRequestError: jest.fn(),
-  useClearRequest: jest.fn(),
-}));
-
-// nomally mocked for unit tests but required for rendering/snapshots
-jest.unmock('react');
-
 describe('AllowanceListActions', () => {
+  let user;
   beforeEach(() => {
-    jest.resetAllMocks();
-    reduxHooks.useRequestError.mockReturnValue(mockRequestError);
-    reduxHooks.useClearRequest.mockReturnValue(mockClearRequest);
+    user = userEvent.setup();
   });
 
   describe('snapshots', () => {
@@ -43,88 +38,85 @@ describe('AllowanceListActions', () => {
     });
   });
 
-  it('should open the delete modal when the delete icon is clicked', () => {
+  it('should open the delete modal when the delete icon is clicked', async () => {
     render(<AllowanceListActions allowance={mockAllowance} />);
-    screen.getByTestId('delete-allowance-icon').click();
+    await user.click(screen.getByTestId('delete-allowance-icon'));
     expect(screen.getByText('Are you sure you want to delete this allowance?')).toBeInTheDocument();
   });
 
-  it('should open the edit modal when the edit icon is clicked', () => {
+  it('should open the edit modal when the edit icon is clicked', async () => {
     render(<AllowanceListActions allowance={mockAllowance} />);
-    screen.getByTestId('edit-allowance-icon').click();
+    await user.click(screen.getByTestId('edit-allowance-icon'));
     expect(screen.getByTestId('edit-allowance-header')).toBeInTheDocument();
   });
 
   describe('delete modal', () => {
-    it('should delete the allowance when the delete button is clicked', () => {
-      const mockDeleteAllowance = jest.fn();
-      useDeleteAllowance.mockReturnValue(mockDeleteAllowance);
+    it('should delete the allowance when the delete button is clicked', async () => {
       render(<AllowanceListActions allowance={mockAllowance} />);
-      screen.getByTestId('delete-allowance-icon').click();
-      screen.getByText('Delete').click();
-      expect(mockDeleteAllowance).toHaveBeenCalledWith(mockAllowance.id, expect.any(Function));
+      await user.click(screen.getByTestId('delete-allowance-icon'));
+      await user.click(screen.getByText('Delete'));
+      expect(deleteAllowance).toHaveBeenCalledWith('test_course', mockAllowance.id);
     });
 
-    it('should close the modal when the cancel button is clicked', () => {
+    it('should close the modal when the cancel button is clicked', async () => {
       render(<AllowanceListActions allowance={mockAllowance} />);
-      screen.getByTestId('delete-allowance-icon').click();
-      screen.getByText('Cancel').click();
+      await user.click(screen.getByTestId('delete-allowance-icon'));
+      await user.click(screen.getByText('Cancel'));
       expect(screen.queryByText('Are you sure you want to delete this allowance?')).not.toBeInTheDocument();
     });
 
-    it('should close the modal when the delete is successful', () => {
-      const mockDeleteAllowance = jest.fn();
-      useDeleteAllowance.mockReturnValue(mockDeleteAllowance);
+    it('should close the modal when the delete is successful', async () => {
       render(<AllowanceListActions allowance={mockAllowance} />);
-      screen.getByTestId('delete-allowance-icon').click();
-      screen.getByText('Delete').click();
-      expect(screen.getByText('Are you sure you want to delete this allowance?')).toBeInTheDocument();
-      mockDeleteAllowance.mock.calls[0][1]();
-      expect(screen.queryByText('Are you sure you want to delete this allowance?')).not.toBeInTheDocument();
+      await user.click(screen.getByTestId('delete-allowance-icon'));
+
+      await waitFor(() => {
+        expect(screen.getByText('Are you sure you want to delete this allowance?')).toBeInTheDocument();
+      });
+
+      await user.click(screen.getByText('Delete'));
+
+      await waitFor(() => {
+        expect(screen.queryByText('Are you sure you want to delete this allowance?')).not.toBeInTheDocument();
+      });
     });
   });
 
   describe('edit modal', () => {
-    it('should edit the allowance when the save button is clicked', () => {
-      const mockEditAllowance = jest.fn();
-      useEditAllowance.mockReturnValue(mockEditAllowance);
+    it('should edit the allowance when the save button is clicked', async () => {
       render(<AllowanceListActions allowance={mockAllowance} />);
-      screen.getByTestId('edit-allowance-icon').click();
+      await user.click(screen.getByTestId('edit-allowance-icon'));
       fireEvent.change(screen.getByTestId('extra-time-mins'), { target: { value: newExtraTimeMins } });
-      screen.getByText('Save').click();
-      const expectedData = {
+      await user.click(screen.getByText('Save'));
+      const expectedData = [{
         username: mockAllowance.username,
         exam_id: mockAllowance.examId,
         extra_time_mins: newExtraTimeMins,
-      };
-      expect(mockEditAllowance).toHaveBeenCalledWith(mockAllowance.id, expectedData, expect.any(Function));
+      }];
+      expect(createAllowance).toHaveBeenCalledWith('test_course', expectedData);
     });
 
-    it('should display errors when the save button is clicked', () => {
-      const mockEditAllowance = jest.fn();
-      useEditAllowance.mockReturnValue(mockEditAllowance);
+    it('should display errors when the save button is clicked', async () => {
       render(<AllowanceListActions allowance={mockAllowance} />);
-      screen.getByTestId('edit-allowance-icon').click();
-      screen.getByText('Save').click();
+      await user.click(screen.getByTestId('edit-allowance-icon'));
+      await user.click(screen.getByText('Save'));
       expect(screen.getByText('Enter minutes as a number greater than 0')).toBeInTheDocument();
     });
 
-    it('should close the modal when the cancel button is clicked', () => {
+    it('should close the modal when the cancel button is clicked', async () => {
       render(<AllowanceListActions allowance={mockAllowance} />);
-      screen.getByTestId('edit-allowance-icon').click();
-      screen.getByText('Cancel').click();
+      await user.click(screen.getByTestId('edit-allowance-icon'));
+      await user.click(screen.getByText('Cancel'));
       expect(screen.queryByTestId('edit-allowance-header')).not.toBeInTheDocument();
     });
 
-    it('should close the modal when the edit is successful', () => {
-      const mockEditAllowance = jest.fn();
-      useEditAllowance.mockReturnValue(mockEditAllowance);
+    it('should close the modal when the edit is successful', async () => {
       render(<AllowanceListActions allowance={mockAllowance} />);
-      screen.getByTestId('edit-allowance-icon').click();
+      await user.click(screen.getByTestId('edit-allowance-icon'));
       fireEvent.change(screen.getByTestId('extra-time-mins'), { target: { value: newExtraTimeMins } });
-      screen.getByText('Save').click();
-      mockEditAllowance.mock.calls[0][2]();
-      expect(screen.queryByTestId('edit-allowance-header')).not.toBeInTheDocument();
+      await user.click(screen.getByText('Save'));
+      await waitFor(() => {
+        expect(screen.queryByTestId('edit-allowance-header')).not.toBeInTheDocument();
+      });
     });
   });
 });

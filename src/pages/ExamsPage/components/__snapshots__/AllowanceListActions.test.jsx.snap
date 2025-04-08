@@ -6,135 +6,151 @@ exports[`AllowanceListActions snapshots displayed buttons should match snapshot 
   "baseElement": <body>
     <div>
       <div
-        class="allowances-actions text-right"
+        data-testid="redux-provider"
       >
-        <button
-          aria-label="Edit allowance"
-          class="btn-icon btn-icon-primary btn-icon-sm mr-2"
-          data-testid="edit-allowance-icon"
-          type="button"
+        <div
+          data-testid="browser-router"
         >
-          <span
-            class="btn-icon__icon-container"
+          <div
+            class="allowances-actions text-right"
           >
-            <span
-              class="pgn__icon btn-icon__icon"
+            <button
+              aria-label="Edit allowance"
+              class="btn-icon btn-icon-primary btn-icon-sm mr-2"
+              data-testid="edit-allowance-icon"
+              type="button"
             >
-              <svg
-                aria-hidden="true"
-                fill="none"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <span
+                class="btn-icon__icon-container"
               >
-                <path
-                  d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
-                  fill="currentColor"
-                />
-              </svg>
-            </span>
-          </span>
-        </button>
-        <button
-          aria-label="Delete allowance"
-          class="btn-icon btn-icon-secondary btn-icon-sm"
-          data-testid="delete-allowance-icon"
-          type="button"
-        >
-          <span
-            class="btn-icon__icon-container"
-          >
-            <span
-              class="pgn__icon btn-icon__icon"
+                <span
+                  class="pgn__icon btn-icon__icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </button>
+            <button
+              aria-label="Delete allowance"
+              class="btn-icon btn-icon-secondary btn-icon-sm"
+              data-testid="delete-allowance-icon"
+              type="button"
             >
-              <svg
-                aria-hidden="true"
-                fill="none"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <span
+                class="btn-icon__icon-container"
               >
-                <path
-                  d="M6 21h12V7H6v14zM8 9h8v10H8V9zm7.5-5-1-1h-5l-1 1H5v2h14V4h-3.5z"
-                  fill="currentColor"
-                />
-              </svg>
-            </span>
-          </span>
-        </button>
+                <span
+                  class="pgn__icon btn-icon__icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 21h12V7H6v14zM8 9h8v10H8V9zm7.5-5-1-1h-5l-1 1H5v2h14V4h-3.5z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="allowances-actions text-right"
+      data-testid="redux-provider"
     >
-      <button
-        aria-label="Edit allowance"
-        class="btn-icon btn-icon-primary btn-icon-sm mr-2"
-        data-testid="edit-allowance-icon"
-        type="button"
+      <div
+        data-testid="browser-router"
       >
-        <span
-          class="btn-icon__icon-container"
+        <div
+          class="allowances-actions text-right"
         >
-          <span
-            class="pgn__icon btn-icon__icon"
+          <button
+            aria-label="Edit allowance"
+            class="btn-icon btn-icon-primary btn-icon-sm mr-2"
+            data-testid="edit-allowance-icon"
+            type="button"
           >
-            <svg
-              aria-hidden="true"
-              fill="none"
-              focusable="false"
-              height="24"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
+            <span
+              class="btn-icon__icon-container"
             >
-              <path
-                d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
-                fill="currentColor"
-              />
-            </svg>
-          </span>
-        </span>
-      </button>
-      <button
-        aria-label="Delete allowance"
-        class="btn-icon btn-icon-secondary btn-icon-sm"
-        data-testid="delete-allowance-icon"
-        type="button"
-      >
-        <span
-          class="btn-icon__icon-container"
-        >
-          <span
-            class="pgn__icon btn-icon__icon"
+              <span
+                class="pgn__icon btn-icon__icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </span>
+          </button>
+          <button
+            aria-label="Delete allowance"
+            class="btn-icon btn-icon-secondary btn-icon-sm"
+            data-testid="delete-allowance-icon"
+            type="button"
           >
-            <svg
-              aria-hidden="true"
-              fill="none"
-              focusable="false"
-              height="24"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
+            <span
+              class="btn-icon__icon-container"
             >
-              <path
-                d="M6 21h12V7H6v14zM8 9h8v10H8V9zm7.5-5-1-1h-5l-1 1H5v2h14V4h-3.5z"
-                fill="currentColor"
-              />
-            </svg>
-          </span>
-        </span>
-      </button>
+              <span
+                class="pgn__icon btn-icon__icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 21h12V7H6v14zM8 9h8v10H8V9zm7.5-5-1-1h-5l-1 1H5v2h14V4h-3.5z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>,
   "debug": [Function],

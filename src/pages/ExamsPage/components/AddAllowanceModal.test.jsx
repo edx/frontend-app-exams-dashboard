@@ -1,59 +1,41 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { initializeMockApp } from '@edx/frontend-platform/testing';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 
-import * as hooks from '../hooks';
-import * as reduxHooks from '../../../data/redux/hooks';
 import AddAllowanceModal from './AddAllowanceModal';
+import { createAllowance } from '../data/api';
+import { initialStoreState } from '../../../testUtils';
+import { initializeTestStore, render } from '../../../setupTest';
 
-const mockMakeNetworkRequest = jest.fn();
-const mockCreateAllowance = jest.fn();
-const mockClearRequest = jest.fn();
-const mockRequestError = jest.fn();
-
-const proctoredExams = [
-  { id: 1, name: 'exam1', examType: 'proctored', timeLimitMins: 60 }, // eslint-disable-line object-curly-newline
-  { id: 3, name: 'exam3', examType: 'proctored', timeLimitMins: 45 }, // eslint-disable-line object-curly-newline
-];
-
-const timedExams = [{ id: 2, name: 'exam2', examType: 'timed', timeLimitMins: 30 }]; // eslint-disable-line object-curly-newline
-
-// normally mocked for unit tests but required for rendering/snapshots
-jest.unmock('react');
-
-jest.mock('../hooks', () => ({
-  useExamsData: jest.fn(),
-  useFilteredExamsData: jest.fn(),
-  useButtonStateFromRequestStatus: jest.fn(),
-  useCreateAllowance: jest.fn(),
+jest.mock('../data/api', () => ({
+  ...jest.requireActual('../data/api'),
+  createAllowance: jest.fn().mockResolvedValue({}),
 }));
 
-jest.mock('../../../data/redux/hooks', () => ({
-  useRequestError: jest.fn(),
-  useClearRequest: jest.fn(),
-}));
+initializeTestStore(initialStoreState);
+initializeMockApp();
 
 describe('AddAllowanceModal', () => {
   beforeEach(() => {
-    jest.resetAllMocks();
-    hooks.useFilteredExamsData.mockReturnValue({ proctoredExams, timedExams });
-    hooks.useButtonStateFromRequestStatus.mockReturnValue(mockMakeNetworkRequest);
-    hooks.useCreateAllowance.mockReturnValue(mockCreateAllowance);
-    reduxHooks.useRequestError.mockReturnValue(mockRequestError);
-    reduxHooks.useClearRequest.mockReturnValue(mockClearRequest);
+    jest.clearAllMocks();
   });
 
   it('should match snapshot', () => {
     expect(render(<AddAllowanceModal isOpen close={jest.fn()} />)).toMatchSnapshot();
   });
 
-  it('should display timed exam choices', () => {
+  it('should display timed exam choices', async () => {
     render(<AddAllowanceModal isOpen close={jest.fn()} />);
     fireEvent.change(screen.getByTestId('exam-type'), { target: { value: 'timed' } });
-    expect(screen.getByText('exam2')).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.getByText('exam4')).toBeInTheDocument();
+    });
   });
 
   it('should update allowance input', () => {
     render(<AddAllowanceModal isOpen close={jest.fn()} />);
     fireEvent.change(screen.getByTestId('allowance-type'), { target: { value: 'time-multiplier' } });
+
     expect(screen.getByText('Multiplier')).toBeInTheDocument();
   });
 
@@ -64,50 +46,79 @@ describe('AddAllowanceModal', () => {
     fireEvent.click(screen.getByText('exam3'));
     fireEvent.change(screen.getByTestId('additional-time-minutes'), { target: { value: '60' } });
     fireEvent.click(screen.getByTestId('create-allowance-stateful-button'));
-    const expectedData = {
-      users: 'edx, edx@example.com',
-      'exam-type': 'proctored',
-      exams: { 1: '60', 3: '45' },
-      'additional-time-minutes': '60',
-      'allowance-type': 'additional-minutes',
-    };
-    expect(mockCreateAllowance).toHaveBeenCalledWith(expectedData, expect.any(Function));
+
+    const expectedData = [
+      {
+        username: 'edx',
+        exam_id: 1,
+        extra_time_mins: 60,
+      },
+      {
+        username: 'edx',
+        exam_id: 3,
+        extra_time_mins: 60,
+      },
+      {
+        email: 'edx@example.com',
+        exam_id: 1,
+        extra_time_mins: 60,
+      },
+      {
+        email: 'edx@example.com',
+        exam_id: 3,
+        extra_time_mins: 60,
+      },
+    ];
+    expect(createAllowance).toHaveBeenCalledWith('test_course', expectedData);
   });
 
-  it('should display field errors', () => {
+  it('should display field errors', async () => {
     render(<AddAllowanceModal isOpen close={jest.fn()} />);
     fireEvent.click(screen.getByTestId('create-allowance-stateful-button'));
-    expect(screen.getByText('Enter learners')).toBeInTheDocument();
-    expect(screen.getByText('Select exams')).toBeInTheDocument();
-    expect(screen.getByText('Enter minutes as a number greater than 0')).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.getByText('Enter learners')).toBeInTheDocument();
+      expect(screen.getByText('Select exams')).toBeInTheDocument();
+      expect(screen.getByText('Enter minutes as a number greater than 0')).toBeInTheDocument();
+    });
   });
 
-  it('should show an alert if the request fails', () => {
-    reduxHooks.useRequestError.mockReturnValue({ detail: 'some test error' });
-    render(<AddAllowanceModal isOpen close={jest.fn()} />);
-    expect(screen.getByText('some test error')).toBeInTheDocument();
-  });
+  it('should show an alert if the request fails', async () => {
+    createAllowance.mockRejectedValue({ detail: 'some test error' });
 
-  it('should clear request errors if form is altered', () => {
     render(<AddAllowanceModal isOpen close={jest.fn()} />);
+
     fireEvent.change(screen.getByTestId('users'), { target: { value: 'edx, edx@example.com' } });
-    expect(reduxHooks.useClearRequest).toHaveBeenCalled();
+    fireEvent.click(screen.getByText('exam1'));
+    fireEvent.click(screen.getByText('exam3'));
+    fireEvent.change(screen.getByTestId('additional-time-minutes'), { target: { value: '60' } });
+    fireEvent.click(screen.getByTestId('create-allowance-stateful-button'));
+
+    await waitFor(() => {
+      expect(screen.getByText('some test error')).toBeInTheDocument();
+      expect(screen.getByText('some test error')).toBeVisible();
+    });
   });
 
-  it('should reset form state when closed', () => {
+  it('should reset form state when closed', async () => {
     render(<AddAllowanceModal isOpen close={jest.fn()} />);
     fireEvent.change(screen.getByTestId('exam-type'), { target: { value: 'timed' } });
     fireEvent.click(screen.getByTestId('create-allowance-stateful-button'));
 
-    expect(screen.getByText('Enter minutes as a number greater than 0')).toBeInTheDocument();
-    expect(screen.getByText('exam2')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('Enter minutes as a number greater than 0')).toBeInTheDocument();
+      expect(screen.getByText('exam4')).toBeInTheDocument();
+    });
 
     fireEvent.click(screen.getByTestId('close-modal'));
-    // any errors and timed exam selections should be reset
-    expect(screen.queryByText('Enter minutes as a number greater than 0')).not.toBeInTheDocument();
-    expect(screen.queryByText('exam2')).not.toBeInTheDocument();
-    // expect the default selection to revert back to proctored exams
-    expect(screen.queryByText('exam1')).toBeInTheDocument();
+
+    await waitFor(() => {
+      // any errors and timed exam selections should be reset
+      expect(screen.queryByText('Enter minutes as a number greater than 0')).not.toBeInTheDocument();
+      expect(screen.queryByText('exam4')).not.toBeInTheDocument();
+      // expect the default selection to revert back to proctored exams
+      expect(screen.queryByText('exam1')).toBeInTheDocument();
+    });
   });
 
   it('should display error if minutes entered is 0 or less', () => {

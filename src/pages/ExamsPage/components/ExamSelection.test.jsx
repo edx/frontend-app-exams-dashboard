@@ -1,13 +1,13 @@
-import {
-  render, screen,
-  waitFor,
-} from '@testing-library/react';
+import { initializeMockApp } from '@edx/frontend-platform/testing';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import ExamSelection from './ExamSelection';
+import { initialStoreState } from '../../../testUtils';
+import { initializeTestStore, render } from '../../../setupTest';
 
-// nomally mocked for unit tests but required for rendering/snapshots
-jest.unmock('react');
+initializeTestStore(initialStoreState);
+initializeMockApp();
 
 const renderWithoutError = (component) => {
   // there is an error thrown inside the SelectMenu component by the
@@ -26,34 +26,45 @@ describe('ExamSelection', () => {
     { id: 42, name: 'exam3' },
   ];
   const mockHandleSelectExam = jest.fn();
-  test('component matches snapshot', () => {
+
+  let user;
+  beforeEach(() => {
+    user = userEvent.setup();
+  });
+  it('component matches snapshot', () => {
     expect(renderWithoutError(
       <ExamSelection exams={defaultExams} onSelect={mockHandleSelectExam} />,
     )).toMatchSnapshot();
   });
   it('lists each exam in the dropdown', async () => {
     renderWithoutError(<ExamSelection exams={defaultExams} onSelect={mockHandleSelectExam} />);
-    screen.getByText('Select an exam').click();
+    await user.click(screen.getByText('Select an exam'));
     defaultExams.forEach((exam) => {
       expect(screen.getByText(exam.name)).toBeInTheDocument();
     });
   });
   it('filters the dropdown by search text', async () => {
-    const user = userEvent.setup();
     renderWithoutError(<ExamSelection exams={defaultExams} onSelect={mockHandleSelectExam} />);
-    screen.getByText('Select an exam').click();
+    screen.debug();
+    await user.click(screen.getByText('Select an exam'));
+    screen.debug();
     const input = screen.getByPlaceholderText('Search for an exam...');
-    await user.type(input, 'exam1');
-    waitFor(() => {
+
+    // user.type does not appear to work properly, potentially because it is not triggering an onChange event.
+    fireEvent.change(input, {
+      target: { value: 'exam1' },
+    });
+
+    await waitFor(() => {
       expect(screen.queryByRole('link', { name: 'exam1' })).not.toBeDisabled();
       expect(screen.queryByRole('link', { name: 'exam2' })).toBeDisabled();
       expect(screen.queryByRole('link', { name: 'exam3' })).toBeDisabled();
     });
   });
-  it('calls onSelect when an exam is selected', () => {
+  it('calls onSelect when an exam is selected', async () => {
     renderWithoutError(<ExamSelection exams={defaultExams} onSelect={mockHandleSelectExam} />);
-    screen.getByText('Select an exam').click();
-    screen.getByText('exam2').click();
+    await user.click(screen.getByText('Select an exam'));
+    await user.click(screen.getByText('exam2'));
     expect(mockHandleSelectExam).toHaveBeenCalledTimes(1);
     expect(mockHandleSelectExam).toHaveBeenCalledWith(27);
   });

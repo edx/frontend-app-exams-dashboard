@@ -6,27 +6,43 @@ exports[`ResetExamAttemptModal Test that the ResetExamAttemptModal matches snaps
   "baseElement": <body>
     <div>
       <div
-        class="d-flex"
+        data-testid="redux-provider"
       >
-        <button
-          class="btn btn-link btn-sm"
-          type="button"
+        <div
+          data-testid="browser-router"
         >
-          Reset
-        </button>
+          <div
+            class="d-flex"
+          >
+            <button
+              class="btn btn-link btn-sm"
+              type="button"
+            >
+              Reset
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="d-flex"
+      data-testid="redux-provider"
     >
-      <button
-        class="btn btn-link btn-sm"
-        type="button"
+      <div
+        data-testid="browser-router"
       >
-        Reset
-      </button>
+        <div
+          class="d-flex"
+        >
+          <button
+            class="btn btn-link btn-sm"
+            type="button"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
     </div>
   </div>,
   "debug": [Function],
