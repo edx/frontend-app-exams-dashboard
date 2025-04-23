@@ -1,9 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import { initializeMockApp } from '@edx/frontend-platform/testing';
+import { screen } from '@testing-library/react';
 
 import ExternalReviewDashboard from './ExternalReviewDashboard';
-
-// normally mocked for unit tests but required for rendering/snapshots
-jest.unmock('react');
+import { render } from '../../../setupTest';
 
 jest.mock('../data/api', () => ({
   getExamsBaseUrl: jest.fn().mockReturnValue('http://test.org'),
@@ -13,6 +12,8 @@ const testExam = {
   id: 3,
   name: 'Test Proctored Exam',
 };
+
+initializeMockApp();
 
 describe('ExternalReviewDashboard', () => {
   it('does not include button to open review dashboard if no exam provided', () => {

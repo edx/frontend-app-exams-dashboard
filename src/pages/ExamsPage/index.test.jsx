@@ -1,47 +1,24 @@
-import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { initializeMockApp } from '@edx/frontend-platform/testing';
+import { screen } from '@testing-library/react';
 
 import ExamsPage from '.';
-import * as hooks from './hooks';
-import * as testUtils from '../../testUtils';
+import { initialStoreState } from '../../testUtils';
+import { initializeTestStore, render } from '../../setupTest';
 
-// normally mocked for unit tests but required for rendering/snapshots
-jest.unmock('react');
-
-jest.mock('./hooks', () => ({
-  useInitializeExamsPage: jest.fn(),
-  useExamAttemptsData: jest.fn(),
-  useExamsData: jest.fn(),
-  useFilteredExamsData: jest.fn(),
-  useAllowancesData: jest.fn(),
-  useFetchExamAttempts: jest.fn(),
-  useDeleteExamAttempt: jest.fn(),
-  useModifyExamAttempt: jest.fn(),
-  useButtonStateFromRequestStatus: jest.fn(),
-  useCreateAllowance: jest.fn(),
-}));
-
-jest.mock('../../data/redux/hooks', () => ({
-  useRequestError: jest.fn(),
-  useClearRequest: jest.fn(),
-}));
+initializeTestStore(initialStoreState);
+initializeMockApp();
 
 describe('ExamsPage', () => {
-  beforeAll(() => {
-    hooks.useExamAttemptsData.mockReturnValue(testUtils.defaultAttemptsData);
-    hooks.useAllowancesData.mockReturnValue({ allowancesList: [] });
-    hooks.useFilteredExamsData.mockReturnValue({ proctoredExams: {}, timedExams: {} });
-  });
   describe('snapshots', () => {
     test('exams and attempts loaded', () => {
-      // temporary, this won't fire on useEffect once we have an exam selection handler
-      hooks.useFetchExamAttempts.mockReturnValue(jest.fn());
-      hooks.useButtonStateFromRequestStatus.mockReturnValue(jest.fn());
-      hooks.useExamsData.mockReturnValue(testUtils.defaultExamsData);
       expect(render(<ExamsPage courseId="test_course" />)).toMatchSnapshot();
     });
   });
   describe('tab navigation', () => {
+    let user;
     beforeEach(() => {
+      user = userEvent.setup();
       render(<ExamsPage courseId="test_course" />);
     });
     it('should render attempt list by default', () => {
@@ -50,12 +27,12 @@ describe('ExamsPage', () => {
     it('should not render review dashboard by default', () => {
       expect(screen.queryByTestId('review_dash')).not.toBeInTheDocument();
     });
-    test('switch tabs to review dashboard', () => {
-      screen.getByText('Review Dashboard').click();
+    test('switch tabs to review dashboard', async () => {
+      await user.click(screen.getByText('Review Dashboard'));
       expect(screen.getByTestId('review_dash')).toBeInTheDocument();
     });
-    test('switch tabs to allowances', () => {
-      screen.getByText('Allowances').click();
+    test('switch tabs to allowances', async () => {
+      await user.click(screen.getByText('Allowances'));
       expect(screen.getByTestId('allowances')).toBeInTheDocument();
     });
   });

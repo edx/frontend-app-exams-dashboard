@@ -1,21 +1,17 @@
-import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { initializeMockApp } from '@edx/frontend-platform/testing';
+import { screen, waitFor } from '@testing-library/react';
 
 import * as constants from 'data/constants';
 import ReviewExamAttemptModal from './ReviewExamAttemptModal';
-import * as testUtils from '../../../testUtils';
+import { initialStoreState } from '../../../testUtils';
+import { initializeTestStore, render } from '../../../setupTest';
+import { modifyExamAttempt } from '../data/api';
 
-import * as hooks from '../hooks';
-
-jest.mock('../hooks', () => ({
-  useModifyExamAttempt: jest.fn(),
-  useButtonStateFromRequestStatus: jest.fn(),
-  useExamsData: jest.fn(),
+jest.mock('../data/api', () => ({
+  ...jest.requireActual('../data/api'),
+  modifyExamAttempt: jest.fn().mockImplementation((attemptId, action) => Promise.resolve({ attemptId, action })),
 }));
-
-const mockMakeNetworkRequest = jest.fn();
-
-// normally mocked for unit tests but required for rendering/snapshots
-jest.unmock('react');
 
 const reviewModal = (status = constants.ExamAttemptStatus.second_review_required) => (
   <ReviewExamAttemptModal
@@ -28,55 +24,93 @@ const reviewModal = (status = constants.ExamAttemptStatus.second_review_required
   />
 );
 
+initializeTestStore(initialStoreState);
+initializeMockApp();
+
 describe('ReviewExamAttemptModal', () => {
+  let user;
+
   beforeEach(() => {
-    jest.restoreAllMocks();
-    hooks.useModifyExamAttempt.mockReturnValue(mockMakeNetworkRequest);
-    hooks.useButtonStateFromRequestStatus.mockReturnValue(mockMakeNetworkRequest);
-    hooks.useExamsData.mockReturnValue(testUtils.defaultExamsData);
+    user = userEvent.setup();
   });
   it('Test that the ReviewExamAttemptModal matches snapshot', () => {
     expect(render(reviewModal())).toMatchSnapshot();
   });
-  it('Modal appears upon clicking button', () => {
+  it('Modal appears upon clicking button', async () => {
     render(reviewModal());
-    screen.getByText('Review Required').click();
+    await user.click(screen.getByText('Review Required'));
+
     expect(screen.getByText('Update review status')).toBeInTheDocument();
   });
-  it('Clicking the Cancel button closes the modal', () => {
+  it('Clicking the Cancel button closes the modal', async () => {
     render(reviewModal());
-    screen.getByText('Review Required').click();
-    screen.getByText('Cancel').click();
+    await user.click(screen.getByText('Review Required'));
+    await user.click(screen.getByText('Cancel'));
+
     // Using queryByText here allows the function to throw
     expect(screen.queryByText('Update review status')).not.toBeInTheDocument();
   });
   it('Clicking the Verify button displays the correct label based on the request state', async () => {
-    hooks.useButtonStateFromRequestStatus.mockReturnValue(() => 'pending'); // for testing button label state
+    // The pending state is a transient state between the inactive and completed request states, so in order
+    // to simulate this pending state, we mock out the modifyExamAttempt API call to return a promise that we can
+    // resolve later. This allows us to test the pending state of the button.
+    let resolveModifyExamAttempt;
+    const mockApiCall = new Promise((resolve) => {
+      resolveModifyExamAttempt = resolve;
+    });
+    modifyExamAttempt.mockReturnValueOnce(mockApiCall);
+
     render(reviewModal());
-    screen.getByText('Review Required').click();
-    expect(screen.queryByText('Verifying...')).toBeInTheDocument(); // The button should be in the pending state
+    await user.click(screen.getByText('Review Required'));
+    await user.click(screen.getByText('Verify'));
+
+    await waitFor(() => {
+      expect(screen.queryByText('Verifying...')).toBeInTheDocument(); // The button should be in the pending state
+    });
+
+    resolveModifyExamAttempt();
+
+    await waitFor(() => {
+      expect(screen.queryByText('Verifying...')).not.toBeInTheDocument(); // The button should not be in the pending state
+    });
   });
   it('Clicking the Verify button calls the modify exam attempt hook', async () => {
-    const mockModifyExamAttempt = jest.fn();
-    jest.spyOn(hooks, 'useModifyExamAttempt').mockImplementation(() => mockModifyExamAttempt);
     render(reviewModal());
-    screen.getByText('Review Required').click();
-    screen.getByText('Verify').click();
-    expect(mockModifyExamAttempt).toHaveBeenCalledWith(0, constants.ExamAttemptActions.verify);
+    await user.click(screen.getByText('Review Required'));
+    await user.click(screen.getByText('Verify'));
+
+    expect(modifyExamAttempt).toHaveBeenCalledWith(0, constants.ExamAttemptActions.verify);
   });
-  it('Clicking the Reject button displays the correct label based on the request state', () => {
+  it('Clicking the Reject button displays the correct label based on the request state', async () => {
+    // The pending state is a transient state between the inactive and completed request states, so in order
+    // to simulate this pending state, we mock out the modifyExamAttempt API call to return a promise that we can
+    // resolve later. This allows us to test the pending state of the button.
+    let resolveModifyExamAttempt;
+    const mockApiCall = new Promise((resolve) => {
+      resolveModifyExamAttempt = resolve;
+    });
+    modifyExamAttempt.mockReturnValueOnce(mockApiCall);
+
     render(reviewModal());
-    hooks.useButtonStateFromRequestStatus.mockReturnValue(() => 'pending'); // for testing button label state
-    screen.getByText('Review Required').click();
-    expect(screen.queryByText('Rejecting...')).toBeInTheDocument(); // The button should be in the pending state
+    await user.click(screen.getByText('Review Required'));
+    await user.click(screen.getByText('Reject'));
+
+    await waitFor(() => {
+      expect(screen.queryByText('Rejecting...')).toBeInTheDocument(); // The button should be in the pending state
+    });
+
+    resolveModifyExamAttempt();
+
+    await waitFor(() => {
+      expect(screen.queryByText('Rejecting...')).not.toBeInTheDocument(); // The button should not be in the pending state
+    });
   });
-  it('Clicking the Reject button calls the modify exam attempt hook', () => {
-    const mockModifyExamAttempt = jest.fn();
-    jest.spyOn(hooks, 'useModifyExamAttempt').mockImplementation(() => mockModifyExamAttempt);
+  it('Clicking the Reject button calls the modify exam attempt hook', async () => {
     render(reviewModal());
-    screen.getByText('Review Required').click();
-    screen.getByText('Reject').click();
-    expect(mockModifyExamAttempt).toHaveBeenCalledWith(0, constants.ExamAttemptActions.reject);
+    await user.click(screen.getByText('Review Required'));
+    await user.click(screen.getByText('Reject'));
+
+    expect(modifyExamAttempt).toHaveBeenCalledWith(0, constants.ExamAttemptActions.reject);
   });
   it('Does not show the modal if the attempt is not reviewable', () => {
     render(
@@ -93,19 +127,19 @@ describe('ReviewExamAttemptModal', () => {
     expect(screen.queryByText('Manage Review')).not.toBeInTheDocument();
   });
   describe('Shows the correct text based on the attempt status', () => {
-    test('review required', () => {
+    test('review required', async () => {
       render(reviewModal());
-      screen.getByText('Review Required').click();
+      await user.click(screen.getByText('Review Required'));
       expect(screen.getByText(/attempt requires manual review/i)).toBeInTheDocument();
     });
-    test('existing review', () => {
+    test('existing review', async () => {
       render(reviewModal(constants.ExamAttemptStatus.verified));
-      screen.getByText('Manage Review').click();
+      await user.click(screen.getByText('Manage Review'));
       expect(screen.getByText(/attempt has a verified review/i)).toBeInTheDocument();
     });
-    test('error status', () => {
+    test('error status', async () => {
       render(reviewModal(constants.ExamAttemptStatus.error));
-      screen.getByText('Review Required').click();
+      await user.click(screen.getByText('Review Required'));
       expect(screen.getByText(/attempt has been terminated due to an error/i)).toBeInTheDocument();
     });
   });

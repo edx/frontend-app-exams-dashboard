@@ -6,57 +6,65 @@ exports[`ExamSelection component matches snapshot 1`] = `
   "baseElement": <body>
     <div>
       <div
-        data-testid="exam_selection"
+        data-testid="redux-provider"
       >
         <div
-          class="pgn__menu-select"
+          data-testid="browser-router"
         >
-          <button
-            aria-expanded="false"
-            aria-haspopup="true"
-            class="btn btn-outline-primary"
-            type="button"
-          >
-            Select an exam
-            <span
-              class="pgn__icon btn-icon-after"
-            >
-              <svg
-                aria-hidden="true"
-                fill="none"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41Z"
-                  fill="currentColor"
-                />
-              </svg>
-            </span>
-          </button>
           <div
-            class="pgn__menu-select-popup"
+            data-testid="exam_selection"
           >
             <div
-              style="position: absolute; left: 0px; top: 0px; z-index: 2000;"
+              class="pgn__menu-select"
             >
+              <button
+                aria-expanded="false"
+                aria-haspopup="true"
+                class="btn btn-outline-primary"
+                type="button"
+              >
+                Select an exam
+                <span
+                  class="pgn__icon btn-icon-after"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </button>
               <div
-                data-focus-guard="true"
-                style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
-                tabindex="-1"
-              />
-              <div
-                data-focus-lock-disabled="disabled"
-              />
-              <div
-                data-focus-guard="true"
-                style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
-                tabindex="-1"
-              />
+                class="pgn__menu-select-popup"
+              >
+                <div
+                  style="position: absolute; left: 0px; top: 0px; z-index: 2000;"
+                >
+                  <div
+                    data-focus-guard="true"
+                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+                    tabindex="-1"
+                  />
+                  <div
+                    data-focus-lock-disabled="disabled"
+                  />
+                  <div
+                    data-focus-guard="true"
+                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+                    tabindex="-1"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -65,57 +73,65 @@ exports[`ExamSelection component matches snapshot 1`] = `
   </body>,
   "container": <div>
     <div
-      data-testid="exam_selection"
+      data-testid="redux-provider"
     >
       <div
-        class="pgn__menu-select"
+        data-testid="browser-router"
       >
-        <button
-          aria-expanded="false"
-          aria-haspopup="true"
-          class="btn btn-outline-primary"
-          type="button"
-        >
-          Select an exam
-          <span
-            class="pgn__icon btn-icon-after"
-          >
-            <svg
-              aria-hidden="true"
-              fill="none"
-              focusable="false"
-              height="24"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41Z"
-                fill="currentColor"
-              />
-            </svg>
-          </span>
-        </button>
         <div
-          class="pgn__menu-select-popup"
+          data-testid="exam_selection"
         >
           <div
-            style="position: absolute; left: 0px; top: 0px; z-index: 2000;"
+            class="pgn__menu-select"
           >
+            <button
+              aria-expanded="false"
+              aria-haspopup="true"
+              class="btn btn-outline-primary"
+              type="button"
+            >
+              Select an exam
+              <span
+                class="pgn__icon btn-icon-after"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </button>
             <div
-              data-focus-guard="true"
-              style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
-              tabindex="-1"
-            />
-            <div
-              data-focus-lock-disabled="disabled"
-            />
-            <div
-              data-focus-guard="true"
-              style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
-              tabindex="-1"
-            />
+              class="pgn__menu-select-popup"
+            >
+              <div
+                style="position: absolute; left: 0px; top: 0px; z-index: 2000;"
+              >
+                <div
+                  data-focus-guard="true"
+                  style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+                  tabindex="-1"
+                />
+                <div
+                  data-focus-lock-disabled="disabled"
+                />
+                <div
+                  data-focus-guard="true"
+                  style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+                  tabindex="-1"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

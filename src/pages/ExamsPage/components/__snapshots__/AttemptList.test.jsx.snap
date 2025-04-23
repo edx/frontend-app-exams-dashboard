@@ -6,522 +6,530 @@ exports[`AttemptList Test that the AttemptList matches snapshot 1`] = `
   "baseElement": <body>
     <div>
       <div
-        data-testid="attempt_list"
+        data-testid="redux-provider"
       >
         <div
-          class="pgn__data-table-layout-wrapper"
+          data-testid="browser-router"
         >
           <div
-            class="pgn__data-table-layout-main"
+            data-testid="attempt_list"
           >
             <div
-              class="pgn__data-table-wrapper"
+              class="pgn__data-table-layout-wrapper"
             >
               <div
-                class="pgn__data-table-status-bar"
-                data-testid="table-control-bar"
+                class="pgn__data-table-layout-main"
               >
                 <div
-                  class="pgn__data-table-actions"
+                  class="pgn__data-table-wrapper"
                 >
                   <div
-                    class="pgn__data-table-actions-left"
+                    class="pgn__data-table-status-bar"
+                    data-testid="table-control-bar"
                   >
                     <div
-                      class="pgn__data-table-filters"
+                      class="pgn__data-table-actions"
                     >
                       <div
-                        class="pgn__data-table-filters-breakout-filter"
+                        class="pgn__data-table-actions-left"
                       >
                         <div
-                          class="pgn__form-group"
+                          class="pgn__data-table-filters"
                         >
-                          <label
-                            class="pgn__form-label sr-only"
-                            for="text-filter-label-header_username-1"
-                          >
-                            Search username
-                          </label>
                           <div
-                            class="pgn__form-control-decorator-group"
+                            class="pgn__data-table-filters-breakout-filter"
                           >
-                            <input
-                              class="form-control"
-                              id="text-filter-label-header_username-1"
-                              placeholder="Search username"
-                              type="text"
-                              value=""
-                            />
+                            <div
+                              class="pgn__form-group"
+                            >
+                              <label
+                                class="pgn__form-label sr-only"
+                                for="text-filter-label-header_username-1"
+                              >
+                                Search username
+                              </label>
+                              <div
+                                class="pgn__form-control-decorator-group"
+                              >
+                                <input
+                                  class="form-control"
+                                  id="text-filter-label-header_username-1"
+                                  placeholder="Search username"
+                                  type="text"
+                                  value=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="dropdown"
+                          >
+                            <button
+                              aria-expanded="false"
+                              aria-haspopup="true"
+                              class="dropdown-toggle btn btn-outline-primary"
+                              id="table-filters-dropdown"
+                              type="button"
+                            >
+                              Filters
+                            </button>
                           </div>
                         </div>
                       </div>
                       <div
-                        class="dropdown"
+                        class="pgn__data-table-actions-right"
                       >
-                        <button
-                          aria-expanded="false"
-                          aria-haspopup="true"
-                          class="dropdown-toggle btn btn-outline-primary"
-                          id="table-filters-dropdown"
-                          type="button"
-                        >
-                          Filters
-                        </button>
+                        <div />
                       </div>
                     </div>
-                  </div>
-                  <div
-                    class="pgn__data-table-actions-right"
-                  >
-                    <div />
-                  </div>
-                </div>
-                <div
-                  class="pgn__data-table-status"
-                >
-                  <div
-                    class="pgn__data-table-status-left"
-                  >
                     <div
-                      class="pgn__smart-status"
-                      data-testid="row-status"
+                      class="pgn__data-table-status"
                     >
-                      FormattedMessage
+                      <div
+                        class="pgn__data-table-status-left"
+                      >
+                        <div
+                          class="pgn__smart-status"
+                          data-testid="row-status"
+                        >
+                          Showing 1 - 2 of 2.
+                        </div>
+                      </div>
+                      <div
+                        class="pgn__data-table-toggle"
+                      />
                     </div>
                   </div>
                   <div
-                    class="pgn__data-table-toggle"
-                  />
-                </div>
-              </div>
-              <div
-                class="pgn__data-table-container"
-                data-testid="data-table-container"
-              >
-                <table
-                  class="pgn__data-table is-striped"
-                  role="table"
-                >
-                  <thead>
-                    <tr
-                      role="row"
-                    >
-                      <th
-                        colspan="1"
-                        role="columnheader"
-                        style="cursor: pointer;"
-                        title="Toggle SortBy"
-                      >
-                        <span
-                          class="d-flex align-items-center"
-                        >
-                          <span>
-                            Username
-                          </span>
-                          <span
-                            class="pgn__icon"
-                            data-testid="arrow-drop-up-down"
-                            style="opacity: 0.5;"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              fill="none"
-                              focusable="false"
-                              height="24"
-                              role="img"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
-                                fill="currentColor"
-                              />
-                            </svg>
-                          </span>
-                        </span>
-                      </th>
-                      <th
-                        colspan="1"
-                        role="columnheader"
-                        style="cursor: pointer;"
-                        title="Toggle SortBy"
-                      >
-                        <span
-                          class="d-flex align-items-center"
-                        >
-                          <span>
-                            Time Limit
-                          </span>
-                          <span
-                            class="pgn__icon"
-                            data-testid="arrow-drop-up-down"
-                            style="opacity: 0.5;"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              fill="none"
-                              focusable="false"
-                              height="24"
-                              role="img"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
-                                fill="currentColor"
-                              />
-                            </svg>
-                          </span>
-                        </span>
-                      </th>
-                      <th
-                        colspan="1"
-                        role="columnheader"
-                      >
-                        <span
-                          class="d-flex align-items-center"
-                        >
-                          <span>
-                            Exam Type
-                          </span>
-                        </span>
-                      </th>
-                      <th
-                        colspan="1"
-                        role="columnheader"
-                      >
-                        <span
-                          class="d-flex align-items-center"
-                        >
-                          <span>
-                            Started At
-                          </span>
-                        </span>
-                      </th>
-                      <th
-                        colspan="1"
-                        role="columnheader"
-                      >
-                        <span
-                          class="d-flex align-items-center"
-                        >
-                          <span>
-                            Completed At
-                          </span>
-                        </span>
-                      </th>
-                      <th
-                        colspan="1"
-                        role="columnheader"
-                        style="cursor: pointer;"
-                        title="Toggle SortBy"
-                      >
-                        <span
-                          class="d-flex align-items-center"
-                        >
-                          <span>
-                            Status
-                          </span>
-                          <span
-                            class="pgn__icon"
-                            data-testid="arrow-drop-up-down"
-                            style="opacity: 0.5;"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              fill="none"
-                              focusable="false"
-                              height="24"
-                              role="img"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
-                                fill="currentColor"
-                              />
-                            </svg>
-                          </span>
-                        </span>
-                      </th>
-                      <th
-                        colspan="1"
-                        role="columnheader"
-                      >
-                        <span
-                          class="d-flex align-items-center"
-                        >
-                          <span>
-                            Action
-                          </span>
-                        </span>
-                      </th>
-                      <th
-                        colspan="1"
-                        role="columnheader"
-                      >
-                        <span
-                          class="d-flex align-items-center"
-                        >
-                          <span>
-                            Review
-                          </span>
-                        </span>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody
-                    role="rowgroup"
+                    class="pgn__data-table-container"
+                    data-testid="data-table-container"
                   >
-                    <tr
-                      class="pgn__data-table-row"
-                      role="row"
+                    <table
+                      class="pgn__data-table is-striped"
+                      role="table"
                     >
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        username1
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        60
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        Timed
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        4/5/2023
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        4/5/2023
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        Second Review Required
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        <div
-                          class="d-flex"
+                      <thead>
+                        <tr
+                          role="row"
                         >
-                          <button
-                            class="btn btn-link btn-sm"
-                            type="button"
+                          <th
+                            colspan="1"
+                            role="columnheader"
+                            style="cursor: pointer;"
+                            title="Toggle SortBy"
                           >
-                            Reset
-                          </button>
-                        </div>
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        <div
-                          class="d-flex text-danger"
-                        >
-                          <button
-                            class="text-danger btn btn-link btn-sm"
-                            type="button"
-                          >
-                            <svg
-                              fill="none"
-                              height="24"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              xmlns="http://www.w3.org/2000/svg"
+                            <span
+                              class="d-flex align-items-center"
                             >
-                              <path
-                                d="M1 21h22L12 2 1 21Zm12-3h-2v-2h2v2Zm0-4h-2v-4h2v4Z"
-                                fill="currentColor"
-                              />
-                            </svg>
-                            Review Required
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr
-                      class="pgn__data-table-row"
-                      role="row"
-                    >
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        username2
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        60
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        Proctored
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        4/5/2023
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        4/5/2023
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        Submitted
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
-                      >
-                        <div
-                          class="d-flex"
-                        >
-                          <button
-                            class="btn btn-link btn-sm"
-                            type="button"
+                              <span>
+                                Username
+                              </span>
+                              <span
+                                class="pgn__icon"
+                                data-testid="arrow-drop-up-down"
+                                style="opacity: 0.5;"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  fill="none"
+                                  focusable="false"
+                                  height="24"
+                                  role="img"
+                                  viewBox="0 0 24 24"
+                                  width="24"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </span>
+                            </span>
+                          </th>
+                          <th
+                            colspan="1"
+                            role="columnheader"
+                            style="cursor: pointer;"
+                            title="Toggle SortBy"
                           >
-                            Reset
-                          </button>
-                        </div>
-                      </td>
-                      <td
-                        class="pgn__data-table-cell-wrap"
-                        role="cell"
+                            <span
+                              class="d-flex align-items-center"
+                            >
+                              <span>
+                                Time Limit
+                              </span>
+                              <span
+                                class="pgn__icon"
+                                data-testid="arrow-drop-up-down"
+                                style="opacity: 0.5;"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  fill="none"
+                                  focusable="false"
+                                  height="24"
+                                  role="img"
+                                  viewBox="0 0 24 24"
+                                  width="24"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </span>
+                            </span>
+                          </th>
+                          <th
+                            colspan="1"
+                            role="columnheader"
+                          >
+                            <span
+                              class="d-flex align-items-center"
+                            >
+                              <span>
+                                Exam Type
+                              </span>
+                            </span>
+                          </th>
+                          <th
+                            colspan="1"
+                            role="columnheader"
+                          >
+                            <span
+                              class="d-flex align-items-center"
+                            >
+                              <span>
+                                Started At
+                              </span>
+                            </span>
+                          </th>
+                          <th
+                            colspan="1"
+                            role="columnheader"
+                          >
+                            <span
+                              class="d-flex align-items-center"
+                            >
+                              <span>
+                                Completed At
+                              </span>
+                            </span>
+                          </th>
+                          <th
+                            colspan="1"
+                            role="columnheader"
+                            style="cursor: pointer;"
+                            title="Toggle SortBy"
+                          >
+                            <span
+                              class="d-flex align-items-center"
+                            >
+                              <span>
+                                Status
+                              </span>
+                              <span
+                                class="pgn__icon"
+                                data-testid="arrow-drop-up-down"
+                                style="opacity: 0.5;"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  fill="none"
+                                  focusable="false"
+                                  height="24"
+                                  role="img"
+                                  viewBox="0 0 24 24"
+                                  width="24"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </span>
+                            </span>
+                          </th>
+                          <th
+                            colspan="1"
+                            role="columnheader"
+                          >
+                            <span
+                              class="d-flex align-items-center"
+                            >
+                              <span>
+                                Action
+                              </span>
+                            </span>
+                          </th>
+                          <th
+                            colspan="1"
+                            role="columnheader"
+                          >
+                            <span
+                              class="d-flex align-items-center"
+                            >
+                              <span>
+                                Review
+                              </span>
+                            </span>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        role="rowgroup"
                       >
-                        <div
-                          class="d-flex text-danger"
-                        />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div
-                class="pgn__data-table-footer"
-                data-testid="table-footer"
-              >
-                <div
-                  data-testid="row-status"
-                >
-                  FormattedMessage
-                </div>
-                <nav
-                  aria-label="table pagination"
-                  class="pagination-minimal"
-                >
-                  <div
-                    aria-atomic="true"
-                    aria-live="polite"
-                    aria-relevant="text"
-                    class="sr-only"
-                  >
-                    Page 1, Current Page, of 1
+                        <tr
+                          class="pgn__data-table-row"
+                          role="row"
+                        >
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            username1
+                          </td>
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            60
+                          </td>
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            Timed
+                          </td>
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            4/5/2023, 7:27 PM
+                          </td>
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            4/5/2023, 7:27 PM
+                          </td>
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            Second Review Required
+                          </td>
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            <div
+                              class="d-flex"
+                            >
+                              <button
+                                class="btn btn-link btn-sm"
+                                type="button"
+                              >
+                                Reset
+                              </button>
+                            </div>
+                          </td>
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            <div
+                              class="d-flex text-danger"
+                            >
+                              <button
+                                class="text-danger btn btn-link btn-sm"
+                                type="button"
+                              >
+                                <svg
+                                  fill="none"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                  width="24"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M1 21h22L12 2 1 21Zm12-3h-2v-2h2v2Zm0-4h-2v-4h2v4Z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                                Review Required
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr
+                          class="pgn__data-table-row"
+                          role="row"
+                        >
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            username2
+                          </td>
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            60
+                          </td>
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            Proctored
+                          </td>
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            4/5/2023, 7:37 PM
+                          </td>
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            4/5/2023, 7:37 PM
+                          </td>
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            Submitted
+                          </td>
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            <div
+                              class="d-flex"
+                            >
+                              <button
+                                class="btn btn-link btn-sm"
+                                type="button"
+                              >
+                                Reset
+                              </button>
+                            </div>
+                          </td>
+                          <td
+                            class="pgn__data-table-cell-wrap"
+                            role="cell"
+                          >
+                            <div
+                              class="d-flex text-danger"
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                  <ul
-                    class="pagination"
+                  <div
+                    class="pgn__data-table-footer"
+                    data-testid="table-footer"
                   >
-                    <li
-                      class="page-item disabled"
+                    <div
+                      data-testid="row-status"
                     >
-                      <button
-                        aria-label="Previous"
-                        class="btn-icon btn-icon-primary btn-icon-md previous page-link"
-                        disabled=""
-                        tabindex="-1"
-                        type="button"
-                      >
-                        <span
-                          class="btn-icon__icon-container"
-                        >
-                          <span
-                            class="pgn__icon btn-icon__icon"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              fill="none"
-                              focusable="false"
-                              height="24"
-                              role="img"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M17.51 3.87 15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13Z"
-                                fill="currentColor"
-                              />
-                            </svg>
-                          </span>
-                        </span>
-                      </button>
-                    </li>
-                    <li
-                      class="page-item disabled"
+                      Showing 1 - 2 of 2.
+                    </div>
+                    <nav
+                      aria-label="table pagination"
+                      class="pagination-minimal"
                     >
-                      <button
-                        aria-label="Next"
-                        class="btn-icon btn-icon-primary btn-icon-md previous page-link"
-                        disabled=""
-                        tabindex="-1"
-                        type="button"
+                      <div
+                        aria-atomic="true"
+                        aria-live="polite"
+                        aria-relevant="text"
+                        class="sr-only"
                       >
-                        <span
-                          class="btn-icon__icon-container"
+                        Page 1, Current Page, of 1
+                      </div>
+                      <ul
+                        class="pagination"
+                      >
+                        <li
+                          class="page-item disabled"
                         >
-                          <span
-                            class="pgn__icon btn-icon__icon"
+                          <button
+                            aria-label="Previous"
+                            class="btn-icon btn-icon-primary btn-icon-md previous page-link"
+                            disabled=""
+                            tabindex="-1"
+                            type="button"
                           >
-                            <svg
-                              aria-hidden="true"
-                              fill="none"
-                              focusable="false"
-                              height="24"
-                              role="img"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              xmlns="http://www.w3.org/2000/svg"
+                            <span
+                              class="btn-icon__icon-container"
                             >
-                              <path
-                                d="m6.49 20.13 1.77 1.77 9.9-9.9-9.9-9.9-1.77 1.77L14.62 12l-8.13 8.13Z"
-                                fill="currentColor"
-                              />
-                            </svg>
-                          </span>
-                        </span>
-                      </button>
-                    </li>
-                  </ul>
-                </nav>
+                              <span
+                                class="pgn__icon btn-icon__icon"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  fill="none"
+                                  focusable="false"
+                                  height="24"
+                                  role="img"
+                                  viewBox="0 0 24 24"
+                                  width="24"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M17.51 3.87 15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13Z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </span>
+                            </span>
+                          </button>
+                        </li>
+                        <li
+                          class="page-item disabled"
+                        >
+                          <button
+                            aria-label="Next"
+                            class="btn-icon btn-icon-primary btn-icon-md previous page-link"
+                            disabled=""
+                            tabindex="-1"
+                            type="button"
+                          >
+                            <span
+                              class="btn-icon__icon-container"
+                            >
+                              <span
+                                class="pgn__icon btn-icon__icon"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  fill="none"
+                                  focusable="false"
+                                  height="24"
+                                  role="img"
+                                  viewBox="0 0 24 24"
+                                  width="24"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="m6.49 20.13 1.77 1.77 9.9-9.9-9.9-9.9-1.77 1.77L14.62 12l-8.13 8.13Z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </span>
+                            </span>
+                          </button>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -531,522 +539,530 @@ exports[`AttemptList Test that the AttemptList matches snapshot 1`] = `
   </body>,
   "container": <div>
     <div
-      data-testid="attempt_list"
+      data-testid="redux-provider"
     >
       <div
-        class="pgn__data-table-layout-wrapper"
+        data-testid="browser-router"
       >
         <div
-          class="pgn__data-table-layout-main"
+          data-testid="attempt_list"
         >
           <div
-            class="pgn__data-table-wrapper"
+            class="pgn__data-table-layout-wrapper"
           >
             <div
-              class="pgn__data-table-status-bar"
-              data-testid="table-control-bar"
+              class="pgn__data-table-layout-main"
             >
               <div
-                class="pgn__data-table-actions"
+                class="pgn__data-table-wrapper"
               >
                 <div
-                  class="pgn__data-table-actions-left"
+                  class="pgn__data-table-status-bar"
+                  data-testid="table-control-bar"
                 >
                   <div
-                    class="pgn__data-table-filters"
+                    class="pgn__data-table-actions"
                   >
                     <div
-                      class="pgn__data-table-filters-breakout-filter"
+                      class="pgn__data-table-actions-left"
                     >
                       <div
-                        class="pgn__form-group"
+                        class="pgn__data-table-filters"
                       >
-                        <label
-                          class="pgn__form-label sr-only"
-                          for="text-filter-label-header_username-1"
-                        >
-                          Search username
-                        </label>
                         <div
-                          class="pgn__form-control-decorator-group"
+                          class="pgn__data-table-filters-breakout-filter"
                         >
-                          <input
-                            class="form-control"
-                            id="text-filter-label-header_username-1"
-                            placeholder="Search username"
-                            type="text"
-                            value=""
-                          />
+                          <div
+                            class="pgn__form-group"
+                          >
+                            <label
+                              class="pgn__form-label sr-only"
+                              for="text-filter-label-header_username-1"
+                            >
+                              Search username
+                            </label>
+                            <div
+                              class="pgn__form-control-decorator-group"
+                            >
+                              <input
+                                class="form-control"
+                                id="text-filter-label-header_username-1"
+                                placeholder="Search username"
+                                type="text"
+                                value=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="dropdown"
+                        >
+                          <button
+                            aria-expanded="false"
+                            aria-haspopup="true"
+                            class="dropdown-toggle btn btn-outline-primary"
+                            id="table-filters-dropdown"
+                            type="button"
+                          >
+                            Filters
+                          </button>
                         </div>
                       </div>
                     </div>
                     <div
-                      class="dropdown"
+                      class="pgn__data-table-actions-right"
                     >
-                      <button
-                        aria-expanded="false"
-                        aria-haspopup="true"
-                        class="dropdown-toggle btn btn-outline-primary"
-                        id="table-filters-dropdown"
-                        type="button"
-                      >
-                        Filters
-                      </button>
+                      <div />
                     </div>
                   </div>
-                </div>
-                <div
-                  class="pgn__data-table-actions-right"
-                >
-                  <div />
-                </div>
-              </div>
-              <div
-                class="pgn__data-table-status"
-              >
-                <div
-                  class="pgn__data-table-status-left"
-                >
                   <div
-                    class="pgn__smart-status"
-                    data-testid="row-status"
+                    class="pgn__data-table-status"
                   >
-                    FormattedMessage
+                    <div
+                      class="pgn__data-table-status-left"
+                    >
+                      <div
+                        class="pgn__smart-status"
+                        data-testid="row-status"
+                      >
+                        Showing 1 - 2 of 2.
+                      </div>
+                    </div>
+                    <div
+                      class="pgn__data-table-toggle"
+                    />
                   </div>
                 </div>
                 <div
-                  class="pgn__data-table-toggle"
-                />
-              </div>
-            </div>
-            <div
-              class="pgn__data-table-container"
-              data-testid="data-table-container"
-            >
-              <table
-                class="pgn__data-table is-striped"
-                role="table"
-              >
-                <thead>
-                  <tr
-                    role="row"
-                  >
-                    <th
-                      colspan="1"
-                      role="columnheader"
-                      style="cursor: pointer;"
-                      title="Toggle SortBy"
-                    >
-                      <span
-                        class="d-flex align-items-center"
-                      >
-                        <span>
-                          Username
-                        </span>
-                        <span
-                          class="pgn__icon"
-                          data-testid="arrow-drop-up-down"
-                          style="opacity: 0.5;"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            fill="none"
-                            focusable="false"
-                            height="24"
-                            role="img"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </span>
-                      </span>
-                    </th>
-                    <th
-                      colspan="1"
-                      role="columnheader"
-                      style="cursor: pointer;"
-                      title="Toggle SortBy"
-                    >
-                      <span
-                        class="d-flex align-items-center"
-                      >
-                        <span>
-                          Time Limit
-                        </span>
-                        <span
-                          class="pgn__icon"
-                          data-testid="arrow-drop-up-down"
-                          style="opacity: 0.5;"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            fill="none"
-                            focusable="false"
-                            height="24"
-                            role="img"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </span>
-                      </span>
-                    </th>
-                    <th
-                      colspan="1"
-                      role="columnheader"
-                    >
-                      <span
-                        class="d-flex align-items-center"
-                      >
-                        <span>
-                          Exam Type
-                        </span>
-                      </span>
-                    </th>
-                    <th
-                      colspan="1"
-                      role="columnheader"
-                    >
-                      <span
-                        class="d-flex align-items-center"
-                      >
-                        <span>
-                          Started At
-                        </span>
-                      </span>
-                    </th>
-                    <th
-                      colspan="1"
-                      role="columnheader"
-                    >
-                      <span
-                        class="d-flex align-items-center"
-                      >
-                        <span>
-                          Completed At
-                        </span>
-                      </span>
-                    </th>
-                    <th
-                      colspan="1"
-                      role="columnheader"
-                      style="cursor: pointer;"
-                      title="Toggle SortBy"
-                    >
-                      <span
-                        class="d-flex align-items-center"
-                      >
-                        <span>
-                          Status
-                        </span>
-                        <span
-                          class="pgn__icon"
-                          data-testid="arrow-drop-up-down"
-                          style="opacity: 0.5;"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            fill="none"
-                            focusable="false"
-                            height="24"
-                            role="img"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </span>
-                      </span>
-                    </th>
-                    <th
-                      colspan="1"
-                      role="columnheader"
-                    >
-                      <span
-                        class="d-flex align-items-center"
-                      >
-                        <span>
-                          Action
-                        </span>
-                      </span>
-                    </th>
-                    <th
-                      colspan="1"
-                      role="columnheader"
-                    >
-                      <span
-                        class="d-flex align-items-center"
-                      >
-                        <span>
-                          Review
-                        </span>
-                      </span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody
-                  role="rowgroup"
+                  class="pgn__data-table-container"
+                  data-testid="data-table-container"
                 >
-                  <tr
-                    class="pgn__data-table-row"
-                    role="row"
+                  <table
+                    class="pgn__data-table is-striped"
+                    role="table"
                   >
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      username1
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      60
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      Timed
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      4/5/2023
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      4/5/2023
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      Second Review Required
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      <div
-                        class="d-flex"
+                    <thead>
+                      <tr
+                        role="row"
                       >
-                        <button
-                          class="btn btn-link btn-sm"
-                          type="button"
+                        <th
+                          colspan="1"
+                          role="columnheader"
+                          style="cursor: pointer;"
+                          title="Toggle SortBy"
                         >
-                          Reset
-                        </button>
-                      </div>
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      <div
-                        class="d-flex text-danger"
-                      >
-                        <button
-                          class="text-danger btn btn-link btn-sm"
-                          type="button"
-                        >
-                          <svg
-                            fill="none"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            xmlns="http://www.w3.org/2000/svg"
+                          <span
+                            class="d-flex align-items-center"
                           >
-                            <path
-                              d="M1 21h22L12 2 1 21Zm12-3h-2v-2h2v2Zm0-4h-2v-4h2v4Z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                          Review Required
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr
-                    class="pgn__data-table-row"
-                    role="row"
-                  >
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      username2
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      60
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      Proctored
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      4/5/2023
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      4/5/2023
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      Submitted
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
-                    >
-                      <div
-                        class="d-flex"
-                      >
-                        <button
-                          class="btn btn-link btn-sm"
-                          type="button"
+                            <span>
+                              Username
+                            </span>
+                            <span
+                              class="pgn__icon"
+                              data-testid="arrow-drop-up-down"
+                              style="opacity: 0.5;"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                fill="none"
+                                focusable="false"
+                                height="24"
+                                role="img"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </span>
+                          </span>
+                        </th>
+                        <th
+                          colspan="1"
+                          role="columnheader"
+                          style="cursor: pointer;"
+                          title="Toggle SortBy"
                         >
-                          Reset
-                        </button>
-                      </div>
-                    </td>
-                    <td
-                      class="pgn__data-table-cell-wrap"
-                      role="cell"
+                          <span
+                            class="d-flex align-items-center"
+                          >
+                            <span>
+                              Time Limit
+                            </span>
+                            <span
+                              class="pgn__icon"
+                              data-testid="arrow-drop-up-down"
+                              style="opacity: 0.5;"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                fill="none"
+                                focusable="false"
+                                height="24"
+                                role="img"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </span>
+                          </span>
+                        </th>
+                        <th
+                          colspan="1"
+                          role="columnheader"
+                        >
+                          <span
+                            class="d-flex align-items-center"
+                          >
+                            <span>
+                              Exam Type
+                            </span>
+                          </span>
+                        </th>
+                        <th
+                          colspan="1"
+                          role="columnheader"
+                        >
+                          <span
+                            class="d-flex align-items-center"
+                          >
+                            <span>
+                              Started At
+                            </span>
+                          </span>
+                        </th>
+                        <th
+                          colspan="1"
+                          role="columnheader"
+                        >
+                          <span
+                            class="d-flex align-items-center"
+                          >
+                            <span>
+                              Completed At
+                            </span>
+                          </span>
+                        </th>
+                        <th
+                          colspan="1"
+                          role="columnheader"
+                          style="cursor: pointer;"
+                          title="Toggle SortBy"
+                        >
+                          <span
+                            class="d-flex align-items-center"
+                          >
+                            <span>
+                              Status
+                            </span>
+                            <span
+                              class="pgn__icon"
+                              data-testid="arrow-drop-up-down"
+                              style="opacity: 0.5;"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                fill="none"
+                                focusable="false"
+                                height="24"
+                                role="img"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="m7 10 5-5 5 5H7ZM7 14l5 5 5-5H7Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </span>
+                          </span>
+                        </th>
+                        <th
+                          colspan="1"
+                          role="columnheader"
+                        >
+                          <span
+                            class="d-flex align-items-center"
+                          >
+                            <span>
+                              Action
+                            </span>
+                          </span>
+                        </th>
+                        <th
+                          colspan="1"
+                          role="columnheader"
+                        >
+                          <span
+                            class="d-flex align-items-center"
+                          >
+                            <span>
+                              Review
+                            </span>
+                          </span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      role="rowgroup"
                     >
-                      <div
-                        class="d-flex text-danger"
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div
-              class="pgn__data-table-footer"
-              data-testid="table-footer"
-            >
-              <div
-                data-testid="row-status"
-              >
-                FormattedMessage
-              </div>
-              <nav
-                aria-label="table pagination"
-                class="pagination-minimal"
-              >
-                <div
-                  aria-atomic="true"
-                  aria-live="polite"
-                  aria-relevant="text"
-                  class="sr-only"
-                >
-                  Page 1, Current Page, of 1
+                      <tr
+                        class="pgn__data-table-row"
+                        role="row"
+                      >
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          username1
+                        </td>
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          60
+                        </td>
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          Timed
+                        </td>
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          4/5/2023, 7:27 PM
+                        </td>
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          4/5/2023, 7:27 PM
+                        </td>
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          Second Review Required
+                        </td>
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          <div
+                            class="d-flex"
+                          >
+                            <button
+                              class="btn btn-link btn-sm"
+                              type="button"
+                            >
+                              Reset
+                            </button>
+                          </div>
+                        </td>
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          <div
+                            class="d-flex text-danger"
+                          >
+                            <button
+                              class="text-danger btn btn-link btn-sm"
+                              type="button"
+                            >
+                              <svg
+                                fill="none"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M1 21h22L12 2 1 21Zm12-3h-2v-2h2v2Zm0-4h-2v-4h2v4Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                              Review Required
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr
+                        class="pgn__data-table-row"
+                        role="row"
+                      >
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          username2
+                        </td>
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          60
+                        </td>
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          Proctored
+                        </td>
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          4/5/2023, 7:37 PM
+                        </td>
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          4/5/2023, 7:37 PM
+                        </td>
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          Submitted
+                        </td>
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          <div
+                            class="d-flex"
+                          >
+                            <button
+                              class="btn btn-link btn-sm"
+                              type="button"
+                            >
+                              Reset
+                            </button>
+                          </div>
+                        </td>
+                        <td
+                          class="pgn__data-table-cell-wrap"
+                          role="cell"
+                        >
+                          <div
+                            class="d-flex text-danger"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-                <ul
-                  class="pagination"
+                <div
+                  class="pgn__data-table-footer"
+                  data-testid="table-footer"
                 >
-                  <li
-                    class="page-item disabled"
+                  <div
+                    data-testid="row-status"
                   >
-                    <button
-                      aria-label="Previous"
-                      class="btn-icon btn-icon-primary btn-icon-md previous page-link"
-                      disabled=""
-                      tabindex="-1"
-                      type="button"
-                    >
-                      <span
-                        class="btn-icon__icon-container"
-                      >
-                        <span
-                          class="pgn__icon btn-icon__icon"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            fill="none"
-                            focusable="false"
-                            height="24"
-                            role="img"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M17.51 3.87 15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13Z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </span>
-                      </span>
-                    </button>
-                  </li>
-                  <li
-                    class="page-item disabled"
+                    Showing 1 - 2 of 2.
+                  </div>
+                  <nav
+                    aria-label="table pagination"
+                    class="pagination-minimal"
                   >
-                    <button
-                      aria-label="Next"
-                      class="btn-icon btn-icon-primary btn-icon-md previous page-link"
-                      disabled=""
-                      tabindex="-1"
-                      type="button"
+                    <div
+                      aria-atomic="true"
+                      aria-live="polite"
+                      aria-relevant="text"
+                      class="sr-only"
                     >
-                      <span
-                        class="btn-icon__icon-container"
+                      Page 1, Current Page, of 1
+                    </div>
+                    <ul
+                      class="pagination"
+                    >
+                      <li
+                        class="page-item disabled"
                       >
-                        <span
-                          class="pgn__icon btn-icon__icon"
+                        <button
+                          aria-label="Previous"
+                          class="btn-icon btn-icon-primary btn-icon-md previous page-link"
+                          disabled=""
+                          tabindex="-1"
+                          type="button"
                         >
-                          <svg
-                            aria-hidden="true"
-                            fill="none"
-                            focusable="false"
-                            height="24"
-                            role="img"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            xmlns="http://www.w3.org/2000/svg"
+                          <span
+                            class="btn-icon__icon-container"
                           >
-                            <path
-                              d="m6.49 20.13 1.77 1.77 9.9-9.9-9.9-9.9-1.77 1.77L14.62 12l-8.13 8.13Z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </span>
-                      </span>
-                    </button>
-                  </li>
-                </ul>
-              </nav>
+                            <span
+                              class="pgn__icon btn-icon__icon"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                fill="none"
+                                focusable="false"
+                                height="24"
+                                role="img"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M17.51 3.87 15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </span>
+                          </span>
+                        </button>
+                      </li>
+                      <li
+                        class="page-item disabled"
+                      >
+                        <button
+                          aria-label="Next"
+                          class="btn-icon btn-icon-primary btn-icon-md previous page-link"
+                          disabled=""
+                          tabindex="-1"
+                          type="button"
+                        >
+                          <span
+                            class="btn-icon__icon-container"
+                          >
+                            <span
+                              class="pgn__icon btn-icon__icon"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                fill="none"
+                                focusable="false"
+                                height="24"
+                                role="img"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="m6.49 20.13 1.77 1.77 9.9-9.9-9.9-9.9-1.77 1.77L14.62 12l-8.13 8.13Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </span>
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
             </div>
           </div>
         </div>

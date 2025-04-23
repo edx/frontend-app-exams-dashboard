@@ -1,24 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-
-/**
- * Mocked formatMessage provided by react-intl
- */
-export const formatMessage = (msg, values) => {
-  let message = msg.defaultMessage;
-  if (values === undefined) {
-    return message;
-  }
-  // check if value is not a primitive type.
-  if (Object.values(values).filter(value => Object(value) === value).length) {
-    // eslint-disable-next-line react/jsx-filename-extension
-    return <format-message-function {...{ message: msg, values }} />;
-  }
-  Object.keys(values).forEach((key) => {
-    // eslint-disable-next-line
-    message = message.replaceAll(`{${key}}`, values[key]);
-  });
-  return message;
-};
+import { RequestStates, RequestKeys } from './data/constants';
 
 export const defaultExamsData = {
   examsList: [
@@ -28,10 +9,27 @@ export const defaultExamsData = {
       examType: 'proctored',
       timeLimitMins: 60,
     },
+    {
+      id: 2,
+      name: 'exam2',
+      examType: 'proctored',
+      timeLimitMins: 60,
+    },
+    {
+      id: 3,
+      name: 'exam3',
+      examType: 'proctored',
+      timeLimitMins: 60,
+    },
+    {
+      id: 4,
+      name: 'exam4',
+      examType: 'timed',
+      timeLimitMins: 60,
+    },
   ],
   currentExamIndex: 0,
   currentExam: { id: 1, name: 'exam1' },
-  setCurrentExam: jest.fn(),
 };
 
 export const defaultAttemptsData = {
@@ -58,4 +56,21 @@ export const defaultAttemptsData = {
       status: 'submitted',
       attempt_id: 1,
     }],
+};
+
+export const initialStoreState = {
+  exams: {
+    courseId: 'test_course',
+    ...defaultExamsData,
+    ...defaultAttemptsData,
+    allowancesList: [],
+  },
+  requests: {
+    [RequestKeys.fetchCourseExams]: { status: RequestStates.inactive },
+    [RequestKeys.fetchExamAttempts]: { status: RequestStates.inactive },
+    [RequestKeys.deleteExamAttempt]: { status: RequestStates.inactive },
+    [RequestKeys.modifyExamAttempt]: { status: RequestStates.inactive },
+    [RequestKeys.createAllowance]: { status: RequestStates.inactive },
+    [undefined]: { status: RequestStates.inactive },
+  },
 };

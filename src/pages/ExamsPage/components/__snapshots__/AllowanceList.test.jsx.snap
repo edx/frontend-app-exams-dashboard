@@ -6,362 +6,370 @@ exports[`AllowanceList when listing allowances should match snapshot 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="allowances-header"
-      >
-        <h3
-          data-testid="allowances"
-        >
-          Allowances
-        </h3>
-        <button
-          class="header-allowance-button btn btn-outline-primary btn-sm"
-          type="button"
-        >
-          <span
-            class="pgn__icon pgn__icon__sm btn-icon-before"
-          >
-            <svg
-              aria-hidden="true"
-              fill="none"
-              focusable="false"
-              height="24"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"
-                fill="currentColor"
-              />
-            </svg>
-          </span>
-          Add allowance
-        </button>
-      </div>
-      <div
-        class="allowances-body"
+        data-testid="redux-provider"
       >
         <div
-          class="allowances-list"
+          data-testid="browser-router"
         >
           <div
-            class="pgn_collapsible collapsible-card-lg is-open"
+            class="allowances-header"
+          >
+            <h3
+              data-testid="allowances"
+            >
+              Allowances
+            </h3>
+            <button
+              class="header-allowance-button btn btn-outline-primary btn-sm"
+              type="button"
+            >
+              <span
+                class="pgn__icon pgn__icon__sm btn-icon-before"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+              Add allowance
+            </button>
+          </div>
+          <div
+            class="allowances-body"
           >
             <div
-              aria-expanded="true"
-              class="collapsible-trigger"
-              role="button"
-              tabindex="0"
-            >
-              <p>
-                <strong>
-                  edx
-                </strong>
-                 (
-                <a
-                  href="mailto: edx@example.com"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  edx@example.com
-                </a>
-                )
-              </p>
-              <span
-                class="collapsible-icon"
-              >
-                <span
-                  class="pgn__icon"
-                >
-                  <svg
-                    aria-hidden="true"
-                    fill="none"
-                    focusable="false"
-                    height="24"
-                    role="img"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="m12 8-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </span>
-              </span>
-            </div>
-            <div
-              class="pgn-transition-replace-group position-relative"
+              class="allowances-list"
             >
               <div
-                style="padding: .1px 0px;"
+                class="pgn_collapsible collapsible-card-lg is-open"
               >
                 <div
-                  class="collapsible-body"
+                  aria-expanded="true"
+                  class="collapsible-trigger"
+                  role="button"
+                  tabindex="0"
                 >
-                  <span />
+                  <p>
+                    <strong>
+                      edx
+                    </strong>
+                     (
+                    <a
+                      href="mailto: edx@example.com"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      edx@example.com
+                    </a>
+                    )
+                  </p>
+                  <span
+                    class="collapsible-icon"
+                  >
+                    <span
+                      class="pgn__icon"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        fill="none"
+                        focusable="false"
+                        height="24"
+                        role="img"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m12 8-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                  </span>
+                </div>
+                <div
+                  class="pgn-transition-replace-group position-relative"
+                >
                   <div
-                    class="pgn__data-table-layout-wrapper"
+                    style="padding: .1px 0px;"
                   >
                     <div
-                      class="pgn__data-table-layout-main"
+                      class="collapsible-body"
                     >
+                      <span />
                       <div
-                        class="pgn__data-table-wrapper"
+                        class="pgn__data-table-layout-wrapper"
                       >
                         <div
-                          class="pgn__data-table-container"
-                          data-testid="data-table-container"
+                          class="pgn__data-table-layout-main"
                         >
-                          <table
-                            class="pgn__data-table is-striped"
-                            role="table"
+                          <div
+                            class="pgn__data-table-wrapper"
                           >
-                            <thead>
-                              <tr
-                                role="row"
-                              >
-                                <th
-                                  colspan="1"
-                                  role="columnheader"
-                                >
-                                  <span
-                                    class="d-flex align-items-center"
-                                  >
-                                    <span>
-                                      Exam name
-                                    </span>
-                                  </span>
-                                </th>
-                                <th
-                                  colspan="1"
-                                  role="columnheader"
-                                >
-                                  <span
-                                    class="d-flex align-items-center"
-                                  >
-                                    <span>
-                                      Allowance type
-                                    </span>
-                                  </span>
-                                </th>
-                                <th
-                                  colspan="1"
-                                  role="columnheader"
-                                >
-                                  <span
-                                    class="d-flex align-items-center"
-                                  >
-                                    <span>
-                                      Allowance value
-                                    </span>
-                                  </span>
-                                </th>
-                                <th
-                                  colspan="1"
-                                  role="columnheader"
-                                >
-                                  <span
-                                    class="d-flex align-items-center"
-                                  >
-                                    <span>
-                                       
-                                    </span>
-                                  </span>
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody
-                              role="rowgroup"
+                            <div
+                              class="pgn__data-table-container"
+                              data-testid="data-table-container"
                             >
-                              <tr
-                                class="pgn__data-table-row"
-                                role="row"
+                              <table
+                                class="pgn__data-table is-striped"
+                                role="table"
                               >
-                                <td
-                                  class="pgn__data-table-cell-wrap"
-                                  role="cell"
-                                >
-                                  edX Exams
-                                </td>
-                                <td
-                                  class="pgn__data-table-cell-wrap"
-                                  role="cell"
-                                >
-                                  Additional time (minutes)
-                                </td>
-                                <td
-                                  class="pgn__data-table-cell-wrap"
-                                  role="cell"
-                                >
-                                  45
-                                </td>
-                                <td
-                                  class="pgn__data-table-cell-wrap"
-                                  role="cell"
-                                >
-                                  <div
-                                    class="allowances-actions text-right"
+                                <thead>
+                                  <tr
+                                    role="row"
                                   >
-                                    <button
-                                      aria-label="Edit allowance"
-                                      class="btn-icon btn-icon-primary btn-icon-sm mr-2"
-                                      data-testid="edit-allowance-icon"
-                                      type="button"
+                                    <th
+                                      colspan="1"
+                                      role="columnheader"
                                     >
                                       <span
-                                        class="btn-icon__icon-container"
+                                        class="d-flex align-items-center"
                                       >
-                                        <span
-                                          class="pgn__icon btn-icon__icon"
-                                        >
-                                          <svg
-                                            aria-hidden="true"
-                                            fill="none"
-                                            focusable="false"
-                                            height="24"
-                                            role="img"
-                                            viewBox="0 0 24 24"
-                                            width="24"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                          >
-                                            <path
-                                              d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
-                                              fill="currentColor"
-                                            />
-                                          </svg>
+                                        <span>
+                                          Exam name
                                         </span>
                                       </span>
-                                    </button>
-                                    <button
-                                      aria-label="Delete allowance"
-                                      class="btn-icon btn-icon-secondary btn-icon-sm"
-                                      data-testid="delete-allowance-icon"
-                                      type="button"
+                                    </th>
+                                    <th
+                                      colspan="1"
+                                      role="columnheader"
                                     >
                                       <span
-                                        class="btn-icon__icon-container"
+                                        class="d-flex align-items-center"
                                       >
-                                        <span
-                                          class="pgn__icon btn-icon__icon"
-                                        >
-                                          <svg
-                                            aria-hidden="true"
-                                            fill="none"
-                                            focusable="false"
-                                            height="24"
-                                            role="img"
-                                            viewBox="0 0 24 24"
-                                            width="24"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                          >
-                                            <path
-                                              d="M6 21h12V7H6v14zM8 9h8v10H8V9zm7.5-5-1-1h-5l-1 1H5v2h14V4h-3.5z"
-                                              fill="currentColor"
-                                            />
-                                          </svg>
+                                        <span>
+                                          Allowance type
                                         </span>
                                       </span>
-                                    </button>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr
-                                class="pgn__data-table-row"
-                                role="row"
-                              >
-                                <td
-                                  class="pgn__data-table-cell-wrap"
-                                  role="cell"
+                                    </th>
+                                    <th
+                                      colspan="1"
+                                      role="columnheader"
+                                    >
+                                      <span
+                                        class="d-flex align-items-center"
+                                      >
+                                        <span>
+                                          Allowance value
+                                        </span>
+                                      </span>
+                                    </th>
+                                    <th
+                                      colspan="1"
+                                      role="columnheader"
+                                    >
+                                      <span
+                                        class="d-flex align-items-center"
+                                      >
+                                        <span>
+                                           
+                                        </span>
+                                      </span>
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody
+                                  role="rowgroup"
                                 >
-                                  More Ways to Connect
-                                </td>
-                                <td
-                                  class="pgn__data-table-cell-wrap"
-                                  role="cell"
-                                >
-                                  Additional time (minutes)
-                                </td>
-                                <td
-                                  class="pgn__data-table-cell-wrap"
-                                  role="cell"
-                                >
-                                  15
-                                </td>
-                                <td
-                                  class="pgn__data-table-cell-wrap"
-                                  role="cell"
-                                >
-                                  <div
-                                    class="allowances-actions text-right"
+                                  <tr
+                                    class="pgn__data-table-row"
+                                    role="row"
                                   >
-                                    <button
-                                      aria-label="Edit allowance"
-                                      class="btn-icon btn-icon-primary btn-icon-sm mr-2"
-                                      data-testid="edit-allowance-icon"
-                                      type="button"
+                                    <td
+                                      class="pgn__data-table-cell-wrap"
+                                      role="cell"
                                     >
-                                      <span
-                                        class="btn-icon__icon-container"
-                                      >
-                                        <span
-                                          class="pgn__icon btn-icon__icon"
-                                        >
-                                          <svg
-                                            aria-hidden="true"
-                                            fill="none"
-                                            focusable="false"
-                                            height="24"
-                                            role="img"
-                                            viewBox="0 0 24 24"
-                                            width="24"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                          >
-                                            <path
-                                              d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
-                                              fill="currentColor"
-                                            />
-                                          </svg>
-                                        </span>
-                                      </span>
-                                    </button>
-                                    <button
-                                      aria-label="Delete allowance"
-                                      class="btn-icon btn-icon-secondary btn-icon-sm"
-                                      data-testid="delete-allowance-icon"
-                                      type="button"
+                                      edX Exams
+                                    </td>
+                                    <td
+                                      class="pgn__data-table-cell-wrap"
+                                      role="cell"
                                     >
-                                      <span
-                                        class="btn-icon__icon-container"
+                                      Additional time (minutes)
+                                    </td>
+                                    <td
+                                      class="pgn__data-table-cell-wrap"
+                                      role="cell"
+                                    >
+                                      45
+                                    </td>
+                                    <td
+                                      class="pgn__data-table-cell-wrap"
+                                      role="cell"
+                                    >
+                                      <div
+                                        class="allowances-actions text-right"
                                       >
-                                        <span
-                                          class="pgn__icon btn-icon__icon"
+                                        <button
+                                          aria-label="Edit allowance"
+                                          class="btn-icon btn-icon-primary btn-icon-sm mr-2"
+                                          data-testid="edit-allowance-icon"
+                                          type="button"
                                         >
-                                          <svg
-                                            aria-hidden="true"
-                                            fill="none"
-                                            focusable="false"
-                                            height="24"
-                                            role="img"
-                                            viewBox="0 0 24 24"
-                                            width="24"
-                                            xmlns="http://www.w3.org/2000/svg"
+                                          <span
+                                            class="btn-icon__icon-container"
                                           >
-                                            <path
-                                              d="M6 21h12V7H6v14zM8 9h8v10H8V9zm7.5-5-1-1h-5l-1 1H5v2h14V4h-3.5z"
-                                              fill="currentColor"
-                                            />
-                                          </svg>
-                                        </span>
-                                      </span>
-                                    </button>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                                            <span
+                                              class="pgn__icon btn-icon__icon"
+                                            >
+                                              <svg
+                                                aria-hidden="true"
+                                                fill="none"
+                                                focusable="false"
+                                                height="24"
+                                                role="img"
+                                                viewBox="0 0 24 24"
+                                                width="24"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                              >
+                                                <path
+                                                  d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                                                  fill="currentColor"
+                                                />
+                                              </svg>
+                                            </span>
+                                          </span>
+                                        </button>
+                                        <button
+                                          aria-label="Delete allowance"
+                                          class="btn-icon btn-icon-secondary btn-icon-sm"
+                                          data-testid="delete-allowance-icon"
+                                          type="button"
+                                        >
+                                          <span
+                                            class="btn-icon__icon-container"
+                                          >
+                                            <span
+                                              class="pgn__icon btn-icon__icon"
+                                            >
+                                              <svg
+                                                aria-hidden="true"
+                                                fill="none"
+                                                focusable="false"
+                                                height="24"
+                                                role="img"
+                                                viewBox="0 0 24 24"
+                                                width="24"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                              >
+                                                <path
+                                                  d="M6 21h12V7H6v14zM8 9h8v10H8V9zm7.5-5-1-1h-5l-1 1H5v2h14V4h-3.5z"
+                                                  fill="currentColor"
+                                                />
+                                              </svg>
+                                            </span>
+                                          </span>
+                                        </button>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr
+                                    class="pgn__data-table-row"
+                                    role="row"
+                                  >
+                                    <td
+                                      class="pgn__data-table-cell-wrap"
+                                      role="cell"
+                                    >
+                                      More Ways to Connect
+                                    </td>
+                                    <td
+                                      class="pgn__data-table-cell-wrap"
+                                      role="cell"
+                                    >
+                                      Additional time (minutes)
+                                    </td>
+                                    <td
+                                      class="pgn__data-table-cell-wrap"
+                                      role="cell"
+                                    >
+                                      15
+                                    </td>
+                                    <td
+                                      class="pgn__data-table-cell-wrap"
+                                      role="cell"
+                                    >
+                                      <div
+                                        class="allowances-actions text-right"
+                                      >
+                                        <button
+                                          aria-label="Edit allowance"
+                                          class="btn-icon btn-icon-primary btn-icon-sm mr-2"
+                                          data-testid="edit-allowance-icon"
+                                          type="button"
+                                        >
+                                          <span
+                                            class="btn-icon__icon-container"
+                                          >
+                                            <span
+                                              class="pgn__icon btn-icon__icon"
+                                            >
+                                              <svg
+                                                aria-hidden="true"
+                                                fill="none"
+                                                focusable="false"
+                                                height="24"
+                                                role="img"
+                                                viewBox="0 0 24 24"
+                                                width="24"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                              >
+                                                <path
+                                                  d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                                                  fill="currentColor"
+                                                />
+                                              </svg>
+                                            </span>
+                                          </span>
+                                        </button>
+                                        <button
+                                          aria-label="Delete allowance"
+                                          class="btn-icon btn-icon-secondary btn-icon-sm"
+                                          data-testid="delete-allowance-icon"
+                                          type="button"
+                                        >
+                                          <span
+                                            class="btn-icon__icon-container"
+                                          >
+                                            <span
+                                              class="pgn__icon btn-icon__icon"
+                                            >
+                                              <svg
+                                                aria-hidden="true"
+                                                fill="none"
+                                                focusable="false"
+                                                height="24"
+                                                role="img"
+                                                viewBox="0 0 24 24"
+                                                width="24"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                              >
+                                                <path
+                                                  d="M6 21h12V7H6v14zM8 9h8v10H8V9zm7.5-5-1-1h-5l-1 1H5v2h14V4h-3.5z"
+                                                  fill="currentColor"
+                                                />
+                                              </svg>
+                                            </span>
+                                          </span>
+                                        </button>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -376,362 +384,370 @@ exports[`AllowanceList when listing allowances should match snapshot 1`] = `
   </body>,
   "container": <div>
     <div
-      class="allowances-header"
-    >
-      <h3
-        data-testid="allowances"
-      >
-        Allowances
-      </h3>
-      <button
-        class="header-allowance-button btn btn-outline-primary btn-sm"
-        type="button"
-      >
-        <span
-          class="pgn__icon pgn__icon__sm btn-icon-before"
-        >
-          <svg
-            aria-hidden="true"
-            fill="none"
-            focusable="false"
-            height="24"
-            role="img"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"
-              fill="currentColor"
-            />
-          </svg>
-        </span>
-        Add allowance
-      </button>
-    </div>
-    <div
-      class="allowances-body"
+      data-testid="redux-provider"
     >
       <div
-        class="allowances-list"
+        data-testid="browser-router"
       >
         <div
-          class="pgn_collapsible collapsible-card-lg is-open"
+          class="allowances-header"
+        >
+          <h3
+            data-testid="allowances"
+          >
+            Allowances
+          </h3>
+          <button
+            class="header-allowance-button btn btn-outline-primary btn-sm"
+            type="button"
+          >
+            <span
+              class="pgn__icon pgn__icon__sm btn-icon-before"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            Add allowance
+          </button>
+        </div>
+        <div
+          class="allowances-body"
         >
           <div
-            aria-expanded="true"
-            class="collapsible-trigger"
-            role="button"
-            tabindex="0"
-          >
-            <p>
-              <strong>
-                edx
-              </strong>
-               (
-              <a
-                href="mailto: edx@example.com"
-                rel="noreferrer"
-                target="_blank"
-              >
-                edx@example.com
-              </a>
-              )
-            </p>
-            <span
-              class="collapsible-icon"
-            >
-              <span
-                class="pgn__icon"
-              >
-                <svg
-                  aria-hidden="true"
-                  fill="none"
-                  focusable="false"
-                  height="24"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="m12 8-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span>
-            </span>
-          </div>
-          <div
-            class="pgn-transition-replace-group position-relative"
+            class="allowances-list"
           >
             <div
-              style="padding: .1px 0px;"
+              class="pgn_collapsible collapsible-card-lg is-open"
             >
               <div
-                class="collapsible-body"
+                aria-expanded="true"
+                class="collapsible-trigger"
+                role="button"
+                tabindex="0"
               >
-                <span />
+                <p>
+                  <strong>
+                    edx
+                  </strong>
+                   (
+                  <a
+                    href="mailto: edx@example.com"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    edx@example.com
+                  </a>
+                  )
+                </p>
+                <span
+                  class="collapsible-icon"
+                >
+                  <span
+                    class="pgn__icon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      fill="none"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m12 8-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </div>
+              <div
+                class="pgn-transition-replace-group position-relative"
+              >
                 <div
-                  class="pgn__data-table-layout-wrapper"
+                  style="padding: .1px 0px;"
                 >
                   <div
-                    class="pgn__data-table-layout-main"
+                    class="collapsible-body"
                   >
+                    <span />
                     <div
-                      class="pgn__data-table-wrapper"
+                      class="pgn__data-table-layout-wrapper"
                     >
                       <div
-                        class="pgn__data-table-container"
-                        data-testid="data-table-container"
+                        class="pgn__data-table-layout-main"
                       >
-                        <table
-                          class="pgn__data-table is-striped"
-                          role="table"
+                        <div
+                          class="pgn__data-table-wrapper"
                         >
-                          <thead>
-                            <tr
-                              role="row"
-                            >
-                              <th
-                                colspan="1"
-                                role="columnheader"
-                              >
-                                <span
-                                  class="d-flex align-items-center"
-                                >
-                                  <span>
-                                    Exam name
-                                  </span>
-                                </span>
-                              </th>
-                              <th
-                                colspan="1"
-                                role="columnheader"
-                              >
-                                <span
-                                  class="d-flex align-items-center"
-                                >
-                                  <span>
-                                    Allowance type
-                                  </span>
-                                </span>
-                              </th>
-                              <th
-                                colspan="1"
-                                role="columnheader"
-                              >
-                                <span
-                                  class="d-flex align-items-center"
-                                >
-                                  <span>
-                                    Allowance value
-                                  </span>
-                                </span>
-                              </th>
-                              <th
-                                colspan="1"
-                                role="columnheader"
-                              >
-                                <span
-                                  class="d-flex align-items-center"
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </span>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody
-                            role="rowgroup"
+                          <div
+                            class="pgn__data-table-container"
+                            data-testid="data-table-container"
                           >
-                            <tr
-                              class="pgn__data-table-row"
-                              role="row"
+                            <table
+                              class="pgn__data-table is-striped"
+                              role="table"
                             >
-                              <td
-                                class="pgn__data-table-cell-wrap"
-                                role="cell"
-                              >
-                                edX Exams
-                              </td>
-                              <td
-                                class="pgn__data-table-cell-wrap"
-                                role="cell"
-                              >
-                                Additional time (minutes)
-                              </td>
-                              <td
-                                class="pgn__data-table-cell-wrap"
-                                role="cell"
-                              >
-                                45
-                              </td>
-                              <td
-                                class="pgn__data-table-cell-wrap"
-                                role="cell"
-                              >
-                                <div
-                                  class="allowances-actions text-right"
+                              <thead>
+                                <tr
+                                  role="row"
                                 >
-                                  <button
-                                    aria-label="Edit allowance"
-                                    class="btn-icon btn-icon-primary btn-icon-sm mr-2"
-                                    data-testid="edit-allowance-icon"
-                                    type="button"
+                                  <th
+                                    colspan="1"
+                                    role="columnheader"
                                   >
                                     <span
-                                      class="btn-icon__icon-container"
+                                      class="d-flex align-items-center"
                                     >
-                                      <span
-                                        class="pgn__icon btn-icon__icon"
-                                      >
-                                        <svg
-                                          aria-hidden="true"
-                                          fill="none"
-                                          focusable="false"
-                                          height="24"
-                                          role="img"
-                                          viewBox="0 0 24 24"
-                                          width="24"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                          <path
-                                            d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
-                                            fill="currentColor"
-                                          />
-                                        </svg>
+                                      <span>
+                                        Exam name
                                       </span>
                                     </span>
-                                  </button>
-                                  <button
-                                    aria-label="Delete allowance"
-                                    class="btn-icon btn-icon-secondary btn-icon-sm"
-                                    data-testid="delete-allowance-icon"
-                                    type="button"
+                                  </th>
+                                  <th
+                                    colspan="1"
+                                    role="columnheader"
                                   >
                                     <span
-                                      class="btn-icon__icon-container"
+                                      class="d-flex align-items-center"
                                     >
-                                      <span
-                                        class="pgn__icon btn-icon__icon"
-                                      >
-                                        <svg
-                                          aria-hidden="true"
-                                          fill="none"
-                                          focusable="false"
-                                          height="24"
-                                          role="img"
-                                          viewBox="0 0 24 24"
-                                          width="24"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                          <path
-                                            d="M6 21h12V7H6v14zM8 9h8v10H8V9zm7.5-5-1-1h-5l-1 1H5v2h14V4h-3.5z"
-                                            fill="currentColor"
-                                          />
-                                        </svg>
+                                      <span>
+                                        Allowance type
                                       </span>
                                     </span>
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr
-                              class="pgn__data-table-row"
-                              role="row"
-                            >
-                              <td
-                                class="pgn__data-table-cell-wrap"
-                                role="cell"
+                                  </th>
+                                  <th
+                                    colspan="1"
+                                    role="columnheader"
+                                  >
+                                    <span
+                                      class="d-flex align-items-center"
+                                    >
+                                      <span>
+                                        Allowance value
+                                      </span>
+                                    </span>
+                                  </th>
+                                  <th
+                                    colspan="1"
+                                    role="columnheader"
+                                  >
+                                    <span
+                                      class="d-flex align-items-center"
+                                    >
+                                      <span>
+                                         
+                                      </span>
+                                    </span>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody
+                                role="rowgroup"
                               >
-                                More Ways to Connect
-                              </td>
-                              <td
-                                class="pgn__data-table-cell-wrap"
-                                role="cell"
-                              >
-                                Additional time (minutes)
-                              </td>
-                              <td
-                                class="pgn__data-table-cell-wrap"
-                                role="cell"
-                              >
-                                15
-                              </td>
-                              <td
-                                class="pgn__data-table-cell-wrap"
-                                role="cell"
-                              >
-                                <div
-                                  class="allowances-actions text-right"
+                                <tr
+                                  class="pgn__data-table-row"
+                                  role="row"
                                 >
-                                  <button
-                                    aria-label="Edit allowance"
-                                    class="btn-icon btn-icon-primary btn-icon-sm mr-2"
-                                    data-testid="edit-allowance-icon"
-                                    type="button"
+                                  <td
+                                    class="pgn__data-table-cell-wrap"
+                                    role="cell"
                                   >
-                                    <span
-                                      class="btn-icon__icon-container"
-                                    >
-                                      <span
-                                        class="pgn__icon btn-icon__icon"
-                                      >
-                                        <svg
-                                          aria-hidden="true"
-                                          fill="none"
-                                          focusable="false"
-                                          height="24"
-                                          role="img"
-                                          viewBox="0 0 24 24"
-                                          width="24"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                          <path
-                                            d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
-                                            fill="currentColor"
-                                          />
-                                        </svg>
-                                      </span>
-                                    </span>
-                                  </button>
-                                  <button
-                                    aria-label="Delete allowance"
-                                    class="btn-icon btn-icon-secondary btn-icon-sm"
-                                    data-testid="delete-allowance-icon"
-                                    type="button"
+                                    edX Exams
+                                  </td>
+                                  <td
+                                    class="pgn__data-table-cell-wrap"
+                                    role="cell"
                                   >
-                                    <span
-                                      class="btn-icon__icon-container"
+                                    Additional time (minutes)
+                                  </td>
+                                  <td
+                                    class="pgn__data-table-cell-wrap"
+                                    role="cell"
+                                  >
+                                    45
+                                  </td>
+                                  <td
+                                    class="pgn__data-table-cell-wrap"
+                                    role="cell"
+                                  >
+                                    <div
+                                      class="allowances-actions text-right"
                                     >
-                                      <span
-                                        class="pgn__icon btn-icon__icon"
+                                      <button
+                                        aria-label="Edit allowance"
+                                        class="btn-icon btn-icon-primary btn-icon-sm mr-2"
+                                        data-testid="edit-allowance-icon"
+                                        type="button"
                                       >
-                                        <svg
-                                          aria-hidden="true"
-                                          fill="none"
-                                          focusable="false"
-                                          height="24"
-                                          role="img"
-                                          viewBox="0 0 24 24"
-                                          width="24"
-                                          xmlns="http://www.w3.org/2000/svg"
+                                        <span
+                                          class="btn-icon__icon-container"
                                         >
-                                          <path
-                                            d="M6 21h12V7H6v14zM8 9h8v10H8V9zm7.5-5-1-1h-5l-1 1H5v2h14V4h-3.5z"
-                                            fill="currentColor"
-                                          />
-                                        </svg>
-                                      </span>
-                                    </span>
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                                          <span
+                                            class="pgn__icon btn-icon__icon"
+                                          >
+                                            <svg
+                                              aria-hidden="true"
+                                              fill="none"
+                                              focusable="false"
+                                              height="24"
+                                              role="img"
+                                              viewBox="0 0 24 24"
+                                              width="24"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                              <path
+                                                d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                                                fill="currentColor"
+                                              />
+                                            </svg>
+                                          </span>
+                                        </span>
+                                      </button>
+                                      <button
+                                        aria-label="Delete allowance"
+                                        class="btn-icon btn-icon-secondary btn-icon-sm"
+                                        data-testid="delete-allowance-icon"
+                                        type="button"
+                                      >
+                                        <span
+                                          class="btn-icon__icon-container"
+                                        >
+                                          <span
+                                            class="pgn__icon btn-icon__icon"
+                                          >
+                                            <svg
+                                              aria-hidden="true"
+                                              fill="none"
+                                              focusable="false"
+                                              height="24"
+                                              role="img"
+                                              viewBox="0 0 24 24"
+                                              width="24"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                              <path
+                                                d="M6 21h12V7H6v14zM8 9h8v10H8V9zm7.5-5-1-1h-5l-1 1H5v2h14V4h-3.5z"
+                                                fill="currentColor"
+                                              />
+                                            </svg>
+                                          </span>
+                                        </span>
+                                      </button>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr
+                                  class="pgn__data-table-row"
+                                  role="row"
+                                >
+                                  <td
+                                    class="pgn__data-table-cell-wrap"
+                                    role="cell"
+                                  >
+                                    More Ways to Connect
+                                  </td>
+                                  <td
+                                    class="pgn__data-table-cell-wrap"
+                                    role="cell"
+                                  >
+                                    Additional time (minutes)
+                                  </td>
+                                  <td
+                                    class="pgn__data-table-cell-wrap"
+                                    role="cell"
+                                  >
+                                    15
+                                  </td>
+                                  <td
+                                    class="pgn__data-table-cell-wrap"
+                                    role="cell"
+                                  >
+                                    <div
+                                      class="allowances-actions text-right"
+                                    >
+                                      <button
+                                        aria-label="Edit allowance"
+                                        class="btn-icon btn-icon-primary btn-icon-sm mr-2"
+                                        data-testid="edit-allowance-icon"
+                                        type="button"
+                                      >
+                                        <span
+                                          class="btn-icon__icon-container"
+                                        >
+                                          <span
+                                            class="pgn__icon btn-icon__icon"
+                                          >
+                                            <svg
+                                              aria-hidden="true"
+                                              fill="none"
+                                              focusable="false"
+                                              height="24"
+                                              role="img"
+                                              viewBox="0 0 24 24"
+                                              width="24"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                              <path
+                                                d="m14.06 9.02.92.92L5.92 19H5v-.92l9.06-9.06ZM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29Zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z"
+                                                fill="currentColor"
+                                              />
+                                            </svg>
+                                          </span>
+                                        </span>
+                                      </button>
+                                      <button
+                                        aria-label="Delete allowance"
+                                        class="btn-icon btn-icon-secondary btn-icon-sm"
+                                        data-testid="delete-allowance-icon"
+                                        type="button"
+                                      >
+                                        <span
+                                          class="btn-icon__icon-container"
+                                        >
+                                          <span
+                                            class="pgn__icon btn-icon__icon"
+                                          >
+                                            <svg
+                                              aria-hidden="true"
+                                              fill="none"
+                                              focusable="false"
+                                              height="24"
+                                              role="img"
+                                              viewBox="0 0 24 24"
+                                              width="24"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                              <path
+                                                d="M6 21h12V7H6v14zM8 9h8v10H8V9zm7.5-5-1-1h-5l-1 1H5v2h14V4h-3.5z"
+                                                fill="currentColor"
+                                              />
+                                            </svg>
+                                          </span>
+                                        </span>
+                                      </button>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -808,57 +824,109 @@ exports[`AllowanceList when there are no allowances should match snapshot 1`] = 
     />
     <div>
       <div
-        class="allowances-header"
-      >
-        <h3
-          data-testid="allowances"
-        >
-          Allowances
-        </h3>
-        <button
-          class="header-allowance-button btn btn-outline-primary btn-sm"
-          type="button"
-        >
-          <span
-            class="pgn__icon pgn__icon__sm btn-icon-before"
-          >
-            <svg
-              aria-hidden="true"
-              fill="none"
-              focusable="false"
-              height="24"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"
-                fill="currentColor"
-              />
-            </svg>
-          </span>
-          Add allowance
-        </button>
-      </div>
-      <div
-        class="allowances-body"
+        data-testid="redux-provider"
       >
         <div
-          class="allowances-empty"
+          data-testid="browser-router"
         >
-          <h4>
-            No Allowances
-          </h4>
-          <p>
-            Need to grant an allowance? Get started here.
-          </p>
+          <div
+            class="allowances-header"
+          >
+            <h3
+              data-testid="allowances"
+            >
+              Allowances
+            </h3>
+            <button
+              class="header-allowance-button btn btn-outline-primary btn-sm"
+              type="button"
+            >
+              <span
+                class="pgn__icon pgn__icon__sm btn-icon-before"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+              Add allowance
+            </button>
+          </div>
+          <div
+            class="allowances-body"
+          >
+            <div
+              class="allowances-empty"
+            >
+              <h4>
+                No Allowances
+              </h4>
+              <p>
+                Need to grant an allowance? Get started here.
+              </p>
+              <button
+                class="btn btn-primary"
+                type="button"
+              >
+                <span
+                  class="pgn__icon btn-icon-before"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                Add allowance
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      data-testid="redux-provider"
+    >
+      <div
+        data-testid="browser-router"
+      >
+        <div
+          class="allowances-header"
+        >
+          <h3
+            data-testid="allowances"
+          >
+            Allowances
+          </h3>
           <button
-            class="btn btn-primary"
+            class="header-allowance-button btn btn-outline-primary btn-sm"
             type="button"
           >
             <span
-              class="pgn__icon btn-icon-before"
+              class="pgn__icon pgn__icon__sm btn-icon-before"
             >
               <svg
                 aria-hidden="true"
@@ -879,81 +947,45 @@ exports[`AllowanceList when there are no allowances should match snapshot 1`] = 
             Add allowance
           </button>
         </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="allowances-header"
-    >
-      <h3
-        data-testid="allowances"
-      >
-        Allowances
-      </h3>
-      <button
-        class="header-allowance-button btn btn-outline-primary btn-sm"
-        type="button"
-      >
-        <span
-          class="pgn__icon pgn__icon__sm btn-icon-before"
+        <div
+          class="allowances-body"
         >
-          <svg
-            aria-hidden="true"
-            fill="none"
-            focusable="false"
-            height="24"
-            role="img"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
+          <div
+            class="allowances-empty"
           >
-            <path
-              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"
-              fill="currentColor"
-            />
-          </svg>
-        </span>
-        Add allowance
-      </button>
-    </div>
-    <div
-      class="allowances-body"
-    >
-      <div
-        class="allowances-empty"
-      >
-        <h4>
-          No Allowances
-        </h4>
-        <p>
-          Need to grant an allowance? Get started here.
-        </p>
-        <button
-          class="btn btn-primary"
-          type="button"
-        >
-          <span
-            class="pgn__icon btn-icon-before"
-          >
-            <svg
-              aria-hidden="true"
-              fill="none"
-              focusable="false"
-              height="24"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
+            <h4>
+              No Allowances
+            </h4>
+            <p>
+              Need to grant an allowance? Get started here.
+            </p>
+            <button
+              class="btn btn-primary"
+              type="button"
             >
-              <path
-                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"
-                fill="currentColor"
-              />
-            </svg>
-          </span>
-          Add allowance
-        </button>
+              <span
+                class="pgn__icon btn-icon-before"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+              Add allowance
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>,

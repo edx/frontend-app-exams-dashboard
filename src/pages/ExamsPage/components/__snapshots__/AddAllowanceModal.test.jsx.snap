@@ -10,7 +10,15 @@ exports[`AddAllowanceModal should match snapshot 1`] = `
     <div
       aria-hidden="true"
       data-focus-on-hidden="true"
-    />
+    >
+      <div
+        data-testid="redux-provider"
+      >
+        <div
+          data-testid="browser-router"
+        />
+      </div>
+    </div>
     <div
       id="paragon-portal-root"
     >
@@ -86,44 +94,6 @@ exports[`AddAllowanceModal should match snapshot 1`] = `
               <div
                 class="pgn__modal-body-content"
               >
-                <div
-                  class="fade alert-content alert alert-danger show"
-                  role="alert"
-                >
-                  <span
-                    class="pgn__icon alert-icon"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      fill="none"
-                      focusable="false"
-                      height="24"
-                      role="img"
-                      viewBox="0 0 24 24"
-                      width="24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm1 15h-2v-6h2v6Zm0-8h-2V7h2v2Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </span>
-                  <div
-                    class="pgn__alert-message-wrapper"
-                  >
-                    <div
-                      class="alert-message-content"
-                    >
-                      <div
-                        class="alert-heading h4"
-                      >
-                        We couldn't apply your changes
-                      </div>
-                      <p />
-                    </div>
-                  </div>
-                </div>
                 <form
                   class=""
                   id="add-allowance-form"
@@ -141,7 +111,7 @@ exports[`AddAllowanceModal should match snapshot 1`] = `
                       class="pgn__form-control-decorator-group"
                     >
                       <input
-                        aria-describedby="form-field1-6"
+                        aria-describedby="form-field1-7"
                         class="form-control"
                         data-testid="users"
                         id="form-field1"
@@ -151,7 +121,7 @@ exports[`AddAllowanceModal should match snapshot 1`] = `
                     </div>
                     <div
                       class="pgn__form-control-description pgn__form-text pgn__form-text-default"
-                      id="form-field1-6"
+                      id="form-field1-7"
                     >
                       <div>
                         Enter usernames or emails separated by commas
@@ -194,12 +164,12 @@ exports[`AddAllowanceModal should match snapshot 1`] = `
                   >
                     <p
                       class="pgn__form-label"
-                      id="form-field2-8"
+                      id="form-field2-9"
                     >
                       Exams
                     </p>
                     <div
-                      aria-labelledby="form-field2-8"
+                      aria-labelledby="form-field2-9"
                       class="pgn__form-control-set"
                       id="form-field2"
                       role="group"
@@ -229,16 +199,36 @@ exports[`AddAllowanceModal should match snapshot 1`] = `
                       >
                         <input
                           class="pgn__form-checkbox-input"
-                          data-key="3"
+                          data-key="2"
                           id="form-field4"
                           name="exams"
                           type="checkbox"
-                          value="45"
+                          value="60"
                         />
                         <div>
                           <label
                             class="pgn__form-label"
                             for="form-field4"
+                          >
+                            exam2
+                          </label>
+                        </div>
+                      </div>
+                      <div
+                        class="pgn__form-checkbox"
+                      >
+                        <input
+                          class="pgn__form-checkbox-input"
+                          data-key="3"
+                          id="form-field5"
+                          name="exams"
+                          type="checkbox"
+                          value="60"
+                        />
+                        <div>
+                          <label
+                            class="pgn__form-label"
+                            for="form-field5"
                           >
                             exam3
                           </label>
@@ -318,7 +308,7 @@ exports[`AddAllowanceModal should match snapshot 1`] = `
                 <button
                   aria-disabled="false"
                   aria-live="assertive"
-                  class="pgn__stateful-btn pgn__stateful-btn-state-default btn btn-primary"
+                  class="pgn__stateful-btn pgn__stateful-btn-state- btn btn-primary"
                   data-testid="create-allowance-stateful-button"
                   form="add-allowance-form"
                   type="submit"
@@ -348,7 +338,15 @@ exports[`AddAllowanceModal should match snapshot 1`] = `
   "container": <div
     aria-hidden="true"
     data-focus-on-hidden="true"
-  />,
+  >
+    <div
+      data-testid="redux-provider"
+    >
+      <div
+        data-testid="browser-router"
+      />
+    </div>
+  </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
   "findAllByDisplayValue": [Function],
